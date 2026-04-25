@@ -1,6 +1,8 @@
 (function () {
     'use strict';
 
+    console.log('🚀 [ACU 云端核心] 已成功加载，当前版本: v20.0');
+    
     const SCRIPT_ID = 'acu_visualizer_ui_v20_0_ai_overlay';
     
     // [新增] 全局防抖提示管理器，拦截高频重复弹窗
