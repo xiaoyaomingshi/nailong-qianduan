@@ -2570,9 +2570,11 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
         AcuToast.success('已发起导出请求');
     });
 
-    // [新增] 删除模板逻辑
+    // [新增] 删除模板逻辑 (带智能连删轮换)
     dialog.find('#btn-delete-tpl-outside').click(async () => {
-        const selectedId = dialog.find('#cfg-template-select').val();
+        const $select = dialog.find('#cfg-template-select');
+        const selectedId = $select.val();
+        
         if (!selectedId) {
             AcuToast.info('请先选择一个要删除的模板');
             return;
@@ -2581,6 +2583,7 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
             AcuToast.warning('🛡️ 此为系统内置核心模板，禁止删除！');
             return;
         }
+        
         const templates = await TemplateDB.getAllTemplates();
         const targetTpl = templates[selectedId];
         if (!targetTpl) return;
@@ -2588,10 +2591,30 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
         const tplName = targetTpl.mate?.templateName || '未命名模板';
         if (confirm(`【警告】\n确定要永久删除模板【${tplName}】吗？\n此操作不可逆！`)) {
             try {
+                // 1. 在删除前，先计算"下一个"该选中谁
+                const $options = $select.find('option[value!=""]'); // 获取所有真实模板选项
+                const currentIndex = $options.index($options.filter(`[value="${selectedId}"]`));
+                let nextIdToSelect = "";
+                
+                if ($options.length > 1) {
+                    // 如果不是最后一项，就顺延到下一项；如果是最后一项，就退回上一项
+                    if (currentIndex < $options.length - 1) {
+                        nextIdToSelect = $options.eq(currentIndex + 1).val();
+                    } else {
+                        nextIdToSelect = $options.eq(currentIndex - 1).val();
+                    }
+                }
+
+                // 2. 执行删除
                 const store = TemplateDB.db.transaction([TemplateDB.storeName], 'readwrite').objectStore(TemplateDB.storeName);
                 store.delete(selectedId).onsuccess = async () => {
                     AcuToast.success(`模板【${tplName}】已删除`);
                     await refreshTemplateSelect(); // 刷新下拉列表
+                    
+                    // 3. 删除完毕后，瞬间将下拉框恢复到相邻的模板上
+                    if (nextIdToSelect) {
+                        dialog.find('#cfg-template-select').val(nextIdToSelect);
+                    }
                 };
             } catch (err) {
                 console.error('[ACU] 删除模板失败:', err);
