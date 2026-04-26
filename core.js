@@ -4528,9 +4528,9 @@ let finalGridCols = config.gridColumns;
         const n = orderedNames.length + (shouldMergeSettings ? 1 : 0);
 
         if (n <= 4) {
-            // 4个以内：有多少显示多少 (最少2列保持美观)
-            finalGridCols = n < 2 ? 2 : n; 
-        } else {
+                // 4个以内：有多少显示多少 (如果是1个就占满1列)
+                finalGridCols = Math.max(1, n);
+            } else {
             // 超过4个：计算 3列 vs 4列 的空缺情况
             const empty3 = (Math.ceil(n / 3) * 3) - n; // 3列时的空缺
             const empty4 = (Math.ceil(n / 4) * 4) - n; // 4列时的空缺
