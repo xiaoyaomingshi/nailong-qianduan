@@ -1070,18 +1070,30 @@ const EXCLUDED_NAMES = ['无', '无关系', '暂无', '未知', '空', 'N/A', 'N
 
         getAllTemplates: function() {
             return new Promise((resolve) => {
-                if (!this.db) return resolve({});
+                const injectBuiltin = (resultObj) => {
+                    resultObj['tpl_builtin_sql_hongqu'] = JSON.parse(JSON.stringify(DEFAULT_BUILTIN_TEMPLATE));
+                    resultObj['tpl_builtin_sql_hongqu'].mate.templateName = " SQL魔改红曲 (内置)";
+                    return resultObj;
+                };
+
+                if (!this.db) return resolve(injectBuiltin({}));
+
                 const store = this.db.transaction([this.storeName], 'readonly').objectStore(this.storeName);
                 const reqKeys = store.getAllKeys();
                 const reqVals = store.getAll();
+                
                 reqKeys.onsuccess = () => {
                     reqVals.onsuccess = () => {
                         const result = {};
-                        reqKeys.result.forEach((k, i) => result[k] = reqVals.result[i]);
-                        resolve(result);
+                        reqKeys.result.forEach((k, i) => {
+                            if (k !== 'tpl_builtin_sql_hongqu') {
+                                result[k] = reqVals.result[i];
+                            }
+                        });
+                        resolve(injectBuiltin(result));
                     };
                 };
-                reqVals.onerror = () => resolve({});
+                reqVals.onerror = () => resolve(injectBuiltin({}));
             });
         }
     };
@@ -2308,7 +2320,6 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
                                 <button class="acu-btn-block" id="btn-inject-tpl-db" style="flex:1; margin:0; padding:8px 0; background:#f39c12; border-color:#f39c12; color:#fff;" title="⚡ 将选中模板一键注入当前世界数据库"><i class="fa-solid fa-bolt"></i> 注入</button>
                                 <input type="file" id="input-import-tpl-outside" accept=".json" style="display:none;">
                             </div>
-                            <button class="acu-btn-block" id="btn-add-builtin-tpl" style="margin:0; padding:8px 0; background:rgba(46,204,113,0.15); color:#2ecc71; border:1px dashed #2ecc71;" title="获取内置的 SQL魔改红曲 模板"><i class="fa-solid fa-download"></i> 获取内置: SQL魔改红曲</button>
                         </div>
 
                         <div style="display: flex; gap: 8px;">
@@ -2504,16 +2515,6 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
     };
     refreshTemplateSelect(); // 初始化加载
 
-    // [新增] 获取内置模板按钮事件
-    dialog.find('#btn-add-builtin-tpl').click(async () => {
-        const tplId = 'tpl_builtin_sql_hongqu';
-        DEFAULT_BUILTIN_TEMPLATE.mate.templateName = " SQL魔改红曲 (内置)";
-        await TemplateDB.saveTemplate(tplId, DEFAULT_BUILTIN_TEMPLATE);
-        await refreshTemplateSelect();
-        dialog.find('#cfg-template-select').val(tplId);
-        AcuToast.success('✅ 已将内置模板添加至列表！\n如需使用，请手动选中并点击【注入】按钮');
-    });
-
     dialog.find('#btn-import-tpl-outside').click(() => dialog.find('#input-import-tpl-outside').click());
     dialog.find('#input-import-tpl-outside').change(function(e) {
         const file = e.target.files[0];
@@ -2574,6 +2575,10 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
         const selectedId = dialog.find('#cfg-template-select').val();
         if (!selectedId) {
             AcuToast.info('请先选择一个要删除的模板');
+            return;
+        }
+        if (selectedId === 'tpl_builtin_sql_hongqu') {
+            AcuToast.warning('🛡️ 此为系统内置核心模板，禁止删除！');
             return;
         }
         const templates = await TemplateDB.getAllTemplates();
