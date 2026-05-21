@@ -2213,12 +2213,18 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
             @media (max-width: 768px) {
                 /* [优化] 遮罩层改为底部对齐，为上方的智能幻影留出展示空间 */
                 .acu-edit-overlay { align-items: flex-end !important; justify-content: center !important; background: rgba(0, 0, 0, 0.6) !important; backdrop-filter: blur(4px); padding: 0 !important; }
-                /* [优化] 弹窗本体改为抽屉式：100%宽、吸底、顶部大圆角、底部滑入动画，并将最大高度压低到75% */
-                .acu-edit-dialog { width: 100% !important; max-width: 100% !important; border-radius: 24px 24px 0 0 !important; height: auto !important; max-height: 75vh !important; max-height: 75dvh !important; margin: 0 !important; bottom: 0 !important; animation: acuSlideUp 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; box-shadow: 0 -10px 40px rgba(0,0,0,0.6) !important; border-bottom: none !important; }
-                /* 增加抽屉顶部的视觉小把手 (Indicator) 增加拟物感 */
-                .acu-edit-dialog::before { content: ''; display: block; width: 40px; height: 5px; background: rgba(128, 128, 128, 0.4); border-radius: 3px; margin: 12px auto -2px auto; flex-shrink: 0; }
+                /* [瘦身] 弹窗整体拉高，最大高度从75vh提升到85vh，圆角收敛 */
+                .acu-edit-dialog { width: 100% !important; max-width: 100% !important; border-radius: 20px 20px 0 0 !important; height: auto !important; max-height: 85vh !important; max-height: 85dvh !important; margin: 0 !important; bottom: 0 !important; animation: acuSlideUp 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; box-shadow: 0 -10px 40px rgba(0,0,0,0.6) !important; border-bottom: none !important; }
+                /* [瘦身] 极限压缩顶部小把手的上下间距和粗细 */
+                .acu-edit-dialog::before { content: ''; display: block; width: 36px; height: 4px; background: rgba(128, 128, 128, 0.4); border-radius: 2px; margin: 8px auto -6px auto; flex-shrink: 0; position: relative; z-index: 1; }
+                /* [瘦身] 强制削减标题栏的 padding 和字号 */
+                .acu-edit-dialog .acu-edit-title { padding: 10px 15px 6px 15px !important; }
+                .acu-edit-dialog .acu-edit-title > div:first-child { font-size: 15px !important; }
+                /* [瘦身] 压缩底部固定按钮栏的空间占用 */
+                .acu-settings-footer { padding: 8px 16px !important; padding-bottom: max(8px, env(safe-area-inset-bottom, 8px)) !important; }
+                .acu-settings-footer #dlg-close { height: 38px !important; font-size: 14px !important; }
                 /* 调整幽灵卡片(滑块预览)位置，放置于抽屉上方 */
-                #acu-ghost-preview { top: 8% !important; bottom: auto !important; left: 50% !important; transform: translateX(-50%) !important; width: min(var(--acu-card-width), calc(100vw - 32px)) !important; max-height: 25vh !important; overflow-y: auto !important; overflow-x: hidden !important; margin: 0 !important; box-shadow: 0 10px 50px rgba(0,0,0,0.5) !important; border: 2px solid var(--acu-accent) !important; } 
+                #acu-ghost-preview { top: 6% !important; bottom: auto !important; left: 50% !important; transform: translateX(-50%) !important; width: min(var(--acu-card-width), calc(100vw - 32px)) !important; max-height: 25vh !important; overflow-y: auto !important; overflow-x: hidden !important; margin: 0 !important; box-shadow: 0 10px 50px rgba(0,0,0,0.5) !important; border: 2px solid var(--acu-accent) !important; } 
             }
             @keyframes acuSlideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
             .acu-edit-dialog { background-color: var(--acu-bg-panel) !important; color: var(--acu-text-main) !important; border: 1px solid var(--acu-border) !important; display: flex; flex-direction: column; }
@@ -2331,8 +2337,8 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
                 <div style="height: 10px;"></div>
             </div>
 
-            <div style="flex: 0 0 auto; padding: 12px 16px; padding-bottom: max(12px, env(safe-area-inset-bottom, 12px)); border-top: 1px solid var(--acu-border); background: var(--acu-bg-panel); z-index: 10;">
-                <button id="dlg-close" class="acu-btn-block" style="margin:0; background:var(--acu-accent) !important; color:#fff !important; border:none; justify-content:center; font-weight:bold; font-size:15px; height:44px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+            <div class="acu-settings-footer" style="flex: 0 0 auto; padding: 10px 16px; padding-bottom: max(10px, env(safe-area-inset-bottom, 10px)); border-top: 1px solid var(--acu-border); background: var(--acu-bg-panel); z-index: 10;">
+                <button id="dlg-close" class="acu-btn-block" style="margin:0; background:var(--acu-accent) !important; color:#fff !important; border:none; justify-content:center; font-weight:bold; font-size:14px; height:40px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
                     <i class="fa-solid fa-check"></i> 完成并保存
                 </button>
             </div>
@@ -5669,6 +5675,18 @@ const renderTableContent = (tableData, tableName) => {
         let processedRows = tableData.rows.map((row, index) => ({ data: row, originalIndex: index }));
         const searchTerm = (tableSearchStates[tableName] || '').toLowerCase().trim();
 
+        // [新增] 搜索关键词高亮辅助函数 (完美兼容HTML转义防注入)
+        const highlightMatch = (str) => {
+            const txt = String(str);
+            if (!searchTerm || !txt) return escapeHtml(txt);
+            const escapedTxt = escapeHtml(txt);
+            // 对搜索词也进行转义，保证能匹配到 escapedTxt 中被转义的特殊字符，并剔除正则保留字
+            const escapedTerm = escapeHtml(searchTerm).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            if (!escapedTerm) return escapedTxt;
+            const regex = new RegExp(`(${escapedTerm})`, 'gi');
+            return escapedTxt.replace(regex, '<mark style="background:var(--acu-accent); color:#fff; border-radius:3px; padding:0 2px; box-shadow:0 1px 3px rgba(0,0,0,0.3);">$1</mark>');
+        };
+
 // [修复] 智能排序：只有当该行存在【非手动修改】的差异（即纯AI修改）时，才算高优先级置顶
 const isRowHighPriority = (idx) => {
     if (!config.highlightNew) return false;
@@ -5810,7 +5828,7 @@ const cardBody = row.map((cell, cIdx) => {
                 const splitRegex = /[;；]/;
                 
                 // [修改] 定义临时去括号函数 (Visual Only) - 已移除去括号逻辑
-    const cleanVis = (s) => String(s).trim();
+                const cleanVis = (s) => String(s).trim();
 
                 // 智能标签渲染：只有每段都≤6字符才用标签气泡
                 if (rawStr.length > 0 && splitRegex.test(rawStr) && !rawStr.includes('http')) {
@@ -5819,19 +5837,19 @@ const cardBody = row.map((cell, cIdx) => {
                     if (allShort) {
                         const tagsHtml = parts.map(part => {
                             const subStyle = getBadgeStyle(part) || 'acu-badge-neutral'; 
-                            // [修改] 标签内部去括号
-                            return `<span class="acu-badge ${subStyle}">${safeStr(cleanVis(part))}</span>`;
+                            // [修改] 标签内部进行搜索词高亮
+                            return `<span class="acu-badge ${subStyle}">${highlightMatch(cleanVis(part))}</span>`;
                         }).join('');
                         contentHtml = `<div class="acu-tag-container">${tagsHtml}</div>`;
                     } else {
-                        // [修改] 长文本去括号
-                        contentHtml = safeStr(cleanVis(rawStr));
+                        // [修改] 长文本进行搜索词高亮
+                        contentHtml = highlightMatch(cleanVis(rawStr));
                     }
                 } else {
                     const badgeStyle = getBadgeStyle(rawStr);
-                    // [修改] 普通单元格去括号
+                    // [修改] 普通单元格进行搜索词高亮
                     const cleanText = cleanVis(rawStr);
-                    const displayCell = (safeStr(cleanText) === '' && String(cell) !== '0') ? '&nbsp;' : safeStr(cleanText);
+                    const displayCell = (cleanText === '' && String(cell) !== '0') ? '&nbsp;' : highlightMatch(cleanText);
                     contentHtml = badgeStyle ? `<span class="acu-badge ${badgeStyle}">${displayCell}</span>` : displayCell;
                 }
                 
@@ -5867,7 +5885,7 @@ const cardBody = row.map((cell, cIdx) => {
             const titleLockIcon = (isTitleLocked && !isRowLocked) ? ` <i class="fa-solid fa-lock" style="color:#f39c12; margin-left:4px; opacity:0.9; font-size:11px;" title="该标题格已被物理锁定"></i>` : '';
 
             // [修改] 给 acu-card-body 增加了 view-grid 或 view-list 类，并在 header 注入了 rowLockIcon 和 titleLockIcon
-            return `<div class="acu-data-card ${isPending ? 'pending-deletion' : ''}"><div class="acu-card-header"><span class="acu-card-index">${showDefaultIndex ? '#' + (realRowIdx + 1) : ''}</span><span class="acu-cell acu-editable-title ${rowClass}" data-key="${escapeHtml(tableData.key)}" data-tname="${escapeHtml(tableName)}" data-row="${realRowIdx}" data-col="${titleColIndex}" data-val="${encodeURIComponent(cardTitle ?? '')}" title="点击编辑标题">${escapeHtml(cardTitle)}${titleLockIcon}</span>${rowLockIcon}</div><div class="acu-card-body ${isGridMode ? 'view-grid' : 'view-list'}">${cardBody}</div></div>`;
+            return `<div class="acu-data-card ${isPending ? 'pending-deletion' : ''}"><div class="acu-card-header"><span class="acu-card-index">${showDefaultIndex ? '#' + (realRowIdx + 1) : ''}</span><span class="acu-cell acu-editable-title ${rowClass}" data-key="${escapeHtml(tableData.key)}" data-tname="${escapeHtml(tableName)}" data-row="${realRowIdx}" data-col="${titleColIndex}" data-val="${encodeURIComponent(cardTitle ?? '')}" title="点击编辑标题">${highlightMatch(cardTitle)}${titleLockIcon}</span>${rowLockIcon}</div><div class="acu-card-body ${isGridMode ? 'view-grid' : 'view-list'}">${cardBody}</div></div>`;
         }).join('');
         html += `</div></div>`;
 
