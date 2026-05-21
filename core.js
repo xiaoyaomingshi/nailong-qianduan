@@ -1700,7 +1700,7 @@ if (currentFontId !== config.fontFamily) {
 .acu-cell-menu-item#act-delete { color: #e74c3c; } 
 .acu-cell-menu-item#act-delete:hover { background: rgba(231, 76, 60, 0.1); } /* 红色半透明背景，任何主题都适配 */
 .acu-cell-menu-item#act-close { border-top: 1px dashed var(--acu-border); color: var(--acu-text-sub); }
-            .acu-edit-overlay { position: fixed !important; top: 0; left: 0; right: 0; bottom: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.75) !important; z-index: 2147483646 !important; display: flex !important; justify-content: center !important; align-items: center !important; backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); transform: translateZ(0); backface-visibility: hidden; will-change: opacity, backdrop-filter; }
+            .acu-edit-overlay { position: fixed !important; top: 0; left: 0; right: 0; bottom: 0; width: 100vw; height: 100%; height: 100dvh; background: rgba(0,0,0,0.75) !important; z-index: 2147483646 !important; display: flex !important; justify-content: center !important; align-items: center !important; backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); transform: translateZ(0); backface-visibility: hidden; will-change: opacity, backdrop-filter; }
             .acu-edit-dialog { background-color: var(--acu-bg-panel, #333) !important; width: 95%; max-width: 500px; max-height: 95vh; padding: 16px; border-radius: 12px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 15px 50px rgba(0,0,0,0.6); color: var(--acu-text-main, #fff) !important; border: 1px solid var(--acu-border, #555); margin: auto !important; overflow: hidden; transform: translate3d(0, 0, 0); will-change: transform, opacity; } 
             @media (min-width: 768px) { .acu-edit-dialog { max-width: 900px !important; width: 90% !important; } }
             .acu-edit-title { margin: 0; font-size: 16px; font-weight: bold; color: var(--acu-text-main, #fff); padding-bottom: 8px; border-bottom: 1px solid var(--acu-border, #555); }
@@ -2211,12 +2211,14 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
             @media (min-width: 769px) and (max-width: 1100px) { #acu-ghost-preview { left: auto !important; right: calc(50% + 220px) !important; } }
             @media (min-width: 769px) and (max-width: 850px) { #acu-ghost-preview { left: 50% !important; right: auto !important; top: 10% !important; transform: translateX(-50%) !important; } #acu-ghost-preview.visible { transform: translateX(-50%) scale(1) !important; } }
             @media (max-width: 768px) {
-                /* [优化] 遮罩层改为Flex居中对齐，加深背景模糊，提升沉浸感 */
-.acu-edit-overlay { align-items: center !important; justify-content: center !important; background: rgba(0, 0, 0, 0.6) !important; backdrop-filter: blur(4px); padding: 0 !important; }
-                /* 还原：标准的底部弹窗样式，无额外边距 */
-                /* [优化] 弹窗本体：宽度90%，最大高度80%，四周圆角，居中悬浮 */
-.acu-edit-dialog { width: 90% !important; max-width: 450px !important; border-radius: 16px !important; height: auto !important; max-height: 80vh !important; margin: auto !important; bottom: auto !important; animation: acuFadeIn 0.25s ease-out; box-shadow: 0 15px 50px rgba(0,0,0,0.6) !important; }
-                #acu-ghost-preview { top: 12% !important; bottom: auto !important; left: 50% !important; transform: translateX(-50%) !important; width: min(var(--acu-card-width), calc(100vw - 32px)) !important; max-height: 35vh !important; overflow-y: auto !important; overflow-x: hidden !important; margin: 0 !important; box-shadow: 0 10px 50px rgba(0,0,0,0.5) !important; border: 2px solid var(--acu-accent) !important; } 
+                /* [优化] 遮罩层改为底部对齐，为上方的智能幻影留出展示空间 */
+                .acu-edit-overlay { align-items: flex-end !important; justify-content: center !important; background: rgba(0, 0, 0, 0.6) !important; backdrop-filter: blur(4px); padding: 0 !important; }
+                /* [优化] 弹窗本体改为抽屉式：100%宽、吸底、顶部大圆角、底部滑入动画，并将最大高度压低到75% */
+                .acu-edit-dialog { width: 100% !important; max-width: 100% !important; border-radius: 24px 24px 0 0 !important; height: auto !important; max-height: 75vh !important; max-height: 75dvh !important; margin: 0 !important; bottom: 0 !important; animation: acuSlideUp 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; box-shadow: 0 -10px 40px rgba(0,0,0,0.6) !important; border-bottom: none !important; }
+                /* 增加抽屉顶部的视觉小把手 (Indicator) 增加拟物感 */
+                .acu-edit-dialog::before { content: ''; display: block; width: 40px; height: 5px; background: rgba(128, 128, 128, 0.4); border-radius: 3px; margin: 12px auto -2px auto; flex-shrink: 0; }
+                /* 调整幽灵卡片(滑块预览)位置，放置于抽屉上方 */
+                #acu-ghost-preview { top: 8% !important; bottom: auto !important; left: 50% !important; transform: translateX(-50%) !important; width: min(var(--acu-card-width), calc(100vw - 32px)) !important; max-height: 25vh !important; overflow-y: auto !important; overflow-x: hidden !important; margin: 0 !important; box-shadow: 0 10px 50px rgba(0,0,0,0.5) !important; border: 2px solid var(--acu-accent) !important; } 
             }
             @keyframes acuSlideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
             .acu-edit-dialog { background-color: var(--acu-bg-panel) !important; color: var(--acu-text-main) !important; border: 1px solid var(--acu-border) !important; display: flex; flex-direction: column; }
@@ -2329,7 +2331,7 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
                 <div style="height: 10px;"></div>
             </div>
 
-            <div style="flex: 0 0 auto; padding: 12px 16px; border-top: 1px solid var(--acu-border); background: var(--acu-bg-panel); z-index: 10;">
+            <div style="flex: 0 0 auto; padding: 12px 16px; padding-bottom: max(12px, env(safe-area-inset-bottom, 12px)); border-top: 1px solid var(--acu-border); background: var(--acu-bg-panel); z-index: 10;">
                 <button id="dlg-close" class="acu-btn-block" style="margin:0; background:var(--acu-accent) !important; color:#fff !important; border:none; justify-content:center; font-weight:bold; font-size:15px; height:44px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
                     <i class="fa-solid fa-check"></i> 完成并保存
                 </button>
