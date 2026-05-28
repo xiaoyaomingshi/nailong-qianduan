@@ -1236,14 +1236,9 @@ const EXCLUDED_NAMES = ['无', '无关系', '暂无', '未知', '空', 'N/A', 'N
                     const isInstantMode = !actOrd.includes('acu-btn-save-global');
                     
                     if (isInstantMode) {
-                        // --- A. 即时模式：附带细粒度更新上下文，根除旧数据回档 ---
+                        // --- A. 即时模式：统一使用全局覆盖接口，保证绝对成功 ---
                         dialog.find('#dlg-card-save').html('<i class="fa-solid fa-check"></i> 已保存');
-                        await saveDataToDatabase(rawData, false, true, {
-                            type: 'row_edit',
-                            tableKey: tableKey,
-                            rowIndex: rowIndex,
-                            updateObj: updateData
-                        });
+                        await saveDataToDatabase(rawData, false, true);
                         AcuToast.success('修改已保存');
                     } else {
                         // --- B. 暂存模式 ---
@@ -2040,7 +2035,7 @@ if (currentFontId !== config.fontFamily) {
 
     const getTableData = () => { const api = getCore().getDB(); return api && api.exportTableAsJson ? api.exportTableAsJson() : null; };
 
-const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes = false, updateContext = null) => {
+const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes = false) => {
     if (isSaving) return;
     isSaving = true;
     const { $, ST } = getCore();
@@ -2049,26 +2044,6 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
     const yieldToMain = () => new Promise(resolve => setTimeout(resolve, 0));
 
     try {
-        let apiSuccess = false;
-        const apiDb = getCore().getDB();
-        
-        // --- [核心修复] 优先尝试细粒度 API，彻底清除后端潜意识缓存，根绝回档 Bug ---
-        if (apiDb && updateContext) {
-            try {
-                let apiResult = false;
-                if (updateContext.type === 'cell_edit' && apiDb.updateCell) {
-                    apiResult = await apiDb.updateCell(updateContext.tableKey, updateContext.rowIndex + 1, updateContext.colIndex, updateContext.newValue);
-                } else if (updateContext.type === 'row_edit' && apiDb.updateRow) {
-                    apiResult = await apiDb.updateRow(updateContext.tableKey, updateContext.rowIndex + 1, updateContext.updateObj);
-                } else if (updateContext.type === 'row_delete' && apiDb.deleteRow) {
-                    apiResult = await apiDb.deleteRow(updateContext.tableKey, updateContext.rowIndex + 1);
-                }
-                if (apiResult !== false) apiSuccess = true;
-            } catch (apiErr) {
-                console.warn('[ACU] 细粒度 API 调用异常:', apiErr);
-            }
-        }
-
         // 1. 构建保存数据
         const dataToSave = {};
         if (!tableData.mate) dataToSave.mate = { type: "chatSheets", version: 1 };
@@ -2080,21 +2055,16 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
             }
         });
 
-        // 2. 处理删除 (包含批量删除防回档修复)
+        // 2. 处理删除
         if (commitDeletes) {
             const deletions = getPendingDeletions();
-            for (const key of Object.keys(deletions)) {
+            Object.keys(deletions).forEach(key => {
                 if (dataToSave[key] && dataToSave[key].content) {
-                    const sortedIdx = deletions[key].sort((a, b) => b - a);
-                    for (const idx of sortedIdx) {
-                        // [核心修复] 批量保存时，也同步调用后端的物理删除接口，击碎后端缓存
-                        if (apiDb && apiDb.deleteRow) {
-                            try { await apiDb.deleteRow(key, idx + 1); } catch (e) { }
-                        }
+                    deletions[key].sort((a, b) => b - a).forEach(idx => {
                         if (dataToSave[key].content[idx + 1]) dataToSave[key].content.splice(idx + 1, 1);
-                    }
+                    });
                 }
-            }
+            });
             savePendingDeletions({});
         }
 
@@ -2164,11 +2134,11 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
         await yieldToMain();
 
         // 4. 调用后端 API (序列化也是阻塞的，但 API 本身是异步的)
-        if (!apiSuccess && apiDb && apiDb.importTableAsJson) {
-            // [核心机制] 只有细粒度 API 失败或未提供上下文时，才兜底执行全量大包覆盖
+        const api = getCore().getDB();
+        if (api && api.importTableAsJson) {
             const jsonStr = JSON.stringify(dataToSave);
             await yieldToMain(); // 序列化后让出
-            await apiDb.importTableAsJson(jsonStr);
+            await api.importTableAsJson(jsonStr);
         }
 
         // [优化] 让出主线程
@@ -7581,13 +7551,8 @@ const initSortable = () => {
                             // 扔进宏任务队列，留出 250ms 让卡片动画从从容容地播完
                             setTimeout(async () => {
                                 try {
-                                    // 存数据库，附带细粒度更新上下文，根除幽灵回档
-                                    await saveDataToDatabase(cachedRawData, true, true, {
-                                        type: 'row_edit',
-                                        tableKey: tableKey,
-                                        rowIndex: rowIdx,
-                                        updateObj: updateData
-                                    });
+                                    // 存数据库，并且明确告诉它：不要重绘！不要重绘！
+                                    await saveDataToDatabase(cachedRawData, true, true);
                                 } catch(e) {
                                     AcuToast.error('保存失败，请检查网络');
                                 }
@@ -7657,15 +7622,9 @@ const initSortable = () => {
                     $displayTarget.removeClass('acu-highlight-manual acu-highlight-diff');
                     if ($cell.hasClass('acu-editable-title')) $cell.removeClass('acu-highlight-manual acu-highlight-diff');
                     
-                    // 【核心修复】引入细粒度 API 上下文，彻底抛弃单纯的全量覆盖，根除旧数据复活 Bug
+                    // 【降维打击】抛弃不稳定的小颗粒 API，强制使用和“全局保存”一模一样的全量写入接口
                     try {
-                        await saveDataToDatabase(cachedRawData, true, true, {
-                            type: 'cell_edit',
-                            tableKey: tableKey,
-                            rowIndex: rowIdx,
-                            colIndex: colIdx,
-                            newValue: newVal
-                        });
+                        await saveDataToDatabase(cachedRawData, true, true);
                         AcuToast.success('已极速保存');
                     } catch(e) {
                         AcuToast.error('保存失败');
