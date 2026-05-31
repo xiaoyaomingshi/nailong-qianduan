@@ -1236,22 +1236,9 @@ const EXCLUDED_NAMES = ['无', '无关系', '暂无', '未知', '空', 'N/A', 'N
                     const isInstantMode = !actOrd.includes('acu-btn-save-global');
                     
                     if (isInstantMode) {
-                        // --- A. 即时模式：接入底层 API 更新，兼容 SQL 模式 ---
-                        dialog.find('#dlg-card-save').html('<i class="fa-solid fa-spinner fa-spin"></i> 保存中');
-                        const api = getCore().getDB();
-                        let apiSuccess = false;
-                        
-                        if (api && api.updateRow) {
-                            apiSuccess = await api.updateRow(tableName, rowIndex + 1, updateData);
-                        }
-                        
-                        if (!apiSuccess) {
-                            await saveDataToDatabase(rawData, false, true);
-                        } else {
-                            cachedRawData = api.exportTableAsJson(); // 同步底层最新内存快照
-                        }
-                        
+                        // --- A. 即时模式：统一使用全局覆盖接口，保证绝对成功 ---
                         dialog.find('#dlg-card-save').html('<i class="fa-solid fa-check"></i> 已保存');
+                        await saveDataToDatabase(rawData, false, true);
                         AcuToast.success('修改已保存');
                     } else {
                         // --- B. 暂存模式 ---
@@ -2087,16 +2074,12 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
         // 3. 同步聊天记录楼层数据
         try {
             let rawIsolationCode = '';
-            const SETTINGS_KEYS = ['shujuku_v104_allSettings_v2', 'shujuku_v70_allSettings_v2', 'shujuku_v60_allSettings_v2', 'shujuku_v50_allSettings_v2'];
-            let storage = window.localStorage;
-            if (!storage.getItem(SETTINGS_KEYS[0]) && window.parent) { try { storage = window.parent.localStorage; } catch(e){} }
-            
-            for (const key of SETTINGS_KEYS) {
-                const str = storage.getItem(key);
-                if (str) {
-                    const settings = JSON.parse(str);
-                    if (settings.dataIsolationEnabled && settings.dataIsolationCode) {
-                        rawIsolationCode = settings.dataIsolationCode;
+            // [v2兼容] 新版将隔离标识写入聊天消息，不再存localStorage
+            if (ST && ST.chat && ST.chat.length > 0) {
+                for (let i = ST.chat.length - 1; i >= 0; i--) {
+                    const msg = ST.chat[i];
+                    if (!msg.is_user && msg.TavernDB_ACU_Identity) {
+                        rawIsolationCode = msg.TavernDB_ACU_Identity;
                         break;
                     }
                 }
@@ -2146,16 +2129,25 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
         // [优化] 让出主线程
         await yieldToMain();
 
-        // 4. 调用后端 API (序列化也是阻塞的，但 API 本身是异步的)
+        // 4. 同步到后端 API (序列化也是阻塞的，但 API 本身是异步的)
+        // [恢复] 坚决抛弃前端的 delete+insert 模拟，交由后端高速引擎处理全量覆盖
         const api = getCore().getDB();
         if (api && api.importTableAsJson) {
             const jsonStr = JSON.stringify(dataToSave);
-            await yieldToMain(); // 序列化后让出
+            await yieldToMain(); // 序列化后让出主线程
             await api.importTableAsJson(jsonStr);
         }
 
         // [优化] 让出主线程
         await yieldToMain();
+
+        // [v2兼容] 通知后端刷新，确保 SQLite 模式下手动修改落盘
+        try {
+            const _dbApi = getCore().getDB();
+            if (_dbApi && typeof _dbApi.refreshDataAndWorldbook === 'function') {
+                await _dbApi.refreshDataAndWorldbook();
+            }
+        } catch (_ignored) {}
 
         // 5. 更新本地状态
         cachedRawData = dataToSave;
@@ -7239,7 +7231,8 @@ const initSortable = () => {
                     let apiSuccess = false;
                     // --- 核心修复：将 tableName 改为 tableKey ---
                     if (api && api.deleteRow) {
-                        apiSuccess = await api.deleteRow(tableKey, rowIdx + 1);
+                        const _tname = (cachedRawData?.[tableKey]?.name) || tableKey;
+                        apiSuccess = await api.deleteRow(_tname, rowIdx + 1);
                         if (apiSuccess) {
                             AcuToast.success('已彻底删除');
                             // 同步本地缓存防穿帮
@@ -7338,9 +7331,10 @@ const initSortable = () => {
             if (isInstantMode) {
                 AcuToast.info('正在请求插入新行...');
                 try {
-                    // --- A. 即时模式：尝试优先使用后端 API ---
+                    // --- A. 即时模式：尝试优先使用后端 API (修复：tableName 改为 tableKey) ---
                     if (api && api.insertRow) {
-                        const newRowIndex = await api.insertRow(tableName, {});
+                        const _tname = (cachedRawData?.[tableKey]?.name) || tableKey;
+                        const newRowIndex = await api.insertRow(_tname, {});
                         if (newRowIndex !== -1) {
                             AcuToast.success('已追加新行至表尾');
                             cachedRawData = api.exportTableAsJson(); // 强制拉取最新数据
@@ -7564,17 +7558,8 @@ const initSortable = () => {
                             // 扔进宏任务队列，留出 250ms 让卡片动画从从容容地播完
                             setTimeout(async () => {
                                 try {
-                                    const api = getCore().getDB();
-                                    let apiSuccess = false;
-                                    if (api && api.updateRow) {
-                                        apiSuccess = await api.updateRow(tableName, rowIdx + 1, updateData);
-                                    }
-                                    if (!apiSuccess) {
-                                        // 存数据库，并且明确告诉它：不要重绘！不要重绘！
-                                        await saveDataToDatabase(cachedRawData, true, true);
-                                    } else {
-                                        cachedRawData = api.exportTableAsJson(); // 同步底层状态
-                                    }
+                                    // 存数据库，并且明确告诉它：不要重绘！不要重绘！
+                                    await saveDataToDatabase(cachedRawData, true, true);
                                 } catch(e) {
                                     AcuToast.error('保存失败，请检查网络');
                                 }
@@ -7644,21 +7629,9 @@ const initSortable = () => {
                     $displayTarget.removeClass('acu-highlight-manual acu-highlight-diff');
                     if ($cell.hasClass('acu-editable-title')) $cell.removeClass('acu-highlight-manual acu-highlight-diff');
                     
+                    // 【降维打击】抛弃不稳定的小颗粒 API，强制使用和“全局保存”一模一样的全量写入接口
                     try {
-                        const api = getCore().getDB();
-                        let apiSuccess = false;
-                        
-                        // 恢复小颗粒 API，通知底层 SQLite 更新单格
-                        if (api && api.updateCell) {
-                            const colName = cachedRawData[tableKey].content[0][colIdx];
-                            apiSuccess = await api.updateCell(tableName, rowIdx + 1, colName, newVal);
-                        }
-                        
-                        if (!apiSuccess) {
-                            await saveDataToDatabase(cachedRawData, true, true);
-                        } else {
-                            cachedRawData = api.exportTableAsJson();
-                        }
+                        await saveDataToDatabase(cachedRawData, true, true);
                         AcuToast.success('已极速保存');
                     } catch(e) {
                         AcuToast.error('保存失败');
@@ -8308,13 +8281,6 @@ const initSortable = () => {
             const rowIdx = parseInt($btn.data('row'), 10);
             const api = getCore().getDB();
             
-            // 获取真正的 tableName 给后端 SQL 使用
-            let targetTableName = tableKey;
-            if (!cachedRawData) cachedRawData = getTableData() || loadSnapshot();
-            if (cachedRawData && cachedRawData[tableKey]) {
-                targetTableName = cachedRawData[tableKey].name;
-            }
-
             // 视觉反馈：UI 层面让卡片瞬间滑出消失，无需等待后端，手感极佳
             const $card = $(this).closest('.acu-rpg-item-card');
             $card.css('transition', 'all 0.2s ease').css('opacity', '0').css('transform', 'scale(0.9)');
@@ -8324,7 +8290,8 @@ const initSortable = () => {
                 let apiSuccess = false;
                 // 优先尝试使用细粒度的行删除 API
                 if (api && api.deleteRow) {
-                    apiSuccess = await api.deleteRow(targetTableName, rowIdx + 1); // 数据库索引含表头，故 +1
+                        const _tname = (cachedRawData && cachedRawData[tableKey]?.name) || tableKey;
+                        apiSuccess = await api.deleteRow(_tname, rowIdx + 1); // 数据库索引含表头，故 +1
                     if (apiSuccess) {
                         AcuToast.success('已彻底删除：' + itemName);
                         // 同步本地数据快照防穿帮
