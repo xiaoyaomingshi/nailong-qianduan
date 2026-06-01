@@ -760,6 +760,11 @@ const EXCLUDED_NAMES = ['无', '无关系', '暂无', '未知', '空', 'N/A', 'N
                 Store.set(STORAGE_KEY_ROUND_BASELINE, newData);
             }
 
+            // 🛡️ 防闪烁护盾：如果是前端主动保存引起的数据回传，吸收数据但拦截重绘
+            if (window._acuMuteRenderUntil && Date.now() < window._acuMuteRenderUntil) {
+                return;
+            }
+
             renderInterface(); 
         } 
     };
@@ -1282,22 +1287,45 @@ const EXCLUDED_NAMES = ['无', '无关系', '暂无', '未知', '空', 'N/A', 'N
             const oldSheet = lastData[sheetId];
             if (!newSheet || !newSheet.name) continue;
             const tableName = newSheet.name;
+            
             if (!oldSheet) {
                 if (newSheet.content) {
                     newSheet.content.forEach((row, rIdx) => { if (rIdx > 0) diffSet.add(`${tableName}-row-${rIdx - 1}`); });
                 }
                 continue;
             }
+            
             const newRows = newSheet.content || [];
             const oldRows = oldSheet.content || [];
+            
+            // --- 🚀 魔法：为旧数据建立基于 row_id (第一列) 的字典，告别死板的索引比对 ---
+            const oldRowMap = new Map();
+            oldRows.forEach((r, idx) => {
+                if (idx > 0) {
+                    // 优先取 row_id，取不到再用原行号兜底
+                    const key = r[0] ? String(r[0]) : `fallback_${idx}`;
+                    oldRowMap.set(key, r);
+                }
+            });
+
             newRows.forEach((row, rIdx) => {
-                if (rIdx === 0) return;
-                const oldRow = oldRows[rIdx];
+                if (rIdx === 0) return; // 跳过表头
+                
+                const key = row[0] ? String(row[0]) : `fallback_${rIdx}`;
+                let oldRow = oldRowMap.get(key);
+                
+                // 如果按 ID 找不到，且也没有 row_id，就退回旧版的直接索引比对
+                if (!oldRow && !row[0]) {
+                    oldRow = oldRows[rIdx];
+                }
+
                 if (!oldRow) {
+                    // 如果旧字典里完全找不到这个身份证，那这就是新行
                     diffSet.add(`${tableName}-row-${rIdx - 1}`);
                 } else {
+                    // 找到了旧数据，逐个单元格比对变化
                     row.forEach((cell, cIdx) => {
-                        if (cIdx === 0) return;
+                        if (cIdx === 0) return; // 不比对 row_id 本身
                         const oldCell = oldRow[cIdx];
                         if (String(cell) !== String(oldCell)) diffSet.add(`${tableName}-${rIdx - 1}-${cIdx}`);
                     });
@@ -2038,6 +2066,10 @@ if (currentFontId !== config.fontFamily) {
 const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes = false) => {
     if (isSaving) return;
     isSaving = true;
+    
+    // 🛡️ 升起“渲染静音护盾”：在接下来的 1500ms 内，无视后台回音重绘请求，消灭全局闪烁
+    window._acuMuteRenderUntil = Date.now() + 1500;
+    
     const { $, ST } = getCore();
 
     // [优化] 辅助函数：让出主线程，允许 UI 响应
@@ -2157,6 +2189,7 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
         if (window.acuModifiedSet) window.acuModifiedSet.clear();
 
         if (!skipRender) {
+            window._acuMuteRenderUntil = 0; // 强制破盾，允许渲染
             renderInterface();
             AcuToast.success('✅ 保存成功');
         }
@@ -4464,11 +4497,24 @@ const bindOptionEvents = () => {
 
         let lastScrollX = 0;
         let lastScrollY = 0;
+        let instantInnerScrolls = {}; // 用于捕捉瞬间的内部滚动状态
 
         const $oldContent = $('.acu-panel-content');
         if ($oldContent.length) {
             lastScrollX = $oldContent.scrollLeft();
             lastScrollY = $oldContent.scrollTop();
+            
+            // 【微观修复】在 DOM 被推翻前一毫秒，瞬间抓取所有卡片及其内部容器的滚动条！
+            $oldContent.find('.acu-data-card, .acu-card-body').each(function() {
+                if (this.scrollTop > 0) {
+                    const $card = $(this).closest('.acu-data-card');
+                    const rIdx = $card.find('.acu-editable-title').data('row');
+                    if (rIdx !== undefined) {
+                        const type = $(this).hasClass('acu-card-body') ? 'body' : 'card';
+                        instantInnerScrolls[`${rIdx}-${type}`] = this.scrollTop;
+                    }
+                }
+            });
         }
 
         // [核心优化] 移除了 $('.acu-wrapper').remove(); 
@@ -4872,7 +4918,7 @@ let finalGridCols = config.gridColumns;
 
         
 
-        // 【终极修复】使用 requestAnimationFrame，既不卡死主线程，又能无缝衔接
+        // 【终极修复】使用 requestAnimationFrame + 多重延迟兜底，彻底解决浏览器异步布局导致的滚动条重置回顶问题
         requestAnimationFrame(() => {
             const $newContent = $('.acu-panel-content');
             const activeTab = getActiveTabState();
@@ -4897,41 +4943,64 @@ let finalGridCols = config.gridColumns;
             }
 
             if ($newContent.length) {
-                // 3. 恢复面板整体位置
-                if (!isTabSwitched) {
-                    if (window._acuForceScrollTop) {
-                        $newContent.scrollTop(0);
-                        window._acuForceScrollTop = false;
-                    } else {
-                        // 【关键修复】同页内的刷新（如插入行、暂存修改）：绝对信任瞬间抓取的 lastScrollY！无视滞后的记忆，死死钉在原地！
-                        if (lastScrollY > 0) $newContent.scrollTop(lastScrollY);
-                        if (lastScrollX > 0) $newContent.scrollLeft(lastScrollX);
-                    }
-                } else {
-                    // 【优化】按照你的需求：只要当前系统存在任何“未保存的修改”，切换标签页时就记忆滚动条，方便交叉比对。否则统统回顶。
-                    const savedState = hasUnsavedChanges ? tableScrollStates[activeTab] : null;
-                    if (savedState) {
-                        $newContent.scrollTop(savedState.top || 0);
-                        $newContent.scrollLeft(savedState.left || 0);
-                    } else {
-                        $newContent.scrollTop(0);
-                        $newContent.scrollLeft(0);
-                    }
-                }
-
-                // 4. 恢复卡片内部滚动位置 (针对编辑框和长文本区域)
-                const savedStateForInner = tableScrollStates[activeTab];
-                if (savedStateForInner && savedStateForInner.inner) {
-                    Object.keys(savedStateForInner.inner).forEach(key => {
-                        const scrollTop = savedStateForInner.inner[key];
-                        const $targetTitle = $newContent.find(`.acu-editable-title[data-row="${key}"]`);
-                        if ($targetTitle.length) {
-                            const $card = $targetTitle.closest('.acu-data-card');
-                            $card.scrollTop(scrollTop);
-                            $card.find('.acu-card-body').scrollTop(scrollTop);
+                // 提取独立恢复函数，对抗浏览器异步渲染的高度坍塌
+                const applyScrollState = () => {
+                    // 3. 恢复面板整体位置
+                    if (!isTabSwitched) {
+                        if (window._acuForceScrollTop) {
+                            $newContent.scrollTop(0);
+                            window._acuForceScrollTop = false;
+                        } else {
+                            // 绝对信任瞬间抓取的 lastScrollY，死死钉在原地
+                            if (lastScrollY > 0) $newContent.scrollTop(lastScrollY);
+                            if (lastScrollX > 0) $newContent.scrollLeft(lastScrollX);
                         }
-                    });
-                }
+                    } else {
+                        const savedState = hasUnsavedChanges ? tableScrollStates[activeTab] : null;
+                        if (savedState) {
+                            $newContent.scrollTop(savedState.top || 0);
+                            $newContent.scrollLeft(savedState.left || 0);
+                        } else {
+                            $newContent.scrollTop(0);
+                            $newContent.scrollLeft(0);
+                        }
+                    }
+
+                    // 4. 恢复卡片内部滚动位置 (融合瞬间抓取的值与历史记忆)
+                    const savedStateForInner = tableScrollStates[activeTab]?.inner || {};
+                    
+                    // 优先使用刚才瞬间抓取的精确值，兜底使用历史记忆
+                    const activeInnerScrolls = Object.keys(instantInnerScrolls).length > 0 
+                        ? instantInnerScrolls 
+                        : savedStateForInner;
+
+                    if (activeInnerScrolls) {
+                        Object.keys(activeInnerScrolls).forEach(key => {
+                            const scrollTop = activeInnerScrolls[key];
+                            // 解析标记 (例如 "5-body" 或历史记录里的 "5")
+                            const rIdx = key.includes('-') ? key.split('-')[0] : key;
+                            const type = key.includes('-') ? key.split('-')[1] : 'all';
+                            
+                            const $targetTitle = $newContent.find(`.acu-editable-title[data-row="${rIdx}"]`);
+                            if ($targetTitle.length) {
+                                const $card = $targetTitle.closest('.acu-data-card');
+                                // 精确恢复外壳或内容区的滚动
+                                if (type === 'card' || type === 'all') $card.scrollTop(scrollTop);
+                                if (type === 'body' || type === 'all') $card.find('.acu-card-body').scrollTop(scrollTop);
+                            }
+                        });
+                    }
+                };
+
+                // 🚀 核心防抖魔法：强迫浏览器立即计算当前新 DOM 的真实布局高度 (Force Reflow)
+                $newContent[0].scrollHeight; 
+                
+                // 立即执行第一次定位
+                applyScrollState();
+                
+                // 🛡️ 终极兜底：应对懒加载或 Flex/Grid 引擎的延迟撑开现象，15ms和50ms后分别再校准一次
+                setTimeout(applyScrollState, 15);
+                setTimeout(applyScrollState, 50);
             }
         });
     };
@@ -5696,8 +5765,14 @@ const renderTableContent = (tableData, tableName) => {
 const isRowHighPriority = (idx) => {
     if (!config.highlightNew) return false;
     
-    // 1. 检查是否整行新增 (整行新增必然是 AI 行为)
-    if (currentDiffMap.has(`${tableName}-row-${idx}`)) return true;
+    // 1. 检查是否整行新增 
+    if (currentDiffMap.has(`${tableName}-row-${idx}`)) {
+        // 🚀 防止“手动插入的行”被误判为 AI 行为从而飞到顶部
+        if (tableData.rows[idx] && tableData.rows[idx]._isManualInsert) {
+            return false;
+        }
+        return true; // 纯 AI 新增，置顶
+    }
     
     // 2. 检查该行是否有任何单元格被修改
     for (const key of currentDiffMap) {
@@ -5791,8 +5866,13 @@ const isRowHighPriority = (idx) => {
             const titleCellId = `${tableData.key}-${realRowIdx}-${titleColIndex}`;
             const isTitleModified = window.acuModifiedSet && window.acuModifiedSet.has(titleCellId);
             const isRowNew = currentDiffMap.has(`${tableName}-row-${realRowIdx}`);
+            const isManualNewRow = row._isManualInsert; // 获取隐式标记
             let rowClass = '';
-            if (config.highlightNew) { if (isTitleModified) rowClass = 'acu-highlight-manual'; else if (isRowNew) rowClass = 'acu-highlight-diff'; }
+            if (config.highlightNew) { 
+                // 手动修改或手动插入的，统统套上橙色警告高亮；纯 AI 的才用蓝色
+                if (isTitleModified || isManualNewRow) rowClass = 'acu-highlight-manual'; 
+                else if (isRowNew) rowClass = 'acu-highlight-diff'; 
+            }
 
             // 计算有效列数，用于网格视图末行占满处理
 const validColIndices = row.map((_, i) => i).filter(i => i > 0 && i !== titleColIndex);
@@ -5817,9 +5897,8 @@ const cardBody = row.map((cell, cIdx) => {
 
                 // --- 【核心新增】检查单元格是否被锁定，如果锁定则追加 🔒 图标 ---
                 if (tableLockState) {
-                    const r = realRowIdx + 1; // 真实行号从1开始算（因为有表头）
-                    const c = cIdx;           // 列号
-                    // 判断：单元格被锁，或者整行被锁，或者整列被锁
+                    const r = realRowIdx;
+                    const c = cIdx - 1;
                     if (
                         (tableLockState.cells && (tableLockState.cells.includes(`${r}:${c}`) || tableLockState.cells.some(arr => arr[0] === r && arr[1] === c))) ||
                         (tableLockState.rows && tableLockState.rows.includes(r)) ||
@@ -5872,7 +5951,7 @@ const cardBody = row.map((cell, cIdx) => {
             
             // [新增] 判断整行是否被锁定，以渲染快捷锁定图标
             let isRowLocked = false;
-            if (tableLockState && tableLockState.rows && tableLockState.rows.includes(realRowIdx + 1)) {
+            if (tableLockState && tableLockState.rows && tableLockState.rows.includes(realRowIdx)) {
                 isRowLocked = true;
             }
             const rowLockIcon = `<i class="fa-solid ${isRowLocked ? 'fa-lock' : 'fa-unlock'} acu-row-lock-btn" data-key="${escapeHtml(tableData.key)}" data-row="${realRowIdx}" title="${isRowLocked ? '整行已锁定 (点击解锁)' : '点击锁定整行 (防篡改)'}" style="cursor:pointer; margin-left:auto; color:${isRowLocked ? '#f39c12' : 'var(--acu-text-sub)'}; opacity:${isRowLocked ? '1' : '0.4'}; font-size:13px; transition:all 0.2s;"></i>`;
@@ -5880,9 +5959,10 @@ const cardBody = row.map((cell, cIdx) => {
             // [新增] 检查标题单元格本身的锁定状态 (防止用户误触单元格锁定但看不见)
             let isTitleLocked = false;
             if (tableLockState) {
-                const r = realRowIdx + 1;
-                const c = titleColIndex;
-                if ((tableLockState.cells && (tableLockState.cells.includes(`${r}:${c}`) || tableLockState.cells.some(arr => arr[0] === r && arr[1] === c))) || (tableLockState.cols && tableLockState.cols.includes(c))) {
+                const r = realRowIdx;
+            const c = titleColIndex - 1;
+            if ((tableLockState.cells && (tableLockState.cells.includes(`${r}:${c}`)
+ || tableLockState.cells.some(arr => arr[0] === r && arr[1] === c))) || (tableLockState.cols && tableLockState.cols.includes(c))) {
                     isTitleLocked = true;
                 }
             }
@@ -6183,6 +6263,9 @@ const cardBody = row.map((cell, cIdx) => {
                 const $dataArea = $('#acu-data-area');
                 $dataArea.html(renderRelationshipPanel()).addClass('visible');
                 bindRelationshipPanelEvents();
+                
+                // 【核心修复】同步滚动条追踪器，防止第一次交互时误判为切页
+                window._acuLastTabForScroll = tableName;
                 return;
             }
             
@@ -6215,6 +6298,9 @@ const cardBody = row.map((cell, cIdx) => {
                     
                     bindEvents(tables); // 重新绑定面板内事件
                     updateSaveButtonState();
+                    
+                    // 【核心修复】同步滚动条追踪器，防止第一次交互时误判为切页
+                    window._acuLastTabForScroll = tableName;
                     return; // 局部替换成功，直接结束，彻底干掉全局重绘的卡顿
                 }
             }
@@ -6407,6 +6493,13 @@ const cardBody = row.map((cell, cIdx) => {
         
         // 2. 立即清除所有橙色高亮（视觉上"秒变"）
         $('.acu-highlight-manual').removeClass('acu-highlight-manual');
+
+        // 【新增修复】立即将所有标记为待删除的行从 UI 中物理抹除，补齐“乐观更新”的最后一块拼图！
+        $('.pending-deletion').each(function() {
+            const $card = $(this);
+            $card.css('transition', 'all 0.2s ease').css('opacity', '0').css('transform', 'scale(0.9)');
+            setTimeout(() => $card.slideUp(200, () => $card.remove()), 200);
+        });
         
         // 3. 立即清理状态标记
         if (window.acuModifiedSet) window.acuModifiedSet.clear();
@@ -6494,19 +6587,51 @@ const cardBody = row.map((cell, cIdx) => {
             const api = getCore().getDB();
             
             if (api && api.toggleTableRowLock) {
-                // 触发 API 锁定/解锁整行 (注意行号从1开始算表头，所以数据行是 +1)
-                const success = api.toggleTableRowLock(tableKey, rowIdx + 1);
+                // 触发 API 锁定/解锁整行 (0-based 数据行索引)
+                const success = api.toggleTableRowLock(tableKey, rowIdx);
                 if (success !== false) {
-                    const isNowLocked = $(this).hasClass('fa-unlock');
-                    AcuToast.success(isNowLocked ? '🔒 已物理锁定整行，免疫 AI 篡改' : '🔓 已解除整行锁定');
-                    renderInterface(); // 立即重绘 UI 更新图标状态
+                    const $btn = $(this);
+                    const $card = $btn.closest('.acu-data-card'); // 获取当前操作的整张卡片
+                    const isNowLocked = $btn.hasClass('fa-unlock');
+                    
+                    if (isNowLocked) {
+                        // 1. 改变行锁按钮状态
+                        $btn.removeClass('fa-unlock').addClass('fa-lock')
+                            .css({ 'color': '#f39c12', 'opacity': '1' })
+                            .attr('title', '整行已锁定 (点击解锁)');
+                            
+                        // 2. 移除标题格可能残留的独立小锁 (因为整行锁优先级更高，避免显示两个锁)
+                        $card.find('.acu-editable-title .fa-lock').remove();
+                        
+                        // 3. 给该行内部的所有普通单元格瞬间加上小锁
+                        $card.find('.acu-card-value').each(function() {
+                            if ($(this).find('.fa-lock').length === 0) {
+                                $(this).append(' <i class="fa-solid fa-lock" style="color:#f39c12; margin-left:4px; opacity:0.9; font-size:11px;" title="该单元格已被物理锁定，免疫AI篡改"></i>');
+                            }
+                        });
+                        
+                        AcuToast.success('🔒 已物理锁定整行，免疫 AI 篡改');
+                    } else {
+                        // 1. 改变行锁按钮状态
+                        $btn.removeClass('fa-lock').addClass('fa-unlock')
+                            .css({ 'color': 'var(--acu-text-sub)', 'opacity': '0.4' })
+                            .attr('title', '点击锁定整行 (防篡改)');
+                            
+                        // 2. 解锁时，瞬间移除该行内部所有普通单元格的小锁
+                        $card.find('.acu-card-value .fa-lock').remove();
+                        
+                        AcuToast.success('🔓 已解除整行锁定');
+                    }
                 }
             } else if (api && api.toggleTableCellLock) {
                 // 降级处理：如果后端没提供整行锁 API，则退而求其次锁定该行标题格
-                const success = api.toggleTableCellLock(tableKey, rowIdx + 1, 1); 
+                const success = api.toggleTableCellLock(tableKey, rowIdx, 0); 
                 if (success !== false) {
                     AcuToast.success('🔒 已锁定标题格 (提示: 后端版本较低，未提供整行锁API)');
-                    renderInterface();
+                    const $title = $(this).siblings('.acu-editable-title');
+                    if ($title.find('.fa-lock').length === 0) {
+                        $title.append(' <i class="fa-solid fa-lock" style="color:#f39c12; margin-left:4px; opacity:0.9; font-size:11px;" title="该标题格已被物理锁定"></i>');
+                    }
                 }
             } else {
                 AcuToast.warning('后端脚本版本过低，请升级数据库');
@@ -6959,9 +7084,8 @@ const initSortable = () => {
         if (api && api.getTableLockState) {
             const lockState = api.getTableLockState(tableKey);
             if (lockState) {
-                const r = rowIdx + 1; // 后端 API 行号包含表头，所以数据行从 1 开始
-                const c = colIdx;
-                // 检查单元格、所在行、所在列是否被锁定
+                const r = rowIdx;
+                const c = colIdx - 1;
                 if (
                     (lockState.cells && (lockState.cells.includes(`${r}:${c}`) || lockState.cells.some(arr => arr[0] === r && arr[1] === c))) ||
                     (lockState.rows && lockState.rows.includes(r)) ||
@@ -7223,6 +7347,9 @@ const initSortable = () => {
                 const $card = $(cell).closest('.acu-data-card');
                 $card.css('transition', 'all 0.2s ease').css('opacity', '0').css('transform', 'scale(0.9)');
                 setTimeout(() => $card.slideUp(200, () => $card.remove()), 200);
+                
+                // 🛡️ 升起渲染静音护盾，防止后端删除成功后的回音导致列表闪烁重排
+                window._acuMuteRenderUntil = Date.now() + 1500;
 
                 const api = getCore().getDB();
                 if (!cachedRawData) cachedRawData = getTableData() || loadSnapshot();
@@ -7232,7 +7359,7 @@ const initSortable = () => {
                     // --- 核心修复：将 tableName 改为 tableKey ---
                     if (api && api.deleteRow) {
                         const _tname = (cachedRawData?.[tableKey]?.name) || tableKey;
-                        apiSuccess = await api.deleteRow(_tname, rowIdx + 1);
+                        apiSuccess = await api.deleteRow(_tname, rowIdx);
                         if (apiSuccess) {
                             AcuToast.success('已彻底删除');
                             // 同步本地缓存防穿帮
@@ -7300,11 +7427,20 @@ const initSortable = () => {
             closeAll();
             if (api && api.toggleTableCellLock) {
                 // 触发 API 锁定/解锁
-                const success = api.toggleTableCellLock(tableKey, rowIdx + 1, colIdx);
+                const success = api.toggleTableCellLock(tableKey, rowIdx, colIdx - 1);
                 if (success !== false) {
                     AcuToast.success(isLocked ? '🔓 已解除锁定，AI 现可修改此格' : '🔒 已物理锁定，彻底免疫 AI 篡改');
-                    // 重绘 UI 以显示锁图标
-                    renderInterface(); 
+                    
+                    const $targetCell = $(cell);
+                    const $displayTarget = $targetCell.hasClass('acu-editable-title') ? $targetCell : $targetCell.find('.acu-card-value');
+                    
+                    if (isLocked) {
+                        $displayTarget.find('.fa-lock').remove();
+                    } else {
+                        if ($displayTarget.find('.fa-lock').length === 0) {
+                            $displayTarget.append(' <i class="fa-solid fa-lock" style="color:#f39c12; margin-left:4px; opacity:0.9; font-size:11px;" title="该单元格已被物理锁定，免疫AI篡改"></i>');
+                        }
+                    }
                 }
             } else {
                 AcuToast.warning('后端脚本版本过低，请升级数据库');
@@ -7375,6 +7511,9 @@ const initSortable = () => {
                 const colCount = sheet.content[0] ? sheet.content[0].length : 2;
                 const newRow = new Array(colCount).fill('');
                 if (colCount > 0) newRow[0] = String(sheet.content.length); 
+
+                // --- 🚀 新增隐式标记：将手动插入状态绑定在数组对象上 ---
+                newRow._isManualInsert = true;
 
                 sheet.content.splice(rowIdx + 2, 0, newRow);
 
@@ -8291,7 +8430,7 @@ const initSortable = () => {
                 // 优先尝试使用细粒度的行删除 API
                 if (api && api.deleteRow) {
                         const _tname = (cachedRawData && cachedRawData[tableKey]?.name) || tableKey;
-                        apiSuccess = await api.deleteRow(_tname, rowIdx + 1); // 数据库索引含表头，故 +1
+                        apiSuccess = await api.deleteRow(_tname, rowIdx); // 0-based 数据行索引
                     if (apiSuccess) {
                         AcuToast.success('已彻底删除：' + itemName);
                         // 同步本地数据快照防穿帮
