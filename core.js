@@ -1,3 +1,8463 @@
-!function(){"use strict";try{if("undefined"!=typeof document){var a=document.createElement("style");a.appendChild(document.createTextNode('.acu-stitch-column[data-v-fc94b9ff]{display:flex;flex-direction:column;overflow:hidden}.acu-stitch-col-header[data-v-fc94b9ff]{padding:10px 12px;font-weight:700;font-size:13px;border-bottom:1px solid var(--acu-border);color:var(--acu-text-main)}.acu-stitch-card[data-v-fc94b9ff]{display:flex;align-items:center;padding:8px 10px;margin-bottom:4px;border-radius:6px;background:var(--acu-btn-bg);cursor:pointer;font-size:13px;color:var(--acu-text-main);transition:background .15s}.acu-stitch-card[data-v-fc94b9ff]:hover{background:var(--acu-btn-hover)}.acu-theme-native{--acu-bg-nav: var(--SmartThemeBlurColor, var(--bg-color, rgba(30, 30, 30, .8)));--acu-bg-panel: var(--SmartThemeBlurColor, var(--bg-color, rgba(20, 20, 20, .9)));--acu-border: var(--SmartThemeBorderColor, var(--border-color, #555));--acu-text-main: var(--SmartThemeTextColor, var(--text-color, #eee));--acu-text-sub: var(--SmartThemeMutedTextColor, #aaa);--acu-btn-bg: rgba(128, 128, 128, .15);--acu-btn-hover: rgba(128, 128, 128, .3);--acu-btn-active-bg: var(--SmartThemeQuoteColor, var(--mes_user_color, #6a5acd));--acu-btn-active-text: #fff;--acu-accent: var(--SmartThemeQuoteColor, var(--mes_user_color, #6a5acd));--acu-table-head: rgba(128, 128, 128, .1);--acu-table-hover: rgba(128, 128, 128, .2);--acu-shadow: rgba(0,0,0,.5);--acu-card-bg: var(--SmartThemeBlurColor, rgba(40, 40, 40, .6));--acu-badge-bg: rgba(128, 128, 128, .2);--acu-menu-bg: var(--bg-color, #333);--acu-menu-text: var(--SmartThemeTextColor, var(--text-color, #eee));--acu-success-text: #4cd964;--acu-success-bg: rgba(76, 217, 100, .15);--acu-scrollbar-track: transparent;--acu-scrollbar-thumb: var(--SmartThemeBorderColor, #555);--acu-hl-manual: #ff6b81;--acu-hl-manual-bg: rgba(255, 107, 129, .2);--acu-hl-diff: #00d2d3;--acu-hl-diff-bg: rgba(0, 210, 211, .2)}.acu-theme-native .acu-nav-container,.acu-theme-native .acu-data-display,.acu-theme-native .acu-rpg-widget,.acu-theme-native.acu-edit-dialog{backdrop-filter:blur(var(--SmartThemeBlurStrength, 10px));-webkit-backdrop-filter:blur(var(--SmartThemeBlurStrength, 10px))}.acu-theme-retro{--acu-bg-nav: #e6e2d3;--acu-bg-panel: #e6e2d3;--acu-border: #dcd0c0;--acu-text-main: #5e4b35;--acu-text-sub: #999;--acu-btn-bg: #dcd0c0;--acu-btn-hover: #cbbba8;--acu-btn-active-bg: #8d7b6f;--acu-btn-active-text: #fdfaf5;--acu-accent: #7a695f;--acu-table-head: #efebe4;--acu-table-hover: #f0ebe0;--acu-shadow: rgba(0,0,0,.15);--acu-card-bg: #fffef9;--acu-badge-bg: #efebe4;--acu-menu-bg: #fff;--acu-menu-text: #333;--acu-success-text: #27ae60;--acu-success-bg: rgba(39, 174, 96, .15);--acu-scrollbar-track: #e6e2d3;--acu-scrollbar-thumb: #cbbba8;--acu-hl-manual: #d35400;--acu-hl-manual-bg: rgba(211, 84, 0, .15);--acu-hl-diff: #2980b9;--acu-hl-diff-bg: rgba(41, 128, 185, .15)}.acu-theme-dark{--acu-bg-nav: rgba(43, 43, 43, .95);--acu-bg-panel: rgba(37, 37, 37, .95);--acu-border: #444;--acu-text-main: #eee;--acu-text-sub: #aaa;--acu-btn-bg: rgba(58, 58, 58, .5);--acu-btn-hover: #4a4a4a;--acu-btn-active-bg: #6a5acd;--acu-btn-active-text: #fff;--acu-accent: #6a5acd;--acu-table-head: rgba(51, 51, 51, .8);--acu-table-hover: rgba(58, 58, 58, .5);--acu-shadow: rgba(0,0,0,.6);--acu-card-bg: rgba(45, 48, 53, .6);--acu-badge-bg: #3a3f4b;--acu-menu-bg: #333;--acu-menu-text: #eee;--acu-success-text: #4cd964;--acu-success-bg: rgba(76, 217, 100, .2);--acu-scrollbar-track: #2b2b2b;--acu-scrollbar-thumb: #555;--acu-hl-manual: #ff6b81;--acu-hl-manual-bg: rgba(255, 107, 129, .2);--acu-hl-diff: #00d2d3;--acu-hl-diff-bg: rgba(0, 210, 211, .2)}.acu-theme-modern{--acu-bg-nav: #ffffff;--acu-bg-panel: #f8f9fa;--acu-border: #e0e0e0;--acu-text-main: #333;--acu-text-sub: #666;--acu-btn-bg: #f1f3f5;--acu-btn-hover: #e9ecef;--acu-btn-active-bg: #007bff;--acu-btn-active-text: #fff;--acu-accent: #007bff;--acu-table-head: #f8f9fa;--acu-table-hover: #f1f3f5;--acu-shadow: rgba(0,0,0,.1);--acu-card-bg: #ffffff;--acu-badge-bg: #f1f3f5;--acu-menu-bg: #fff;--acu-menu-text: #333;--acu-success-text: #28a745;--acu-success-bg: rgba(40, 167, 69, .15);--acu-scrollbar-track: #fff;--acu-scrollbar-thumb: #ccc;--acu-hl-manual: #fd7e14;--acu-hl-manual-bg: rgba(253, 126, 20, .15);--acu-hl-diff: #0d6efd;--acu-hl-diff-bg: rgba(13, 110, 253, .15)}.acu-theme-forest{--acu-bg-nav: #e8f5e9;--acu-bg-panel: #e8f5e9;--acu-border: #c8e6c9;--acu-text-main: #2e7d32;--acu-text-sub: #81c784;--acu-btn-bg: #c8e6c9;--acu-btn-hover: #a5d6a7;--acu-btn-active-bg: #43a047;--acu-btn-active-text: #fff;--acu-accent: #4caf50;--acu-table-head: #dcedc8;--acu-table-hover: #f1f8e9;--acu-shadow: rgba(0,0,0,.1);--acu-card-bg: #ffffff;--acu-badge-bg: #dcedc8;--acu-menu-bg: #fff;--acu-menu-text: #2e7d32;--acu-success-text: #2e7d32;--acu-success-bg: rgba(46, 125, 50, .2);--acu-scrollbar-track: #e8f5e9;--acu-scrollbar-thumb: #a5d6a7;--acu-hl-manual: #e67e22;--acu-hl-manual-bg: rgba(230, 126, 34, .15);--acu-hl-diff: #2ecc71;--acu-hl-diff-bg: rgba(46, 204, 113, .15)}.acu-theme-ocean{--acu-bg-nav: #e3f2fd;--acu-bg-panel: #e3f2fd;--acu-border: #bbdefb;--acu-text-main: #1565c0;--acu-text-sub: #64b5f6;--acu-btn-bg: #bbdefb;--acu-btn-hover: #90caf9;--acu-btn-active-bg: #1976d2;--acu-btn-active-text: #fff;--acu-accent: #2196f3;--acu-table-head: rgba(255, 255, 255, .55);--acu-table-hover: #e1f5fe;--acu-shadow: rgba(0,0,0,.15);--acu-card-bg: #ffffff;--acu-badge-bg: #e3f2fd;--acu-menu-bg: #fff;--acu-menu-text: #1565c0;--acu-success-text: #0288d1;--acu-success-bg: rgba(2, 136, 209, .15);--acu-scrollbar-track: #e3f2fd;--acu-scrollbar-thumb: #90caf9;--acu-hl-manual: #ff4757;--acu-hl-manual-bg: rgba(255, 71, 87, .15);--acu-hl-diff: #2ed573;--acu-hl-diff-bg: rgba(46, 213, 115, .15)}.acu-theme-cyber{--acu-bg-nav: #000000;--acu-bg-panel: #0a0a0a;--acu-border: #333;--acu-text-main: #00ffcc;--acu-text-sub: #ff00ff;--acu-btn-bg: #111;--acu-btn-hover: #222;--acu-btn-active-bg: #ff00ff;--acu-btn-active-text: #fff;--acu-accent: #00ffcc;--acu-table-head: #050505;--acu-table-hover: #111;--acu-shadow: 0 0 15px rgba(0,255,204,.15);--acu-card-bg: #050505;--acu-badge-bg: #1a1a1a;--acu-menu-bg: #111;--acu-menu-text: #00ffcc;--acu-success-text: #0f0;--acu-success-bg: rgba(0, 255, 0, .15);--acu-scrollbar-track: #000;--acu-scrollbar-thumb: #333;--acu-hl-manual: #ff9f43;--acu-hl-manual-bg: rgba(255, 159, 67, .2);--acu-hl-diff: #0abde3;--acu-hl-diff-bg: rgba(10, 189, 227, .2)}.acu-theme-cyber .acu-nav-btn,.acu-theme-cyber .acu-data-card{border-color:#222}.acu-theme-sakura{--acu-bg-nav: #fff0f5;--acu-bg-panel: #ffe4e1;--acu-border: #ffb6c1;--acu-text-main: #d05a6e;--acu-text-sub: #db7093;--acu-btn-bg: #fff5ee;--acu-btn-hover: #ffdcb9;--acu-btn-active-bg: #ff69b4;--acu-btn-active-text: #fff;--acu-accent: #ff69b4;--acu-table-head: #fff5ee;--acu-table-hover: #fff0f5;--acu-shadow: rgba(255,105,180,.15);--acu-card-bg: #ffffff;--acu-badge-bg: #ffe4e1;--acu-menu-bg: #fff;--acu-menu-text: #d05a6e;--acu-success-text: #eb6ea5;--acu-success-bg: rgba(235,110,165,.15);--acu-scrollbar-track: #fff0f5;--acu-scrollbar-thumb: #ffb6c1;--acu-hl-manual: #ff7f50;--acu-hl-manual-bg: rgba(255,127,80,.15);--acu-hl-diff: #00ced1;--acu-hl-diff-bg: rgba(0,206,209,.15)}.acu-theme-lavender{--acu-bg-nav: #f5f0fa;--acu-bg-panel: #faf7fc;--acu-border: #dcd0eb;--acu-text-main: #5e4b8a;--acu-text-sub: #9280b5;--acu-btn-bg: #ede6f5;--acu-btn-hover: #e0d4ed;--acu-btn-active-bg: #8e44ad;--acu-btn-active-text: #fff;--acu-accent: #8e44ad;--acu-table-head: #f5f0fa;--acu-table-hover: #ede6f5;--acu-shadow: rgba(142,68,173,.1);--acu-card-bg: #ffffff;--acu-badge-bg: #f5f0fa;--acu-menu-bg: #fff;--acu-menu-text: #5e4b8a;--acu-success-text: #2ecc71;--acu-success-bg: rgba(46,204,113,.15);--acu-scrollbar-track: #faf7fc;--acu-scrollbar-thumb: #dcd0eb;--acu-hl-manual: #f39c12;--acu-hl-manual-bg: rgba(243,156,18,.15);--acu-hl-diff: #3498db;--acu-hl-diff-bg: rgba(52,152,219,.15)}.acu-theme-palace{--acu-bg-nav: #211114;--acu-bg-panel: #1a0b0d;--acu-border: #4a1f26;--acu-text-main: #f0dfc8;--acu-text-sub: #b59283;--acu-btn-bg: #30161a;--acu-btn-hover: #4a1f26;--acu-btn-active-bg: #b02a39;--acu-btn-active-text: #f0dfc8;--acu-accent: #d4af37;--acu-table-head: #2a1114;--acu-table-hover: #3a161b;--acu-shadow: rgba(0,0,0,.4);--acu-card-bg: #211114;--acu-badge-bg: #30161a;--acu-menu-bg: #1a0b0d;--acu-menu-text: #f0dfc8;--acu-success-text: #27ae60;--acu-success-bg: rgba(39,174,96,.2);--acu-scrollbar-track: #1a0b0d;--acu-scrollbar-thumb: #4a1f26;--acu-hl-manual: #e67e22;--acu-hl-manual-bg: rgba(230,126,34,.2);--acu-hl-diff: #8e44ad;--acu-hl-diff-bg: rgba(142,68,173,.2)}.acu-theme-coffee{--acu-bg-nav: #fdfaf6;--acu-bg-panel: #f8f3ea;--acu-border: #e3d5c8;--acu-text-main: #5c4033;--acu-text-sub: #8b7355;--acu-btn-bg: #f0e6d6;--acu-btn-hover: #e6d5c0;--acu-btn-active-bg: #8b5a2b;--acu-btn-active-text: #fff;--acu-accent: #8b5a2b;--acu-table-head: #fdfaf6;--acu-table-hover: #f5eedf;--acu-shadow: rgba(139,90,43,.1);--acu-card-bg: #ffffff;--acu-badge-bg: #fdfaf6;--acu-menu-bg: #fff;--acu-menu-text: #5c4033;--acu-success-text: #6b8e23;--acu-success-bg: rgba(107,142,35,.15);--acu-scrollbar-track: #f8f3ea;--acu-scrollbar-thumb: #e3d5c8;--acu-hl-manual: #cd853f;--acu-hl-manual-bg: rgba(205,133,63,.15);--acu-hl-diff: #4682b4;--acu-hl-diff-bg: rgba(70,130,180,.15)}.acu-theme-wuxia{--acu-bg-nav: #f5f5f5;--acu-bg-panel: #f0f0f0;--acu-border: #dcdcdc;--acu-text-main: #2a2a2a;--acu-text-sub: #707070;--acu-btn-bg: #e8e8e8;--acu-btn-hover: #dcdcdc;--acu-btn-active-bg: #1d953f;--acu-btn-active-text: #fff;--acu-accent: #1d953f;--acu-table-head: #e8e8e8;--acu-table-hover: #f0f0f0;--acu-shadow: rgba(0,0,0,.08);--acu-card-bg: #ffffff;--acu-badge-bg: #e8e8e8;--acu-menu-bg: #fff;--acu-menu-text: #2a2a2a;--acu-success-text: #1d953f;--acu-success-bg: rgba(29,149,63,.15);--acu-scrollbar-track: #f5f5f5;--acu-scrollbar-thumb: #c0c0c0;--acu-hl-manual: #c03f3c;--acu-hl-manual-bg: rgba(192,63,60,.15);--acu-hl-diff: #41555d;--acu-hl-diff-bg: rgba(65,85,93,.15)}.acu-theme-mecha{--acu-bg-nav: #16181d;--acu-bg-panel: #1e2229;--acu-border: #353b45;--acu-text-main: #e0e6ed;--acu-text-sub: #7a879e;--acu-btn-bg: #272c35;--acu-btn-hover: #353b45;--acu-btn-active-bg: #ff6b00;--acu-btn-active-text: #fff;--acu-accent: #ff6b00;--acu-table-head: #16181d;--acu-table-hover: #272c35;--acu-shadow: 0 0 10px rgba(255,107,0,.15);--acu-card-bg: #21252d;--acu-badge-bg: #2d333b;--acu-menu-bg: #1e2229;--acu-menu-text: #e0e6ed;--acu-success-text: #2ecc71;--acu-success-bg: rgba(46,204,113,.15);--acu-scrollbar-track: #16181d;--acu-scrollbar-thumb: #353b45;--acu-hl-manual: #e74c3c;--acu-hl-manual-bg: rgba(231,76,60,.2);--acu-hl-diff: #3498db;--acu-hl-diff-bg: rgba(52,152,219,.2)}.acu-theme-gothic{--acu-bg-nav: #090909;--acu-bg-panel: #0d0d0d;--acu-border: #2c1010;--acu-text-main: #d4b8b8;--acu-text-sub: #8c5c5c;--acu-btn-bg: #170d0d;--acu-btn-hover: #2c1010;--acu-btn-active-bg: #8a0303;--acu-btn-active-text: #e6dada;--acu-accent: #a60c0c;--acu-table-head: #0f0909;--acu-table-hover: #1a0f0f;--acu-shadow: 0 0 15px rgba(166,12,12,.15);--acu-card-bg: #120b0b;--acu-badge-bg: #211111;--acu-menu-bg: #0a0505;--acu-menu-text: #d4b8b8;--acu-success-text: #27ae60;--acu-success-bg: rgba(39,174,96,.15);--acu-scrollbar-track: #090909;--acu-scrollbar-thumb: #2c1010;--acu-hl-manual: #d35400;--acu-hl-manual-bg: rgba(211,84,0,.2);--acu-hl-diff: #2980b9;--acu-hl-diff-bg: rgba(41,128,185,.2)}.acu-wrapper{position:relative;width:100%;margin:15px 0;z-index:2147483640!important;font-family:Microsoft YaHei,sans-serif;display:flex;flex-direction:column-reverse;order:999999}.acu-wrapper.acu-mode-embedded{position:relative!important;width:100%!important;margin-top:8px!important;z-index:2147483641!important;clear:both;display:flex!important;flex-direction:column-reverse!important;padding:0!important}.acu-wrapper.acu-mode-embedded .acu-nav-container{position:relative!important;z-index:2147483642!important}.acu-wrapper.acu-mode-embedded .acu-data-display{position:absolute!important;bottom:100%!important;left:0!important;right:0!important;width:100%!important;box-shadow:0 -10px 30px #00000040!important;border:1px solid var(--acu-border);margin-bottom:5px;z-index:2147483647!important;max-height:70vh!important;overflow-y:auto!important}.acu-nav-container{display:grid;grid-template-columns:repeat(var(--acu-grid-cols, 3),1fr);gap:4px;padding:6px;background:var(--acu-bg-nav);border:1px solid var(--acu-border);border-radius:10px;align-items:center;box-shadow:0 2px 6px var(--acu-shadow);position:relative;z-index:2147483641!important}.acu-nav-btn{touch-action:manipulation;-webkit-tap-highlight-color:transparent;width:100%;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:3px;padding:4px 2px;border:1px solid transparent;border-radius:6px;background:var(--acu-btn-bg);color:var(--acu-text-main);font-weight:600;font-size:11px;cursor:pointer;transition:all .2s ease;-webkit-user-select:none;user-select:none;overflow:hidden;height:28px}.acu-nav-btn span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;margin-top:1px}.acu-nav-btn:hover{background:var(--acu-btn-hover);transform:translateY(-2px)}.acu-nav-btn.acu-update-selected{border:1px dashed var(--acu-accent)!important;box-shadow:inset 0 0 8px #0000001a!important;position:relative;overflow:visible!important}.acu-nav-btn.acu-update-selected:after{content:"\\\\f0e7";font-family:"Font Awesome 6 Free","Font Awesome 5 Free",fas;font-weight:900;position:absolute;top:-6px;right:-6px;font-size:10px;background:var(--acu-accent);color:#fff;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;z-index:10;box-shadow:0 2px 4px #0000004d}.acu-height-control{display:flex;align-items:center;margin-right:8px;cursor:ns-resize;padding:4px;border-radius:4px;color:var(--acu-text-sub);transition:all .2s;touch-action:none}.acu-height-control:hover,.acu-height-control.active{color:var(--acu-accent);background:var(--acu-table-hover)}.acu-height-drag-handle{cursor:ns-resize;touch-action:none}.acu-view-btn{background:transparent;border:none;color:var(--acu-text-main);cursor:pointer;padding:4px;margin-right:5px;font-size:14px;opacity:.7}.acu-view-btn:hover{opacity:1;color:var(--acu-accent)}.acu-card-body.view-grid{display:grid!important;grid-template-columns:1fr 1fr;gap:8px;padding:10px!important}.acu-card-body.view-grid .acu-card-row{display:flex!important;height:auto!important;min-height:fit-content;border:1px solid var(--acu-border);border-radius:6px;padding:4px 6px!important;flex-direction:column!important;align-items:flex-start!important;background:#00000005;box-sizing:border-box}.acu-card-body.view-grid .acu-card-row.acu-grid-span-full{grid-column:1 / -1}.acu-card-body.view-grid .acu-card-label{width:100%!important;font-size:.85em;opacity:.8;margin-bottom:2px}.acu-card-body.view-grid .acu-card-value{width:100%!important}.acu-card-body.view-list{display:flex!important;flex-direction:column;gap:0}.acu-nav-btn.active{background:var(--acu-btn-active-bg);color:var(--acu-btn-active-text);box-shadow:inset 0 1px 3px #0003}.acu-action-btn{flex:1;height:36px;display:flex;align-items:center;justify-content:center;background:var(--acu-btn-bg);border-radius:8px;color:var(--acu-text-sub);cursor:pointer;border:1px solid transparent;transition:all .2s;margin:0}.acu-action-btn:hover{background:var(--acu-btn-hover);color:var(--acu-text-main);transform:translateY(-2px);box-shadow:0 2px 5px #0000001a}#acu-btn-save-global{color:var(--acu-btn-active-bg)}#acu-btn-save-global:hover{background:var(--acu-btn-active-bg);color:var(--acu-btn-active-text)}.acu-data-display{position:absolute;bottom:calc(100% + 10px);left:0;right:0;max-height:80vh;height:auto;background:var(--acu-bg-panel);border:1px solid var(--acu-border);border-radius:8px;box-shadow:0 8px 30px var(--acu-shadow);display:none;flex-direction:column;z-index:2147483642!important;animation:popUp .2s cubic-bezier(.18,.89,.32,1.28)}.acu-data-display.visible{display:flex}@keyframes popUp{0%{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}.acu-panel-header{flex:0 0 auto;display:flex;justify-content:space-between;align-items:center;padding:10px 15px;background:var(--acu-table-head);border-bottom:1px dashed var(--acu-border);border-radius:8px 8px 0 0}.acu-panel-title{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;flex:1;min-width:0;margin-right:8px;overflow:hidden}.acu-title-main{display:flex;align-items:center;gap:6px;width:100%;font-size:13px;font-weight:700;color:var(--acu-text-main);line-height:1.2}.acu-title-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.acu-title-sub{font-size:10px;color:var(--acu-text-sub);font-weight:400;opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;line-height:1.2;margin-top:1px}.acu-header-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}.acu-search-wrapper{position:relative;display:flex;align-items:center}.acu-search-input{background-color:var(--acu-btn-bg)!important;border:1px solid var(--acu-border)!important;color:var(--acu-text-main)!important;padding:4px 8px 4px 24px;border-radius:12px;font-size:12px;width:120px;transition:width .2s}.acu-search-input:focus{width:160px;outline:none;border-color:var(--acu-accent)}.acu-search-icon{position:absolute;left:8px;font-size:10px;color:var(--acu-text-sub);pointer-events:none}.acu-close-btn{background:none;border:none;color:var(--acu-text-sub);cursor:pointer;font-size:16px;padding:4px;flex-shrink:0;min-width:24px;text-align:center}.acu-close-btn:hover{color:#e74c3c}.acu-panel-content{flex:1;overflow-x:auto;overflow-y:hidden;padding:15px;background:transparent;scrollbar-width:thin;scrollbar-color:var(--acu-scrollbar-thumb) var(--acu-scrollbar-track);overscroll-behavior:auto;touch-action:manipulation}.acu-panel-content::-webkit-scrollbar{width:6px;height:6px}.acu-panel-content::-webkit-scrollbar-track{background:var(--acu-scrollbar-track);border-radius:3px}.acu-panel-content::-webkit-scrollbar-thumb{background:var(--acu-scrollbar-thumb);border-radius:3px}.acu-panel-content::-webkit-scrollbar-thumb:hover{background:var(--acu-accent)}.acu-card-grid{display:flex;flex-wrap:nowrap;gap:12px;align-items:flex-start}.acu-layout-vertical .acu-panel-content{overflow-x:hidden!important;overflow-y:auto!important;overscroll-behavior:auto;touch-action:manipulation;min-height:0}.acu-layout-vertical .acu-card-grid{flex-wrap:wrap!important;justify-content:center;padding-bottom:20px;height:auto}.acu-wrapper:not(.acu-layout-vertical) .acu-manual-mode .acu-card-grid{height:100%}.acu-manual-mode .acu-data-card{max-height:100%!important;overscroll-behavior-y:auto}.acu-data-card{flex:0 0 var(--acu-card-width, 260px);width:var(--acu-card-width, 260px);background:var(--acu-card-bg);border:1px solid var(--acu-border);border-radius:8px;height:auto;max-height:60vh;overflow-y:auto;overscroll-behavior-y:auto;touch-action:manipulation;transition:all .2s ease;display:flex;flex-direction:column;position:relative}.acu-data-card::-webkit-scrollbar{width:4px}.acu-data-card::-webkit-scrollbar-track{background:transparent}.acu-data-card::-webkit-scrollbar-thumb{background:var(--acu-scrollbar-thumb);border-radius:2px}.acu-data-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px var(--acu-shadow);border-color:var(--acu-accent)}.acu-data-card.pending-deletion{opacity:.6;border:1px dashed #e74c3c}.acu-data-card.pending-deletion:after{content:"待删除";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-15deg);color:#e74c3c;font-size:24px;font-weight:700;border:2px solid #e74c3c;padding:5px 10px;border-radius:8px;opacity:.8;pointer-events:none}@keyframes pulse-highlight{0%{opacity:.7}50%{opacity:1}to{opacity:.7}}.acu-highlight-manual{color:var(--acu-hl-manual)!important;background-color:var(--acu-hl-manual-bg)!important;border-radius:4px;padding:0 4px;font-weight:700;animation:pulse-highlight 2s infinite;display:inline-block}.acu-highlight-diff{color:var(--acu-hl-diff)!important;background-color:var(--acu-hl-diff-bg)!important;border-radius:4px;padding:0 4px;font-weight:700;animation:pulse-highlight 2s infinite;display:inline-block}.acu-editable-title.acu-highlight-manual,.acu-editable-title.acu-highlight-diff{width:auto;display:inline-block}.acu-card-header{flex:0 0 auto;padding:8px 10px;background:var(--acu-table-head);border-bottom:1px dashed var(--acu-border);font-weight:700;color:var(--acu-text-main);font-size:14px;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;gap:8px;min-height:40px;height:auto!important}.acu-editable-title{flex:1;width:auto!important;cursor:pointer;border-bottom:1px dashed transparent;transition:all .2s;white-space:pre-wrap!important;overflow:visible!important;word-break:break-word!important;text-align:center;line-height:1.3;margin:0!important}.acu-editable-title:hover{border-bottom-color:var(--acu-accent);color:var(--acu-accent)}.acu-card-index{position:static!important;transform:none!important;margin:0!important;flex-shrink:0;font-size:11px;color:var(--acu-text-sub);font-weight:400;background:var(--acu-badge-bg);padding:2px 6px;border-radius:4px}.acu-card-body{padding:6px 12px;display:flex;flex-direction:column;gap:0;font-size:var(--acu-font-size, 13px);flex:1}.acu-card-row{display:block!important;padding:6px 0!important;border-bottom:1px dashed var(--acu-border);cursor:pointer;overflow:hidden}.acu-card-row:last-child{border-bottom:none}.acu-card-label{float:left!important;clear:left;width:auto!important;margin-right:8px!important;color:var(--acu-text-sub);font-size:.9em;line-height:1.5;padding-top:0}.acu-card-value{display:block!important;width:auto!important;margin:0!important;text-align:left!important;word-break:break-all!important;white-space:pre-wrap!important;line-height:1.5!important;color:var(--acu-text-main);font-size:1em}.acu-tag-container{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-top:2px;width:100%;box-sizing:border-box}.acu-badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:12px;font-size:.9em;font-weight:500;line-height:1.2;white-space:nowrap!important;word-break:keep-all!important;flex-shrink:0}.acu-badge-green{background:var(--acu-success-bg);color:var(--acu-success-text)}.acu-badge-neutral{background:var(--acu-badge-bg);color:var(--acu-text-main);border:1px solid var(--acu-border)}.acu-panel-footer{flex:0 0 auto;padding:8px;border-top:1px dashed var(--acu-border);background:var(--acu-table-head);display:flex;justify-content:center;align-items:center;gap:5px;flex-wrap:wrap}.acu-page-btn{padding:4px 10px;min-width:32px;height:28px;border-radius:4px;border:1px solid var(--acu-border);background:var(--acu-btn-bg);color:var(--acu-text-main);cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;transition:all .2s}.acu-page-btn:hover:not(.disabled):not(.active){background:var(--acu-btn-hover);transform:translateY(-1px)}.acu-page-btn.active{background:var(--acu-accent);color:#fff;border-color:var(--acu-accent);font-weight:700}.acu-page-btn.disabled{opacity:.5;cursor:not-allowed}.acu-page-info{font-size:12px;color:var(--acu-text-sub);margin:0 10px}.acu-option-panel{display:flex;flex-direction:column;gap:2px;padding:4px;background:var(--acu-bg-nav);border:1px solid var(--acu-border);border-radius:6px;margin-top:0;margin-bottom:4px;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);width:100%;box-sizing:border-box;z-index:10;animation:acuFadeIn .3s ease}.acu-embedded-options-container{width:100%;max-width:100%;margin-top:6px;clear:both;animation:acuFadeIn .3s ease}.acu-opt-header{text-align:center;font-size:10px;font-weight:700;color:var(--acu-text-sub);padding-bottom:2px;border-bottom:1px dashed var(--acu-border);margin-bottom:2px}.acu-opt-btn{background:var(--acu-btn-bg);border:1px solid transparent;padding:3px 6px;border-radius:4px;cursor:pointer;color:var(--acu-text-main);font-size:var(--acu-opt-font-size, 12px)!important;transition:all .15s;font-weight:400;text-align:left;white-space:pre-wrap;word-break:break-word;min-height:22px;line-height:1.3;display:flex;align-items:center;justify-content:flex-start;opacity:.9}.acu-opt-btn:hover{background:var(--acu-table-hover);color:var(--acu-accent);border-color:var(--acu-accent);transform:translate(3px);opacity:1}.acu-opt-btn:active{background:var(--acu-btn-active-bg);color:var(--acu-btn-active-text)}@keyframes acuFadeIn{0%{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}.acu-menu-backdrop{position:fixed;top:0;left:0;width:100vw;height:100vh;background:transparent;z-index:2147483645!important}.acu-cell-menu{position:fixed!important;background:var(--acu-menu-bg)!important;border:1px solid var(--acu-border)!important;box-shadow:0 6px 20px var(--acu-shadow)!important;z-index:2147483647!important;border-radius:8px;overflow:hidden;min-width:150px;color:var(--acu-menu-text)}.acu-cell-menu-item{padding:12px 16px;cursor:pointer;font-size:14px;display:flex;gap:12px;align-items:center;color:var(--acu-menu-text);font-weight:500;background:transparent;transition:background .2s}.acu-cell-menu-item:hover{background:var(--acu-table-hover)}.acu-cell-menu-item#act-delete{color:#e74c3c}.acu-cell-menu-item#act-delete:hover{background:#e74c3c1a}.acu-cell-menu-item#act-close{border-top:1px dashed var(--acu-border);color:var(--acu-text-sub)}.acu-edit-overlay{position:fixed!important;top:0;left:0;right:0;bottom:0;width:100vw;height:100%;height:100dvh;background:#000000bf!important;z-index:2147483646!important;display:flex!important;justify-content:center!important;align-items:center!important;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);transform:translateZ(0);backface-visibility:hidden;will-change:opacity,backdrop-filter}.acu-edit-dialog{background-color:var(--acu-bg-panel, #333)!important;width:95%;max-width:500px;max-height:95vh;padding:16px;border-radius:12px;display:flex;flex-direction:column;gap:10px;box-shadow:0 15px 50px #0009;color:var(--acu-text-main, #fff)!important;border:1px solid var(--acu-border, #555);margin:auto!important;overflow:hidden;transform:translateZ(0);will-change:transform,opacity}@media(min-width:768px){.acu-edit-dialog{max-width:900px!important;width:90%!important}}.acu-edit-title{margin:0;font-size:16px;font-weight:700;color:var(--acu-text-main, #fff);padding-bottom:8px;border-bottom:1px solid var(--acu-border, #555)}.acu-edit-textarea{width:100%;height:200px;padding:12px;border:1px solid var(--acu-border)!important;background-color:var(--acu-btn-bg, rgba(0,0,0,.3))!important;color:var(--acu-text-main, #fff)!important;border-radius:6px;resize:vertical;box-sizing:border-box;font-size:14px;line-height:1.6;overflow-y:auto!important}@media(min-width:768px){.acu-edit-textarea{height:60vh!important;font-size:15px!important}}.acu-edit-textarea:focus{outline:1px solid #aaa}.acu-dialog-btns{display:flex;justify-content:flex-end;gap:20px;margin-top:10px}.acu-dialog-btn{background:none;border:none;cursor:pointer;font-size:14px;font-weight:700;display:flex;align-items:center;gap:6px;color:#ccc;transition:color .2s}.acu-dialog-btn:hover{color:#fff}.acu-btn-confirm{color:#4cd964}.acu-btn-confirm:hover{color:#6eff88}.acu-order-controls{grid-column:1 / -1;order:-2;display:none;width:100%;text-align:left;background:var(--acu-accent);color:#fff;padding:6px 12px;margin:0 0 8px;border-radius:4px;font-weight:700;font-size:12px;box-shadow:0 2px 5px #0003}.acu-order-controls.visible{display:flex;align-items:center;justify-content:space-between}.acu-nav-container.editing-order{border:2px solid var(--acu-accent);background:var(--acu-bg-panel)}.acu-nav-container.editing-order .acu-nav-btn,.acu-nav-container.editing-order .acu-action-btn{opacity:1!important;cursor:grab!important;border:1px solid var(--acu-border);box-shadow:0 1px 3px #0000001a}.acu-nav-container.editing-order .acu-nav-btn:hover,.acu-nav-container.editing-order .acu-action-btn:hover{border-color:var(--acu-accent);transform:translateY(-1px)}.acu-swap-selected{background-color:var(--acu-accent)!important;color:#fff!important;border-color:var(--acu-accent)!important;box-shadow:0 0 0 2px #ffffff80,0 4px 12px #0003;transform:scale(1.05);z-index:10}.acu-drag-over{border:2px dashed var(--acu-accent)!important;opacity:.5;transform:scale(.95);background:rgba(var(--acu-accent-rgb),.1)}.acu-unused-pool{grid-column:1 / -1;display:none;flex-wrap:wrap;gap:8px;background:var(--acu-table-head);border:1px dashed var(--acu-border);padding:10px 15px;margin:0 0 10px;border-radius:8px;justify-content:flex-start;align-items:center;min-height:50px;box-shadow:inset 0 2px 6px #0000000d}.acu-unused-pool.visible{display:flex;animation:acuFadeIn .2s ease-out}.acu-unused-pool:before{content:"备选功能池 (拖拽图标到下方启用 ↘)";display:flex;align-items:center;height:32px;font-size:12px;font-weight:700;color:var(--acu-text-sub);margin-right:15px;padding-right:15px;border-right:1px solid var(--acu-border);white-space:nowrap;opacity:.8}.acu-actions-group{grid-column:1 / -1;display:flex;justify-content:flex-end;gap:4px;border-top:1px dashed var(--acu-border);padding-top:8px;margin-top:4px;min-height:36px;transition:all .2s}.acu-pos-top .acu-actions-group{order:-1;border-top:none;border-bottom:1px dashed var(--acu-border);margin-top:0;margin-bottom:6px;padding-top:0;padding-bottom:8px}.acu-pos-top .acu-unused-pool{order:-1;margin-bottom:10px;border-bottom:1px dashed var(--acu-border)}.acu-actions-group.dragging-over{background:#7f7f7f0d;box-shadow:inset 0 0 10px #0000000d}@media(max-width:768px){.acu-unused-pool{justify-content:center;background:#0000000d;border:1px dashed var(--acu-border);border-bottom:none;margin:0 0 8px;border-radius:6px}.acu-unused-pool:before{display:block;width:100%;text-align:center;margin-bottom:4px;content:"可选功能池 (拖拽或点击)"}.acu-order-controls{flex-direction:column;gap:6px;text-align:center}}.acu-actions-group.dragging-over{background:rgba(var(--acu-accent-rgb),.1);border-color:var(--acu-accent)}.acu-actions-group .acu-divider{display:none}.acu-settings-item{margin-bottom:15px}.acu-settings-label{display:block;margin-bottom:5px;font-weight:700;font-size:13px;color:#ccc}.acu-settings-val{float:right;color:#4cd964;font-size:12px}.acu-slider{width:100%;height:4px;background:#555;border-radius:2px;outline:none;-webkit-appearance:none;-moz-appearance:none;appearance:none}.acu-slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;background:#fff;border-radius:50%;cursor:pointer}.acu-select{width:100%;padding:8px;background:#0000004d;border:1px solid #555;color:#fff;border-radius:4px;outline:none}.acu-checkbox{margin-right:10px}.acu-btn-block{width:100%;padding:10px;background:#444;color:#eee;border:none;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px}.acu-btn-block:hover{background:#555;color:#fff}.acu-expand-trigger{background:var(--acu-bg-nav);border:1px solid var(--acu-border);box-shadow:0 2px 6px var(--acu-shadow);cursor:pointer;color:var(--acu-text-main);font-size:13px;font-weight:700;display:flex;align-items:center;gap:6px;transition:all .2s;z-index:2147483645!important}.acu-expand-trigger:hover{background:var(--acu-btn-hover);transform:translateY(-2px)}.acu-nav-toggle-btn:hover{opacity:1!important;transform:scale(1.2);color:var(--acu-accent)}.acu-align-right{margin-left:auto;align-self:flex-end}.acu-align-left{margin-right:auto;margin-left:0;align-self:flex-start}.acu-nav-container.acu-left-mode .acu-actions-group{order:-1;margin-left:0;margin-right:10px}.acu-col-bar{width:100%;justify-content:center;padding:8px 10px;border-radius:6px}.acu-col-pill{width:auto!important;padding:6px 16px;border-radius:50px}.acu-col-mini{width:40px!important;height:40px!important;padding:0;justify-content:center;border-radius:50%}.acu-col-mini span{display:none}#acu-btn-collapse{color:var(--acu-text-sub)}#acu-btn-collapse:hover{color:var(--acu-text-main);background:#0000000d}@keyframes acu-breathe{0%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.85);color:#ff7e67}to{opacity:1;transform:scale(1)}}.acu-icon-breathe{animation:acu-breathe 3s infinite ease-in-out!important;display:inline-block}.acu-calendar-dialog{max-width:350px!important;padding:20px!important;-webkit-user-select:none;user-select:none}.acu-cal-header{text-align:center;margin-bottom:10px}.acu-cal-title{font-size:18px;font-weight:700;color:var(--acu-accent);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;padding:0 5px}.acu-cal-nav-btn{cursor:pointer;padding:4px 10px;opacity:.6;transition:all .2s;border-radius:4px;font-size:16px;color:var(--acu-text-sub)}.acu-cal-nav-btn:hover{opacity:1;color:var(--acu-accent);background:var(--acu-btn-hover);transform:scale(1.1)}.acu-cal-week-row{display:grid;grid-template-columns:repeat(7,1fr);font-weight:700;color:var(--acu-text-sub);margin-bottom:5px;font-size:12px}.acu-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.acu-cal-cell{height:36px;display:flex;align-items:center;justify-content:center;border-radius:6px;cursor:default;font-size:14px;color:var(--acu-text-main);font-family:monospace}.acu-cal-cell.today{background:var(--acu-accent);color:#fff;font-weight:700;box-shadow:0 2px 8px #0000004d;transform:scale(1.1);border:1px solid rgba(255,255,255,.2);z-index:2}.acu-cal-cell:not(.empty):not(.today):hover{background:var(--acu-table-hover);cursor:pointer;transform:scale(1.1);z-index:2;box-shadow:0 4px 12px #0003}.acu-calendar-trigger{transition:transform .2s;display:inline-block}.acu-event-dot{width:6px;height:6px;border-radius:50%;position:absolute;bottom:3px;left:50%;transform:translate(-50%);box-shadow:0 1px 2px #0000004d;pointer-events:none}.acu-evt-world{background-color:#ff4757;box-shadow:0 0 5px #ff4757}.acu-evt-large{background-color:#ffa502}.acu-evt-personal{background-color:#3742fa}.acu-evt-char{background-color:#2ed573}.acu-cal-cell{position:relative;transition:all .2s;border:2px solid transparent}.acu-cal-cell.selected{border-color:var(--acu-accent);background:var(--acu-table-hover);transform:scale(1.05);z-index:5;box-shadow:0 4px 12px #0003}.acu-event-details{margin-top:15px;padding:10px;background:#00000008;border-radius:8px;border:1px dashed var(--acu-border);display:none;animation:acuFadeIn .2s;text-align:left}.acu-event-item{padding:8px;border-bottom:1px solid var(--acu-border);margin-bottom:4px;background:#ffffff0d;border-radius:4px}.acu-event-item:last-child{border-bottom:none;margin-bottom:0}.acu-event-tag{display:inline-block;padding:2px 6px;border-radius:4px;color:#fff;font-size:10px;margin-right:6px;font-weight:700;vertical-align:middle}.acu-event-title{font-weight:700;font-size:13px;color:var(--acu-text-main);vertical-align:middle}.acu-event-desc{font-size:12px;color:var(--acu-text-sub);margin-top:4px;line-height:1.4;padding-left:2px}.acu-calendar-trigger:hover{transform:scale(1.2)}@media(min-width:768px){.acu-wrapper.acu-mode-embedded .acu-nav-container{width:fit-content!important;min-width:300px;max-width:100%;margin:0 auto;border-radius:50px!important;box-shadow:0 4px 12px #00000026!important;border:1px solid var(--acu-border);padding:6px 20px!important;background:var(--acu-bg-nav)!important}.acu-wrapper.acu-mode-embedded .acu-data-display{bottom:calc(100% + 12px)!important;border-radius:12px!important;box-shadow:0 10px 40px #0003!important}.acu-nav-container{display:flex!important;flex-wrap:wrap!important;gap:6px!important;padding:6px 10px!important;grid-template-columns:none!important;flex-direction:row!important;justify-content:flex-start!important;align-items:center!important;height:auto!important}.acu-nav-container .acu-nav-btn{width:fit-content!important;flex:0 0 auto!important;height:32px!important;padding:0 12px!important;font-size:13px!important;min-width:auto!important}.acu-nav-btn span{max-width:200px}.acu-action-btn{flex:0 0 32px!important;width:32px!important;height:32px!important;background:transparent!important;color:var(--acu-text-sub)!important;border-radius:6px!important;border:1px solid transparent}.acu-action-btn:hover{background:var(--acu-btn-hover)!important;color:var(--acu-text-main)!important;transform:scale(1.1);box-shadow:none}#acu-btn-save-global{color:var(--acu-accent)!important}#acu-btn-save-global:hover{background:var(--acu-accent)!important;color:#fff!important}.acu-order-controls{margin:0 0 8px!important;padding:4px!important}.acu-actions-group{width:auto!important;margin-left:auto!important;border-top:none!important;border-bottom:none!important;padding:0!important;margin-top:0!important;margin-bottom:0!important;gap:4px!important;background:transparent;justify-content:flex-end;order:9999!important;display:flex!important}.acu-pos-top .acu-actions-group{order:-1!important;margin-left:0!important;margin-right:10px!important;justify-content:flex-start!important}}@media(max-width:768px){.acu-panel-content{-webkit-overflow-scrolling:touch!important;overscroll-behavior-y:auto}.acu-data-card{box-shadow:none!important;border:1px solid var(--acu-border)!important;transform:translateZ(0);transition:none!important}.acu-data-card:hover{transform:none!important;box-shadow:none!important}.acu-nav-btn:hover{transform:none!important}.acu-nav-btn,.acu-action-btn,.acu-opt-btn,.acu-page-btn{transition:none!important}.acu-highlight-manual,.acu-highlight-diff{animation:none!important}.acu-card-row:hover{background:transparent!important}.acu-option-panel,.acu-data-display{animation:none!important}.acu-wrapper *,.acu-edit-overlay *,.acu-status-bar-container *{-webkit-tap-highlight-color:transparent}}.acu-rpg-widget{margin-top:8px;background:var(--acu-bg-panel);border:1px solid var(--acu-border);border-radius:12px;box-shadow:none;overflow:hidden;font-size:var(--acu-font-size, 13px);color:var(--acu-text-main);transition:all .3s cubic-bezier(.34,1.56,.64,1);pointer-events:auto;position:relative}.acu-rpg-summary{display:flex;flex-wrap:wrap;gap:12px;padding:12px 16px;align-items:center;cursor:pointer;background:var(--acu-table-head);transition:background .2s}.acu-rpg-summary:hover{background:var(--acu-table-hover)}.acu-rpg-details{display:none;background:var(--acu-bg-panel);border-top:1px solid var(--acu-border)}.acu-rpg-tabs{display:flex;overflow-x:auto;background:var(--acu-bg-nav);padding:6px 10px 0;gap:4px;scrollbar-width:none;border-bottom:1px solid var(--acu-border)}.acu-rpg-tabs::-webkit-scrollbar{display:none}.acu-rpg-tab-btn{flex:1;min-width:70px;padding:10px 0;text-align:center;background:transparent;border:1px solid transparent;border-bottom:none;border-radius:8px 8px 0 0;color:var(--acu-text-sub);font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;position:relative;overflow:hidden}.acu-rpg-tab-btn:hover{color:var(--acu-text-main);background:var(--acu-btn-hover)}.acu-rpg-tab-btn.active{color:var(--acu-accent);background:var(--acu-bg-panel);border-color:var(--acu-border);box-shadow:none}.acu-rpg-tab-btn.active:after{content:"";position:absolute;bottom:0;left:50%;transform:translate(-50%);width:40%;height:3px;background:var(--acu-accent);border-radius:3px 3px 0 0}.acu-rpg-tab-content{display:none;padding:16px;max-height:450px;overflow-y:auto;overscroll-behavior:auto}.acu-rpg-tab-content.active{display:block;animation:none}.acu-rpg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.acu-rpg-item-card{background:var(--acu-card-bg);border:1px solid var(--acu-border);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;box-shadow:0 2px 4px var(--acu-shadow);transition:transform .2s,box-shadow .2s,border-color .2s}.acu-rpg-item-title{font-weight:700;color:var(--acu-accent);font-size:1.05em;display:flex;align-items:center;gap:4px}.acu-rpg-item-desc{font-size:.9em;color:var(--acu-text-sub);line-height:1.5}.acu-rpg-badge{display:inline-flex;align-items:center;padding:3px 10px;font-size:11px;border-radius:20px;background:var(--acu-badge-bg);border:1px solid var(--acu-border);color:var(--acu-text-main);max-width:150px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.acu-rpg-item-card span,.acu-rpg-item-card div{word-break:break-word;white-space:pre-wrap}.acu-resource-track{position:relative;flex:1;min-width:80px;height:16px;background:var(--acu-table-hover);border-radius:8px;overflow:hidden;border:1px solid var(--acu-border)}.acu-resource-fill{height:100%;border-radius:8px;transition:width .4s cubic-bezier(.2,.8,.2,1);position:relative;overflow:hidden}.acu-resource-fill.hp{background:#e74c3c}.acu-resource-fill.mp{background:#3498db}.acu-resource-text{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:11px;font-weight:900;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.8);white-space:nowrap;font-family:Courier New,monospace;letter-spacing:.5px}.acu-rpg-card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}.acu-rpg-card-title{color:var(--acu-text-main);font-size:14px;flex:1;min-width:0;word-break:break-all}.acu-rpg-card-badges{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;flex-shrink:0;max-width:50%}.acu-rpg-card-desc{margin-top:6px;padding-top:6px;border-top:1px dashed var(--acu-border);font-size:12px}.acu-rank-badge{background:#f39c1226;color:#e67e22;border:1px solid rgba(243,156,18,.3);padding:1px 8px;border-radius:4px;font-weight:900;font-style:italic;letter-spacing:1px}.acu-realm-text{background:linear-gradient(to right,#1d976c,#93f9b9);-webkit-background-clip:text;color:transparent;font-weight:700;background-clip:text}.acu-val-pct-bar{display:flex;align-items:center;gap:6px;width:100%}.acu-val-pct-text{font-weight:700;color:var(--acu-accent);font-family:monospace;font-size:13px}.acu-val-pct-track{flex:1;height:5px;background:var(--acu-table-hover);border-radius:3px;overflow:hidden}.acu-val-pct-fill{height:100%;background:var(--acu-accent);border-radius:3px}.acu-rpg-loc-time{display:flex;flex:1;min-width:0;margin:0 16px;gap:12px;align-items:stretch}@media(max-width:768px){.acu-rpg-summary{padding:8px 10px;gap:8px 6px}.acu-rpg-badge{max-width:none!important;padding:2px 6px;font-size:11px;display:inline-flex;align-items:center;flex-shrink:1;min-width:0}.acu-rpg-summary>div:first-child{order:1;font-size:1.05em!important;max-width:calc(100% - 150px)!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.acu-rpg-summary>div:last-child{order:2;width:auto;margin-left:auto!important;justify-content:flex-end;border-top:none;padding-top:0;margin-top:0;gap:6px}.acu-rpg-loc-time{order:3;width:100%;display:flex;flex-wrap:nowrap;overflow:hidden;gap:6px;flex:none;margin:0;align-items:stretch}.acu-rpg-summary>div:last-child>span{padding:2px 6px!important;font-size:12px!important}.acu-rpg-tab-btn{min-width:55px;padding:8px 0;font-size:12px}.acu-rpg-tab-content{padding:10px;max-height:50vh}.acu-rpg-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))!important;gap:8px}.acu-rpg-grid.acu-grid-responsive{grid-template-columns:1fr!important}.acu-rpg-item-card{padding:8px;gap:4px}.acu-rpg-item-title{font-size:12px}.acu-rpg-item-desc{font-size:11px;line-height:1.4}}#toast-container{z-index:2147483649!important}.acu-wrapper *::-webkit-scrollbar,.acu-edit-overlay *::-webkit-scrollbar,.acu-status-bar-container *::-webkit-scrollbar{width:6px!important;height:6px!important}.acu-wrapper *::-webkit-scrollbar-track,.acu-edit-overlay *::-webkit-scrollbar-track,.acu-status-bar-container *::-webkit-scrollbar-track{background:var(--acu-scrollbar-track, transparent)!important;border-radius:3px!important}.acu-wrapper *::-webkit-scrollbar-thumb,.acu-edit-overlay *::-webkit-scrollbar-thumb,.acu-status-bar-container *::-webkit-scrollbar-thumb{background:var(--acu-scrollbar-thumb, #888)!important;border-radius:3px!important}.acu-wrapper *::-webkit-scrollbar-thumb:hover,.acu-edit-overlay *::-webkit-scrollbar-thumb:hover,.acu-status-bar-container *::-webkit-scrollbar-thumb:hover{background:var(--acu-accent)!important}.acu-edit-overlay textarea::-webkit-resizer,.acu-wrapper textarea::-webkit-resizer,.acu-status-bar-container textarea::-webkit-resizer{background-color:var(--acu-btn-bg)!important;border-top:1px solid var(--acu-border)!important;border-left:1px solid var(--acu-border)!important}.acu-wrapper input[type=checkbox]:not(.acu-checkbox),.acu-edit-overlay input[type=checkbox]:not(.acu-checkbox){-webkit-appearance:checkbox!important;-moz-appearance:checkbox!important;appearance:checkbox!important;background:transparent!important;background-image:none!important;border:none!important;box-shadow:none!important;accent-color:var(--acu-accent)!important;width:14px!important;height:14px!important;cursor:pointer!important;margin:0 4px 0 0!important;outline:none!important}.acu-wrapper input[type=checkbox]:not(.acu-checkbox):before,.acu-wrapper input[type=checkbox]:not(.acu-checkbox):after,.acu-edit-overlay input[type=checkbox]:not(.acu-checkbox):before,.acu-edit-overlay input[type=checkbox]:not(.acu-checkbox):after{display:none!important;content:none!important}.acu-edit-overlay input[type=range].acu-slider{-webkit-appearance:none!important;-moz-appearance:none!important;appearance:none!important;background-color:var(--acu-border)!important;background-image:none!important;height:6px!important;border-radius:3px!important;border:none!important;padding:0!important}.acu-edit-overlay input[type=range].acu-slider::-webkit-slider-thumb{-webkit-appearance:none!important;-moz-appearance:none!important;appearance:none!important;background-color:var(--acu-accent)!important;width:16px!important;height:16px!important;border-radius:50%!important;border:2px solid var(--acu-text-main)!important;box-shadow:0 0 4px #00000080!important;cursor:pointer!important}.acu-wrapper .acu-search-icon{color:var(--acu-text-sub)!important;opacity:.8!important;z-index:2!important}')),document.head.appendChild(a)}}catch(t){console.error("vite-plugin-css-injected-by-js",t)}}();
-/* ACU Visualizer v21.0 - Vue Edition */
-!function(){"use strict";function e(e){const t=Object.create(null);for(const n of e.split(","))t[n]=1;return e=>e in t}const t={},n=[],s=()=>{},a=()=>!1,o=e=>111===e.charCodeAt(0)&&110===e.charCodeAt(1)&&(e.charCodeAt(2)>122||e.charCodeAt(2)<97),i=e=>e.startsWith("onUpdate:"),l=Object.assign,r=(e,t)=>{const n=e.indexOf(t);n>-1&&e.splice(n,1)},c=Object.prototype.hasOwnProperty,u=(e,t)=>c.call(e,t),d=Array.isArray,p=e=>"[object Map]"===x(e),f=e=>"[object Set]"===x(e),h=e=>"[object Date]"===x(e),g=e=>"function"==typeof e,v=e=>"string"==typeof e,m=e=>"symbol"==typeof e,y=e=>null!==e&&"object"==typeof e,b=e=>(y(e)||g(e))&&g(e.then)&&g(e.catch),_=Object.prototype.toString,x=e=>_.call(e),w=e=>"[object Object]"===x(e),C=e=>v(e)&&"NaN"!==e&&"-"!==e[0]&&""+parseInt(e,10)===e,E=e(",key,ref,ref_for,ref_key,onVnodeBeforeMount,onVnodeMounted,onVnodeBeforeUpdate,onVnodeUpdated,onVnodeBeforeUnmount,onVnodeUnmounted"),T=e=>{const t=Object.create(null);return n=>t[n]||(t[n]=e(n))},S=/-\w/g,k=T(e=>e.replace(S,e=>e.slice(1).toUpperCase())),N=/\B([A-Z])/g,I=T(e=>e.replace(N,"-$1").toLowerCase()),D=T(e=>e.charAt(0).toUpperCase()+e.slice(1)),O=T(e=>e?`on${D(e)}`:""),P=(e,t)=>!Object.is(e,t),L=(e,...t)=>{for(let n=0;n<e.length;n++)e[n](...t)},A=(e,t,n,s=!1)=>{Object.defineProperty(e,t,{configurable:!0,enumerable:!1,writable:s,value:n})},M=e=>{const t=parseFloat(e);return isNaN(t)?e:t};let R;const U=()=>R||(R="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{});function $(e){if(d(e)){const t={};for(let n=0;n<e.length;n++){const s=e[n],a=v(s)?H(s):$(s);if(a)for(const e in a)t[e]=a[e]}return t}if(v(e)||y(e))return e}const j=/;(?![^(]*\))/g,F=/:([^]+)/,B=/\/\*[^]*?\*\//g;function H(e){const t={};return e.replace(B,"").split(j).forEach(e=>{if(e){const n=e.split(F);n.length>1&&(t[n[0].trim()]=n[1].trim())}}),t}function V(e){let t="";if(v(e))t=e;else if(d(e))for(let n=0;n<e.length;n++){const s=V(e[n]);s&&(t+=s+" ")}else if(y(e))for(const n in e)e[n]&&(t+=n+" ");return t.trim()}const z=e("itemscope,allowfullscreen,formnovalidate,ismap,nomodule,novalidate,readonly");function K(e){return!!e||""===e}function X(e,t){if(e===t)return!0;let n=h(e),s=h(t);if(n||s)return!(!n||!s)&&e.getTime()===t.getTime();if(n=m(e),s=m(t),n||s)return e===t;if(n=d(e),s=d(t),n||s)return!(!n||!s)&&function(e,t){if(e.length!==t.length)return!1;let n=!0;for(let s=0;n&&s<e.length;s++)n=X(e[s],t[s]);return n}(e,t);if(n=y(e),s=y(t),n||s){if(!n||!s)return!1;if(Object.keys(e).length!==Object.keys(t).length)return!1;for(const n in e){const s=e.hasOwnProperty(n),a=t.hasOwnProperty(n);if(s&&!a||!s&&a||!X(e[n],t[n]))return!1}}return String(e)===String(t)}function G(e,t){return e.findIndex(e=>X(e,t))}const W=e=>!(!e||!0!==e.__v_isRef),q=e=>v(e)?e:null==e?"":d(e)||y(e)&&(e.toString===_||!g(e.toString))?W(e)?q(e.value):JSON.stringify(e,Y,2):String(e),Y=(e,t)=>W(t)?Y(e,t.value):p(t)?{[`Map(${t.size})`]:[...t.entries()].reduce((e,[t,n],s)=>(e[J(t,s)+" =>"]=n,e),{})}:f(t)?{[`Set(${t.size})`]:[...t.values()].map(e=>J(e))}:m(t)?J(t):!y(t)||d(t)||w(t)?t:String(t),J=(e,t="")=>{var n;return m(e)?`Symbol(${null!=(n=e.description)?n:t})`:e};let Q,Z;class ee{constructor(e=!1){this.detached=e,this._active=!0,this._on=0,this.effects=[],this.cleanups=[],this._isPaused=!1,this._warnOnRun=!0,this.__v_skip=!0,!e&&Q&&(Q.active?(this.parent=Q,this.index=(Q.scopes||(Q.scopes=[])).push(this)-1):(this._active=!1,this._warnOnRun=!1))}get active(){return this._active}pause(){if(this._active){let e,t;if(this._isPaused=!0,this.scopes)for(e=0,t=this.scopes.length;e<t;e++)this.scopes[e].pause();for(e=0,t=this.effects.length;e<t;e++)this.effects[e].pause()}}resume(){if(this._active&&this._isPaused){let e,t;if(this._isPaused=!1,this.scopes)for(e=0,t=this.scopes.length;e<t;e++)this.scopes[e].resume();for(e=0,t=this.effects.length;e<t;e++)this.effects[e].resume()}}run(e){if(this._active){const t=Q;try{return Q=this,e()}finally{Q=t}}}on(){1===++this._on&&(this.prevScope=Q,Q=this)}off(){if(this._on>0&&0===--this._on){if(Q===this)Q=this.prevScope;else{let e=Q;for(;e;){if(e.prevScope===this){e.prevScope=this.prevScope;break}e=e.prevScope}}this.prevScope=void 0}}stop(e){if(this._active){let t,n;for(this._active=!1,t=0,n=this.effects.length;t<n;t++)this.effects[t].stop();for(this.effects.length=0,t=0,n=this.cleanups.length;t<n;t++)this.cleanups[t]();if(this.cleanups.length=0,this.scopes){for(t=0,n=this.scopes.length;t<n;t++)this.scopes[t].stop(!0);this.scopes.length=0}if(!this.detached&&this.parent&&!e){const e=this.parent.scopes.pop();e&&e!==this&&(this.parent.scopes[this.index]=e,e.index=this.index)}this.parent=void 0}}}function te(e){return new ee(e)}function ne(){return Q}const se=new WeakSet;class ae{constructor(e){this.fn=e,this.deps=void 0,this.depsTail=void 0,this.flags=5,this.next=void 0,this.cleanup=void 0,this.scheduler=void 0,Q&&(Q.active?Q.effects.push(this):this.flags&=-2)}pause(){this.flags|=64}resume(){64&this.flags&&(this.flags&=-65,se.has(this)&&(se.delete(this),this.trigger()))}notify(){2&this.flags&&!(32&this.flags)||8&this.flags||re(this)}run(){if(!(1&this.flags))return this.fn();this.flags|=2,xe(this),de(this);const e=Z,t=me;Z=this,me=!0;try{return this.fn()}finally{pe(this),Z=e,me=t,this.flags&=-3}}stop(){if(1&this.flags){for(let e=this.deps;e;e=e.nextDep)ge(e);this.deps=this.depsTail=void 0,xe(this),this.onStop&&this.onStop(),this.flags&=-2}}trigger(){64&this.flags?se.add(this):this.scheduler?this.scheduler():this.runIfDirty()}runIfDirty(){fe(this)&&this.run()}get dirty(){return fe(this)}}let oe,ie,le=0;function re(e,t=!1){if(e.flags|=8,t)return e.next=ie,void(ie=e);e.next=oe,oe=e}function ce(){le++}function ue(){if(--le>0)return;if(ie){let e=ie;for(ie=void 0;e;){const t=e.next;e.next=void 0,e.flags&=-9,e=t}}let e;for(;oe;){let n=oe;for(oe=void 0;n;){const s=n.next;if(n.next=void 0,n.flags&=-9,1&n.flags)try{n.trigger()}catch(t){e||(e=t)}n=s}}if(e)throw e}function de(e){for(let t=e.deps;t;t=t.nextDep)t.version=-1,t.prevActiveLink=t.dep.activeLink,t.dep.activeLink=t}function pe(e){let t,n=e.depsTail,s=n;for(;s;){const e=s.prevDep;-1===s.version?(s===n&&(n=e),ge(s),ve(s)):t=s,s.dep.activeLink=s.prevActiveLink,s.prevActiveLink=void 0,s=e}e.deps=t,e.depsTail=n}function fe(e){for(let t=e.deps;t;t=t.nextDep)if(t.dep.version!==t.version||t.dep.computed&&(he(t.dep.computed)||t.dep.version!==t.version))return!0;return!!e._dirty}function he(e){if(4&e.flags&&!(16&e.flags))return;if(e.flags&=-17,e.globalVersion===we)return;if(e.globalVersion=we,!e.isSSR&&128&e.flags&&(!e.deps&&!e._dirty||!fe(e)))return;e.flags|=2;const t=e.dep,n=Z,s=me;Z=e,me=!0;try{de(e);const n=e.fn(e._value);(0===t.version||P(n,e._value))&&(e.flags|=128,e._value=n,t.version++)}catch(a){throw t.version++,a}finally{Z=n,me=s,pe(e),e.flags&=-3}}function ge(e,t=!1){const{dep:n,prevSub:s,nextSub:a}=e;if(s&&(s.nextSub=a,e.prevSub=void 0),a&&(a.prevSub=s,e.nextSub=void 0),n.subs===e&&(n.subs=s,!s&&n.computed)){n.computed.flags&=-5;for(let e=n.computed.deps;e;e=e.nextDep)ge(e,!0)}t||--n.sc||!n.map||n.map.delete(n.key)}function ve(e){const{prevDep:t,nextDep:n}=e;t&&(t.nextDep=n,e.prevDep=void 0),n&&(n.prevDep=t,e.nextDep=void 0)}let me=!0;const ye=[];function be(){ye.push(me),me=!1}function _e(){const e=ye.pop();me=void 0===e||e}function xe(e){const{cleanup:t}=e;if(e.cleanup=void 0,t){const e=Z;Z=void 0;try{t()}finally{Z=e}}}let we=0;class Ce{constructor(e,t){this.sub=e,this.dep=t,this.version=t.version,this.nextDep=this.prevDep=this.nextSub=this.prevSub=this.prevActiveLink=void 0}}class Ee{constructor(e){this.computed=e,this.version=0,this.activeLink=void 0,this.subs=void 0,this.map=void 0,this.key=void 0,this.sc=0,this.__v_skip=!0}track(e){if(!Z||!me||Z===this.computed)return;let t=this.activeLink;if(void 0===t||t.sub!==Z)t=this.activeLink=new Ce(Z,this),Z.deps?(t.prevDep=Z.depsTail,Z.depsTail.nextDep=t,Z.depsTail=t):Z.deps=Z.depsTail=t,Te(t);else if(-1===t.version&&(t.version=this.version,t.nextDep)){const e=t.nextDep;e.prevDep=t.prevDep,t.prevDep&&(t.prevDep.nextDep=e),t.prevDep=Z.depsTail,t.nextDep=void 0,Z.depsTail.nextDep=t,Z.depsTail=t,Z.deps===t&&(Z.deps=e)}return t}trigger(e){this.version++,we++,this.notify(e)}notify(e){ce();try{0;for(let e=this.subs;e;e=e.prevSub)e.sub.notify()&&e.sub.dep.notify()}finally{ue()}}}function Te(e){if(e.dep.sc++,4&e.sub.flags){const t=e.dep.computed;if(t&&!e.dep.subs){t.flags|=20;for(let e=t.deps;e;e=e.nextDep)Te(e)}const n=e.dep.subs;n!==e&&(e.prevSub=n,n&&(n.nextSub=e)),e.dep.subs=e}}const Se=new WeakMap,ke=Symbol(""),Ne=Symbol(""),Ie=Symbol("");function De(e,t,n){if(me&&Z){let t=Se.get(e);t||Se.set(e,t=new Map);let s=t.get(n);s||(t.set(n,s=new Ee),s.map=t,s.key=n),s.track()}}function Oe(e,t,n,s,a,o){const i=Se.get(e);if(!i)return void we++;const l=e=>{e&&e.trigger()};if(ce(),"clear"===t)i.forEach(l);else{const a=d(e),o=a&&C(n);if(a&&"length"===n){const e=Number(s);i.forEach((t,n)=>{("length"===n||n===Ie||!m(n)&&n>=e)&&l(t)})}else switch((void 0!==n||i.has(void 0))&&l(i.get(n)),o&&l(i.get(Ie)),t){case"add":a?o&&l(i.get("length")):(l(i.get(ke)),p(e)&&l(i.get(Ne)));break;case"delete":a||(l(i.get(ke)),p(e)&&l(i.get(Ne)));break;case"set":p(e)&&l(i.get(ke))}}ue()}function Pe(e){const t=mt(e);return t===e?t:(De(t,0,Ie),gt(e)?t:t.map(bt))}function Le(e){return De(e=mt(e),0,Ie),e}function Ae(e,t){return ht(e)?_t(ft(e)?bt(t):t):bt(t)}const Me={__proto__:null,[Symbol.iterator](){return Re(this,Symbol.iterator,e=>Ae(this,e))},concat(...e){return Pe(this).concat(...e.map(e=>d(e)?Pe(e):e))},entries(){return Re(this,"entries",e=>(e[1]=Ae(this,e[1]),e))},every(e,t){return $e(this,"every",e,t,void 0,arguments)},filter(e,t){return $e(this,"filter",e,t,e=>e.map(e=>Ae(this,e)),arguments)},find(e,t){return $e(this,"find",e,t,e=>Ae(this,e),arguments)},findIndex(e,t){return $e(this,"findIndex",e,t,void 0,arguments)},findLast(e,t){return $e(this,"findLast",e,t,e=>Ae(this,e),arguments)},findLastIndex(e,t){return $e(this,"findLastIndex",e,t,void 0,arguments)},forEach(e,t){return $e(this,"forEach",e,t,void 0,arguments)},includes(...e){return Fe(this,"includes",e)},indexOf(...e){return Fe(this,"indexOf",e)},join(e){return Pe(this).join(e)},lastIndexOf(...e){return Fe(this,"lastIndexOf",e)},map(e,t){return $e(this,"map",e,t,void 0,arguments)},pop(){return Be(this,"pop")},push(...e){return Be(this,"push",e)},reduce(e,...t){return je(this,"reduce",e,t)},reduceRight(e,...t){return je(this,"reduceRight",e,t)},shift(){return Be(this,"shift")},some(e,t){return $e(this,"some",e,t,void 0,arguments)},splice(...e){return Be(this,"splice",e)},toReversed(){return Pe(this).toReversed()},toSorted(e){return Pe(this).toSorted(e)},toSpliced(...e){return Pe(this).toSpliced(...e)},unshift(...e){return Be(this,"unshift",e)},values(){return Re(this,"values",e=>Ae(this,e))}};function Re(e,t,n){const s=Le(e),a=s[t]();return s===e||gt(e)||(a._next=a.next,a.next=()=>{const e=a._next();return e.done||(e.value=n(e.value)),e}),a}const Ue=Array.prototype;function $e(e,t,n,s,a,o){const i=Le(e),l=i!==e&&!gt(e),r=i[t];if(r!==Ue[t]){const t=r.apply(e,o);return l?bt(t):t}let c=n;i!==e&&(l?c=function(t,s){return n.call(this,Ae(e,t),s,e)}:n.length>2&&(c=function(t,s){return n.call(this,t,s,e)}));const u=r.call(i,c,s);return l&&a?a(u):u}function je(e,t,n,s){const a=Le(e);let o=n,i=!1;a!==e&&(a!==e&&!gt(e)?(i=0===s.length,o=function(t,s,a){return i&&(i=!1,t=Ae(e,t)),n.call(this,t,Ae(e,s),a,e)}):n.length>3&&(o=function(t,s,a){return n.call(this,t,s,a,e)}));const l=a[t](o,...s);return i?Ae(e,l):l}function Fe(e,t,n){const s=mt(e);De(s,0,Ie);const a=s[t](...n);return-1!==a&&!1!==a||!vt(n[0])?a:(n[0]=mt(n[0]),s[t](...n))}function Be(e,t,n=[]){be(),ce();const s=mt(e)[t].apply(e,n);return ue(),_e(),s}const He=e("__proto__,__v_isRef,__isVue"),Ve=new Set(Object.getOwnPropertyNames(Symbol).filter(e=>"arguments"!==e&&"caller"!==e).map(e=>Symbol[e]).filter(m));function ze(e){m(e)||(e=String(e));const t=mt(this);return De(t,0,e),t.hasOwnProperty(e)}class Ke{constructor(e=!1,t=!1){this._isReadonly=e,this._isShallow=t}get(e,t,n){if("__v_skip"===t)return e.__v_skip;const s=this._isReadonly,a=this._isShallow;if("__v_isReactive"===t)return!s;if("__v_isReadonly"===t)return s;if("__v_isShallow"===t)return a;if("__v_raw"===t)return n===(s?a?rt:lt:a?it:ot).get(e)||Object.getPrototypeOf(e)===Object.getPrototypeOf(n)?e:void 0;const o=d(e);if(!s){let e;if(o&&(e=Me[t]))return e;if("hasOwnProperty"===t)return ze}const i=Reflect.get(e,t,xt(e)?e:n);if(m(t)?Ve.has(t):He(t))return i;if(s||De(e,0,t),a)return i;if(xt(i)){const e=o&&C(t)?i:i.value;return s&&y(e)?dt(e):e}return y(i)?s?dt(i):ct(i):i}}class Xe extends Ke{constructor(e=!1){super(!1,e)}set(e,t,n,s){let a=e[t];const o=d(e)&&C(t);if(!this._isShallow){const e=ht(a);if(gt(n)||ht(n)||(a=mt(a),n=mt(n)),!o&&xt(a)&&!xt(n))return e||(a.value=n),!0}const i=o?Number(t)<e.length:u(e,t),l=Reflect.set(e,t,n,xt(e)?e:s);return e===mt(s)&&(i?P(n,a)&&Oe(e,"set",t,n):Oe(e,"add",t,n)),l}deleteProperty(e,t){const n=u(e,t);e[t];const s=Reflect.deleteProperty(e,t);return s&&n&&Oe(e,"delete",t,void 0),s}has(e,t){const n=Reflect.has(e,t);return m(t)&&Ve.has(t)||De(e,0,t),n}ownKeys(e){return De(e,0,d(e)?"length":ke),Reflect.ownKeys(e)}}class Ge extends Ke{constructor(e=!1){super(!0,e)}set(e,t){return!0}deleteProperty(e,t){return!0}}const We=new Xe,qe=new Ge,Ye=new Xe(!0),Je=e=>e,Qe=e=>Reflect.getPrototypeOf(e);function Ze(e){return function(...t){return"delete"!==e&&("clear"===e?void 0:this)}}function et(e,t){const n={get(n){const s=this.__v_raw,a=mt(s),o=mt(n);e||(P(n,o)&&De(a,0,n),De(a,0,o));const{has:i}=Qe(a),l=t?Je:e?_t:bt;return i.call(a,n)?l(s.get(n)):i.call(a,o)?l(s.get(o)):void(s!==a&&s.get(n))},get size(){const t=this.__v_raw;return!e&&De(mt(t),0,ke),t.size},has(t){const n=this.__v_raw,s=mt(n),a=mt(t);return e||(P(t,a)&&De(s,0,t),De(s,0,a)),t===a?n.has(t):n.has(t)||n.has(a)},forEach(n,s){const a=this,o=a.__v_raw,i=t?Je:e?_t:bt;return!e&&De(mt(o),0,ke),o.forEach((e,t)=>n.call(s,i(e),i(t),a))}};l(n,e?{add:Ze("add"),set:Ze("set"),delete:Ze("delete"),clear:Ze("clear")}:{add(e){const n=mt(this),s=Qe(n),a=mt(e),o=t||gt(e)||ht(e)?e:a;return s.has.call(n,o)||P(e,o)&&s.has.call(n,e)||P(a,o)&&s.has.call(n,a)||(n.add(o),Oe(n,"add",o,o)),this},set(e,n){t||gt(n)||ht(n)||(n=mt(n));const s=mt(this),{has:a,get:o}=Qe(s);let i=a.call(s,e);i||(e=mt(e),i=a.call(s,e));const l=o.call(s,e);return s.set(e,n),i?P(n,l)&&Oe(s,"set",e,n):Oe(s,"add",e,n),this},delete(e){const t=mt(this),{has:n,get:s}=Qe(t);let a=n.call(t,e);a||(e=mt(e),a=n.call(t,e)),s&&s.call(t,e);const o=t.delete(e);return a&&Oe(t,"delete",e,void 0),o},clear(){const e=mt(this),t=0!==e.size,n=e.clear();return t&&Oe(e,"clear",void 0,void 0),n}});return["keys","values","entries",Symbol.iterator].forEach(s=>{n[s]=function(e,t,n){return function(...s){const a=this.__v_raw,o=mt(a),i=p(o),r="entries"===e||e===Symbol.iterator&&i,c="keys"===e&&i,u=a[e](...s),d=n?Je:t?_t:bt;return!t&&De(o,0,c?Ne:ke),l(Object.create(u),{next(){const{value:e,done:t}=u.next();return t?{value:e,done:t}:{value:r?[d(e[0]),d(e[1])]:d(e),done:t}}})}}(s,e,t)}),n}function tt(e,t){const n=et(e,t);return(t,s,a)=>"__v_isReactive"===s?!e:"__v_isReadonly"===s?e:"__v_raw"===s?t:Reflect.get(u(n,s)&&s in t?n:t,s,a)}const nt={get:tt(!1,!1)},st={get:tt(!1,!0)},at={get:tt(!0,!1)},ot=new WeakMap,it=new WeakMap,lt=new WeakMap,rt=new WeakMap;function ct(e){return ht(e)?e:pt(e,!1,We,nt,ot)}function ut(e){return pt(e,!1,Ye,st,it)}function dt(e){return pt(e,!0,qe,at,lt)}function pt(e,t,n,s,a){if(!y(e))return e;if(e.__v_raw&&(!t||!e.__v_isReactive))return e;if(e.__v_skip||!Object.isExtensible(e))return e;const o=a.get(e);if(o)return o;const i=function(e){switch(e){case"Object":case"Array":return 1;case"Map":case"Set":case"WeakMap":case"WeakSet":return 2;default:return 0}}(x(e).slice(8,-1));if(0===i)return e;const l=new Proxy(e,2===i?s:n);return a.set(e,l),l}function ft(e){return ht(e)?ft(e.__v_raw):!(!e||!e.__v_isReactive)}function ht(e){return!(!e||!e.__v_isReadonly)}function gt(e){return!(!e||!e.__v_isShallow)}function vt(e){return!!e&&!!e.__v_raw}function mt(e){const t=e&&e.__v_raw;return t?mt(t):e}function yt(e){return!u(e,"__v_skip")&&Object.isExtensible(e)&&A(e,"__v_skip",!0),e}const bt=e=>y(e)?ct(e):e,_t=e=>y(e)?dt(e):e;function xt(e){return!!e&&!0===e.__v_isRef}function wt(e){return function(e,t){if(xt(e))return e;return new Ct(e,t)}(e,!1)}class Ct{constructor(e,t){this.dep=new Ee,this.__v_isRef=!0,this.__v_isShallow=!1,this._rawValue=t?e:mt(e),this._value=t?e:bt(e),this.__v_isShallow=t}get value(){return this.dep.track(),this._value}set value(e){const t=this._rawValue,n=this.__v_isShallow||gt(e)||ht(e);P(e=n?e:mt(e),t)&&(this._rawValue=e,this._value=n?e:bt(e),this.dep.trigger())}}function Et(e){return xt(e)?e.value:e}const Tt={get:(e,t,n)=>"__v_raw"===t?e:Et(Reflect.get(e,t,n)),set:(e,t,n,s)=>{const a=e[t];return xt(a)&&!xt(n)?(a.value=n,!0):Reflect.set(e,t,n,s)}};function St(e){return ft(e)?e:new Proxy(e,Tt)}function kt(e){const t=d(e)?new Array(e.length):{};for(const n in e)t[n]=It(e,n);return t}class Nt{constructor(e,t,n){this._object=e,this._defaultValue=n,this.__v_isRef=!0,this._value=void 0,this._key=m(t)?t:String(t),this._raw=mt(e);let s=!0,a=e;if(!d(e)||m(this._key)||!C(this._key))do{s=!vt(a)||gt(a)}while(s&&(a=a.__v_raw));this._shallow=s}get value(){let e=this._object[this._key];return this._shallow&&(e=Et(e)),this._value=void 0===e?this._defaultValue:e}set value(e){if(this._shallow&&xt(this._raw[this._key])){const t=this._object[this._key];if(xt(t))return void(t.value=e)}this._object[this._key]=e}get dep(){return function(e,t){const n=Se.get(e);return n&&n.get(t)}(this._raw,this._key)}}function It(e,t,n){return new Nt(e,t,n)}class Dt{constructor(e,t,n){this.fn=e,this.setter=t,this._value=void 0,this.dep=new Ee(this),this.__v_isRef=!0,this.deps=void 0,this.depsTail=void 0,this.flags=16,this.globalVersion=we-1,this.next=void 0,this.effect=this,this.__v_isReadonly=!t,this.isSSR=n}notify(){if(this.flags|=16,!(8&this.flags)&&Z!==this)return re(this,!0),!0}get value(){const e=this.dep.track();return he(this),e&&(e.version=this.dep.version),this._value}set value(e){this.setter&&this.setter(e)}}function Ot(e,t,n=!1){let s,a;g(e)?s=e:(s=e.get,a=e.set);return new Dt(s,a,n)}const Pt={},Lt=new WeakMap;let At;function Mt(e,n,a=t){const{immediate:o,deep:i,once:l,scheduler:c,augmentJob:u,call:p}=a,f=e=>i?e:gt(e)||!1===i||0===i?Rt(e,1):Rt(e);let h,v,m,y,b=!1,_=!1;if(xt(e)?(v=()=>e.value,b=gt(e)):ft(e)?(v=()=>f(e),b=!0):d(e)?(_=!0,b=e.some(e=>ft(e)||gt(e)),v=()=>e.map(e=>xt(e)?e.value:ft(e)?f(e):g(e)?p?p(e,2):e():void 0)):v=g(e)?n?p?()=>p(e,2):e:()=>{if(m){be();try{m()}finally{_e()}}const t=At;At=h;try{return p?p(e,3,[y]):e(y)}finally{At=t}}:s,n&&i){const e=v,t=!0===i?1/0:i;v=()=>Rt(e(),t)}const x=ne(),w=()=>{h.stop(),x&&x.active&&r(x.effects,h)};if(l&&n){const e=n;n=(...t)=>{e(...t),w()}}let C=_?new Array(e.length).fill(Pt):Pt;const E=e=>{if(1&h.flags&&(h.dirty||e))if(n){const e=h.run();if(i||b||(_?e.some((e,t)=>P(e,C[t])):P(e,C))){m&&m();const t=At;At=h;try{const t=[e,C===Pt?void 0:_&&C[0]===Pt?[]:C,y];C=e,p?p(n,3,t):n(...t)}finally{At=t}}}else h.run()};return u&&u(E),h=new ae(v),h.scheduler=c?()=>c(E,!1):E,y=e=>function(e,t=!1,n=At){if(n){let t=Lt.get(n);t||Lt.set(n,t=[]),t.push(e)}}(e,!1,h),m=h.onStop=()=>{const e=Lt.get(h);if(e){if(p)p(e,4);else for(const t of e)t();Lt.delete(h)}},n?o?E(!0):C=h.run():c?c(E.bind(null,!0),!0):h.run(),w.pause=h.pause.bind(h),w.resume=h.resume.bind(h),w.stop=w,w}function Rt(e,t=1/0,n){if(t<=0||!y(e)||e.__v_skip)return e;if(((n=n||new Map).get(e)||0)>=t)return e;if(n.set(e,t),t--,xt(e))Rt(e.value,t,n);else if(d(e))for(let s=0;s<e.length;s++)Rt(e[s],t,n);else if(f(e)||p(e))e.forEach(e=>{Rt(e,t,n)});else if(w(e)){for(const s in e)Rt(e[s],t,n);for(const s of Object.getOwnPropertySymbols(e))Object.prototype.propertyIsEnumerable.call(e,s)&&Rt(e[s],t,n)}return e}function Ut(e,t,n,s){try{return s?e(...s):e()}catch(a){jt(a,t,n)}}function $t(e,t,n,s){if(g(e)){const a=Ut(e,t,n,s);return a&&b(a)&&a.catch(e=>{jt(e,t,n)}),a}if(d(e)){const a=[];for(let o=0;o<e.length;o++)a.push($t(e[o],t,n,s));return a}}function jt(e,n,s,a=!0){n&&n.vnode;const{errorHandler:o,throwUnhandledErrorInProduction:i}=n&&n.appContext.config||t;if(n){let t=n.parent;const a=n.proxy,i=`https://vuejs.org/error-reference/#runtime-${s}`;for(;t;){const n=t.ec;if(n)for(let t=0;t<n.length;t++)if(!1===n[t](e,a,i))return;t=t.parent}if(o)return be(),Ut(o,null,10,[e,a,i]),void _e()}!function(e,t,n,s=!0,a=!1){if(a)throw e;console.error(e)}(e,0,0,a,i)}const Ft=[];let Bt=-1;const Ht=[];let Vt=null,zt=0;const Kt=Promise.resolve();let Xt=null;function Gt(e){const t=Xt||Kt;return e?t.then(this?e.bind(this):e):t}function Wt(e){if(!(1&e.flags)){const t=Qt(e),n=Ft[Ft.length-1];!n||!(2&e.flags)&&t>=Qt(n)?Ft.push(e):Ft.splice(function(e){let t=Bt+1,n=Ft.length;for(;t<n;){const s=t+n>>>1,a=Ft[s],o=Qt(a);o<e||o===e&&2&a.flags?t=s+1:n=s}return t}(t),0,e),e.flags|=1,qt()}}function qt(){Xt||(Xt=Kt.then(Zt))}function Yt(e,t,n=Bt+1){for(;n<Ft.length;n++){const t=Ft[n];if(t&&2&t.flags){if(e&&t.id!==e.uid)continue;Ft.splice(n,1),n--,4&t.flags&&(t.flags&=-2),t(),4&t.flags||(t.flags&=-2)}}}function Jt(e){if(Ht.length){const e=[...new Set(Ht)].sort((e,t)=>Qt(e)-Qt(t));if(Ht.length=0,Vt)return void Vt.push(...e);for(Vt=e,zt=0;zt<Vt.length;zt++){const e=Vt[zt];4&e.flags&&(e.flags&=-2),8&e.flags||e(),e.flags&=-2}Vt=null,zt=0}}const Qt=e=>null==e.id?2&e.flags?-1:1/0:e.id;function Zt(e){try{for(Bt=0;Bt<Ft.length;Bt++){const e=Ft[Bt];!e||8&e.flags||(4&e.flags&&(e.flags&=-2),Ut(e,e.i,e.i?15:14),4&e.flags||(e.flags&=-2))}}finally{for(;Bt<Ft.length;Bt++){const e=Ft[Bt];e&&(e.flags&=-2)}Bt=-1,Ft.length=0,Jt(),Xt=null,(Ft.length||Ht.length)&&Zt()}}let en=null,tn=null;function nn(e){const t=en;return en=e,tn=e&&e.type.__scopeId||null,t}function sn(e,n){if(null===en)return e;const s=Ea(en),a=e.dirs||(e.dirs=[]);for(let o=0;o<n.length;o++){let[e,i,l,r=t]=n[o];e&&(g(e)&&(e={mounted:e,updated:e}),e.deep&&Rt(i),a.push({dir:e,instance:s,value:i,oldValue:void 0,arg:l,modifiers:r}))}return e}function an(e,t,n,s){const a=e.dirs,o=t&&t.dirs;for(let i=0;i<a.length;i++){const l=a[i];o&&(l.oldValue=o[i].value);let r=l.dir[s];r&&(be(),$t(r,n,8,[e.el,l,e,t]),_e())}}function on(e,t,n=!1){const s=ha();if(s||is){let a=is?is._context.provides:s?null==s.parent||s.ce?s.vnode.appContext&&s.vnode.appContext.provides:s.parent.provides:void 0;if(a&&e in a)return a[e];if(arguments.length>1)return n&&g(t)?t.call(s&&s.proxy):t}}const ln=Symbol.for("v-scx");function rn(e,t,n){return cn(e,t,n)}function cn(e,n,a=t){const{immediate:o,deep:i,flush:r,once:c}=a,u=l({},a),d=n&&o||!n&&"post"!==r;let p;if(_a)if("sync"===r){const e=on(ln);p=e.__watcherHandles||(e.__watcherHandles=[])}else if(!d){const e=()=>{};return e.stop=s,e.resume=s,e.pause=s,e}const f=fa;u.call=(e,t,n)=>$t(e,f,t,n);let h=!1;"post"===r?u.scheduler=e=>{Ds(e,f&&f.suspense)}:"sync"!==r&&(h=!0,u.scheduler=(e,t)=>{t?e():Wt(e)}),u.augmentJob=e=>{n&&(e.flags|=4),h&&(e.flags|=2,f&&(e.id=f.uid,e.i=f))};const g=Mt(e,n,u);return _a&&(p?p.push(g):d&&g()),g}function un(e,t,n){const s=this.proxy,a=v(e)?e.includes(".")?dn(s,e):()=>s[e]:e.bind(s,s);let o;g(t)?o=t:(o=t.handler,n=t);const i=ma(this),l=cn(a,o.bind(s),n);return i(),l}function dn(e,t){const n=t.split(".");return()=>{let t=e;for(let e=0;e<n.length&&t;e++)t=t[n[e]];return t}}const pn=Symbol("_vte"),fn=Symbol("_leaveCb");function hn(e,t){6&e.shapeFlag&&e.component?(e.transition=t,hn(e.component.subTree,t)):128&e.shapeFlag?(e.ssContent.transition=t.clone(e.ssContent),e.ssFallback.transition=t.clone(e.ssFallback)):e.transition=t}function gn(e){e.ids=[e.ids[0]+e.ids[2]+++"-",0,0]}function vn(e,t){let n;return!(!(n=Object.getOwnPropertyDescriptor(e,t))||n.configurable)}const mn=new WeakMap;function yn(e,n,s,o,i=!1){if(d(e))return void e.forEach((e,t)=>yn(e,n&&(d(n)?n[t]:n),s,o,i));if(_n(o)&&!i)return void(512&o.shapeFlag&&o.type.__asyncResolved&&o.component.subTree.component&&yn(e,n,s,o.component.subTree));const l=4&o.shapeFlag?Ea(o.component):o.el,c=i?null:l,{i:p,r:f}=e,h=n&&n.r,m=p.refs===t?p.refs={}:p.refs,y=p.setupState,b=mt(y),_=y===t?a:e=>!vn(m,e)&&u(b,e),x=(e,t)=>!t||!vn(m,t);if(null!=h&&h!==f)if(bn(n),v(h))m[h]=null,_(h)&&(y[h]=null);else if(xt(h)){const e=n;x(0,e.k)&&(h.value=null),e.k&&(m[e.k]=null)}if(g(f))Ut(f,p,12,[c,m]);else{const t=v(f),n=xt(f);if(t||n){const a=()=>{if(e.f){const n=t?_(f)?y[f]:m[f]:x()||!e.k?f.value:m[e.k];if(i)d(n)&&r(n,l);else if(d(n))n.includes(l)||n.push(l);else if(t)m[f]=[l],_(f)&&(y[f]=m[f]);else{const t=[l];x(0,e.k)&&(f.value=t),e.k&&(m[e.k]=t)}}else t?(m[f]=c,_(f)&&(y[f]=c)):n&&(x(0,e.k)&&(f.value=c),e.k&&(m[e.k]=c))};if(c){const t=()=>{a(),mn.delete(e)};t.id=-1,mn.set(e,t),Ds(t,s)}else bn(e),a()}}}function bn(e){const t=mn.get(e);t&&(t.flags|=8,mn.delete(e))}U().requestIdleCallback,U().cancelIdleCallback;const _n=e=>!!e.type.__asyncLoader,xn=e=>e.type.__isKeepAlive;function wn(e,t){En(e,"a",t)}function Cn(e,t){En(e,"da",t)}function En(e,t,n=fa){const s=e.__wdc||(e.__wdc=()=>{let t=n;for(;t;){if(t.isDeactivated)return;t=t.parent}return e()});if(Sn(t,s,n),n){let e=n.parent;for(;e&&e.parent;)xn(e.parent.vnode)&&Tn(s,t,n,e),e=e.parent}}function Tn(e,t,n,s){const a=Sn(t,e,s,!0);Ln(()=>{r(s[t],a)},n)}function Sn(e,t,n=fa,s=!1){if(n){const a=n[e]||(n[e]=[]),o=t.__weh||(t.__weh=(...s)=>{be();const a=ma(n),o=$t(t,n,e,s);return a(),_e(),o});return s?a.unshift(o):a.push(o),o}}const kn=e=>(t,n=fa)=>{_a&&"sp"!==e||Sn(e,(...e)=>t(...e),n)},Nn=kn("bm"),In=kn("m"),Dn=kn("bu"),On=kn("u"),Pn=kn("bum"),Ln=kn("um"),An=kn("sp"),Mn=kn("rtg"),Rn=kn("rtc");function Un(e,t=fa){Sn("ec",e,t)}const $n=Symbol.for("v-ndc");function jn(e,t,n,s){let a;const o=n,i=d(e);if(i||v(e)){let n=!1,s=!1;i&&ft(e)&&(n=!gt(e),s=ht(e),e=Le(e)),a=new Array(e.length);for(let i=0,l=e.length;i<l;i++)a[i]=t(n?s?_t(bt(e[i])):bt(e[i]):e[i],i,void 0,o)}else if("number"==typeof e){a=new Array(e);for(let n=0;n<e;n++)a[n]=t(n+1,n,void 0,o)}else if(y(e))if(e[Symbol.iterator])a=Array.from(e,(e,n)=>t(e,n,void 0,o));else{const n=Object.keys(e);a=new Array(n.length);for(let s=0,i=n.length;s<i;s++){const i=n[s];a[s]=t(e[i],i,s,o)}}else a=[];return a}const Fn=e=>e?ba(e)?Ea(e):Fn(e.parent):null,Bn=l(Object.create(null),{$:e=>e,$el:e=>e.vnode.el,$data:e=>e.data,$props:e=>e.props,$attrs:e=>e.attrs,$slots:e=>e.slots,$refs:e=>e.refs,$parent:e=>Fn(e.parent),$root:e=>Fn(e.root),$host:e=>e.ce,$emit:e=>e.emit,$options:e=>qn(e),$forceUpdate:e=>e.f||(e.f=()=>{Wt(e.update)}),$nextTick:e=>e.n||(e.n=Gt.bind(e.proxy)),$watch:e=>un.bind(e)}),Hn=(e,n)=>e!==t&&!e.__isScriptSetup&&u(e,n),Vn={get({_:e},n){if("__v_skip"===n)return!0;const{ctx:s,setupState:a,data:o,props:i,accessCache:l,type:r,appContext:c}=e;if("$"!==n[0]){const e=l[n];if(void 0!==e)switch(e){case 1:return a[n];case 2:return o[n];case 4:return s[n];case 3:return i[n]}else{if(Hn(a,n))return l[n]=1,a[n];if(o!==t&&u(o,n))return l[n]=2,o[n];if(u(i,n))return l[n]=3,i[n];if(s!==t&&u(s,n))return l[n]=4,s[n];Kn&&(l[n]=0)}}const d=Bn[n];let p,f;return d?("$attrs"===n&&De(e.attrs,0,""),d(e)):(p=r.__cssModules)&&(p=p[n])?p:s!==t&&u(s,n)?(l[n]=4,s[n]):(f=c.config.globalProperties,u(f,n)?f[n]:void 0)},set({_:e},n,s){const{data:a,setupState:o,ctx:i}=e;return Hn(o,n)?(o[n]=s,!0):a!==t&&u(a,n)?(a[n]=s,!0):!u(e.props,n)&&(("$"!==n[0]||!(n.slice(1)in e))&&(i[n]=s,!0))},has({_:{data:e,setupState:n,accessCache:s,ctx:a,appContext:o,props:i,type:l}},r){let c;return!!(s[r]||e!==t&&"$"!==r[0]&&u(e,r)||Hn(n,r)||u(i,r)||u(a,r)||u(Bn,r)||u(o.config.globalProperties,r)||(c=l.__cssModules)&&c[r])},defineProperty(e,t,n){return null!=n.get?e._.accessCache[t]=0:u(n,"value")&&this.set(e,t,n.value,null),Reflect.defineProperty(e,t,n)}};function zn(e){return d(e)?e.reduce((e,t)=>(e[t]=null,e),{}):e}let Kn=!0;function Xn(e){const t=qn(e),n=e.proxy,a=e.ctx;Kn=!1,t.beforeCreate&&Gn(t.beforeCreate,e,"bc");const{data:o,computed:i,methods:l,watch:r,provide:c,inject:u,created:p,beforeMount:f,mounted:h,beforeUpdate:v,updated:m,activated:b,deactivated:_,beforeDestroy:x,beforeUnmount:w,destroyed:C,unmounted:E,render:T,renderTracked:S,renderTriggered:k,errorCaptured:N,serverPrefetch:I,expose:D,inheritAttrs:O,components:P,directives:L,filters:A}=t;if(u&&function(e,t){d(e)&&(e=Zn(e));for(const n in e){const s=e[n];let a;a=y(s)?"default"in s?on(s.from||n,s.default,!0):on(s.from||n):on(s),xt(a)?Object.defineProperty(t,n,{enumerable:!0,configurable:!0,get:()=>a.value,set:e=>a.value=e}):t[n]=a}}(u,a,null),l)for(const s in l){const e=l[s];g(e)&&(a[s]=e.bind(n))}if(o){const t=o.call(n,n);y(t)&&(e.data=ct(t))}if(Kn=!0,i)for(const d in i){const e=i[d],t=g(e)?e.bind(n,n):g(e.get)?e.get.bind(n,n):s,o=!g(e)&&g(e.set)?e.set.bind(n):s,l=Ta({get:t,set:o});Object.defineProperty(a,d,{enumerable:!0,configurable:!0,get:()=>l.value,set:e=>l.value=e})}if(r)for(const s in r)Wn(r[s],a,n,s);if(c){const e=g(c)?c.call(n):c;Reflect.ownKeys(e).forEach(t=>{!function(e,t){if(fa){let n=fa.provides;const s=fa.parent&&fa.parent.provides;s===n&&(n=fa.provides=Object.create(s)),n[e]=t}}(t,e[t])})}function M(e,t){d(t)?t.forEach(t=>e(t.bind(n))):t&&e(t.bind(n))}if(p&&Gn(p,e,"c"),M(Nn,f),M(In,h),M(Dn,v),M(On,m),M(wn,b),M(Cn,_),M(Un,N),M(Rn,S),M(Mn,k),M(Pn,w),M(Ln,E),M(An,I),d(D))if(D.length){const t=e.exposed||(e.exposed={});D.forEach(e=>{Object.defineProperty(t,e,{get:()=>n[e],set:t=>n[e]=t,enumerable:!0})})}else e.exposed||(e.exposed={});T&&e.render===s&&(e.render=T),null!=O&&(e.inheritAttrs=O),P&&(e.components=P),L&&(e.directives=L),I&&gn(e)}function Gn(e,t,n){$t(d(e)?e.map(e=>e.bind(t.proxy)):e.bind(t.proxy),t,n)}function Wn(e,t,n,s){let a=s.includes(".")?dn(n,s):()=>n[s];if(v(e)){const n=t[e];g(n)&&rn(a,n)}else if(g(e))rn(a,e.bind(n));else if(y(e))if(d(e))e.forEach(e=>Wn(e,t,n,s));else{const s=g(e.handler)?e.handler.bind(n):t[e.handler];g(s)&&rn(a,s,e)}}function qn(e){const t=e.type,{mixins:n,extends:s}=t,{mixins:a,optionsCache:o,config:{optionMergeStrategies:i}}=e.appContext,l=o.get(t);let r;return l?r=l:a.length||n||s?(r={},a.length&&a.forEach(e=>Yn(r,e,i,!0)),Yn(r,t,i)):r=t,y(t)&&o.set(t,r),r}function Yn(e,t,n,s=!1){const{mixins:a,extends:o}=t;o&&Yn(e,o,n,!0),a&&a.forEach(t=>Yn(e,t,n,!0));for(const i in t)if(s&&"expose"===i);else{const s=Jn[i]||n&&n[i];e[i]=s?s(e[i],t[i]):t[i]}return e}const Jn={data:Qn,props:ns,emits:ns,methods:ts,computed:ts,beforeCreate:es,created:es,beforeMount:es,mounted:es,beforeUpdate:es,updated:es,beforeDestroy:es,beforeUnmount:es,destroyed:es,unmounted:es,activated:es,deactivated:es,errorCaptured:es,serverPrefetch:es,components:ts,directives:ts,watch:function(e,t){if(!e)return t;if(!t)return e;const n=l(Object.create(null),e);for(const s in t)n[s]=es(e[s],t[s]);return n},provide:Qn,inject:function(e,t){return ts(Zn(e),Zn(t))}};function Qn(e,t){return t?e?function(){return l(g(e)?e.call(this,this):e,g(t)?t.call(this,this):t)}:t:e}function Zn(e){if(d(e)){const t={};for(let n=0;n<e.length;n++)t[e[n]]=e[n];return t}return e}function es(e,t){return e?[...new Set([].concat(e,t))]:t}function ts(e,t){return e?l(Object.create(null),e,t):t}function ns(e,t){return e?d(e)&&d(t)?[...new Set([...e,...t])]:l(Object.create(null),zn(e),zn(null!=t?t:{})):t}function ss(){return{app:null,config:{isNativeTag:a,performance:!1,globalProperties:{},optionMergeStrategies:{},errorHandler:void 0,warnHandler:void 0,compilerOptions:{}},mixins:[],components:{},directives:{},provides:Object.create(null),optionsCache:new WeakMap,propsCache:new WeakMap,emitsCache:new WeakMap}}let as=0;function os(e,t){return function(t,n=null){g(t)||(t=l({},t)),null==n||y(n)||(n=null);const s=ss(),a=new WeakSet,o=[];let i=!1;const r=s.app={_uid:as++,_component:t,_props:n,_container:null,_context:s,_instance:null,version:Sa,get config(){return s.config},set config(e){},use:(e,...t)=>(a.has(e)||(e&&g(e.install)?(a.add(e),e.install(r,...t)):g(e)&&(a.add(e),e(r,...t))),r),mixin:e=>(s.mixins.includes(e)||s.mixins.push(e),r),component:(e,t)=>t?(s.components[e]=t,r):s.components[e],directive:(e,t)=>t?(s.directives[e]=t,r):s.directives[e],mount(a,o,l){if(!i){const o=r._ceVNode||na(t,n);return o.appContext=s,!0===l?l="svg":!1===l&&(l=void 0),e(o,a,l),i=!0,r._container=a,a.__vue_app__=r,Ea(o.component)}},onUnmount(e){o.push(e)},unmount(){i&&($t(o,r._instance,16),e(null,r._container),delete r._container.__vue_app__)},provide:(e,t)=>(s.provides[e]=t,r),runWithContext(e){const t=is;is=r;try{return e()}finally{is=t}}};return r}}let is=null;function ls(e,n,...s){if(e.isUnmounted)return;const a=e.vnode.props||t;let o=s;const i=n.startsWith("update:"),l=i&&((e,t)=>"modelValue"===t||"model-value"===t?e.modelModifiers:e[`${t}Modifiers`]||e[`${k(t)}Modifiers`]||e[`${I(t)}Modifiers`])(a,n.slice(7));let r;l&&(l.trim&&(o=s.map(e=>v(e)?e.trim():e)),l.number&&(o=s.map(M)));let c=a[r=O(n)]||a[r=O(k(n))];!c&&i&&(c=a[r=O(I(n))]),c&&$t(c,e,6,o);const u=a[r+"Once"];if(u){if(e.emitted){if(e.emitted[r])return}else e.emitted={};e.emitted[r]=!0,$t(u,e,6,o)}}const rs=new WeakMap;function cs(e,t,n=!1){const s=n?rs:t.emitsCache,a=s.get(e);if(void 0!==a)return a;const o=e.emits;let i={},r=!1;if(!g(e)){const s=e=>{const n=cs(e,t,!0);n&&(r=!0,l(i,n))};!n&&t.mixins.length&&t.mixins.forEach(s),e.extends&&s(e.extends),e.mixins&&e.mixins.forEach(s)}return o||r?(d(o)?o.forEach(e=>i[e]=null):l(i,o),y(e)&&s.set(e,i),i):(y(e)&&s.set(e,null),null)}function us(e,t){return!(!e||!o(t))&&(t=t.slice(2).replace(/Once$/,""),u(e,t[0].toLowerCase()+t.slice(1))||u(e,I(t))||u(e,t))}function ds(e){const{type:t,vnode:n,proxy:s,withProxy:a,propsOptions:[o],slots:l,attrs:r,emit:c,render:u,renderCache:d,props:p,data:f,setupState:h,ctx:g,inheritAttrs:v}=e,m=nn(e);let y,b;try{if(4&n.shapeFlag){const e=a||s,t=e;y=la(u.call(t,e,d,p,h,f,g)),b=r}else{const e=t;0,y=la(e.length>1?e(p,{attrs:r,slots:l,emit:c}):e(p,null)),b=t.props?r:ps(r)}}catch(x){Vs.length=0,jt(x,e,1),y=na(Bs)}let _=y;if(b&&!1!==v){const e=Object.keys(b),{shapeFlag:t}=_;e.length&&7&t&&(o&&e.some(i)&&(b=fs(b,o)),_=sa(_,b,!1,!0))}return n.dirs&&(_=sa(_,null,!1,!0),_.dirs=_.dirs?_.dirs.concat(n.dirs):n.dirs),n.transition&&hn(_,n.transition),y=_,nn(m),y}const ps=e=>{let t;for(const n in e)("class"===n||"style"===n||o(n))&&((t||(t={}))[n]=e[n]);return t},fs=(e,t)=>{const n={};for(const s in e)i(s)&&s.slice(9)in t||(n[s]=e[s]);return n};function hs(e,t,n){const s=Object.keys(t);if(s.length!==Object.keys(e).length)return!0;for(let a=0;a<s.length;a++){const o=s[a];if(gs(t,e,o)&&!us(n,o))return!0}return!1}function gs(e,t,n){const s=e[n],a=t[n];return"style"===n&&y(s)&&y(a)?!X(s,a):s!==a}const vs={},ms=()=>Object.create(vs),ys=e=>Object.getPrototypeOf(e)===vs;function bs(e,n,s,a){const[o,i]=e.propsOptions;let l,r=!1;if(n)for(let t in n){if(E(t))continue;const c=n[t];let d;o&&u(o,d=k(t))?i&&i.includes(d)?(l||(l={}))[d]=c:s[d]=c:us(e.emitsOptions,t)||t in a&&c===a[t]||(a[t]=c,r=!0)}if(i){const n=mt(s),a=l||t;for(let t=0;t<i.length;t++){const l=i[t];s[l]=_s(o,n,l,a[l],e,!u(a,l))}}return r}function _s(e,t,n,s,a,o){const i=e[n];if(null!=i){const e=u(i,"default");if(e&&void 0===s){const e=i.default;if(i.type!==Function&&!i.skipFactory&&g(e)){const{propsDefaults:o}=a;if(n in o)s=o[n];else{const i=ma(a);s=o[n]=e.call(null,t),i()}}else s=e;a.ce&&a.ce._setProp(n,s)}i[0]&&(o&&!e?s=!1:!i[1]||""!==s&&s!==I(n)||(s=!0))}return s}const xs=new WeakMap;function ws(e,s,a=!1){const o=a?xs:s.propsCache,i=o.get(e);if(i)return i;const r=e.props,c={},p=[];let f=!1;if(!g(e)){const t=e=>{f=!0;const[t,n]=ws(e,s,!0);l(c,t),n&&p.push(...n)};!a&&s.mixins.length&&s.mixins.forEach(t),e.extends&&t(e.extends),e.mixins&&e.mixins.forEach(t)}if(!r&&!f)return y(e)&&o.set(e,n),n;if(d(r))for(let n=0;n<r.length;n++){const e=k(r[n]);Cs(e)&&(c[e]=t)}else if(r)for(const t in r){const e=k(t);if(Cs(e)){const n=r[t],s=c[e]=d(n)||g(n)?{type:n}:l({},n),a=s.type;let o=!1,i=!0;if(d(a))for(let e=0;e<a.length;++e){const t=a[e],n=g(t)&&t.name;if("Boolean"===n){o=!0;break}"String"===n&&(i=!1)}else o=g(a)&&"Boolean"===a.name;s[0]=o,s[1]=i,(o||u(s,"default"))&&p.push(e)}}const h=[c,p];return y(e)&&o.set(e,h),h}function Cs(e){return"$"!==e[0]&&!E(e)}const Es=e=>"_"===e||"_ctx"===e||"$stable"===e,Ts=e=>d(e)?e.map(la):[la(e)],Ss=(e,t,n)=>{if(t._n)return t;const s=function(e,t=en){if(!t)return e;if(e._n)return e;const n=(...s)=>{n._d&&Gs(-1);const a=nn(t);let o;try{o=e(...s)}finally{nn(a),n._d&&Gs(1)}return o};return n._n=!0,n._c=!0,n._d=!0,n}((...e)=>Ts(t(...e)),n);return s._c=!1,s},ks=(e,t,n)=>{const s=e._ctx;for(const a in e){if(Es(a))continue;const n=e[a];if(g(n))t[a]=Ss(0,n,s);else if(null!=n){const e=Ts(n);t[a]=()=>e}}},Ns=(e,t)=>{const n=Ts(t);e.slots.default=()=>n},Is=(e,t,n)=>{for(const s in t)!n&&Es(s)||(e[s]=t[s])},Ds=function(e,t){t&&t.pendingBranch?d(e)?t.effects.push(...e):t.effects.push(e):(d(n=e)?Ht.push(...n):Vt&&-1===n.id?Vt.splice(zt+1,0,n):1&n.flags||(Ht.push(n),n.flags|=1),qt());var n};function Os(e){return function(e){U().__VUE__=!0;const{insert:a,remove:o,patchProp:i,createElement:l,createText:r,createComment:c,setText:d,setElementText:p,parentNode:f,nextSibling:h,setScopeId:g=s,insertStaticContent:v}=e,m=(e,t,n,s=null,a=null,o=null,i=void 0,l=null,r=!!t.dynamicChildren)=>{if(e===t)return;e&&!Qs(e,t)&&(s=Q(e),G(e,a,o,!0),e=null),-2===t.patchFlag&&(r=!1,t.dynamicChildren=null);const{type:c,ref:u,shapeFlag:d}=t;switch(c){case Fs:y(e,t,n,s);break;case Bs:_(e,t,n,s);break;case Hs:null==e&&x(t,n,s,i);break;case js:R(e,t,n,s,a,o,i,l,r);break;default:1&d?T(e,t,n,s,a,o,i,l,r):6&d?$(e,t,n,s,a,o,i,l,r):(64&d||128&d)&&c.process(e,t,n,s,a,o,i,l,r,ne)}null!=u&&a?yn(u,e&&e.ref,o,t||e,!t):null==u&&e&&null!=e.ref&&yn(e.ref,null,o,e,!0)},y=(e,t,n,s)=>{if(null==e)a(t.el=r(t.children),n,s);else{const n=t.el=e.el;t.children!==e.children&&d(n,t.children)}},_=(e,t,n,s)=>{null==e?a(t.el=c(t.children||""),n,s):t.el=e.el},x=(e,t,n,s)=>{[e.el,e.anchor]=v(e.children,t,n,s,e.el,e.anchor)},w=({el:e,anchor:t},n,s)=>{let o;for(;e&&e!==t;)o=h(e),a(e,n,s),e=o;a(t,n,s)},C=({el:e,anchor:t})=>{let n;for(;e&&e!==t;)n=h(e),o(e),e=n;o(t)},T=(e,t,n,s,a,o,i,l,r)=>{if("svg"===t.type?i="svg":"math"===t.type&&(i="mathml"),null==e)S(t,n,s,a,o,i,l,r);else{const n=e.el&&e.el._isVueCE?e.el:null;try{n&&n._beginPatch(),O(e,t,a,o,i,l,r)}finally{n&&n._endPatch()}}},S=(e,t,n,s,o,r,c,u)=>{let d,f;const{props:h,shapeFlag:g,transition:v,dirs:m}=e;if(d=e.el=l(e.type,r,h&&h.is,h),8&g?p(d,e.children):16&g&&D(e.children,d,null,s,o,Ps(e,r),c,u),m&&an(e,null,s,"created"),N(d,e,e.scopeId,c,s),h){for(const e in h)"value"===e||E(e)||i(d,e,null,h[e],r,s);"value"in h&&i(d,"value",null,h.value,r),(f=h.onVnodeBeforeMount)&&ua(f,s,e)}m&&an(e,null,s,"beforeMount");const y=function(e,t){return(!e||e&&!e.pendingBranch)&&t&&!t.persisted}(o,v);y&&v.beforeEnter(d),a(d,t,n),((f=h&&h.onVnodeMounted)||y||m)&&Ds(()=>{try{f&&ua(f,s,e),y&&v.enter(d),m&&an(e,null,s,"mounted")}finally{}},o)},N=(e,t,n,s,a)=>{if(n&&g(e,n),s)for(let o=0;o<s.length;o++)g(e,s[o]);if(a){let n=a.subTree;if(t===n||$s(n.type)&&(n.ssContent===t||n.ssFallback===t)){const t=a.vnode;N(e,t,t.scopeId,t.slotScopeIds,a.parent)}}},D=(e,t,n,s,a,o,i,l,r=0)=>{for(let c=r;c<e.length;c++){const r=e[c]=l?ra(e[c]):la(e[c]);m(null,r,t,n,s,a,o,i,l)}},O=(e,n,s,a,o,l,r)=>{const c=n.el=e.el;let{patchFlag:u,dynamicChildren:d,dirs:f}=n;u|=16&e.patchFlag;const h=e.props||t,g=n.props||t;let v;if(s&&Ls(s,!1),(v=g.onVnodeBeforeUpdate)&&ua(v,s,n,e),f&&an(n,e,s,"beforeUpdate"),s&&Ls(s,!0),(h.innerHTML&&null==g.innerHTML||h.textContent&&null==g.textContent)&&p(c,""),d?P(e.dynamicChildren,d,c,s,a,Ps(n,o),l):r||V(e,n,c,null,s,a,Ps(n,o),l,!1),u>0){if(16&u)M(c,h,g,s,o);else if(2&u&&h.class!==g.class&&i(c,"class",null,g.class,o),4&u&&i(c,"style",h.style,g.style,o),8&u){const e=n.dynamicProps;for(let t=0;t<e.length;t++){const n=e[t],a=h[n],l=g[n];l===a&&"value"!==n||i(c,n,a,l,o,s)}}1&u&&e.children!==n.children&&p(c,n.children)}else r||null!=d||M(c,h,g,s,o);((v=g.onVnodeUpdated)||f)&&Ds(()=>{v&&ua(v,s,n,e),f&&an(n,e,s,"updated")},a)},P=(e,t,n,s,a,o,i)=>{for(let l=0;l<t.length;l++){const r=e[l],c=t[l],u=r.el&&(r.type===js||!Qs(r,c)||198&r.shapeFlag)?f(r.el):n;m(r,c,u,null,s,a,o,i,!0)}},M=(e,n,s,a,o)=>{if(n!==s){if(n!==t)for(const t in n)E(t)||t in s||i(e,t,n[t],null,o,a);for(const t in s){if(E(t))continue;const l=s[t],r=n[t];l!==r&&"value"!==t&&i(e,t,r,l,o,a)}"value"in s&&i(e,"value",n.value,s.value,o)}},R=(e,t,n,s,o,i,l,c,u)=>{const d=t.el=e?e.el:r(""),p=t.anchor=e?e.anchor:r("");let{patchFlag:f,dynamicChildren:h,slotScopeIds:g}=t;g&&(c=c?c.concat(g):g),null==e?(a(d,n,s),a(p,n,s),D(t.children||[],n,p,o,i,l,c,u)):f>0&&64&f&&h&&e.dynamicChildren&&e.dynamicChildren.length===h.length?(P(e.dynamicChildren,h,n,o,i,l,c),(null!=t.key||o&&t===o.subTree)&&As(e,t,!0)):V(e,t,n,p,o,i,l,c,u)},$=(e,t,n,s,a,o,i,l,r)=>{t.slotScopeIds=l,null==e?512&t.shapeFlag?a.ctx.activate(t,n,s,i,r):j(t,n,s,a,o,i,r):F(e,t,r)},j=(e,n,s,a,o,i,l)=>{const r=e.component=function(e,n,s){const a=e.type,o=(n?n.appContext:e.appContext)||da,i={uid:pa++,vnode:e,type:a,parent:n,appContext:o,root:null,next:null,subTree:null,effect:null,update:null,job:null,scope:new ee(!0),render:null,proxy:null,exposed:null,exposeProxy:null,withProxy:null,provides:n?n.provides:Object.create(o.provides),ids:n?n.ids:["",0,0],accessCache:null,renderCache:[],components:null,directives:null,propsOptions:ws(a,o),emitsOptions:cs(a,o),emit:null,emitted:null,propsDefaults:t,inheritAttrs:a.inheritAttrs,ctx:t,data:t,props:t,attrs:t,slots:t,refs:t,setupState:t,setupContext:null,suspense:s,suspenseId:s?s.pendingId:0,asyncDep:null,asyncResolved:!1,isMounted:!1,isUnmounted:!1,isDeactivated:!1,bc:null,c:null,bm:null,m:null,bu:null,u:null,um:null,bum:null,da:null,a:null,rtg:null,rtc:null,ec:null,sp:null};i.ctx={_:i},i.root=n?n.root:i,i.emit=ls.bind(null,i),e.ce&&e.ce(i);return i}(e,a,o);if(xn(e)&&(r.ctx.renderer=ne),function(e,t=!1,n=!1){t&&va(t);const{props:s,children:a}=e.vnode,o=ba(e);(function(e,t,n,s=!1){const a={},o=ms();e.propsDefaults=Object.create(null),bs(e,t,a,o);for(const i in e.propsOptions[0])i in a||(a[i]=void 0);n?e.props=s?a:ut(a):e.type.props?e.props=a:e.props=o,e.attrs=o})(e,s,o,t),((e,t,n)=>{const s=e.slots=ms();if(32&e.vnode.shapeFlag){const e=t._;e?(Is(s,t,n),n&&A(s,"_",e,!0)):ks(t,s)}else t&&Ns(e,t)})(e,a,n||t);const i=o?function(e,t){const n=e.type;e.accessCache=Object.create(null),e.proxy=new Proxy(e.ctx,Vn);const{setup:s}=n;if(s){be();const n=e.setupContext=s.length>1?function(e){const t=t=>{e.exposed=t||{}};return{attrs:new Proxy(e.attrs,Ca),slots:e.slots,emit:e.emit,expose:t}}(e):null,a=ma(e),o=Ut(s,e,0,[e.props,n]),i=b(o);if(_e(),a(),!i&&!e.sp||_n(e)||gn(e),i){if(o.then(ya,ya),t)return o.then(t=>{xa(e,t)}).catch(t=>{jt(t,e,0)});e.asyncDep=o}else xa(e,o)}else wa(e)}(e,t):void 0;t&&va(!1)}(r,!1,l),r.asyncDep){if(o&&o.registerDep(r,B,l),!e.el){const t=r.subTree=na(Bs);_(null,t,n,s),e.placeholder=t.el}}else B(r,e,n,s,o,i,l)},F=(e,t,n)=>{const s=t.component=e.component;if(function(e,t,n){const{props:s,children:a,component:o}=e,{props:i,children:l,patchFlag:r}=t,c=o.emitsOptions;if(t.dirs||t.transition)return!0;if(!(n&&r>=0))return!(!a&&!l||l&&l.$stable)||s!==i&&(s?!i||hs(s,i,c):!!i);if(1024&r)return!0;if(16&r)return s?hs(s,i,c):!!i;if(8&r){const e=t.dynamicProps;for(let t=0;t<e.length;t++){const n=e[t];if(gs(i,s,n)&&!us(c,n))return!0}}return!1}(e,t,n)){if(s.asyncDep&&!s.asyncResolved)return void H(s,t,n);s.next=t,s.update()}else t.el=e.el,s.vnode=t},B=(e,t,n,s,a,o,i)=>{const l=()=>{if(e.isMounted){let{next:t,bu:n,u:s,parent:l,vnode:r}=e;{const n=Ms(e);if(n)return t&&(t.el=r.el,H(e,t,i)),void n.asyncDep.then(()=>{Ds(()=>{e.isUnmounted||c()},a)})}let u,d=t;Ls(e,!1),t?(t.el=r.el,H(e,t,i)):t=r,n&&L(n),(u=t.props&&t.props.onVnodeBeforeUpdate)&&ua(u,l,t,r),Ls(e,!0);const p=ds(e),h=e.subTree;e.subTree=p,m(h,p,f(h.el),Q(h),e,a,o),t.el=p.el,null===d&&function({vnode:e,parent:t,suspense:n},s){for(;t;){const n=t.subTree;if(n.suspense&&n.suspense.activeBranch===e&&(n.suspense.vnode.el=n.el=s,e=n),n!==e)break;(e=t.vnode).el=s,t=t.parent}n&&n.activeBranch===e&&(n.vnode.el=s)}(e,p.el),s&&Ds(s,a),(u=t.props&&t.props.onVnodeUpdated)&&Ds(()=>ua(u,l,t,r),a)}else{let i;const{el:l,props:r}=t,{bm:c,m:u,parent:d,root:p,type:f}=e,h=_n(t);Ls(e,!1),c&&L(c),!h&&(i=r&&r.onVnodeBeforeMount)&&ua(i,d,t),Ls(e,!0);{p.ce&&p.ce._hasShadowRoot()&&p.ce._injectChildStyle(f,e.parent?e.parent.type:void 0);const i=e.subTree=ds(e);m(null,i,n,s,e,a,o),t.el=i.el}if(u&&Ds(u,a),!h&&(i=r&&r.onVnodeMounted)){const e=t;Ds(()=>ua(i,d,e),a)}(256&t.shapeFlag||d&&_n(d.vnode)&&256&d.vnode.shapeFlag)&&e.a&&Ds(e.a,a),e.isMounted=!0,t=n=s=null}};e.scope.on();const r=e.effect=new ae(l);e.scope.off();const c=e.update=r.run.bind(r),u=e.job=r.runIfDirty.bind(r);u.i=e,u.id=e.uid,r.scheduler=()=>Wt(u),Ls(e,!0),c()},H=(e,n,s)=>{n.component=e;const a=e.vnode.props;e.vnode=n,e.next=null,function(e,t,n,s){const{props:a,attrs:o,vnode:{patchFlag:i}}=e,l=mt(a),[r]=e.propsOptions;let c=!1;if(!(s||i>0)||16&i){let s;bs(e,t,a,o)&&(c=!0);for(const o in l)t&&(u(t,o)||(s=I(o))!==o&&u(t,s))||(r?!n||void 0===n[o]&&void 0===n[s]||(a[o]=_s(r,l,o,void 0,e,!0)):delete a[o]);if(o!==l)for(const e in o)t&&u(t,e)||(delete o[e],c=!0)}else if(8&i){const n=e.vnode.dynamicProps;for(let s=0;s<n.length;s++){let i=n[s];if(us(e.emitsOptions,i))continue;const d=t[i];if(r)if(u(o,i))d!==o[i]&&(o[i]=d,c=!0);else{const t=k(i);a[t]=_s(r,l,t,d,e,!1)}else d!==o[i]&&(o[i]=d,c=!0)}}c&&Oe(e.attrs,"set","")}(e,n.props,a,s),((e,n,s)=>{const{vnode:a,slots:o}=e;let i=!0,l=t;if(32&a.shapeFlag){const e=n._;e?s&&1===e?i=!1:Is(o,n,s):(i=!n.$stable,ks(n,o)),l=n}else n&&(Ns(e,n),l={default:1});if(i)for(const t in o)Es(t)||null!=l[t]||delete o[t]})(e,n.children,s),be(),Yt(e),_e()},V=(e,t,n,s,a,o,i,l,r=!1)=>{const c=e&&e.children,u=e?e.shapeFlag:0,d=t.children,{patchFlag:f,shapeFlag:h}=t;if(f>0){if(128&f)return void K(c,d,n,s,a,o,i,l,r);if(256&f)return void z(c,d,n,s,a,o,i,l,r)}8&h?(16&u&&J(c,a,o),d!==c&&p(n,d)):16&u?16&h?K(c,d,n,s,a,o,i,l,r):J(c,a,o,!0):(8&u&&p(n,""),16&h&&D(d,n,s,a,o,i,l,r))},z=(e,t,s,a,o,i,l,r,c)=>{t=t||n;const u=(e=e||n).length,d=t.length,p=Math.min(u,d);let f;for(f=0;f<p;f++){const n=t[f]=c?ra(t[f]):la(t[f]);m(e[f],n,s,null,o,i,l,r,c)}u>d?J(e,o,i,!0,!1,p):D(t,s,a,o,i,l,r,c,p)},K=(e,t,s,a,o,i,l,r,c)=>{let u=0;const d=t.length;let p=e.length-1,f=d-1;for(;u<=p&&u<=f;){const n=e[u],a=t[u]=c?ra(t[u]):la(t[u]);if(!Qs(n,a))break;m(n,a,s,null,o,i,l,r,c),u++}for(;u<=p&&u<=f;){const n=e[p],a=t[f]=c?ra(t[f]):la(t[f]);if(!Qs(n,a))break;m(n,a,s,null,o,i,l,r,c),p--,f--}if(u>p){if(u<=f){const e=f+1,n=e<d?t[e].el:a;for(;u<=f;)m(null,t[u]=c?ra(t[u]):la(t[u]),s,n,o,i,l,r,c),u++}}else if(u>f)for(;u<=p;)G(e[u],o,i,!0),u++;else{const h=u,g=u,v=new Map;for(u=g;u<=f;u++){const e=t[u]=c?ra(t[u]):la(t[u]);null!=e.key&&v.set(e.key,u)}let y,b=0;const _=f-g+1;let x=!1,w=0;const C=new Array(_);for(u=0;u<_;u++)C[u]=0;for(u=h;u<=p;u++){const n=e[u];if(b>=_){G(n,o,i,!0);continue}let a;if(null!=n.key)a=v.get(n.key);else for(y=g;y<=f;y++)if(0===C[y-g]&&Qs(n,t[y])){a=y;break}void 0===a?G(n,o,i,!0):(C[a-g]=u+1,a>=w?w=a:x=!0,m(n,t[a],s,null,o,i,l,r,c),b++)}const E=x?function(e){const t=e.slice(),n=[0];let s,a,o,i,l;const r=e.length;for(s=0;s<r;s++){const r=e[s];if(0!==r){if(a=n[n.length-1],e[a]<r){t[s]=a,n.push(s);continue}for(o=0,i=n.length-1;o<i;)l=o+i>>1,e[n[l]]<r?o=l+1:i=l;r<e[n[o]]&&(o>0&&(t[s]=n[o-1]),n[o]=s)}}o=n.length,i=n[o-1];for(;o-- >0;)n[o]=i,i=t[i];return n}(C):n;for(y=E.length-1,u=_-1;u>=0;u--){const e=g+u,n=t[e],p=t[e+1],f=e+1<d?p.el||Us(p):a;0===C[u]?m(null,n,s,f,o,i,l,r,c):x&&(y<0||u!==E[y]?X(n,s,f,2):y--)}}},X=(e,t,n,s,i=null)=>{const{el:l,type:r,transition:c,children:u,shapeFlag:d}=e;if(6&d)return void X(e.component.subTree,t,n,s);if(128&d)return void e.suspense.move(t,n,s);if(64&d)return void r.move(e,t,n,ne);if(r===js){a(l,t,n);for(let e=0;e<u.length;e++)X(u[e],t,n,s);return void a(e.anchor,t,n)}if(r===Hs)return void w(e,t,n);if(2!==s&&1&d&&c)if(0===s)c.persisted&&!l[fn]?a(l,t,n):(c.beforeEnter(l),a(l,t,n),Ds(()=>c.enter(l),i));else{const{leave:s,delayLeave:i,afterLeave:r}=c,u=()=>{e.ctx.isUnmounted?o(l):a(l,t,n)},d=()=>{const e=l._isLeaving||!!l[fn];l._isLeaving&&l[fn](!0),c.persisted&&!e?u():s(l,()=>{u(),r&&r()})};i?i(l,u,d):d()}else a(l,t,n)},G=(e,t,n,s=!1,a=!1)=>{const{type:o,props:i,ref:l,children:r,dynamicChildren:c,shapeFlag:u,patchFlag:d,dirs:p,cacheIndex:f,memo:h}=e;if(-2===d&&(a=!1),null!=l&&(be(),yn(l,null,n,e,!0),_e()),null!=f&&(t.renderCache[f]=void 0),256&u)return void t.ctx.deactivate(e);const g=1&u&&p,v=!_n(e);let m;if(v&&(m=i&&i.onVnodeBeforeUnmount)&&ua(m,t,e),6&u)Y(e.component,n,s);else{if(128&u)return void e.suspense.unmount(n,s);g&&an(e,null,t,"beforeUnmount"),64&u?e.type.remove(e,t,n,ne,s):c&&!c.hasOnce&&(o!==js||d>0&&64&d)?J(c,t,n,!1,!0):(o===js&&384&d||!a&&16&u)&&J(r,t,n),s&&W(e)}const y=null!=h&&null==f;(v&&(m=i&&i.onVnodeUnmounted)||g||y)&&Ds(()=>{m&&ua(m,t,e),g&&an(e,null,t,"unmounted"),y&&(e.el=null)},n)},W=e=>{const{type:t,el:n,anchor:s,transition:a}=e;if(t===js)return void q(n,s);if(t===Hs)return void C(e);const i=()=>{o(n),a&&!a.persisted&&a.afterLeave&&a.afterLeave()};if(1&e.shapeFlag&&a&&!a.persisted){const{leave:t,delayLeave:s}=a,o=()=>t(n,i);s?s(e.el,i,o):o()}else i()},q=(e,t)=>{let n;for(;e!==t;)n=h(e),o(e),e=n;o(t)},Y=(e,t,n)=>{const{bum:s,scope:a,job:o,subTree:i,um:l,m:r,a:c}=e;Rs(r),Rs(c),s&&L(s),a.stop(),o&&(o.flags|=8,G(i,e,t,n)),l&&Ds(l,t),Ds(()=>{e.isUnmounted=!0},t)},J=(e,t,n,s=!1,a=!1,o=0)=>{for(let i=o;i<e.length;i++)G(e[i],t,n,s,a)},Q=e=>{if(6&e.shapeFlag)return Q(e.component.subTree);if(128&e.shapeFlag)return e.suspense.next();const t=h(e.anchor||e.el),n=t&&t[pn];return n?h(n):t};let Z=!1;const te=(e,t,n)=>{let s;null==e?t._vnode&&(G(t._vnode,null,null,!0),s=t._vnode.component):m(t._vnode||null,e,t,null,null,null,n),t._vnode=e,Z||(Z=!0,Yt(s),Jt(),Z=!1)},ne={p:m,um:G,m:X,r:W,mt:j,mc:D,pc:V,pbc:P,n:Q,o:e};let se;return{render:te,hydrate:se,createApp:os(te)}}(e)}function Ps({type:e,props:t},n){return"svg"===n&&"foreignObject"===e||"mathml"===n&&"annotation-xml"===e&&t&&t.encoding&&t.encoding.includes("html")?void 0:n}function Ls({effect:e,job:t},n){n?(e.flags|=32,t.flags|=4):(e.flags&=-33,t.flags&=-5)}function As(e,t,n=!1){const s=e.children,a=t.children;if(d(s)&&d(a))for(let o=0;o<s.length;o++){const e=s[o];let t=a[o];1&t.shapeFlag&&!t.dynamicChildren&&((t.patchFlag<=0||32===t.patchFlag)&&(t=a[o]=ra(a[o]),t.el=e.el),n||-2===t.patchFlag||As(e,t)),t.type===Fs&&(-1===t.patchFlag&&(t=a[o]=ra(t)),t.el=e.el),t.type!==Bs||t.el||(t.el=e.el)}}function Ms(e){const t=e.subTree.component;if(t)return t.asyncDep&&!t.asyncResolved?t:Ms(t)}function Rs(e){if(e)for(let t=0;t<e.length;t++)e[t].flags|=8}function Us(e){if(e.placeholder)return e.placeholder;const t=e.component;return t?Us(t.subTree):null}const $s=e=>e.__isSuspense;const js=Symbol.for("v-fgt"),Fs=Symbol.for("v-txt"),Bs=Symbol.for("v-cmt"),Hs=Symbol.for("v-stc"),Vs=[];let zs=null;function Ks(e=!1){Vs.push(zs=e?null:[])}let Xs=1;function Gs(e,t=!1){Xs+=e,e<0&&zs&&t&&(zs.hasOnce=!0)}function Ws(e){return e.dynamicChildren=Xs>0?zs||n:null,Vs.pop(),zs=Vs[Vs.length-1]||null,Xs>0&&zs&&zs.push(e),e}function qs(e,t,n,s,a,o){return Ws(ta(e,t,n,s,a,o,!0))}function Ys(e,t,n,s,a){return Ws(na(e,t,n,s,a,!0))}function Js(e){return!!e&&!0===e.__v_isVNode}function Qs(e,t){return e.type===t.type&&e.key===t.key}const Zs=({key:e})=>null!=e?e:null,ea=({ref:e,ref_key:t,ref_for:n})=>("number"==typeof e&&(e=""+e),null!=e?v(e)||xt(e)||g(e)?{i:en,r:e,k:t,f:!!n}:e:null);function ta(e,t=null,n=null,s=0,a=null,o=(e===js?0:1),i=!1,l=!1){const r={__v_isVNode:!0,__v_skip:!0,type:e,props:t,key:t&&Zs(t),ref:t&&ea(t),scopeId:tn,slotScopeIds:null,children:n,component:null,suspense:null,ssContent:null,ssFallback:null,dirs:null,transition:null,el:null,anchor:null,target:null,targetStart:null,targetAnchor:null,staticCount:0,shapeFlag:o,patchFlag:s,dynamicProps:a,dynamicChildren:null,appContext:null,ctx:en};return l?(ca(r,n),128&o&&e.normalize(r)):n&&(r.shapeFlag|=v(n)?8:16),Xs>0&&!i&&zs&&(r.patchFlag>0||6&o)&&32!==r.patchFlag&&zs.push(r),r}const na=function(e,t=null,n=null,s=0,a=null,o=!1){e&&e!==$n||(e=Bs);if(Js(e)){const s=sa(e,t,!0);return n&&ca(s,n),Xs>0&&!o&&zs&&(6&s.shapeFlag?zs[zs.indexOf(e)]=s:zs.push(s)),s.patchFlag=-2,s}i=e,g(i)&&"__vccOpts"in i&&(e=e.__vccOpts);var i;if(t){t=function(e){return e?vt(e)||ys(e)?l({},e):e:null}(t);let{class:e,style:n}=t;e&&!v(e)&&(t.class=V(e)),y(n)&&(vt(n)&&!d(n)&&(n=l({},n)),t.style=$(n))}const r=v(e)?1:$s(e)?128:(e=>e.__isTeleport)(e)?64:y(e)?4:g(e)?2:0;return ta(e,t,n,s,a,r,o,!0)};function sa(e,t,n=!1,s=!1){const{props:a,ref:l,patchFlag:r,children:c,transition:u}=e,p=t?function(...e){const t={};for(let n=0;n<e.length;n++){const s=e[n];for(const e in s)if("class"===e)t.class!==s.class&&(t.class=V([t.class,s.class]));else if("style"===e)t.style=$([t.style,s.style]);else if(o(e)){const n=t[e],a=s[e];!a||n===a||d(n)&&n.includes(a)?null!=a||null!=n||i(e)||(t[e]=a):t[e]=n?[].concat(n,a):a}else""!==e&&(t[e]=s[e])}return t}(a||{},t):a,f={__v_isVNode:!0,__v_skip:!0,type:e.type,props:p,key:p&&Zs(p),ref:t&&t.ref?n&&l?d(l)?l.concat(ea(t)):[l,ea(t)]:ea(t):l,scopeId:e.scopeId,slotScopeIds:e.slotScopeIds,children:c,target:e.target,targetStart:e.targetStart,targetAnchor:e.targetAnchor,staticCount:e.staticCount,shapeFlag:e.shapeFlag,patchFlag:t&&e.type!==js?-1===r?16:16|r:r,dynamicProps:e.dynamicProps,dynamicChildren:e.dynamicChildren,appContext:e.appContext,dirs:e.dirs,transition:u,component:e.component,suspense:e.suspense,ssContent:e.ssContent&&sa(e.ssContent),ssFallback:e.ssFallback&&sa(e.ssFallback),placeholder:e.placeholder,el:e.el,anchor:e.anchor,ctx:e.ctx,ce:e.ce};return u&&s&&hn(f,u.clone(f)),f}function aa(e=" ",t=0){return na(Fs,null,e,t)}function oa(e,t){const n=na(Hs,null,e);return n.staticCount=t,n}function ia(e="",t=!1){return t?(Ks(),Ys(Bs,null,e)):na(Bs,null,e)}function la(e){return null==e||"boolean"==typeof e?na(Bs):d(e)?na(js,null,e.slice()):Js(e)?ra(e):na(Fs,null,String(e))}function ra(e){return null===e.el&&-1!==e.patchFlag||e.memo?e:sa(e)}function ca(e,t){let n=0;const{shapeFlag:s}=e;if(null==t)t=null;else if(d(t))n=16;else if("object"==typeof t){if(65&s){const n=t.default;return void(n&&(n._c&&(n._d=!1),ca(e,n()),n._c&&(n._d=!0)))}{n=32;const s=t._;s||ys(t)?3===s&&en&&(1===en.slots._?t._=1:(t._=2,e.patchFlag|=1024)):t._ctx=en}}else g(t)?(t={default:t,_ctx:en},n=32):(t=String(t),64&s?(n=16,t=[aa(t)]):n=8);e.children=t,e.shapeFlag|=n}function ua(e,t,n,s=null){$t(e,t,7,[n,s])}const da=ss();let pa=0;let fa=null;const ha=()=>fa||en;let ga,va;{const e=U(),t=(t,n)=>{let s;return(s=e[t])||(s=e[t]=[]),s.push(n),e=>{s.length>1?s.forEach(t=>t(e)):s[0](e)}};ga=t("__VUE_INSTANCE_SETTERS__",e=>fa=e),va=t("__VUE_SSR_SETTERS__",e=>_a=e)}const ma=e=>{const t=fa;return ga(e),e.scope.on(),()=>{e.scope.off(),ga(t)}},ya=()=>{fa&&fa.scope.off(),ga(null)};function ba(e){return 4&e.vnode.shapeFlag}let _a=!1;function xa(e,t,n){g(t)?e.type.__ssrInlineRender?e.ssrRender=t:e.render=t:y(t)&&(e.setupState=St(t)),wa(e)}function wa(e,t,n){const a=e.type;e.render||(e.render=a.render||s);{const t=ma(e);be();try{Xn(e)}finally{_e(),t()}}}const Ca={get:(e,t)=>(De(e,0,""),e[t])};function Ea(e){return e.exposed?e.exposeProxy||(e.exposeProxy=new Proxy(St(yt(e.exposed)),{get:(t,n)=>n in t?t[n]:n in Bn?Bn[n](e):void 0,has:(e,t)=>t in e||t in Bn})):e.proxy}const Ta=(e,t)=>Ot(e,0,_a),Sa="3.5.35";let ka;const Na="undefined"!=typeof window&&window.trustedTypes;if(Na)try{ka=Na.createPolicy("vue",{createHTML:e=>e})}catch(zr){}const Ia=ka?e=>ka.createHTML(e):e=>e,Da="undefined"!=typeof document?document:null,Oa=Da&&Da.createElement("template"),Pa={insert:(e,t,n)=>{t.insertBefore(e,n||null)},remove:e=>{const t=e.parentNode;t&&t.removeChild(e)},createElement:(e,t,n,s)=>{const a="svg"===t?Da.createElementNS("http://www.w3.org/2000/svg",e):"mathml"===t?Da.createElementNS("http://www.w3.org/1998/Math/MathML",e):n?Da.createElement(e,{is:n}):Da.createElement(e);return"select"===e&&s&&null!=s.multiple&&a.setAttribute("multiple",s.multiple),a},createText:e=>Da.createTextNode(e),createComment:e=>Da.createComment(e),setText:(e,t)=>{e.nodeValue=t},setElementText:(e,t)=>{e.textContent=t},parentNode:e=>e.parentNode,nextSibling:e=>e.nextSibling,querySelector:e=>Da.querySelector(e),setScopeId(e,t){e.setAttribute(t,"")},insertStaticContent(e,t,n,s,a,o){const i=n?n.previousSibling:t.lastChild;if(a&&(a===o||a.nextSibling))for(;t.insertBefore(a.cloneNode(!0),n),a!==o&&(a=a.nextSibling););else{Oa.innerHTML=Ia("svg"===s?`<svg>${e}</svg>`:"mathml"===s?`<math>${e}</math>`:e);const a=Oa.content;if("svg"===s||"mathml"===s){const e=a.firstChild;for(;e.firstChild;)a.appendChild(e.firstChild);a.removeChild(e)}t.insertBefore(a,n)}return[i?i.nextSibling:t.firstChild,n?n.previousSibling:t.lastChild]}},La=Symbol("_vtc");const Aa=Symbol("_vod"),Ma=Symbol("_vsh"),Ra=Symbol(""),Ua=/(?:^|;)\s*display\s*:/;const $a=/\s*!important$/;function ja(e,t,n){if(d(n))n.forEach(n=>ja(e,t,n));else if(null==n&&(n=""),t.startsWith("--"))e.setProperty(t,n);else{const s=function(e,t){const n=Ba[t];if(n)return n;let s=k(t);if("filter"!==s&&s in e)return Ba[t]=s;s=D(s);for(let a=0;a<Fa.length;a++){const n=Fa[a]+s;if(n in e)return Ba[t]=n}return t}(e,t);$a.test(n)?e.setProperty(I(s),n.replace($a,""),"important"):e[s]=n}}const Fa=["Webkit","Moz","ms"],Ba={};function Ha(e,t,n,s){return"TEXTAREA"===e.tagName&&("width"===t||"height"===t)&&v(s)&&n===s}const Va="http://www.w3.org/1999/xlink";function za(e,t,n,s,a,o=z(t)){s&&t.startsWith("xlink:")?null==n?e.removeAttributeNS(Va,t.slice(6,t.length)):e.setAttributeNS(Va,t,n):null==n||o&&!K(n)?e.removeAttribute(t):e.setAttribute(t,o?"":m(n)?String(n):n)}function Ka(e,t,n,s,a){if("innerHTML"===t||"textContent"===t)return void(null!=n&&(e[t]="innerHTML"===t?Ia(n):n));const o=e.tagName;if("value"===t&&"PROGRESS"!==o&&!o.includes("-")){const s="OPTION"===o?e.getAttribute("value")||"":e.value,a=null==n?"checkbox"===e.type?"on":"":String(n);return s===a&&"_value"in e||(e.value=a),null==n&&e.removeAttribute(t),void(e._value=n)}let i=!1;if(""===n||null==n){const s=typeof e[t];"boolean"===s?n=K(n):null==n&&"string"===s?(n="",i=!0):"number"===s&&(n=0,i=!0)}try{e[t]=n}catch(zr){}i&&e.removeAttribute(a||t)}function Xa(e,t,n,s){e.addEventListener(t,n,s)}const Ga=Symbol("_vei");function Wa(e,t,n,s,a=null){const o=e[Ga]||(e[Ga]={}),i=o[t];if(s&&i)i.value=s;else{const[n,l]=function(e){let t;if(qa.test(e)){let n;for(t={};n=e.match(qa);)e=e.slice(0,e.length-n[0].length),t[n[0].toLowerCase()]=!0}const n=":"===e[2]?e.slice(3):I(e.slice(2));return[n,t]}(t);if(s){const i=o[t]=function(e,t){const n=e=>{if(e._vts){if(e._vts<=n.attached)return}else e._vts=Date.now();const s=n.value;if(d(s)){const n=e.stopImmediatePropagation;e.stopImmediatePropagation=()=>{n.call(e),e._stopped=!0};const a=s.slice(),o=[e];for(let s=0;s<a.length&&!e._stopped;s++){const e=a[s];e&&$t(e,t,5,o)}}else $t(s,t,5,[e])};return n.value=e,n.attached=Qa(),n}(s,a);Xa(e,n,i,l)}else i&&(!function(e,t,n,s){e.removeEventListener(t,n,s)}(e,n,i,l),o[t]=void 0)}}const qa=/(?:Once|Passive|Capture)$/;let Ya=0;const Ja=Promise.resolve(),Qa=()=>Ya||(Ja.then(()=>Ya=0),Ya=Date.now());const Za=e=>111===e.charCodeAt(0)&&110===e.charCodeAt(1)&&e.charCodeAt(2)>96&&e.charCodeAt(2)<123;const eo=e=>{const t=e.props["onUpdate:modelValue"]||!1;return d(t)?e=>L(t,e):t};function to(e){e.target.composing=!0}function no(e){const t=e.target;t.composing&&(t.composing=!1,t.dispatchEvent(new Event("input")))}const so=Symbol("_assign");function ao(e,t,n){return t&&(e=e.trim()),n&&(e=M(e)),e}const oo={created(e,{modifiers:{lazy:t,trim:n,number:s}},a){e[so]=eo(a);const o=s||a.props&&"number"===a.props.type;Xa(e,t?"change":"input",t=>{t.target.composing||e[so](ao(e.value,n,o))}),(n||o)&&Xa(e,"change",()=>{e.value=ao(e.value,n,o)}),t||(Xa(e,"compositionstart",to),Xa(e,"compositionend",no),Xa(e,"change",no))},mounted(e,{value:t}){e.value=null==t?"":t},beforeUpdate(e,{value:t,oldValue:n,modifiers:{lazy:s,trim:a,number:o}},i){if(e[so]=eo(i),e.composing)return;const l=null==t?"":t;if((!o&&"number"!==e.type||/^0\d/.test(e.value)?e.value:M(e.value))===l)return;const r=e.getRootNode();if((r instanceof Document||r instanceof ShadowRoot)&&r.activeElement===e&&"range"!==e.type){if(s&&t===n)return;if(a&&e.value.trim()===l)return}e.value=l}},io={deep:!0,created(e,{value:t,modifiers:{number:n}},s){const a=f(t);Xa(e,"change",()=>{const t=Array.prototype.filter.call(e.options,e=>e.selected).map(e=>n?M(ro(e)):ro(e));e[so](e.multiple?a?new Set(t):t:t[0]),e._assigning=!0,Gt(()=>{e._assigning=!1})}),e[so]=eo(s)},mounted(e,{value:t}){lo(e,t)},beforeUpdate(e,t,n){e[so]=eo(n)},updated(e,{value:t}){e._assigning||lo(e,t)}};function lo(e,t){const n=e.multiple,s=d(t);if(!n||s||f(t)){for(let a=0,o=e.options.length;a<o;a++){const o=e.options[a],i=ro(o);if(n)if(s){const e=typeof i;o.selected="string"===e||"number"===e?t.some(e=>String(e)===String(i)):G(t,i)>-1}else o.selected=t.has(i);else if(X(ro(o),t))return void(e.selectedIndex!==a&&(e.selectedIndex=a))}n||-1===e.selectedIndex||(e.selectedIndex=-1)}}function ro(e){return"_value"in e?e._value:e.value}const co=["ctrl","shift","alt","meta"],uo={stop:e=>e.stopPropagation(),prevent:e=>e.preventDefault(),self:e=>e.target!==e.currentTarget,ctrl:e=>!e.ctrlKey,shift:e=>!e.shiftKey,alt:e=>!e.altKey,meta:e=>!e.metaKey,left:e=>"button"in e&&0!==e.button,middle:e=>"button"in e&&1!==e.button,right:e=>"button"in e&&2!==e.button,exact:(e,t)=>co.some(n=>e[`${n}Key`]&&!t.includes(n))},po=(e,t)=>{if(!e)return e;const n=e._withMods||(e._withMods={}),s=t.join(".");return n[s]||(n[s]=(n,...s)=>{for(let e=0;e<t.length;e++){const s=uo[t[e]];if(s&&s(n,t))return}return e(n,...s)})},fo=l({patchProp:(e,t,n,s,a,l)=>{const r="svg"===a;"class"===t?function(e,t,n){const s=e[La];s&&(t=(t?[t,...s]:[...s]).join(" ")),null==t?e.removeAttribute("class"):n?e.setAttribute("class",t):e.className=t}(e,s,r):"style"===t?function(e,t,n){const s=e.style,a=v(n);let o=!1;if(n&&!a){if(t)if(v(t))for(const e of t.split(";")){const t=e.slice(0,e.indexOf(":")).trim();null==n[t]&&ja(s,t,"")}else for(const e in t)null==n[e]&&ja(s,e,"");for(const a in n){"display"===a&&(o=!0);const i=n[a];null!=i?Ha(e,a,!v(t)&&t?t[a]:void 0,i)||ja(s,a,i):ja(s,a,"")}}else if(a){if(t!==n){const e=s[Ra];e&&(n+=";"+e),s.cssText=n,o=Ua.test(n)}}else t&&e.removeAttribute("style");Aa in e&&(e[Aa]=o?s.display:"",e[Ma]&&(s.display="none"))}(e,n,s):o(t)?i(t)||Wa(e,t,0,s,l):("."===t[0]?(t=t.slice(1),1):"^"===t[0]?(t=t.slice(1),0):function(e,t,n,s){if(s)return"innerHTML"===t||"textContent"===t||!!(t in e&&Za(t)&&g(n));if("spellcheck"===t||"draggable"===t||"translate"===t||"autocorrect"===t)return!1;if("sandbox"===t&&"IFRAME"===e.tagName)return!1;if("form"===t)return!1;if("list"===t&&"INPUT"===e.tagName)return!1;if("type"===t&&"TEXTAREA"===e.tagName)return!1;if("width"===t||"height"===t){const t=e.tagName;if("IMG"===t||"VIDEO"===t||"CANVAS"===t||"SOURCE"===t)return!1}if(Za(t)&&v(n))return!1;return t in e}(e,t,s,r))?(Ka(e,t,s),e.tagName.includes("-")||"value"!==t&&"checked"!==t&&"selected"!==t||za(e,t,s,r,0,"value"!==t)):e._isVueCE&&(function(e,t){const n=e._def.props;if(!n)return!1;const s=k(t);return Array.isArray(n)?n.some(e=>k(e)===s):Object.keys(n).some(e=>k(e)===s)}(e,t)||e._def.__asyncLoader&&(/[A-Z]/.test(t)||!v(s)))?Ka(e,k(t),s,0,t):("true-value"===t?e._trueValue=s:"false-value"===t&&(e._falseValue=s),za(e,t,s,r))}},Pa);let ho;const go=(...e)=>{const t=(ho||(ho=Os(fo))).createApp(...e),{mount:n}=t;return t.mount=e=>{const s=function(e){if(v(e)){return document.querySelector(e)}return e}(e);if(!s)return;const a=t._component;g(a)||a.render||a.template||(a.template=s.innerHTML),1===s.nodeType&&(s.textContent="");const o=n(s,!1,function(e){if(e instanceof SVGElement)return"svg";if("function"==typeof MathMLElement&&e instanceof MathMLElement)return"mathml"}(s));return s instanceof Element&&(s.removeAttribute("v-cloak"),s.setAttribute("data-v-app","")),o},t};let vo;const mo=e=>vo=e,yo=Symbol();function bo(e){return e&&"object"==typeof e&&"[object Object]"===Object.prototype.toString.call(e)&&"function"!=typeof e.toJSON}var _o,xo;(xo=_o||(_o={})).direct="direct",xo.patchObject="patch object",xo.patchFunction="patch function";const wo=()=>{};function Co(e,t,n,s=wo){e.push(t);const a=()=>{const n=e.indexOf(t);n>-1&&(e.splice(n,1),s())};var o;return!n&&ne()&&(o=a,Q&&Q.cleanups.push(o)),a}function Eo(e,...t){e.slice().forEach(e=>{e(...t)})}const To=e=>e(),So=Symbol(),ko=Symbol();function No(e,t){e instanceof Map&&t instanceof Map?t.forEach((t,n)=>e.set(n,t)):e instanceof Set&&t instanceof Set&&t.forEach(e.add,e);for(const n in t){if(!t.hasOwnProperty(n))continue;const s=t[n],a=e[n];bo(a)&&bo(s)&&e.hasOwnProperty(n)&&!xt(s)&&!ft(s)?e[n]=No(a,s):e[n]=s}return e}const Io=Symbol();function Do(e){return!bo(e)||!e.hasOwnProperty(Io)}const{assign:Oo}=Object;function Po(e){return!(!xt(e)||!e.effect)}function Lo(e,t,n={},s,a,o){let i;const l=Oo({actions:{}},n),r={deep:!0};let c,u,d,p=[],f=[];const h=s.state.value[e];let g;function v(t){let n;c=u=!1,"function"==typeof t?(t(s.state.value[e]),n={type:_o.patchFunction,storeId:e,events:d}):(No(s.state.value[e],t),n={type:_o.patchObject,payload:t,storeId:e,events:d});const a=g=Symbol();Gt().then(()=>{g===a&&(c=!0)}),u=!0,Eo(p,n,s.state.value[e])}o||h||(s.state.value[e]={});const m=o?function(){const{state:e}=n,t=e?e():{};this.$patch(e=>{Oo(e,t)})}:wo;const y=(t,n="")=>{if(So in t)return t[ko]=n,t;const a=function(){mo(s);const n=Array.from(arguments),o=[],i=[];let l;Eo(f,{args:n,name:a[ko],store:b,after:function(e){o.push(e)},onError:function(e){i.push(e)}});try{l=t.apply(this&&this.$id===e?this:b,n)}catch(r){throw Eo(i,r),r}return l instanceof Promise?l.then(e=>(Eo(o,e),e)).catch(e=>(Eo(i,e),Promise.reject(e))):(Eo(o,l),l)};return a[So]=!0,a[ko]=n,a},b=ct({_p:s,$id:e,$onAction:Co.bind(null,f),$patch:v,$reset:m,$subscribe(t,n={}){const a=Co(p,t,n.detached,()=>o()),o=i.run(()=>rn(()=>s.state.value[e],s=>{("sync"===n.flush?u:c)&&t({storeId:e,type:_o.direct,events:d},s)},Oo({},r,n)));return a},$dispose:function(){i.stop(),p=[],f=[],s._s.delete(e)}});s._s.set(e,b);const _=(s._a&&s._a.runWithContext||To)(()=>s._e.run(()=>(i=te()).run(()=>t({action:y}))));for(const x in _){const t=_[x];if(xt(t)&&!Po(t)||ft(t))o||(h&&Do(t)&&(xt(t)?t.value=h[x]:No(t,h[x])),s.state.value[e][x]=t);else if("function"==typeof t){const e=y(t,x);_[x]=e,l.actions[x]=t}}return Oo(b,_),Oo(mt(b),_),Object.defineProperty(b,"$state",{get:()=>s.state.value[e],set:e=>{v(t=>{Oo(t,e)})}}),s._p.forEach(e=>{Oo(b,i.run(()=>e({store:b,app:s._a,pinia:s,options:l})))}),h&&o&&n.hydrate&&n.hydrate(b.$state,h),c=!0,u=!0,b}function Ao(e,t,n){let s,a;const o="function"==typeof t;function i(e,n){const i=!(!ha()&&!is);(e=e||(i?on(yo,null):null))&&mo(e),(e=vo)._s.has(s)||(o?Lo(s,t,a,e):function(e,t,n){const{state:s,actions:a,getters:o}=t,i=n.state.value[e];let l;l=Lo(e,function(){i||(n.state.value[e]=s?s():{});const t=kt(n.state.value[e]);return Oo(t,a,Object.keys(o||{}).reduce((t,s)=>(t[s]=yt(Ta(()=>{mo(n);const t=n._s.get(e);return o[s].call(t,t)})),t),{}))},t,n,0,!0)}(s,a,e));return e._s.get(s)}return"string"==typeof e?(s=e,a=o?n:t):(a=e,s=e.id),i.$id=s,i}const Mo="acu_pending_deletions",Ro="acu_active_tab",Uo="acu_ui_config_v19",$o="acu_data_snapshot_v19",jo="acu_ui_collapsed_state",Fo="acu_table_heights_v19",Bo="acu_table_styles_v19",Ho="🔗 人物关系",Vo=["acu-btn-save-global","acu-btn-collapse","acu-btn-force-update","acu-btn-settings"],zo=[{id:"acu-btn-save-global",icon:"fa-save",title:"保存所有修改"},{id:"acu-btn-settings",icon:"fa-cog",title:"全能设置"},{id:"acu-btn-refresh",icon:"fa-sync-alt",title:"重新加载"},{id:"acu-btn-collapse",icon:"fa-chevron-down",title:"收起面板 (旧版)"},{id:"acu-btn-force-update",icon:"fa-bolt",title:"手动触发后端更新"},{id:"acu-btn-open-editor",icon:"fa-table-columns",title:"打开内置编辑器"},{id:"acu-btn-open-db-settings",icon:"fa-database",title:"打开数据库原生设置"}],Ko=[{id:"native",name:"跟随酒馆 (Native)",icon:"fa-palette"},{id:"retro",name:"复古羊皮 (Retro)",icon:"fa-scroll"},{id:"dark",name:"极夜深空 (Dark)",icon:"fa-moon"},{id:"modern",name:"现代清爽 (Modern)",icon:"fa-sun"},{id:"forest",name:"森之物语 (Forest)",icon:"fa-tree"},{id:"ocean",name:"深海幽蓝 (Ocean)",icon:"fa-water"},{id:"cyber",name:"赛博霓虹 (Cyber)",icon:"fa-bolt"},{id:"sakura",name:"樱花之恋 (Sakura)",icon:"fa-fan"},{id:"lavender",name:"紫罗兰梦 (Lavender)",icon:"fa-moon"},{id:"palace",name:"蔷薇王座 (Palace)",icon:"fa-crown"},{id:"coffee",name:"焦糖拿铁 (Coffee)",icon:"fa-mug-hot"},{id:"wuxia",name:"水墨修仙 (Wuxia)",icon:"fa-yin-yang"},{id:"mecha",name:"机甲风暴 (Mecha)",icon:"fa-robot"},{id:"gothic",name:"暗黑深渊 (Gothic)",icon:"fa-skull"}],Xo=[{id:"default",name:"系统默认 (Modern)",val:"'Segoe UI', 'Microsoft YaHei', sans-serif"},{id:"hanchan",name:"寒蝉全圆体",val:'"寒蝉全圆体", sans-serif'},{id:"maple",name:"Maple Mono (代码风)",val:'"Maple Mono NF CN", monospace'},{id:"huiwen",name:"汇文明朝体 (Huiwen)",val:'"Huiwen-mincho", serif'},{id:"cooper",name:"Cooper正楷",val:'"CooperZhengKai", serif'},{id:"yffyt",name:"YFFYT (艺术体)",val:'"YFFYT", sans-serif'},{id:"wenkai",name:"霞鹜文楷 (WenKai)",val:'"LXGW WenKai", serif'},{id:"notosans",name:"思源黑体 (Noto Sans)",val:'"Noto Sans CJK", sans-serif'},{id:"zhuque",name:"朱雀仿宋 (Zhuque)",val:'"Zhuque Fangsong (technical preview)", serif'}],Go={layout:"horizontal",collapseStyle:"bar",collapseAlign:"right",fontFamily:"default",theme:"native",cardWidth:260,fontSize:13,optionFontSize:12,highlightNew:!0,itemsPerPage:20,actionsPosition:"bottom",gridColumns:"auto",showStatusBar:!1,beautifyToastr:!1,showOptionPanel:!0,clickOptionToAutoSend:!1},Wo={tGlobal:/全局|世界状态|纪要/,tChar:/主角信息|玩家状态|主角修为/,tEvent:/日程|事件|任务|待办/,cLoc:[/地点/,/位置/],cTime:[/当前时间/,/时间跨度/],cName:[/人物名称/,/姓名/,/名字/],cEvtDate:[/日期|时间|Date|期限/i],cEvtTitle:[/事件|标题|任务名称|名称|Title|Name/i]},qo={mate:{type:"chatSheets",version:2,updateConfigUiSentinel:-1,globalInjectionConfig:{readableEntryPlacement:{position:"before_character_definition",depth:2,order:99981},wrapperPlacement:{position:"before_character_definition",depth:2,order:99980}}},sheet_NcBlYRH5:{uid:"sheet_NcBlYRH5",name:"重要角色表",sourceData:{note:'记录所有关键NPC的详细信息和动态状态。\n- 列1: 姓名 - NPC的名字。\n- 列2: 性别/年龄 - NPC的生理性别和年龄。\n- 列3: 外貌特征 - 记录NPC的固有外貌特征，包含发型、发色、身高、身材、肤色、五官外貌。严禁包含神态描写、服装、姿势或临时状态。另外女性角色还需填写身材数据例如三围和身高体重等，并且允许NSFW内容，男性角色则不需要填写。\n- 列4: 当前衣着/装扮 - 记录NPC当前的服装搭配和装饰。女性角色必须按照上身、下身、内衣、内裤、袜子、鞋子的顺序描述，未明确的穿着需要根据场景推断；脱下需标注(脱)但不删除条目；明确不穿内衣/内裤时需标注"无内衣/无内裤"。\n- 列5: 持有的重要物品 - 记录NPC拥有的关键重要物品/神兵利器列表，用分号分隔。\n- 列6: 初夜状态 - 非女性角色填"处"或"非处"。女性角色需明确前后器官，格式为"阴道：处/非处；肛门：处/非处"。\n- 列7: 是否离场 - 填写"是"或"否"。\n- 列8: 对主角的了解(已知) - 记录该NPC当前掌握的主角情报。上限5项。\n- 列9: 对主角的了解(未知) - 记录该NPC当前想要探明或误解的主角情报。上限5项。\n- 列10: 职业/境界 - 记录NPC的当前职业和境界。\n- 列11: 技能 - 记录NPC掌握的技能名称及简短说明。\n- 列12: 背景故事 - 记录该角色遭遇主角前的简单背景。已知填后不更新，未知填"未知"。\n- 列13: 目前经历 - 记录该角色在遭遇主角之后的关键经历。格式要求：必须按照1、2、3的数字列表格式，上限10条。每条经历不得超过 50字。总字数不得超过 500字。当总字数接近 500字或条目超过10条时，必须将最早、内容最相近的2-3个经历条目合并为一个条目，合并后的描述需保持在一句话（50字以内），简练概括。用词要求：必须使用客观、中性的描述词语，杜绝使用"极度"、"非常"、"极其"、"无比"等夸大或极端化的修饰词。\n- 列14: 人际关系 - 记录该角色的人际关系，格式: "{角色名}:{关系词}"。多组用分号分隔。（例如：主角:挚友; 艾莉丝:隐秘盟友; 某某:旧日仇敌），禁止用括号补充说明废话。\n- 列15: 人物简介 - 用一句话记录客观视角下的角色简介。',initNode:"游戏初始化时为当前在场的重要人物分别插入一个条目",deleteNode:"禁止删除",updateNode:"条目中已有角色的状态、关系、想法或经历变化时更新，角色死亡需在其姓名旁用小括号备注（已死亡）。获得或失去重要物品时更新。\nSQL示例: UPDATE important_npc SET current_clothing = '散乱的裙摆, (脱)亵裤', virgin_status = '阴道：非处；肛门：处', is_absent = '否', relationships = '主角:隐秘情人' WHERE name = '艾莉丝';",insertNode:"剧情中有未记录的重要人物登场时添加。\nSQL示例: INSERT INTO important_npc (row_id, name, gender_age, appearance, current_clothing, important_items, virgin_status, is_absent, known_info, unknown_info, job_realm, skills, background, current_experience, relationships, brief_intro) VALUES ((SELECT COALESCE(MAX(row_id), 0) + 1 FROM important_npc), '索菲亚', '女/22', '银发红瞳', '修女服', '圣典', '阴道：处；肛门：处', '否', '主角是异乡人', '未知', '高阶牧师', '圣光治愈', '孤儿院出身', '在教堂偶遇主角', '主角:警惕对象', '虔诚且死板的修女');",ddl:"CREATE TABLE important_npc ( -- 重要角色表\n  row_id INTEGER PRIMARY KEY, -- 行号\n  name TEXT NOT NULL UNIQUE, -- 姓名\n  gender_age TEXT NOT NULL, -- 性别/年龄\n  appearance TEXT NOT NULL CHECK(LENGTH(appearance) <= 80), -- 外貌特征\n  current_clothing TEXT NOT NULL, -- 当前衣着/装扮\n  important_items TEXT, -- 持有的重要物品\n  virgin_status TEXT NOT NULL CHECK(LENGTH(virgin_status) <= 30), -- 初夜状态\n  is_absent TEXT NOT NULL CHECK(is_absent IN ('是', '否')), -- 是否离场\n  known_info TEXT, -- 对主角的了解(已知)\n  unknown_info TEXT, -- 对主角的了解(未知)\n  job_realm TEXT CHECK(LENGTH(job_realm) <= 20), -- 职业/境界\n  skills TEXT CHECK(LENGTH(skills) <= 150), -- 技能\n  background TEXT CHECK(LENGTH(background) <= 150), -- 背景故事\n  current_experience TEXT NOT NULL CHECK(LENGTH(current_experience) <= 400), -- 目前经历\n  relationships TEXT, -- 人际关系\n  brief_intro TEXT NOT NULL CHECK(LENGTH(brief_intro) <= 30) -- 人物简介\n);"},content:[["row_id","姓名","性别/年龄","外貌特征","当前衣着/装扮","持有的重要物品","初夜状态","是否离场","对主角的了解(已知)","对主角的了解(未知)","职业/境界","技能","背景故事","目前经历","人际关系","人物简介"]],updateConfig:{uiSentinel:-1,contextDepth:-1,updateFrequency:-1,batchSize:-1,skipFloors:-1,groupId:2},exportConfig:{enabled:!0,splitByRow:!0,entryName:"重要角色表",entryType:"keyword",keywords:"姓名",preventRecursion:!0,injectionTemplate:"",extraIndexEnabled:!0,extraIndexEntryName:"重要角色表-索引",extraIndexColumns:["姓名","人物简介"],extraIndexColumnModes:{"姓名":"both","人物简介":"index_only"},extraIndexInjectionTemplate:"以下为已经登场过的角色：\n<已登场角色>\n$1\n</已登场角色>",entryPlacement:{position:"at_depth_as_system",depth:1e4,order:1e4},extraIndexPlacement:{position:"at_depth_as_system",depth:1e4,order:8e3},fixedEntryPlacement:{position:"at_depth_as_system",depth:1e4,order:99983},fixedIndexPlacement:{position:"at_depth_as_system",depth:1e4,order:99984}},orderNo:0},sheet_lEARaBa8:{uid:"sheet_lEARaBa8",name:"主角技能表",sourceData:{note:'记录主角获得的所有技能项目。\n- 列1: 技能名称 - 技能的名称。\n- 列2: 技能类型 - 技能的类别（如："被动"、"主动"）。\n- 列3: 等级/阶段 - 技能的当前等级或阶段。\n- 列4: 效果描述 - 技能在当前等级下的具体效果。',initNode:"游戏初始化时，根据设定为主角添加初始技能。",deleteNode:"技能因剧情被剥夺或替换时删除。\nSQL示例: DELETE FROM skills WHERE skill_name = '新手治愈';",updateNode:"已有技能被升级时，更新其等级/阶段和效果描述。\nSQL示例: UPDATE skills SET level_stage = 'Lv.2', effect_desc = '能治愈中度伤口' WHERE skill_name = '治愈术';",insertNode:"主角获得新的技能时添加。\nSQL示例: INSERT INTO skills (row_id, skill_name, skill_type, level_stage, effect_desc) VALUES ((SELECT COALESCE(MAX(row_id), 0) + 1 FROM skills), '暗步', '主动', '入门', '在阴影中隐藏身形');",ddl:"CREATE TABLE skills ( -- 主角技能表\n  row_id INTEGER PRIMARY KEY, -- 行号\n  skill_name TEXT NOT NULL UNIQUE, -- 技能名称\n  skill_type TEXT NOT NULL, -- 技能类型\n  level_stage TEXT NOT NULL, -- 等级/阶段\n  effect_desc TEXT NOT NULL -- 效果描述\n);"},content:[["row_id","技能名称","技能类型","等级/阶段","效果描述"]],updateConfig:{uiSentinel:-1,contextDepth:-1,updateFrequency:-1,batchSize:-1,skipFloors:-1,groupId:2},exportConfig:{enabled:!1,splitByRow:!1,entryName:"主角技能表",entryType:"constant",keywords:"",preventRecursion:!0,injectionTemplate:"",extraIndexEnabled:!1,extraIndexEntryName:"主角技能表-索引",extraIndexColumns:[],extraIndexColumnModes:{},extraIndexInjectionTemplate:"",entryPlacement:{position:"at_depth_as_system",depth:2,order:1e4},extraIndexPlacement:{position:"at_depth_as_system",depth:2,order:10010},fixedEntryPlacement:{position:"at_depth_as_system",depth:2,order:99990},fixedIndexPlacement:{position:"at_depth_as_system",depth:2,order:99991}},orderNo:3},sheet_in05z9vz:{uid:"sheet_in05z9vz",name:"背包物品表",sourceData:{note:"记录主角拥有的所有物品、装备、特殊道具等。\n- 列1: 物品名称 - 物品的名称。\n- 列2: 数量 - 拥有的数量。\n- 列3: 描述/效果 - 物品的功能、效果或背景描述。\n- 列4: 类别 - 物品的类别。",initNode:"游戏初始化时，根据剧情与设定添加主角的初始携带物品。",deleteNode:"物品被完全消耗、丢弃、转交他人或摧毁时彻底删除。\nSQL示例: DELETE FROM inventory WHERE item_name = '生锈的铁剑';",updateNode:"获得已有的物品使其数量增加时更新，已有物品状态变化时更新。\nSQL示例: UPDATE inventory SET quantity = quantity + 1 WHERE item_name = '伤药';",insertNode:"主角获得背包中没有的全新物品时添加。\nSQL示例: INSERT INTO inventory (row_id, item_name, quantity, description, category) VALUES ((SELECT COALESCE(MAX(row_id), 0) + 1 FROM inventory), '神秘钥匙', 1, '带有狼头图腾的铜色钥匙', '剧情道具');",ddl:"CREATE TABLE inventory ( -- 背包物品表\n  row_id INTEGER PRIMARY KEY, -- 行号\n  item_name TEXT NOT NULL UNIQUE, -- 物品名称\n  quantity INTEGER NOT NULL CHECK(quantity > 0), -- 数量\n  description TEXT NOT NULL CHECK(LENGTH(description) <= 60), -- 描述/效果\n  category TEXT NOT NULL CHECK(category IN ('武器', '防具', '服饰', '消耗品', '杂物', '剧情道具', '特殊信物')) -- 类别\n);"},content:[["row_id","物品名称","数量","描述/效果","类别"]],updateConfig:{uiSentinel:-1,contextDepth:-1,updateFrequency:-1,batchSize:-1,skipFloors:-1,groupId:1},exportConfig:{enabled:!1,splitByRow:!1,entryName:"背包物品表",entryType:"constant",keywords:"",preventRecursion:!0,injectionTemplate:"",extraIndexEnabled:!1,extraIndexEntryName:"背包物品表-索引",extraIndexColumns:[],extraIndexColumnModes:{},extraIndexInjectionTemplate:"",entryPlacement:{position:"at_depth_as_system",depth:2,order:1e4},extraIndexPlacement:{position:"at_depth_as_system",depth:2,order:10010},fixedEntryPlacement:{position:"at_depth_as_system",depth:2,order:99990},fixedIndexPlacement:{position:"at_depth_as_system",depth:2,order:99991}},orderNo:4},sheet_3NoMc1wI:{uid:"sheet_3NoMc1wI",name:"纪要表",sourceData:{note:"轮次日志，每轮交互后必须立即插入一条新记录。",initNode:"故事初始化时，插入一条新记录用于记录正文剧情。",deleteNode:"禁止删除。",updateNode:"禁止操作。",insertNode:"每轮交互结束后，插入一条新记录。\nSQL示例: INSERT INTO chronicle (row_id, time_span, location, chronicle_text, key_dialogue, code_index, summary) VALUES ((SELECT COALESCE(MAX(row_id), 0) + 1 FROM chronicle), '1024年5月3日14:00~14:30', '领主府邸-后花园', '主角在此处遭遇卫兵搜查，利用潜行技能躲避了第一波巡逻。', '卫兵队长:\"仔细搜，一只苍蝇都别放过！\"', 'AM0002', '后花园的惊险躲避');",ddl:"CREATE TABLE chronicle ( -- 纪要表\n  row_id INTEGER PRIMARY KEY, -- 行号\n  time_span TEXT NOT NULL, -- 发生时间跨度\n  location TEXT NOT NULL, -- 地点\n  chronicle_text TEXT NOT NULL CHECK(LENGTH(chronicle_text) >= 150 AND LENGTH(chronicle_text) <= 500), -- 纪要\n  key_dialogue TEXT CHECK(LENGTH(key_dialogue) <= 100), -- 重要对话\n  code_index TEXT NOT NULL UNIQUE CHECK(code_index GLOB 'AM[0-9][0-9][0-9][0-9]'), -- 编码索引\n  summary TEXT NOT NULL CHECK(LENGTH(summary) <= 30) -- 概要\n);"},content:[["row_id","发生时间跨度","地点","纪要","重要对话","编码索引","概要"]],updateConfig:{uiSentinel:-1,contextDepth:-1,updateFrequency:3,batchSize:-1,skipFloors:-1,groupId:3},exportConfig:{enabled:!0,splitByRow:!0,entryName:"纪要",entryType:"keyword",keywords:"编码索引",preventRecursion:!0,injectionTemplate:"<记忆回溯>\n$1\n</记忆回溯>",extraIndexEnabled:!0,extraIndexEntryName:"纪要索引",extraIndexColumns:["编码索引","概要"],extraIndexColumnModes:{"编码索引":"both","概要":"index_only"},extraIndexInjectionTemplate:"<已发生的事件概览>\n$1\n</已发生的事件概览>",entryPlacement:{position:"at_depth_as_system",depth:999,order:1e4},extraIndexPlacement:{position:"at_depth_as_system",depth:1e3,order:10010},fixedEntryPlacement:{position:"at_depth_as_system",depth:9999,order:99987},fixedIndexPlacement:{position:"at_depth_as_system",depth:9999,order:99988}},orderNo:1},sheet_DpKcVGqg:{uid:"sheet_DpKcVGqg",name:"主角信息",sourceData:{note:"记录主角的核心身份信息。此表在流程层设计上有且仅有一行，并约定仅保留 row_id=1。",initNode:"游戏初始化时，插入主角的唯一条目。",deleteNode:"禁止删除。",updateNode:"当主角各项状态发生改变时更新对应列。\nSQL示例: UPDATE protagonist_info SET current_clothing = '破损的布衣, (脱)内衣, 无内裤', virgin_status = '非处' WHERE row_id = 1;",insertNode:"禁止操作。",ddl:"CREATE TABLE protagonist_info ( -- 主角信息\n  row_id INTEGER PRIMARY KEY CHECK(row_id = 1), -- 行号\n  name TEXT NOT NULL, -- 人物名称\n  gender_age TEXT NOT NULL, -- 性别/年龄\n  appearance TEXT NOT NULL CHECK(LENGTH(appearance) <= 60), -- 外貌特征\n  current_clothing TEXT NOT NULL, -- 当前衣着/装扮\n  virgin_status TEXT NOT NULL CHECK(LENGTH(virgin_status) <= 40), -- 初夜状态\n  job_identity TEXT NOT NULL CHECK(LENGTH(job_identity) <= 20) -- 职业/身份\n);"},content:[["row_id","人物名称","性别/年龄","外貌特征","当前衣着/装扮","初夜状态","职业/身份"]],updateConfig:{uiSentinel:-1,contextDepth:-1,updateFrequency:-1,batchSize:-1,skipFloors:-1,groupId:2},exportConfig:{enabled:!1,splitByRow:!1,entryName:"主角信息",entryType:"constant",keywords:"",preventRecursion:!0,injectionTemplate:"",extraIndexEnabled:!1,extraIndexEntryName:"主角信息-索引",extraIndexColumns:[],extraIndexColumnModes:{},extraIndexInjectionTemplate:"",entryPlacement:{position:"at_depth_as_system",depth:2,order:1e4},extraIndexPlacement:{position:"at_depth_as_system",depth:2,order:10010},fixedEntryPlacement:{position:"at_depth_as_system",depth:2,order:99990},fixedIndexPlacement:{position:"at_depth_as_system",depth:2,order:99991}},orderNo:6},sheet_s2yuewuh8:{uid:"sheet_s2yuewuh8",name:"本月事件表",sourceData:{note:"世界动态引擎，记录独立于主角之外的背景动态。",initNode:"跨入新月份、新地区或游戏初始化时，生成1~3条符合当前世界观的背景动态。",insertNode:"当世界局势发生突发变故时主动添加。",updateNode:"传闻被证实/证伪，或事件发展阶段改变时更新。",deleteNode:"进入下个月份时彻底清空上月所有失效的日常动态。\nSQL示例: DELETE FROM monthly_events;",ddl:"CREATE TABLE monthly_events ( -- 本月事件表\n  row_id INTEGER PRIMARY KEY, -- 行号\n  event_date TEXT NOT NULL, -- 日期/节点\n  event_name TEXT NOT NULL, -- 事件名称\n  event_type TEXT NOT NULL CHECK(event_type IN ('公众节日', '时政新闻', '圈层动态', '市井传闻')), -- 事件类型\n  details TEXT NOT NULL -- 详情与影响\n);"},content:[["row_id","日期/节点","事件名称","事件类型","详情与影响"]],updateConfig:{uiSentinel:-1,contextDepth:-1,updateFrequency:-1,batchSize:-1,skipFloors:-1,groupId:1},exportConfig:{enabled:!1,splitByRow:!1,entryName:"本月事件表",entryType:"constant",keywords:"",preventRecursion:!0,injectionTemplate:"",extraIndexEnabled:!1,extraIndexEntryName:"本月事件表-索引",extraIndexColumns:[],extraIndexColumnModes:{},extraIndexInjectionTemplate:"",entryPlacement:{position:"at_depth_as_system",depth:2,order:1e4},extraIndexPlacement:{position:"at_depth_as_system",depth:2,order:10010},fixedEntryPlacement:{position:"at_depth_as_system",depth:2,order:99990},fixedIndexPlacement:{position:"at_depth_as_system",depth:2,order:99991}},orderNo:7},sheet_dCudvUnH:{uid:"sheet_dCudvUnH",name:"全局数据表",sourceData:{note:"记录当前主角所在地点及时间相关参数。此表有且仅有一行。",initNode:"插入一条关于当前世界状态的记录。",deleteNode:"禁止删除。",updateNode:"当主角从当前所在区域离开时，更新所在地点。每轮必须更新时间。\nSQL示例: UPDATE global_data SET current_location = '领主府邸', cur_time = '1024年5月3日 14:00', prev_scene_time = '1024年5月3日 13:45', elapsed_time = '15分钟' WHERE row_id = 1;",insertNode:"禁止操作。",ddl:"CREATE TABLE global_data ( -- 全局数据表\n  row_id INTEGER PRIMARY KEY CHECK(row_id = 1), -- 行号\n  current_location TEXT NOT NULL, -- 主角当前所在地点\n  cur_time TEXT NOT NULL CHECK(cur_time GLOB '*年*月*日 *:*'), -- 当前时间\n  prev_scene_time TEXT, -- 上轮场景时间\n  elapsed_time TEXT NOT NULL -- 经过的时间\n);"},content:[["row_id","主角当前所在地点","当前时间","上轮场景时间","经过的时间"]],updateConfig:{uiSentinel:-1,contextDepth:-1,updateFrequency:-1,batchSize:-1,skipFloors:-1,groupId:1},exportConfig:{enabled:!1,splitByRow:!1,entryName:"全局数据表",entryType:"constant",keywords:"",preventRecursion:!0,injectionTemplate:"",extraIndexEnabled:!1,extraIndexEntryName:"全局数据表-索引",extraIndexColumns:[],extraIndexColumnModes:{},extraIndexInjectionTemplate:"",entryPlacement:{position:"at_depth_as_system",depth:2,order:1e4},extraIndexPlacement:{position:"at_depth_as_system",depth:2,order:10010},fixedEntryPlacement:{position:"before_character_definition",depth:2,order:99981},fixedIndexPlacement:{position:"before_character_definition",depth:2,order:99982}},orderNo:2},sheet_Memo:{uid:"sheet_Memo",name:"当前待办事项",sourceData:{note:"记录主角的待办任务、线索、成就与约定。",initNode:"初始化时，检查当前剧情是否有正在进行的任务或未解之谜，如有则插入条目。",deleteNode:"仅针对分类为[待办任务]的条目，当任务完成后必须彻底删除。其他分类严禁删除，应转为已归档。\nSQL示例: DELETE FROM todos WHERE title = '寻找解药' AND category = '待办任务';",updateNode:'当任务进度变化或线索推进时更新。若重大事件、誓约或线索已彻底完结，将其状态更新为"已归档"。',insertNode:"接取新任务、发现新秘密或许下新承诺时添加。\nSQL示例: INSERT INTO todos (row_id, title, category, status, start_time, details, target_entity, remarks) VALUES ((SELECT COALESCE(MAX(row_id), 0) + 1 FROM todos), '调查废弃矿洞', '待办任务', '进行中', '1024年5月3日', '前往东郊废弃矿洞寻找失踪矿工的线索。', '矿工工会', '洞内可能有毒气，需提前准备解药');",ddl:"CREATE TABLE todos ( -- 当前待办事项\n  row_id INTEGER PRIMARY KEY, -- 行号\n  title TEXT NOT NULL UNIQUE, -- 标题\n  category TEXT NOT NULL CHECK(category IN ('待办任务', '秘密线索', '誓约承诺', '重大事件')), -- 分类\n  status TEXT NOT NULL CHECK(status IN ('进行中', '挂起', '已归档')), -- 状态\n  start_time TEXT NOT NULL, -- 开始时间\n  details TEXT NOT NULL, -- 事项详情\n  target_entity TEXT, -- 涉及对象\n  remarks TEXT -- 备注\n);"},content:[["row_id","标题","分类","状态","开始时间","事项详情","涉及对象","备注"]],updateConfig:{uiSentinel:-1,contextDepth:-1,updateFrequency:-1,batchSize:-1,skipFloors:-1,groupId:2},exportConfig:{enabled:!0,splitByRow:!0,entryName:"待办与记录",entryType:"keyword",keywords:"标题,涉及对象",preventRecursion:!0,injectionTemplate:"<待办与记录详情>\n$1\n</待办与记录详情>",extraIndexEnabled:!1,extraIndexEntryName:"待办与记录-索引",extraIndexColumns:["标题","状态"],extraIndexColumnModes:{"标题":"both","状态":"index_only"},extraIndexInjectionTemplate:"<当前记录状态概览>\n$1\n</当前记录状态概览>",entryPlacement:{position:"at_depth_as_system",depth:2,order:1e4},extraIndexPlacement:{position:"at_depth_as_system",depth:2,order:10010},fixedEntryPlacement:{position:"at_depth_as_system",depth:2,order:99992},fixedIndexPlacement:{position:"at_depth_as_system",depth:2,order:99993}},orderNo:5}},Yo=e=>String(e??"").trim().replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;"),Jo=e=>{if(!e)return"fa-table";const t=e.toLowerCase();return t.includes("主角")||t.includes("角色")?"fa-user-circle":t.includes("通用")||t.includes("全局")?"fa-globe-asia":t.includes("装备")||t.includes("背包")?"fa-briefcase":t.includes("技能")||t.includes("武魂")?"fa-dragon":t.includes("关系")||t.includes("周边")?"fa-user-friends":t.includes("任务")||t.includes("日志")?"fa-scroll":t.includes("总结")||t.includes("大纲")?"fa-book-reader":"fa-table"},Qo=e=>{if(!e)return"";const t=String(e).trim();return/^[0-9]+%?$/.test(t)||/^Lv\.\d+$/.test(t)?"acu-badge-green":t.length<=6&&!t.includes("http")||["是","否","有","无","死亡","存活"].includes(t)?"acu-badge-neutral":""},Zo={lastMsgs:new Map,cooldown:2e3,show(e,t){if(!window.toastr)return;const n=Date.now(),s=String(t),a=this.lastMsgs.get(s);a&&n-a<this.cooldown||(this.lastMsgs.set(s,n),window.toastr[e](t),setTimeout(()=>this.lastMsgs.delete(s),this.cooldown+100))},success:e=>Zo.show("success",e),info:e=>Zo.show("info",e),warning:e=>Zo.show("warning",e),error:e=>Zo.show("error",e)},ei=()=>{var e,t;try{if("undefined"!=typeof SillyTavern&&SillyTavern.getCurrentChatId)return SillyTavern.getCurrentChatId();if("undefined"!=typeof SillyTavern&&SillyTavern.chatId)return SillyTavern.chatId;if(null==(t=null==(e=window.parent)?void 0:e.SillyTavern)?void 0:t.getCurrentChatId)return window.parent.SillyTavern.getCurrentChatId()}catch(zr){console.warn("[ACU] getCurrentContextFingerprint error:",zr)}return"unknown_context"},ti=()=>{const e=window.parent||window;return{getDB:()=>e.AutoCardUpdaterAPI||window.AutoCardUpdaterAPI,ST:window.SillyTavern||e.SillyTavern||(()=>{try{return window.top?window.top.SillyTavern:null}catch{return null}})()}},ni={get(e,t=null){try{return JSON.parse(localStorage.getItem(e))??t}catch{return t}},set(e,t){var n;try{localStorage.setItem(e,JSON.stringify(t))}catch(zr){if("QuotaExceededError"===zr.name||(null==(n=zr.message)?void 0:n.includes("quota"))){console.warn("[ACU] 存储空间已满，触发清理...");try{localStorage.removeItem($o),localStorage.setItem(e,JSON.stringify(t))}catch(s){console.error("[ACU Store] 清理后依然失败",s)}}else console.error("[ACU Store]",zr)}}},si=e=>ni.set(Ro,e),ai=()=>ni.get(Mo,{}),oi=e=>ni.set(Mo,e),ii=e=>ni.set(jo,e),li=()=>ni.get(Bo,{}),ri=()=>{const e=ni.get($o);if(!e)return null;const t=ei();return e._contextId&&e._contextId!==t?null:e},ci=e=>{e&&("object"==typeof e&&(e._contextId=ei()),ni.set($o,e))},ui=()=>ni.get(Fo,{})[ei()]||{},di=e=>{const t=ni.get(Fo,{});t[ei()]=e,ni.set(Fo,t)},pi=Ao("config",{state:()=>({...Go,...ni.get(Uo,{})}),getters:{themeClass:e=>`acu-theme-${e.theme}`,fontValue:e=>{const t=Xo.find(t=>t.id===e.fontFamily);return t?t.val:Xo[0].val},cssVars:e=>({"--acu-card-width":`${e.cardWidth}px`,"--acu-font-size":`${e.fontSize}px`,"--acu-opt-font-size":`${e.optionFontSize||12}px`,"--acu-grid-cols":e.gridColumns})},actions:{update(e){Object.assign(this,e);const t={};Object.keys(Go).forEach(e=>{t[e]=this[e]}),ni.set(Uo,t)},setTheme(e){Ko.find(t=>t.id===e)&&this.update({theme:e})},applyFont(){const e=this.fontValue,t=document.getElementById("acu-dynamic-font");if(t&&t.getAttribute("data-font-id")===this.fontFamily)return;t&&t.remove();const n=document.createElement("style");n.id="acu-dynamic-font",n.setAttribute("data-font-id",this.fontFamily),n.textContent=`\n        \n        @import url("https://fontsapi.zeoseven.com/3/main/result.css");\n        @import url("https://fontsapi.zeoseven.com/442/main/result.css");\n        @import url("https://fontsapi.zeoseven.com/256/main/result.css");\n        @import url("https://fontsapi.zeoseven.com/482/main/result.css");\n        @import url("https://fontsapi.zeoseven.com/446/main/result.css");\n        @import url("https://fontsapi.zeoseven.com/570/main/result.css");\n        @import url("https://fontsapi.zeoseven.com/292/main/result.css");\n        @import url("https://fontsapi.zeoseven.com/69/main/result.css");\n        @import url("https://fontsapi.zeoseven.com/7/main/result.css");\n      \n        .acu-wrapper, .acu-edit-dialog, .acu-cell-menu, .acu-nav-container,\n        .acu-data-card, .acu-panel-title, .acu-settings-label, .acu-btn-block,\n        .acu-nav-btn, .acu-edit-textarea, .acu-rpg-widget, .acu-status-bar-container {\n          font-family: ${e} !important;\n        }\n      `,document.head.appendChild(n)}}}),fi=ct({db:null,cache:{}}),hi="avatars";async function gi(){return new Promise(e=>{const t=indexedDB.open("ACU_Avatar_DB",1);t.onupgradeneeded=e=>{const t=e.target.result;t.objectStoreNames.contains(hi)||t.createObjectStore(hi)},t.onsuccess=t=>{fi.db=t.target.result;const n=fi.db.transaction([hi],"readonly").objectStore(hi),s=n.getAll(),a=n.getAllKeys();s.onsuccess=()=>{a.onsuccess=()=>{a.result.forEach((e,t)=>{fi.cache[e]=s.result[t]}),function(){try{const e=localStorage.getItem("acu_custom_avatars_v19");if(e){const t=JSON.parse(e);for(const e in t)fi.cache[e]||(fi.cache[e]=t[e],vi(e,t[e]));localStorage.removeItem("acu_custom_avatars_v19"),console.log("[ACU] 🎉 头像数据已迁移至 IndexedDB")}}catch(t){console.warn("[ACU] 头像迁移失败:",t)}}(),e()}}},t.onerror=()=>e()})}function vi(e,t){if(!fi.db)return;fi.db.transaction([hi],"readwrite").objectStore(hi).put(t,e)}const mi=Ao("data",{state:()=>({cachedRawData:null,hasUnsavedChanges:!1,modifiedCells:new Set,diffMap:new Set,isWaitingForDbUpdate:!1,isSaving:!1,pageStates:{},searchStates:{},scrollStates:{},optionPanelVisible:!1,lastOptionHash:null}),getters:{tables:e=>{var t;const n={},s=e.cachedRawData;if(!s||"object"!=typeof s)return n;for(const a in s)if(null==(t=s[a])?void 0:t.name){const e=s[a];n[e.name]={key:a,headers:e.content&&e.content[0]||[],rows:e.content?e.content.slice(1):[],updateConfig:e.updateConfig||{},...e}}return n}},actions:{fetchData(){var e;const t=ti().getDB(),n=(null==(e=null==t?void 0:t.exportTableAsJson)?void 0:e.call(t))||null;var s;return n&&(this.cachedRawData=n,s=n,ni.set("acu_round_baseline_v19",s)),n},handleBackendUpdate(){this.isWaitingForDbUpdate=!1;const e=this.fetchData();e&&(this._migrateAvatars(e),window._acuMuteRenderUntil&&(Date.now(),window._acuMuteRenderUntil))},_migrateAvatars(e){var t,n;const s=this.cachedRawData||ri(),a=ei();let o=fi.cache[a];if(!o)return;const i=new Set;let l=!1;for(const r in e){const a=e[r];if(!(null==a?void 0:a.content))continue;const c=a.content[0].findIndex(e=>/姓名|名字|角色名|人物名称|Name/i.test(e));if(-1!==c)for(let e=1;e<a.content.length;e++){const u=a.content[e],d=String(u[c]||"").trim();if(d&&i.add(d),null==(n=null==(t=null==s?void 0:s[r])?void 0:t.content)?void 0:n[e]){const t=String(s[r].content[e][c]||"").trim();t&&d&&t!==d&&o[t]&&(o[d]=o[t],delete o[t],l=!0)}}}for(const r in o)i.has(r)||(delete o[r],l=!0);l&&vi(a,o)},generateDiffMap(){const e=this.cachedRawData,t=ri(),n=new Set;if(t&&e){for(const s in e){const a=e[s],o=t[s];if(!(null==a?void 0:a.name))continue;const i=a.name;if(!o){a.content&&a.content.forEach((e,t)=>{t>0&&n.add(`${i}-row-${t-1}`)});continue}const l=a.content||[],r=o.content||[],c=new Map;r.forEach((e,t)=>{if(t>0){const n=e[0]?String(e[0]):`fallback_${t}`;c.set(n,e)}}),l.forEach((e,t)=>{if(0===t)return;const s=e[0]?String(e[0]):`fallback_${t}`;let a=c.get(s);a||e[0]||(a=r[t]),a?e.forEach((e,s)=>{0!==s&&String(e)!==String(a[s])&&n.add(`${i}-${t-1}-${s}`)}):n.add(`${i}-row-${t-1}`)})}this.diffMap=n}else this.diffMap=n},async saveToDatabase(e=!1){if(this.isSaving)return;this.isSaving=!0,window._acuMuteRenderUntil=Date.now()+1500;const{ST:t}=ti();try{const s={},a=this.cachedRawData;if(!a)throw new Error("无数据");if(s.mate=a.mate||{type:"chatSheets",version:1},Object.keys(a).forEach(e=>{e.startsWith("sheet_")&&(s[e]=a[e])}),e){const e=ai();Object.keys(e).forEach(t=>{var n;(null==(n=s[t])?void 0:n.content)&&e[t].sort((e,t)=>t-e).forEach(e=>{s[t].content[e+1]&&s[t].content.splice(e+1,1)})}),oi({})}await this._syncToChat(s,t);const o=ti().getDB();(null==o?void 0:o.importTableAsJson)&&await o.importTableAsJson(JSON.stringify(s));try{(null==o?void 0:o.refreshDataAndWorldbook)&&await o.refreshDataAndWorldbook()}catch(n){}this.cachedRawData=s,ci(s),this.hasUnsavedChanges=!1,this.diffMap=new Set,this.modifiedCells.clear()}catch(zr){throw console.error("[ACU] Save error:",zr),zr}finally{this.isSaving=!1}},async _syncToChat(e,t){var n;try{if(!(null==(n=null==t?void 0:t.chat)?void 0:n.length))return;let s="";for(let e=t.chat.length-1;e>=0;e--){const n=t.chat[e];if(!n.is_user&&n.TavernDB_ACU_Identity){s=n.TavernDB_ACU_Identity;break}}let a=null;for(let e=t.chat.length-1;e>=0;e--)if(!t.chat[e].is_user){a=t.chat[e];break}if(!a)return;a.TavernDB_ACU_IsolatedData||(a.TavernDB_ACU_IsolatedData={}),a.TavernDB_ACU_IsolatedData[s]||(a.TavernDB_ACU_IsolatedData[s]={independentData:{},modifiedKeys:[]});const o=a.TavernDB_ACU_IsolatedData[s];o.independentData||(o.independentData={});const i=Object.keys(e).filter(e=>e.startsWith("sheet_"));for(const t of i)o.independentData[t]="function"==typeof structuredClone?structuredClone(e[t]):JSON.parse(JSON.stringify(e[t]));o.modifiedKeys=[...new Set([...o.modifiedKeys||[],...i])],t.saveChat&&await t.saveChat()}catch(s){console.warn("[ACU] 聊天记录同步失败:",s)}},resetEditState(){this.hasUnsavedChanges=!1,this.modifiedCells.clear(),this.diffMap=new Set,oi({})}}}),yi=Ao("ui",{state:()=>({activeTab:ni.get(Ro),isCollapsed:ni.get(jo,!1),isPanelVisible:!1,showSettings:!1,showEditDialog:!1,showCellMenu:!1,showCalendar:!1,showCharProfile:!1,showStitcher:!1,isEditingOrder:!1,cellMenuData:null,cellMenuPosition:{x:0,y:0},editDialogContent:"",editDialogCallback:null,profileCharName:"",calendarTimeStr:"",isWaitingForDbUpdate:!1}),actions:{switchTab(e){this.activeTab===e&&this.isPanelVisible?this.closePanel():(this.activeTab=e,this.isPanelVisible=!0,si(e))},closePanel(){this.isPanelVisible=!1,this.activeTab=null,si(null)},toggleCollapse(){this.isCollapsed=!this.isCollapsed,ii(this.isCollapsed)},expand(){this.isCollapsed=!1,ii(!1)},openCellMenu(e,t){this.cellMenuData=e,this.cellMenuPosition=t,this.showCellMenu=!0},openEditDialog(e,t){this.editDialogContent=e,this.editDialogCallback=t,this.showEditDialog=!0},openCharProfile(e){this.profileCharName=e,this.showCharProfile=!0},openCalendar(e){this.calendarTimeStr=e,this.showCalendar=!0}}}),bi={__name:"ExpandTrigger",props:{tableCount:{type:Number,default:0}},emits:["expand"],setup(e){const t=pi(),n=Ta(()=>`acu-col-${t.collapseStyle||"bar"}`),s=Ta(()=>`acu-align-${t.collapseAlign||"right"}`);return(t,a)=>(Ks(),qs("button",{class:V(["acu-expand-trigger",[n.value,s.value]]),onClick:a[0]||(a[0]=po(e=>t.$emit("expand"),["stop"]))},[a[1]||(a[1]=ta("i",{class:"fa-solid fa-table"},null,-1)),ta("span",null,"数据库助手 ("+q(e.tableCount)+")",1)],2))}},_i={key:0,class:"acu-order-controls visible"},xi=["data-table","onClick"],wi={class:"acu-actions-group"},Ci=["id","title","onClick"],Ei={__name:"NavBar",props:{orderedNames:{type:Array,default:()=>[]},activeTab:{type:String,default:null}},emits:["selectTab"],setup(e,{emit:t}){const n=pi(),s=mi(),a=yi(),o=Ta(()=>{let e=ni.get("acu_action_order");return e&&Array.isArray(e)||(e=Vo),e.includes("acu-btn-settings")||e.push("acu-btn-settings"),e.map(e=>zo.find(t=>t.id===e)).filter(Boolean)});function i(e){const t=ti().getDB();if(!(null==t?void 0:t.getManualSelectedTables))return!1;const n=t.getManualSelectedTables(),a=s.tables[e];if(!(null==a?void 0:a.key))return!1;const o=Object.values(s.tables).map(e=>e.key).filter(Boolean);return!!(n.hasManualSelection&&n.selectedTables.length<o.length)&&n.selectedTables.includes(a.key)}async function l(e){if(!a.isEditingOrder)switch(e){case"acu-btn-save-global":await async function(){try{Zo.success("💾 已保存"),await s.saveToDatabase(!0)}catch{Zo.error("保存失败")}}();break;case"acu-btn-settings":a.showSettings=!0;break;case"acu-btn-refresh":!function(){if(s.isSaving)return void Zo.warning("正在同步数据，请稍后");s.cachedRawData=null,s.resetEditState(),s.fetchData(),s.generateDiffMap(),Zo.success("已重置")}();break;case"acu-btn-collapse":a.toggleCollapse();break;case"acu-btn-force-update":await async function(){const e=ti().getDB();(null==e?void 0:e.manualUpdate)?(Zo.info("已请求更新..."),await e.manualUpdate()):Zo.warning("后端未提供 manualUpdate 接口")}();break;case"acu-btn-open-editor":{const e=ti().getDB();(null==e?void 0:e.openVisualizer)?e.openVisualizer():Zo.warning("后端脚本未就绪");break}case"acu-btn-open-db-settings":{const e=ti().getDB();(null==e?void 0:e.openSettings)?await e.openSettings():Zo.warning("后端脚本未就绪");break}}}function r(){a.isEditingOrder=!1}return(t,c)=>(Ks(),qs("div",{class:V(["acu-nav-container",{"acu-pos-top":"top"===Et(n).actionsPosition}])},[Et(a).isEditingOrder?(Ks(),qs("div",_i,[c[1]||(c[1]=ta("div",{style:{display:"flex","align-items":"center",gap:"10px"}},[ta("span",null,[ta("i",{class:"fa-solid fa-layer-group"}),aa(" 界面布局编辑器")])],-1)),ta("button",{style:{background:"rgba(255,255,255,0.2)",color:"#fff",border:"1px solid rgba(255,255,255,0.4)",padding:"2px 12px","border-radius":"4px",cursor:"pointer"},onClick:r},[...c[0]||(c[0]=[ta("i",{class:"fa-solid fa-check"},null,-1),aa(" 完成保存 ",-1)])])])):ia("",!0),(Ks(!0),qs(js,null,jn(e.orderedNames,n=>(Ks(),qs("button",{key:n,class:V(["acu-nav-btn",{active:e.activeTab===n,"acu-update-selected":i(n)}]),"data-table":n,onClick:e=>t.$emit("selectTab",n)},[ta("i",{class:V(["fa-solid",Et(Jo)(n)])},null,2),ta("span",null,q(n),1)],10,xi))),128)),ta("div",wi,[(Ks(!0),qs(js,null,jn(o.value,e=>(Ks(),qs("button",{key:e.id,id:e.id,class:"acu-action-btn",title:e.title,onClick:po(t=>l(e.id),["stop"])},[ta("i",{class:V(["fa-solid",e.icon,{"acu-icon-breathe":"acu-btn-save-global"===e.id&&Et(s).hasUnsavedChanges}])},null,2)],8,Ci))),128))])],2))}},Ti={class:"acu-card-header"},Si={class:"acu-card-index"},ki=["title"],Ni=["onClick"],Ii={class:"acu-card-label"},Di=["innerHTML"],Oi={__name:"DataCard",props:{row:{type:Array,required:!0},rowIndex:{type:Number,required:!0},headers:{type:Array,required:!0},tableKey:{type:String,required:!0},tableName:{type:String,required:!0},isGridMode:{type:Boolean,default:!1},searchTerm:{type:String,default:""}},setup(e){const t=e,n=pi(),s=mi(),a=yi(),o=Ta(()=>{if(1===t.headers.length)return 0;if(t.tableName.includes("总结")||t.tableName.includes("大纲")){const e=t.headers.findIndex(e=>e&&(e.includes("索引")||e.includes("编号")||e.includes("代码")));if(e>0)return e}return 1}),i=Ta(()=>String(t.row[o.value]||"未命名")),l=Ta(()=>(ai()[t.tableKey]||[]).includes(t.rowIndex)),r=Ta(()=>{if(!n.highlightNew)return"";const e=`${t.tableKey}-${t.rowIndex}-${o.value}`,a=s.modifiedCells.has(e),i=s.diffMap.has(`${t.tableName}-row-${t.rowIndex}`),l=t.row._isManualInsert;return a||l?"acu-highlight-manual":i?"acu-highlight-diff":""}),c=Ta(()=>{var e;const n=ti().getDB();if(!(null==n?void 0:n.getTableLockState))return!1;const s=n.getTableLockState(t.tableKey);return(null==(e=null==s?void 0:s.rows)?void 0:e.includes(t.rowIndex))||!1});function u(){const e=ti().getDB();(null==e?void 0:e.toggleTableRowLock)?(e.toggleTableRowLock(t.tableKey,t.rowIndex),Zo.success(c.value?"🔓 已解锁":"🔒 已锁定")):Zo.warning("后端版本过低")}const d=Ta(()=>{const e=t.headers.slice(1),a=[],i=[];t.row.forEach((e,t)=>{t>0&&t!==o.value&&i.push(t)});const l=i.length%2==1;return i.forEach(o=>{const r=e[o-1]||`属性${o}`,c=String(t.row[o]??"").trim(),u=o===i[i.length-1]&&l&&t.isGridMode,d=function(e){if(!e||""===e)return"&nbsp;";const n=t.searchTerm.toLowerCase().trim(),s=/[;；]/;if(e.length>0&&s.test(e)&&!e.includes("http")){const t=e.split(s).map(e=>e.trim()).filter(Boolean);if(t.length>1&&t.every(e=>e.length<=6)){return`<div class="acu-tag-container">${t.map(e=>`<span class="acu-badge ${Qo(e)||"acu-badge-neutral"}">${p(e,n)}</span>`).join("")}</div>`}}const a=Qo(e),o=p(e,n);return a?`<span class="acu-badge ${a}">${o}</span>`:o}(c),f=function(e){if(!n.highlightNew)return"";const a=`${t.tableKey}-${t.rowIndex}-${e}`,o=s.modifiedCells.has(a),i=s.diffMap.has(`${t.tableName}-${t.rowIndex}-${e}`);return o?"acu-highlight-manual":i?"acu-highlight-diff":""}(o);a.push({index:o,headerName:r,rawValue:c,displayHtml:d,highlightClass:f,spanFull:u})}),a});function p(e,t){const n=Yo(e);if(!t)return n;const s=Yo(t).replace(/[.*+?^${}()|[\]\\]/g,"\\$&");if(!s)return n;const a=new RegExp(`(${s})`,"gi");return n.replace(a,'<mark style="background:var(--acu-accent);color:#fff;border-radius:3px;padding:0 2px;">$1</mark>')}function f(e,n){const s=String(t.row[n]??"");a.openCellMenu({tableKey:t.tableKey,tableName:t.tableName,rowIndex:t.rowIndex,colIndex:n,content:s,headers:t.headers,row:t.row},{x:e.clientX||window.innerWidth/2,y:e.clientY||window.innerHeight/2})}return(t,n)=>(Ks(),qs("div",{class:V(["acu-data-card",{"pending-deletion":l.value}])},[ta("div",Ti,[ta("span",Si,"#"+q(e.rowIndex+1),1),ta("span",{class:V(["acu-cell acu-editable-title",r.value]),onClick:n[0]||(n[0]=po(e=>f(e,o.value),["stop"]))},q(i.value),3),ta("i",{class:V(["fa-solid",c.value?"fa-lock":"fa-unlock","acu-row-lock-btn"]),style:$({cursor:"pointer",marginLeft:"auto",color:c.value?"#f39c12":"var(--acu-text-sub)",opacity:c.value?"1":"0.4",fontSize:"13px"}),title:c.value?"整行已锁定 (点击解锁)":"点击锁定整行",onClick:po(u,["stop"])},null,14,ki)]),ta("div",{class:V(["acu-card-body",e.isGridMode?"view-grid":"view-list"])},[(Ks(!0),qs(js,null,jn(d.value,e=>(Ks(),qs("div",{key:e.index,class:V(["acu-card-row acu-cell",{"acu-grid-span-full":e.spanFull}]),onClick:po(t=>f(t,e.index),["stop"])},[ta("div",Ii,q(e.headerName),1),ta("div",{class:V(["acu-card-value",e.highlightClass]),innerHTML:e.displayHtml},null,10,Di)],10,Ni))),128))],2)],2))}},Pi={class:"acu-panel-footer"},Li=["disabled"],Ai={key:0,class:"acu-page-info"},Mi=["onClick"],Ri=["disabled"],Ui={__name:"Pagination",props:{currentPage:{type:Number,required:!0},totalPages:{type:Number,required:!0}},emits:["change"],setup(e){const t=e,n=Ta(()=>{const e=t.totalPages,n=t.currentPage,s=[];if(e<=7)for(let t=1;t<=e;t++)s.push(t);else n<=4?s.push(1,2,3,4,5,"...",e):n>=e-3?s.push(1,"...",e-4,e-3,e-2,e-1,e):s.push(1,"...",n-1,n,n+1,"...",e);return s});return(t,s)=>(Ks(),qs("div",Pi,[ta("button",{class:V(["acu-page-btn",{disabled:e.currentPage<=1}]),disabled:e.currentPage<=1,onClick:s[0]||(s[0]=n=>t.$emit("change",e.currentPage-1))},[...s[2]||(s[2]=[ta("i",{class:"fa-solid fa-chevron-left"},null,-1)])],10,Li),(Ks(!0),qs(js,null,jn(n.value,n=>(Ks(),qs(js,{key:n},["..."===n?(Ks(),qs("span",Ai,"...")):(Ks(),qs("button",{key:1,class:V(["acu-page-btn",{active:n===e.currentPage}]),onClick:e=>t.$emit("change",n)},q(n),11,Mi))],64))),128)),ta("button",{class:V(["acu-page-btn",{disabled:e.currentPage>=e.totalPages}]),disabled:e.currentPage>=e.totalPages,onClick:s[1]||(s[1]=n=>t.$emit("change",e.currentPage+1))},[...s[3]||(s[3]=[ta("i",{class:"fa-solid fa-chevron-right"},null,-1)])],10,Ri)]))}},$i={class:"acu-panel-header"},ji={class:"acu-header-actions"},Fi={class:"acu-panel-content",style:{padding:"0",overflow:"hidden",height:"45vh","min-height":"300px",position:"relative","touch-action":"none"}},Bi={__name:"RelationGraph",emits:["close"],setup(e){const t=wt(null);return In(()=>{const e=t.value;if(!e)return;const n=e.getContext("2d"),s=e.parentElement.getBoundingClientRect(),a=window.devicePixelRatio||1;e.width=s.width*a,e.height=s.height*a,n.scale(a,a),n.fillStyle="rgba(128,128,128,0.1)",n.fillRect(0,0,s.width,s.height),n.fillStyle="#888",n.font="16px sans-serif",n.textAlign="center",n.fillText("人物关系网 (完整引擎待迁移)",s.width/2,s.height/2)}),(e,n)=>(Ks(),qs("div",null,[ta("div",$i,[n[2]||(n[2]=oa('<div class="acu-panel-title"><div class="acu-title-main"><i class="fa-solid fa-project-diagram"></i><span class="acu-title-text">人物关系网</span></div><div class="acu-title-sub">(Canvas 极速引擎)</div></div>',1)),ta("div",ji,[ta("button",{class:"acu-close-btn",onClick:n[0]||(n[0]=t=>e.$emit("close"))},[...n[1]||(n[1]=[ta("i",{class:"fa-solid fa-times"},null,-1)])])])]),ta("div",Fi,[ta("canvas",{ref_key:"canvasRef",ref:t,style:{display:"block",width:"100%",height:"100%",cursor:"grab"}},null,512),n[3]||(n[3]=ta("div",{style:{position:"absolute",bottom:"20px",left:"50%",transform:"translateX(-50%)","font-size":"11px",color:"var(--acu-text-sub)",opacity:"0.6"}}," 关系网 Canvas 引擎 — 完整版待后续迁移 ",-1))])]))}},Hi={class:"acu-panel-header"},Vi={class:"acu-panel-title"},zi={class:"acu-title-main"},Ki={class:"acu-title-text"},Xi=["title"],Gi={class:"acu-title-sub"},Wi={class:"acu-header-actions"},qi=["title"],Yi={class:"acu-height-control"},Ji={class:"acu-search-wrapper"},Qi=["value"],Zi={class:"acu-card-grid"},el={key:2,class:"acu-panel-content",style:{"text-align":"center",color:"var(--acu-text-sub)",padding:"20px"}},tl={__name:"DataPanel",props:{tableName:{type:String,required:!0}},emits:["close"],setup(e,{emit:t}){const n=e,s=pi(),a=mi(),o=wt(null),i=Ta(()=>a.tables[n.tableName]),l=Ta(()=>a.searchStates[n.tableName]||"");let r=null;function c(e){const t=e.target.value;r&&clearTimeout(r),r=setTimeout(()=>{a.searchStates[n.tableName]=t,a.pageStates[n.tableName]=1},300)}const u=Ta(()=>ni.get("acu_reverse_tables",[])),d=Ta(()=>!u.value.includes(n.tableName));function p(){let e=ni.get("acu_reverse_tables",[]);e.includes(n.tableName)?e=e.filter(e=>e!==n.tableName):e.push(n.tableName),ni.set("acu_reverse_tables",e)}const f=Ta(()=>{if(!i.value)return[];let e=i.value.rows.map((e,t)=>({data:e,originalIndex:t}));const t=l.value.toLowerCase().trim();t&&(e=e.filter(e=>e.data.some(e=>String(e).toLowerCase().includes(t))));const a=!ni.get("acu_disable_highlight_top_v19",[]).includes(n.tableName);return e.sort((e,t)=>{if(a&&s.highlightNew){const n=h(e.originalIndex),s=h(t.originalIndex);if(n&&!s)return-1;if(!n&&s)return 1}return d.value?t.originalIndex-e.originalIndex:e.originalIndex-t.originalIndex}),e});function h(e){var t,o;if(!s.highlightNew)return!1;const l=n.tableName;if(a.diffMap.has(`${l}-row-${e}`))return!(null==(o=null==(t=i.value)?void 0:t.rows[e])?void 0:o._isManualInsert);for(const n of a.diffMap)if(n.startsWith(`${l}-${e}-`)){const t=n.split("-"),s=t[t.length-1],o=`${i.value.key}-${e}-${s}`;if(!a.modifiedCells.has(o))return!0}return!1}const g=Ta(()=>a.pageStates[n.tableName]||1),v=Ta(()=>Math.ceil(f.value.length/s.itemsPerPage)||1),m=Ta(()=>(g.value-1)*s.itemsPerPage),y=Ta(()=>m.value+s.itemsPerPage),b=Ta(()=>f.value.slice(m.value,y.value));function _(e){a.pageStates[n.tableName]=e,Gt(()=>{o.value&&(o.value.scrollTop=0)})}const x=Ta(()=>"grid"===(li()[n.tableName]||"list"));function w(){const e=li();var t;e[n.tableName]=x.value?"list":"grid",t=e,ni.set(Bo,t)}const C=Ta(()=>!!ui()[n.tableName]),E=Ta(()=>{const e=ui()[n.tableName];return e?{height:e+"px"}:{}});function T(e){if(e.button&&0!==e.button)return;e.preventDefault(),e.stopPropagation();const t=e.target;t.setPointerCapture(e.pointerId);const s=t.closest(".acu-data-display"),a=s.offsetHeight,o=e.clientY;t.onpointermove=e=>{let t=a-(e.clientY-o);t=Math.max(200,Math.min(1200,t)),s.style.height=t+"px"},t.onpointerup=e=>{t.releasePointerCapture(e.pointerId),t.onpointermove=null,t.onpointerup=null;const a=ui();a[n.tableName]=parseInt(s.style.height),di(a)}}function S(){const e=ui();delete e[n.tableName],di(e)}return(t,n)=>(Ks(),qs("div",{class:V(["acu-data-display visible",{"acu-manual-mode":C.value}]),style:$(E.value)},[e.tableName===Et(Ho)?(Ks(),Ys(Bi,{key:0,onClose:n[0]||(n[0]=e=>t.$emit("close"))})):i.value?(Ks(),qs(js,{key:1},[ta("div",Hi,[ta("div",Vi,[ta("div",zi,[ta("i",{class:V(["fa-solid",Et(Jo)(e.tableName)])},null,2),ta("span",Ki,q(e.tableName),1),ta("i",{class:V(["fa-solid",d.value?"fa-sort-amount-up":"fa-sort-amount-down","acu-sort-toggle-btn"]),title:"排序: "+(d.value?"倒序":"正序"),style:{color:"var(--acu-accent)","margin-left":"8px",cursor:"pointer"},onClick:p},null,10,Xi)]),ta("div",Gi," ("+q(m.value+1)+"-"+q(Math.min(y.value,f.value.length))+" / 共"+q(f.value.length)+"项) ",1)]),ta("div",Wi,[ta("button",{class:"acu-view-btn",title:x.value?"双列网格":"单列列表",onClick:w},[ta("i",{class:V(["fa-solid",x.value?"fa-th-large":"fa-list"])},null,2)],8,qi),ta("div",Yi,[ta("i",{class:"fa-solid fa-arrows-up-down acu-height-drag-handle",onPointerdown:T,onDblclick:S},null,32)]),ta("div",Ji,[n[2]||(n[2]=ta("i",{class:"fa-solid fa-search acu-search-icon"},null,-1)),ta("input",{type:"text",class:"acu-search-input",placeholder:"搜索全部...",value:l.value,onInput:c},null,40,Qi)]),ta("button",{class:"acu-close-btn",onClick:n[1]||(n[1]=e=>t.$emit("close"))},[...n[3]||(n[3]=[ta("i",{class:"fa-solid fa-times"},null,-1)])])])]),ta("div",{ref_key:"contentRef",ref:o,class:"acu-panel-content"},[ta("div",Zi,[(Ks(!0),qs(js,null,jn(b.value,t=>(Ks(),Ys(Oi,{key:t.originalIndex,row:t.data,"row-index":t.originalIndex,headers:i.value.headers,"table-key":i.value.key,"table-name":e.tableName,"is-grid-mode":x.value,"search-term":l.value},null,8,["row","row-index","headers","table-key","table-name","is-grid-mode","search-term"]))),128))])],512),v.value>1?(Ks(),Ys(Ui,{key:0,"current-page":g.value,"total-pages":v.value,onChange:_},null,8,["current-page","total-pages"])):ia("",!0)],64)):(Ks(),qs("div",el," 暂无数据 "))],6))}},nl={class:"acu-rpg-widget"},sl={style:{"font-weight":"900","font-size":"1.15em",color:"var(--acu-accent)"}},al={class:"acu-rpg-badge",style:{flex:"1","min-width":"0"}},ol={key:0,class:"acu-rpg-badge"},il={style:{"margin-left":"auto",display:"flex","align-items":"center",gap:"8px"}},ll={key:0,class:"acu-rpg-details",style:{display:"block"}},rl={__name:"RPGStatusBar",props:{tables:{type:Object,default:()=>({})}},setup(e){const t=e,n=pi(),s=wt(!1),a=e=>Object.values(t.tables).filter(t=>e.test(t.name)),o=(e,t)=>{for(const n of t){const t=e.findIndex(e=>n.test(e));if(-1!==t)return t}return-1},i=Ta(()=>{var e;const t=a(Wo.tChar);for(const n of t){if(!(null==(e=n.rows)?void 0:e[0]))continue;const t=o(n.headers,Wo.cName);if(-1!==t&&n.rows[0][t])return String(n.rows[0][t]).trim()}return"主角"}),l=Ta(()=>{var e;const t=a(Wo.tGlobal);for(const n of t){if(!(null==(e=n.rows)?void 0:e.length))continue;const t=o(n.headers,Wo.cLoc),s=n.rows[n.rows.length-1];if(-1!==t&&s[t])return String(s[t]).trim()}return"未知地点"}),r=Ta(()=>{var e;const t=a(Wo.tGlobal);for(const n of t){if(!(null==(e=n.rows)?void 0:e.length))continue;const t=o(n.headers,Wo.cTime),s=n.rows[n.rows.length-1];if(-1!==t&&s[t])return String(s[t]).trim()}return"未知时间"}),c=Ta(()=>Object.keys(t.tables).length>0);return(e,t)=>c.value?(Ks(),qs("div",{key:0,class:V(["acu-status-bar-container",Et(n).themeClass])},[ta("div",nl,[ta("div",{class:"acu-rpg-summary",style:{cursor:"pointer"},onClick:t[0]||(t[0]=e=>s.value=!s.value)},[ta("div",sl,[t[1]||(t[1]=ta("i",{class:"fa-solid fa-user-astronaut"},null,-1)),aa(" "+q(i.value),1)]),ta("span",al,[t[2]||(t[2]=ta("i",{class:"fa-solid fa-location-dot",style:{color:"#ff6b81","margin-right":"6px"}},null,-1)),aa(" "+q(l.value),1)]),"未知时间"!==r.value?(Ks(),qs("span",ol,[t[3]||(t[3]=ta("i",{class:"fa-regular fa-clock",style:{color:"#7bed9f","margin-right":"6px"}},null,-1)),aa(" "+q(r.value),1)])):ia("",!0),ta("div",il,[ta("i",{class:V(["fa-solid","fa-chevron-down"]),style:$([{transition:"transform 0.3s",transform:s.value?"rotate(180deg)":""},{color:"var(--acu-text-sub)"}])},null,4)])]),s.value?(Ks(),qs("div",ll,[...t[4]||(t[4]=[ta("div",{style:{padding:"20px","text-align":"center",color:"var(--acu-text-sub)"}}," RPG 状态栏详情面板 — 完整版待后续迁移 ",-1)])])):ia("",!0)])],2)):ia("",!0)}},cl={class:"acu-settings-content",style:{flex:"1","overflow-y":"auto",padding:"15px"}},ul={class:"acu-settings-item"},dl={class:"acu-settings-label"},pl={class:"acu-settings-val"},fl=["value"],hl={class:"acu-settings-item"},gl={class:"acu-settings-label"},vl={class:"acu-settings-val"},ml=["value"],yl={class:"acu-settings-item"},bl={class:"acu-settings-label"},_l={class:"acu-settings-val"},xl=["value"],wl={class:"acu-settings-item"},Cl=["value"],El=["value"],Tl={class:"acu-settings-item"},Sl=["value"],kl=["value"],Nl={class:"acu-settings-item"},Il=["value"],Dl={class:"acu-settings-item"},Ol={class:"acu-settings-label",style:{display:"flex","justify-content":"space-between","align-items":"center"}},Pl=["value"],Ll={class:"acu-settings-item"},Al={class:"acu-settings-label",style:{display:"flex","align-items":"center",cursor:"pointer"}},Ml=["checked"],Rl={class:"acu-settings-item"},Ul={class:"acu-settings-label",style:{display:"flex","align-items":"center",cursor:"pointer"}},$l=["checked"],jl={class:"acu-settings-item"},Fl={class:"acu-settings-label",style:{display:"flex","align-items":"center",cursor:"pointer"}},Bl=["checked"],Hl={key:0,class:"acu-settings-item"},Vl={class:"acu-settings-label",style:{display:"flex","align-items":"center",cursor:"pointer"}},zl=["checked"],Kl={class:"acu-settings-item"},Xl={class:"acu-settings-label",style:{display:"flex","align-items":"center",cursor:"pointer"}},Gl=["checked"],Wl={style:{padding:"10px 16px","border-top":"1px solid var(--acu-border)"}},ql={__name:"SettingsModal",emits:["close"],setup(e){const t=pi();return(e,n)=>(Ks(),qs("div",{class:"acu-edit-overlay",onClick:n[13]||(n[13]=po(t=>e.$emit("close"),["self"]))},[ta("div",{class:V(["acu-edit-dialog",Et(t).themeClass])},[n[28]||(n[28]=ta("div",{class:"acu-edit-title",style:{"text-align":"center",padding:"12px 15px"}},[ta("div",{style:{"font-weight":"bold","font-size":"16px"}},"设置选项"),ta("div",{style:{"font-size":"11px",opacity:"0.6","margin-top":"4px"}}," 💡 修改后立即生效 ")],-1)),ta("div",cl,[ta("div",ul,[ta("label",dl,[n[14]||(n[14]=aa(" 卡片宽度 ",-1)),ta("span",pl,q(Et(t).cardWidth)+"px",1)]),ta("input",{type:"range",class:"acu-slider",min:"200",max:"500",step:"10",value:Et(t).cardWidth,onInput:n[0]||(n[0]=e=>Et(t).update({cardWidth:+e.target.value}))},null,40,fl)]),ta("div",hl,[ta("label",gl,[n[15]||(n[15]=aa(" 字体大小 ",-1)),ta("span",vl,q(Et(t).fontSize)+"px",1)]),ta("input",{type:"range",class:"acu-slider",min:"10",max:"24",step:"1",value:Et(t).fontSize,onInput:n[1]||(n[1]=e=>Et(t).update({fontSize:+e.target.value}))},null,40,ml)]),ta("div",yl,[ta("label",bl,[n[16]||(n[16]=aa(" 选项字体大小 ",-1)),ta("span",_l,q(Et(t).optionFontSize)+"px",1)]),ta("input",{type:"range",class:"acu-slider",min:"10",max:"24",step:"1",value:Et(t).optionFontSize,onInput:n[2]||(n[2]=e=>Et(t).update({optionFontSize:+e.target.value}))},null,40,xl)]),ta("div",wl,[n[17]||(n[17]=ta("label",{class:"acu-settings-label"},"背景主题",-1)),ta("select",{class:"acu-select",value:Et(t).theme,onChange:n[3]||(n[3]=e=>Et(t).setTheme(e.target.value))},[(Ks(!0),qs(js,null,jn(Et(Ko),e=>(Ks(),qs("option",{key:e.id,value:e.id},q(e.name),9,El))),128))],40,Cl)]),ta("div",Tl,[n[18]||(n[18]=ta("label",{class:"acu-settings-label"},"字体风格",-1)),ta("select",{class:"acu-select",value:Et(t).fontFamily,onChange:n[4]||(n[4]=e=>Et(t).update({fontFamily:e.target.value}))},[(Ks(!0),qs(js,null,jn(Et(Xo),e=>(Ks(),qs("option",{key:e.id,value:e.id},q(e.name),9,kl))),128))],40,Sl)]),ta("div",Nl,[n[20]||(n[20]=ta("label",{class:"acu-settings-label"},"布局模式",-1)),ta("select",{class:"acu-select",value:Et(t).layout,onChange:n[5]||(n[5]=e=>Et(t).update({layout:e.target.value}))},[...n[19]||(n[19]=[ta("option",{value:"horizontal"},"↔️ 横向滚动",-1),ta("option",{value:"vertical"},"↕️ 竖向网格",-1)])],40,Il)]),ta("div",Dl,[ta("label",Ol,[n[21]||(n[21]=ta("span",null,"每页显示条数",-1)),ta("input",{type:"number",value:Et(t).itemsPerPage,min:"1",max:"9999",style:{width:"80px","background-color":"var(--acu-btn-bg)!important",border:"1px solid var(--acu-border)!important",color:"var(--acu-text-main)!important","font-weight":"bold","border-radius":"4px",padding:"4px 8px","text-align":"center",outline:"none"},onChange:n[6]||(n[6]=e=>Et(t).update({itemsPerPage:Math.max(1,+e.target.value||20)}))},null,40,Pl)])]),ta("div",Ll,[ta("label",Al,[ta("input",{type:"checkbox",checked:Et(t).highlightNew,style:{"margin-right":"10px"},onChange:n[7]||(n[7]=e=>Et(t).update({highlightNew:e.target.checked}))},null,40,Ml),n[22]||(n[22]=aa(" 高亮变化/新增的内容 ",-1))])]),ta("div",Rl,[ta("label",Ul,[ta("input",{type:"checkbox",checked:Et(t).showStatusBar,style:{"margin-right":"10px"},onChange:n[8]||(n[8]=e=>Et(t).update({showStatusBar:e.target.checked}))},null,40,$l),n[23]||(n[23]=aa(" 显示 RPG 状态栏 ",-1))])]),ta("div",jl,[ta("label",Fl,[ta("input",{type:"checkbox",checked:Et(t).showOptionPanel,style:{"margin-right":"10px"},onChange:n[9]||(n[9]=e=>Et(t).update({showOptionPanel:e.target.checked}))},null,40,Bl),n[24]||(n[24]=aa(" 显示行动选项 ",-1))])]),Et(t).showOptionPanel?(Ks(),qs("div",Hl,[ta("label",Vl,[ta("input",{type:"checkbox",checked:Et(t).clickOptionToAutoSend,style:{"margin-right":"10px"},onChange:n[10]||(n[10]=e=>Et(t).update({clickOptionToAutoSend:e.target.checked}))},null,40,zl),n[25]||(n[25]=aa(" 点击选项直接发送 ",-1))])])):ia("",!0),ta("div",Kl,[ta("label",Xl,[ta("input",{type:"checkbox",checked:Et(t).beautifyToastr,style:{"margin-right":"10px"},onChange:n[11]||(n[11]=e=>Et(t).update({beautifyToastr:e.target.checked}))},null,40,Gl),n[26]||(n[26]=aa(" 优化酒馆系统提示消息 ",-1))])])]),ta("div",Wl,[ta("button",{class:"acu-btn-block",style:{background:"var(--acu-accent)!important",color:"#fff!important",border:"none","justify-content":"center","font-weight":"bold"},onClick:n[12]||(n[12]=t=>e.$emit("close"))},[...n[27]||(n[27]=[ta("i",{class:"fa-solid fa-check"},null,-1),aa(" 完成并保存 ",-1)])])])],2)]))}},Yl={class:"acu-dialog-btns"},Jl={__name:"EditDialog",props:{content:{type:String,default:""}},emits:["save","close"],setup(e,{emit:t}){const n=e,s=t,a=pi(),o=wt(n.content),i=wt(null);function l(){s("save",o.value)}return In(()=>{i.value&&i.value.focus()}),(e,t)=>(Ks(),qs("div",{class:"acu-edit-overlay",onClick:t[2]||(t[2]=po(t=>e.$emit("close"),["self"]))},[ta("div",{class:V(["acu-edit-dialog",Et(a).themeClass])},[t[5]||(t[5]=ta("div",{class:"acu-edit-title"},"编辑单元格内容",-1)),sn(ta("textarea",{ref_key:"textareaRef",ref:i,"onUpdate:modelValue":t[0]||(t[0]=e=>o.value=e),class:"acu-edit-textarea"},null,512),[[oo,o.value]]),ta("div",Yl,[ta("button",{class:"acu-dialog-btn",onClick:t[1]||(t[1]=t=>e.$emit("close"))},[...t[3]||(t[3]=[ta("i",{class:"fa-solid fa-times"},null,-1),aa(" 取消 ",-1)])]),ta("button",{class:"acu-dialog-btn acu-btn-confirm",onClick:l},[...t[4]||(t[4]=[ta("i",{class:"fa-solid fa-check"},null,-1),aa(" 保存 ",-1)])])])],2)]))}},Ql={__name:"CellMenu",props:{cellData:{type:Object,required:!0},position:{type:Object,required:!0}},emits:["close"],setup(e,{emit:t}){const n=e,s=t,a=pi(),o=mi(),i=yi(),l=Ta(()=>{let e=n.position.x+5,t=n.position.y+5;return e+180>window.innerWidth&&(e=n.position.x-180-5),t+280>window.innerHeight&&(t=n.position.y-280-5),e<5&&(e=5),t<5&&(t=5),{top:t+"px",left:e+"px"}}),r=Ta(()=>(ai()[n.cellData.tableKey]||[]).includes(n.cellData.rowIndex));function c(){s("close"),i.openEditDialog(n.cellData.content,e=>{var t,s;if(e===n.cellData.content)return;o.cachedRawData||o.fetchData();const a=o.cachedRawData,{tableKey:i,rowIndex:l,colIndex:r}=n.cellData;(null==(s=null==(t=null==a?void 0:a[i])?void 0:t.content)?void 0:s[l+1])&&(a[i].content[l+1][r]=e),o.modifiedCells.add(`${i}-${l}-${r}`),o.hasUnsavedChanges=!0,Zo.info("修改已暂存")})}async function u(){try{if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(n.cellData.content);else{const e=document.createElement("textarea");e.value=n.cellData.content,e.style.position="fixed",e.style.left="-9999px",e.setAttribute("readonly",""),document.body.appendChild(e),e.select(),document.execCommand("copy"),document.body.removeChild(e)}Zo.success("已复制")}catch{Zo.error("复制失败")}s("close")}function d(){const e=document.getElementById("send_textarea");e&&(e.value=(e.value||"")+n.cellData.content,e.dispatchEvent(new Event("input",{bubbles:!0})),e.focus(),Zo.success("已追加至消息栏")),s("close")}async function p(){var e,t;s("close");const{tableKey:a,rowIndex:i}=n.cellData;o.cachedRawData||o.fetchData();const l=o.cachedRawData;if(!(null==(e=null==l?void 0:l[a])?void 0:e.content))return void Zo.error("数据异常");const r=l[a],c=(null==(t=r.content[0])?void 0:t.length)||2,u=new Array(c).fill("");c>0&&(u[0]=String(r.content.length)),u._isManualInsert=!0,r.content.splice(i+2,0,u),o.hasUnsavedChanges=!0,Zo.info("已暂存新行，请点击保存")}function f(){s("close");const{tableKey:e,rowIndex:t}=n.cellData,a=ai();a[e]||(a[e]=[]),a[e].includes(t)||(a[e].push(t),oi(a)),o.hasUnsavedChanges=!0,Zo.info("已标记删除 (请点击保存)")}function h(){var e;s("close");const{tableKey:t,rowIndex:a}=n.cellData,i=ai();i[t]&&(i[t]=i[t].filter(e=>e!==a),0===i[t].length&&delete i[t],oi(i));const l=ai();let r=!1;for(const n in l)(null==(e=l[n])?void 0:e.length)>0&&(r=!0);r||0!==o.modifiedCells.size||(o.hasUnsavedChanges=!1)}return(e,t)=>(Ks(),qs(js,null,[ta("div",{class:"acu-menu-backdrop",onClick:t[0]||(t[0]=t=>e.$emit("close"))}),ta("div",{class:V(["acu-cell-menu",Et(a).themeClass]),style:$(l.value)},[ta("div",{class:"acu-cell-menu-item",onClick:c},[...t[2]||(t[2]=[ta("i",{class:"fa-solid fa-pen"},null,-1),aa(" 编辑内容 ",-1)])]),ta("div",{class:"acu-cell-menu-item",onClick:u},[...t[3]||(t[3]=[ta("i",{class:"fa-solid fa-copy"},null,-1),aa(" 复制内容 ",-1)])]),ta("div",{class:"acu-cell-menu-item",onClick:d},[...t[4]||(t[4]=[ta("i",{class:"fa-solid fa-keyboard"},null,-1),aa(" 输入至消息栏 ",-1)])]),ta("div",{class:"acu-cell-menu-item",onClick:p,style:{color:"#2980b9"}},[...t[5]||(t[5]=[ta("i",{class:"fa-solid fa-plus"},null,-1),aa(" 追加新行 ",-1)])]),r.value?(Ks(),qs("div",{key:0,class:"acu-cell-menu-item",style:{color:"#27ae60"},onClick:h},[...t[6]||(t[6]=[ta("i",{class:"fa-solid fa-undo"},null,-1),aa(" 恢复整行 ",-1)])])):(Ks(),qs("div",{key:1,class:"acu-cell-menu-item",id:"act-delete",onClick:f},[...t[7]||(t[7]=[ta("i",{class:"fa-solid fa-trash"},null,-1),aa(" 删除整行 ",-1)])])),ta("div",{class:"acu-cell-menu-item",id:"act-close",onClick:t[1]||(t[1]=t=>e.$emit("close"))},[...t[8]||(t[8]=[ta("i",{class:"fa-solid fa-times"},null,-1),aa(" 关闭菜单 ",-1)])])],6)],64))}},Zl={style:{padding:"12px 15px","border-bottom":"1px solid var(--acu-border)",display:"flex","align-items":"center","justify-content":"space-between"}},er={style:{display:"flex","align-items":"center",gap:"8px"}},tr={style:{"font-weight":"bold","font-size":"15px",color:"var(--acu-text-main)","min-width":"120px","text-align":"center"}},nr={style:{padding:"8px 12px 15px"}},sr={style:{display:"grid","grid-template-columns":"repeat(7,1fr)",gap:"4px"}},ar=["title"],or={key:0,style:{display:"block",width:"5px",height:"5px","border-radius":"50%",background:"var(--acu-accent)",margin:"2px auto 0"}},ir={key:0,style:{padding:"0 12px 12px","max-height":"120px","overflow-y":"auto"}},lr={style:{"font-size":"11px",color:"var(--acu-text-sub)","margin-bottom":"6px","font-weight":"bold"}},rr={__name:"CalendarWidget",props:{timeStr:{type:String,default:""}},emits:["close"],setup(e){const t=e,n=pi(),s=mi(),a={"零":0,"〇":0,"一":1,"二":2,"三":3,"四":4,"五":5,"六":6,"七":7,"八":8,"九":9,"十":10,"百":100,"千":1e3,"万":1e4};function o(e){if(!e)return NaN;const t=String(e).trim();if(/^\d+$/.test(t))return parseInt(t);if(/^[零〇一二三四五六七八九]+$/.test(t))return parseInt(t.split("").map(e=>a[e]??"").join(""),10);let n=0,s=0;for(const o of t){const e=a[o];void 0!==e&&(e>=10?(0===s&&(s=1),n+=s*e,s=0):s=e)}return n+=s,n||NaN}const i=Ta(()=>{const e=t.timeStr||"",n=new Date;let s=n.getFullYear(),a=n.getMonth()+1,i=n.getDate();const l=e.match(/([零〇一二三四五六七八九千百万\d]+)\s*年\s*([零〇一二三四五六七八九十\d]+)\s*月\s*([零〇一二三四五六七八九十\d]+)\s*[日号]?/),r=e.match(/(\d{4})[-\/](\d{1,2})[-\/](\d{1,2})/);if(l)s=o(l[1])||s,a=o(l[2])||a,i=o(l[3])||i;else if(r)s=parseInt(r[1]),a=parseInt(r[2]),i=parseInt(r[3]);else{const t=e.match(/([零〇一二三四五六七八九十\d]+)\s*月\s*([零〇一二三四五六七八九十\d]+)\s*[日号]?/);t&&(a=o(t[1])||a,i=o(t[2])||i)}return{year:s,month:a,day:i}}),l=wt(0),r=Ta(()=>{let e=i.value.month+l.value-1;return i.value.year+Math.floor(e/12)}),c=Ta(()=>((i.value.month+l.value-1)%12+12)%12+1),u=Ta(()=>0===l.value?i.value.day:null),d=Ta(()=>new Date(r.value,c.value,0).getDate()),p=Ta(()=>new Date(r.value,c.value-1,1).getDay());function f(e){l.value+=e}function h(e){const t=0===l.value&&e===i.value.day,n=v(e).length>0;return{textAlign:"center",padding:"6px 2px 4px",borderRadius:"6px",cursor:n?"pointer":"default",fontSize:"13px",fontWeight:t?"bold":"normal",color:t?"#fff":"var(--acu-text-main)",background:t?"var(--acu-accent)":n?"rgba(var(--acu-accent-rgb, 100, 100, 255), 0.1)":"transparent"}}const g=Ta(()=>{const e={},t=s.tables;return Object.values(t).forEach(t=>{if(!Wo.tEvent.test(t.name)&&!t.name.includes("事件"))return;if(!t.headers||!t.rows)return;const n=t.headers.findIndex(e=>Wo.cEvtDate[0].test(e)),s=t.headers.findIndex(e=>Wo.cEvtTitle[0].test(e));-1!==s&&t.rows.forEach(t=>{let a=-1!==n?String(t[n]||""):"",o=String(t[s]||"").trim();if(!o)return;const i=a.match(/(\d{1,2})\s*[日号]/)||a.match(/(\d{1,2})$/),l=a.match(/(\d{1,2})\s*月/);if(i){const t=`${l?parseInt(l[1]):c.value}-${parseInt(i[1])}`;e[t]||(e[t]=[]),e[t].push(o)}})}),e});function v(e){const t=`${c.value}-${e}`;return g.value[t]||[]}const m=Ta(()=>u.value?v(u.value):[]);return(e,t)=>(Ks(),qs("div",{class:"acu-edit-overlay",onClick:t[3]||(t[3]=po(t=>e.$emit("close"),["self"]))},[ta("div",{class:V(["acu-edit-dialog",Et(n).themeClass]),style:{"max-width":"380px",width:"90%",padding:"0"}},[ta("div",Zl,[ta("div",er,[ta("button",{class:"acu-action-btn",onClick:t[0]||(t[0]=e=>f(-1))},[...t[4]||(t[4]=[ta("i",{class:"fa-solid fa-chevron-left"},null,-1)])]),ta("span",tr,q(r.value)+"年 "+q(c.value)+"月 ",1),ta("button",{class:"acu-action-btn",onClick:t[1]||(t[1]=e=>f(1))},[...t[5]||(t[5]=[ta("i",{class:"fa-solid fa-chevron-right"},null,-1)])])]),ta("button",{style:{background:"none",border:"none",color:"var(--acu-text-sub)",cursor:"pointer","font-size":"16px"},onClick:t[2]||(t[2]=t=>e.$emit("close"))},[...t[6]||(t[6]=[ta("i",{class:"fa-solid fa-times"},null,-1)])])]),t[7]||(t[7]=ta("div",{style:{padding:"8px 12px 0"}},[ta("div",{style:{display:"grid","grid-template-columns":"repeat(7,1fr)","text-align":"center","font-size":"12px",color:"var(--acu-text-sub)","font-weight":"bold"}},[ta("span",null,"日"),ta("span",null,"一"),ta("span",null,"二"),ta("span",null,"三"),ta("span",null,"四"),ta("span",null,"五"),ta("span",null,"六")])],-1)),ta("div",nr,[ta("div",sr,[(Ks(!0),qs(js,null,jn(p.value,e=>(Ks(),qs("div",{key:"blank-"+e}))),128)),(Ks(!0),qs(js,null,jn(d.value,e=>(Ks(),qs("div",{key:e,style:$(h(e)),title:v(e).join("\n")},[ta("span",null,q(e),1),v(e).length>0?(Ks(),qs("span",or)):ia("",!0)],12,ar))),128))])]),m.value.length>0?(Ks(),qs("div",ir,[ta("div",lr," 📅 "+q(c.value)+"月"+q(u.value)+"日 事件： ",1),(Ks(!0),qs(js,null,jn(m.value,(e,t)=>(Ks(),qs("div",{key:t,style:{"font-size":"12px",color:"var(--acu-text-main)",padding:"4px 8px","margin-bottom":"3px",background:"var(--acu-btn-bg)","border-radius":"4px","border-left":"3px solid var(--acu-accent)"}},q(e),1))),128))])):ia("",!0)],2)]))}},cr={class:"acu-panel-header",style:{padding:"12px 15px","border-radius":"12px 12px 0 0"}},ur={style:{display:"flex","align-items":"center",gap:"12px"}},dr={style:{"font-weight":"bold","font-size":"16px",color:"var(--acu-accent)"}},pr={style:{flex:"1","overflow-y":"auto",padding:"15px",background:"var(--acu-bg-panel)","border-radius":"0 0 12px 12px"}},fr={key:0,style:{"text-align":"center",color:"var(--acu-text-sub)",padding:"20px"}},hr={style:{"font-size":"12px",color:"var(--acu-text-sub)","margin-bottom":"4px","font-weight":"bold"}},gr={style:{"font-size":"13px",color:"var(--acu-text-main)","white-space":"pre-wrap","line-height":"1.5","word-break":"break-all"}},vr={__name:"CharacterProfile",props:{charName:{type:String,required:!0}},emits:["close"],setup(e){const t=e,n=pi(),s=mi(),a=Ta(()=>{const e=s.cachedRawData;if(!e)return[];for(const n in e){const s=e[n];if(!(null==s?void 0:s.content)||s.content.length<2)continue;const a=s.content[0],o=a.findIndex(e=>/姓名|名字|人物名称|角色名|Name/i.test(e));if(-1===o)continue;const i=s.content.slice(1).find(e=>String(e[o]||"").trim()===t.charName);if(i){const e=[];return a.forEach((t,n)=>{if(0===n)return;const s=String(i[n]||"").trim();s&&"无"!==s&&"未知"!==s&&"待定"!==s&&e.push({header:t,value:s})}),e}}return[]});return(t,s)=>(Ks(),qs("div",{class:"acu-edit-overlay",onClick:s[1]||(s[1]=po(e=>t.$emit("close"),["self"])),style:{"z-index":"2147483648!important"}},[ta("div",{class:V(["acu-edit-dialog",Et(n).themeClass]),style:{"max-width":"400px",width:"90%",padding:"0"}},[ta("div",cr,[ta("div",ur,[s[2]||(s[2]=ta("div",{style:{width:"42px",height:"42px","border-radius":"50%",background:"var(--acu-bg-panel)",border:"2px solid var(--acu-accent)",display:"flex","align-items":"center","justify-content":"center",overflow:"hidden"}},[ta("i",{class:"fa-solid fa-user",style:{opacity:"0.5","font-size":"16px",color:"var(--acu-text-sub)"}})],-1)),ta("div",dr,q(e.charName),1)]),ta("button",{style:{background:"none",border:"none",color:"var(--acu-text-sub)",cursor:"pointer","font-size":"16px",padding:"4px"},onClick:s[0]||(s[0]=e=>t.$emit("close"))},[...s[3]||(s[3]=[ta("i",{class:"fa-solid fa-times"},null,-1)])])]),ta("div",pr,[0===a.value.length?(Ks(),qs("div",fr," 未找到【"+q(e.charName)+"】的详细表格记录 ",1)):ia("",!0),(Ks(!0),qs(js,null,jn(a.value,e=>(Ks(),qs("div",{key:e.header,style:{"margin-bottom":"12px","padding-bottom":"8px","border-bottom":"1px dashed var(--acu-border)"}},[ta("div",hr,[s[4]||(s[4]=ta("i",{class:"fa-solid fa-tag",style:{opacity:"0.5","font-size":"10px","margin-right":"4px"}},null,-1)),aa(" "+q(e.header),1)]),ta("div",gr,q(e.value),1)]))),128))])],2)]))}};let mr=null;const yr="templates";function br(){return new Promise(e=>{const t=e=>(e.tpl_builtin_sql_hongqu=JSON.parse(JSON.stringify(qo)),e.tpl_builtin_sql_hongqu.mate.templateName=" SQL魔改红曲 (内置)",e);if(!mr)return e(t({}));const n=mr.transaction([yr],"readonly").objectStore(yr),s=n.getAllKeys(),a=n.getAll();s.onsuccess=()=>{a.onsuccess=()=>{const n={};s.result.forEach((e,t)=>{"tpl_builtin_sql_hongqu"!==e&&(n[e]=a.result[t])}),e(t(n))}},a.onerror=()=>e(t({}))})}const _r={style:{padding:"14px 18px","border-bottom":"1px solid var(--acu-border)",display:"flex","align-items":"center","justify-content":"space-between"}},xr={style:{flex:"1",overflow:"hidden",display:"flex",gap:"0"}},wr={class:"acu-stitch-column",style:{flex:"1","border-right":"1px solid var(--acu-border)"}},Cr=["value"],Er={style:{flex:"1","overflow-y":"auto",padding:"8px"}},Tr=["onClick"],Sr={style:{"margin-left":"auto","font-size":"11px",color:"var(--acu-text-sub)"}},kr={class:"acu-stitch-column",style:{flex:"1.2",background:"var(--acu-bg-panel)"}},Nr={class:"acu-stitch-col-header",style:{color:"var(--acu-accent)"}},Ir={style:{flex:"1","overflow-y":"auto",padding:"8px"}},Dr={key:0,style:{"text-align":"center",color:"var(--acu-text-sub)",padding:"40px 20px","font-size":"13px"}},Or=["onClick"],Pr={style:{padding:"10px","border-top":"1px solid var(--acu-border)"}},Lr={style:{display:"flex",gap:"6px","margin-bottom":"8px"}},Ar=["disabled"],Mr={class:"acu-stitch-column",style:{flex:"1","border-left":"1px solid var(--acu-border)"}},Rr=["value"],Ur={style:{flex:"1","overflow-y":"auto",padding:"8px"}},$r=["onClick"],jr={style:{"margin-left":"auto","font-size":"11px",color:"var(--acu-text-sub)"}},Fr=((e,t)=>{const n=e.__vccOpts||e;for(const[s,a]of t)n[s]=a;return n})({__name:"TemplateStitcher",emits:["close"],setup(e){const t=pi(),n=wt({}),s=wt(""),a=wt(""),o=wt([]),i=wt([]),l=wt([]),r=wt("");function c(e){const t="A"===e?s.value:a.value,l=function(e){var t,n;if(!e)return[];const s=[];for(const a in e){if(!a.startsWith("sheet_"))continue;const o=e[a];(null==o?void 0:o.name)&&s.push({name:o.name,colCount:(null==(n=null==(t=o.content)?void 0:t[0])?void 0:n.length)||0,sheetKey:a,sheetData:JSON.parse(JSON.stringify(o))})}return s}(n.value[t]);"A"===e?o.value=l:i.value=l}function u(e){l.value.find(t=>t.name===e.name)?Zo.warning(`表「${e.name}」已在合成区`):l.value.push({...e})}async function d(){const e=r.value.trim();if(!e)return void Zo.warning("请输入模板名称");if(0===l.value.length)return void Zo.warning("合成区为空");const t={mate:{type:"chatSheets",version:1,templateName:e}};l.value.forEach((e,n)=>{const s=e.sheetKey||`sheet_${n+1}`;t[s]=e.sheetData});const s=`tpl_custom_${Date.now()}`,a=await function(e,t){return new Promise(n=>{if(!mr)return n(!1);mr.transaction([yr],"readwrite").objectStore(yr).put(t,e).onsuccess=()=>n(!0)})}(s,t);a?(Zo.success(`模板「${e}」已保存`),n.value=await br(),l.value=[],r.value=""):Zo.error("保存失败")}return In(async()=>{n.value=await br()}),(e,p)=>(Ks(),qs("div",{class:"acu-edit-overlay",onClick:p[6]||(p[6]=po(t=>e.$emit("close"),["self"]))},[ta("div",{class:V(["acu-edit-dialog",Et(t).themeClass]),style:{"max-width":"900px",width:"95%",height:"80vh",display:"flex","flex-direction":"column",padding:"0"}},[ta("div",_r,[p[8]||(p[8]=ta("div",null,[ta("div",{style:{"font-weight":"bold","font-size":"16px"}},"🧩 模板缝合中心"),ta("div",{style:{"font-size":"11px",color:"var(--acu-text-sub)","margin-top":"2px"}}," 从已有模板中选取表格，拼装成新模板 ")],-1)),ta("button",{style:{background:"none",border:"none",color:"var(--acu-text-sub)",cursor:"pointer","font-size":"18px"},onClick:p[0]||(p[0]=t=>e.$emit("close"))},[...p[7]||(p[7]=[ta("i",{class:"fa-solid fa-times"},null,-1)])])]),ta("div",xr,[ta("div",wr,[p[11]||(p[11]=ta("div",{class:"acu-stitch-col-header"},[ta("i",{class:"fa-solid fa-box-open"}),aa(" 模板 A ")],-1)),sn(ta("select",{class:"acu-select",style:{margin:"8px",width:"calc(100% - 16px)"},"onUpdate:modelValue":p[1]||(p[1]=e=>s.value=e),onChange:p[2]||(p[2]=e=>c("A"))},[p[9]||(p[9]=ta("option",{value:""},"-- 选择模板 --",-1)),(Ks(!0),qs(js,null,jn(n.value,(e,t)=>{var n;return Ks(),qs("option",{key:t,value:t},q((null==(n=null==e?void 0:e.mate)?void 0:n.templateName)||t),9,Cr)}),128))],544),[[io,s.value]]),ta("div",Er,[(Ks(!0),qs(js,null,jn(o.value,e=>(Ks(),qs("div",{key:e.name,class:"acu-stitch-card",onClick:t=>u(e)},[p[10]||(p[10]=ta("i",{class:"fa-solid fa-table",style:{color:"var(--acu-accent)","margin-right":"6px"}},null,-1)),aa(" "+q(e.name)+" ",1),ta("span",Sr,q(e.colCount)+"列 ",1)],8,Tr))),128))])]),ta("div",kr,[ta("div",Nr,[p[12]||(p[12]=ta("i",{class:"fa-solid fa-flask"},null,-1)),aa(" 合成结果（"+q(l.value.length)+" 张表） ",1)]),ta("div",Ir,[0===l.value.length?(Ks(),qs("div",Dr,[...p[13]||(p[13]=[ta("i",{class:"fa-solid fa-arrow-left",style:{"margin-right":"6px"}},null,-1),aa(" 点击左/右栏的表格卡片添加到这里 ",-1),ta("i",{class:"fa-solid fa-arrow-right",style:{"margin-left":"6px"}},null,-1)])])):ia("",!0),(Ks(!0),qs(js,null,jn(l.value,(e,t)=>(Ks(),qs("div",{key:e.name+t,class:"acu-stitch-card",style:{"border-left":"3px solid var(--acu-accent)"}},[p[15]||(p[15]=ta("i",{class:"fa-solid fa-table",style:{color:"var(--acu-accent)","margin-right":"6px"}},null,-1)),aa(" "+q(e.name)+" ",1),ta("button",{style:{"margin-left":"auto",background:"none",border:"none",color:"#e74c3c",cursor:"pointer",padding:"2px 6px"},title:"移除",onClick:e=>function(e){l.value.splice(e,1)}(t)},[...p[14]||(p[14]=[ta("i",{class:"fa-solid fa-trash-can"},null,-1)])],8,Or)]))),128))]),ta("div",Pr,[ta("div",Lr,[sn(ta("input",{"onUpdate:modelValue":p[3]||(p[3]=e=>r.value=e),type:"text",placeholder:"新模板名称...",style:{flex:"1",padding:"6px 10px",border:"1px solid var(--acu-border)","border-radius":"6px",background:"var(--acu-btn-bg)",color:"var(--acu-text-main)",outline:"none"}},null,512),[[oo,r.value]])]),ta("button",{class:"acu-btn-block",style:{background:"var(--acu-accent)!important",color:"#fff!important",border:"none","justify-content":"center","font-weight":"bold"},disabled:0===l.value.length||!r.value.trim(),onClick:d},[...p[16]||(p[16]=[ta("i",{class:"fa-solid fa-save"},null,-1),aa(" 保存为新模板 ",-1)])],8,Ar)])]),ta("div",Mr,[p[19]||(p[19]=ta("div",{class:"acu-stitch-col-header"},[ta("i",{class:"fa-solid fa-box-open"}),aa(" 模板 B ")],-1)),sn(ta("select",{class:"acu-select",style:{margin:"8px",width:"calc(100% - 16px)"},"onUpdate:modelValue":p[4]||(p[4]=e=>a.value=e),onChange:p[5]||(p[5]=e=>c("B"))},[p[17]||(p[17]=ta("option",{value:""},"-- 选择模板 --",-1)),(Ks(!0),qs(js,null,jn(n.value,(e,t)=>{var n;return Ks(),qs("option",{key:t,value:t},q((null==(n=null==e?void 0:e.mate)?void 0:n.templateName)||t),9,Rr)}),128))],544),[[io,a.value]]),ta("div",Ur,[(Ks(!0),qs(js,null,jn(i.value,e=>(Ks(),qs("div",{key:e.name,class:"acu-stitch-card",onClick:t=>u(e)},[p[18]||(p[18]=ta("i",{class:"fa-solid fa-table",style:{color:"var(--acu-accent)","margin-right":"6px"}},null,-1)),aa(" "+q(e.name)+" ",1),ta("span",jr,q(e.colCount)+"列 ",1)],8,$r))),128))])])])],2)]))}},[["__scopeId","data-v-fc94b9ff"]]),Br={__name:"App",setup(e){const t=pi(),n=mi(),s=yi(),a=Ta(()=>"vertical"===t.layout?"acu-layout-vertical":""),o=Ta(()=>Object.keys(n.tables).length),i=Ta(()=>{const e=Object.keys(n.tables),s=ni.get("acu_table_order"),a=ni.get("acu_hidden_tables_v19",[]);let o=e;return s&&(o=s.filter(t=>e.includes(t)||t===Ho).concat(e.filter(e=>!s.includes(e)))),t.showStatusBar?o=o.filter(e=>e!==Ho):o.includes(Ho)||a.includes(Ho)||o.unshift(Ho),o.filter(e=>!a.includes(e))});function l(e){s.editDialogCallback&&s.editDialogCallback(e),s.showEditDialog=!1}return In(()=>{t.applyFont()}),rn(()=>t.fontFamily,()=>t.applyFont()),(e,r)=>(Ks(),qs("div",{class:V(["acu-wrapper acu-mode-fixed",[Et(t).themeClass,a.value]]),style:$(Et(t).cssVars),onClick:r[9]||(r[9]=po(()=>{},["stop"]))},[Et(s).isCollapsed?(Ks(),Ys(bi,{key:0,"table-count":o.value,onExpand:r[0]||(r[0]=e=>Et(s).expand())},null,8,["table-count"])):(Ks(),qs(js,{key:1},[Et(s).isPanelVisible&&Et(s).activeTab?(Ks(),Ys(tl,{key:0,"table-name":Et(s).activeTab,onClose:r[1]||(r[1]=e=>Et(s).closePanel())},null,8,["table-name"])):ia("",!0),na(Ei,{"ordered-names":i.value,"active-tab":Et(s).activeTab,onSelectTab:r[2]||(r[2]=e=>Et(s).switchTab(e))},null,8,["ordered-names","active-tab"])],64)),Et(t).showStatusBar?(Ks(),Ys(rl,{key:2,tables:Et(n).tables},null,8,["tables"])):ia("",!0),Et(s).showSettings?(Ks(),Ys(ql,{key:3,onClose:r[3]||(r[3]=e=>Et(s).showSettings=!1)})):ia("",!0),Et(s).showEditDialog?(Ks(),Ys(Jl,{key:4,content:Et(s).editDialogContent,onSave:l,onClose:r[4]||(r[4]=e=>Et(s).showEditDialog=!1)},null,8,["content"])):ia("",!0),Et(s).showCellMenu?(Ks(),Ys(Ql,{key:5,"cell-data":Et(s).cellMenuData,position:Et(s).cellMenuPosition,onClose:r[5]||(r[5]=e=>Et(s).showCellMenu=!1)},null,8,["cell-data","position"])):ia("",!0),Et(s).showCalendar?(Ks(),Ys(rr,{key:6,"time-str":Et(s).calendarTimeStr,onClose:r[6]||(r[6]=e=>Et(s).showCalendar=!1)},null,8,["time-str"])):ia("",!0),Et(s).showCharProfile?(Ks(),Ys(vr,{key:7,"char-name":Et(s).profileCharName,onClose:r[7]||(r[7]=e=>Et(s).showCharProfile=!1)},null,8,["char-name"])):ia("",!0),Et(s).showStitcher?(Ks(),Ys(Fr,{key:8,onClose:r[8]||(r[8]=e=>Et(s).showStitcher=!1)})):ia("",!0)],6))}};function Hr(){const e=document.getElementById("form_sheld");if(e&&e.parentElement)return{parent:e.parentElement,before:e};const t=document.getElementById("sheld");return t?{parent:t,before:null}:{parent:document.body,before:null}}async function Vr(){await gi(),await async function(){return new Promise(e=>{const t=indexedDB.open("ACU_Template_DB",1);t.onupgradeneeded=e=>{const t=e.target.result;t.objectStoreNames.contains(yr)||t.createObjectStore(yr)},t.onsuccess=t=>{mr=t.target.result,e()},t.onerror=()=>e()})}();const e=function(){let e=document.getElementById("acu-vue-root");if(e)return e;e=document.createElement("div"),e.id="acu-vue-root";const{parent:t,before:n}=Hr();return n?t.insertBefore(e,n):t.appendChild(e),e}();!function(e){new MutationObserver(()=>{if(!document.body.contains(e)){const{parent:t,before:n}=Hr();n?t.insertBefore(e,n):t.appendChild(e)}}).observe(document.body,{childList:!0,subtree:!0})}(e);const t=go(Br),n=function(){const e=te(!0),t=e.run(()=>wt({}));let n=[],s=[];const a=yt({install(e){mo(a),a._a=e,e.provide(yo,a),e.config.globalProperties.$pinia=a,s.forEach(e=>n.push(e)),s=[]},use(e){return this._a?n.push(e):s.push(e),this},_p:n,_a:null,_e:e,_s:new Map,state:t});return a}();t.use(n),t.mount(e);const s=mi(),a=yi(),o=()=>{const e=ti().getDB();(null==e?void 0:e.exportTableAsJson)?(s.fetchData(),s.generateDiffMap(),e.registerTableUpdateCallback&&e.registerTableUpdateCallback(()=>{s.handleBackendUpdate(),s.generateDiffMap()}),e.registerTableFillStartCallback&&e.registerTableFillStartCallback(()=>{const t=e.exportTableAsJson();t&&ci(t),a.isWaitingForDbUpdate=!0}),function(e){var t;const n=window.SillyTavern||(null==(t=window.parent)?void 0:t.SillyTavern);if(!(null==n?void 0:n.eventSource)||!(null==n?void 0:n.eventTypes))return;const s=n.eventTypes,a=n.eventSource;a.on(s.CHAT_CHANGED,()=>{e.cachedRawData=null,e.resetEditState(),e.pageStates={},e.searchStates={},e.scrollStates={},setTimeout(()=>{e.fetchData(),e.generateDiffMap()},500)});[s.MESSAGE_SWIPED,s.MESSAGE_RECEIVED,s.STREAM_MESSAGE_END,s.MESSAGE_DELETED,s.GENERATION_STOPPED].forEach(t=>{t&&a.on(t,()=>{e.optionPanelVisible=!0,e.lastOptionHash=null,setTimeout(()=>{e.fetchData(),e.generateDiffMap()},500)})}),s.GENERATION_STARTED&&a.on(s.GENERATION_STARTED,()=>{window._acuIsGenerating=!0});s.GENERATION_ENDED&&a.on(s.GENERATION_ENDED,()=>{window._acuIsGenerating=!1,setTimeout(()=>{e.fetchData(),e.generateDiffMap()},100)});s.MESSAGE_SENT&&a.on(s.MESSAGE_SENT,()=>{e.optionPanelVisible=!1})}(s)):setTimeout(o,1e3)};o()}console.log("🚀 [ACU Vue Edition] 已成功加载，当前版本: v21.0"),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",Vr):Vr()}();
+(function () {
+    'use strict';
+
+    console.log('🚀 [ACU 云端核心] 已成功加载，当前版本: v20.3');
+    
+    const SCRIPT_ID = 'acu_visualizer_ui_v20_0_ai_overlay';
+    
+    // [新增] 全局防抖提示管理器，拦截高频重复弹窗
+    const AcuToast = {
+        lastMsgs: new Map(),
+        cooldown: 2000, // 2秒冷却期，同类提示在这期间只弹一次
+        show: function(type, msg) {
+            if (!window.toastr) return;
+            const now = Date.now();
+            const strMsg = String(msg);
+            const lastTime = this.lastMsgs.get(strMsg);
+            if (lastTime && (now - lastTime < this.cooldown)) return; // 冷却中，静默拦截
+            
+            this.lastMsgs.set(strMsg, now);
+            window.toastr[type](msg);
+            setTimeout(() => this.lastMsgs.delete(strMsg), this.cooldown + 100);
+        },
+        success: msg => AcuToast.show('success', msg),
+        info: msg => AcuToast.show('info', msg),
+        warning: msg => AcuToast.show('warning', msg),
+        error: msg => AcuToast.show('error', msg)
+    };
+
+    const escapeHtml = (s) => {
+        return String(s ?? '').trim().replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+    };
+
+    // [新增] 增强型文件下载兼容性助手
+    const acuDownloadFile = (fileName, content) => {
+        const blob = new Blob([content], { type: 'application/json' });
+        // 兼容 IE/旧版 Edge
+        if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+            window.navigator.msSaveOrOpenBlob(blob, fileName);
+            return;
+        }
+        // 现代浏览器方案
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        
+        // 使用双重异步，确保 UI 线程有足够时间处理 Blob 句柄
+        setTimeout(() => {
+            try {
+                a.click();
+            } catch (e) {
+                console.error('[ACU] 下载触发失败:', e);
+                AcuToast.error('浏览器拦截了自动下载，请尝试更换浏览器');
+            }
+            // 延迟 200ms 再清理，防止某些内核在文件写入硬盘前就销毁了数据源
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 200);
+        }, 50);
+    };
+    const getDefaultAvatarColor = (name) => {
+        const colors = ['#e74c3c', '#3498db', '#9b59b6', '#2ecc71', '#f1c40f'];
+        return colors[String(name).charCodeAt(0) % 5];
+    };
+    const STORAGE_KEY_TABLE_ORDER = 'acu_table_order';
+    const STORAGE_KEY_ACTION_ORDER = 'acu_action_order';
+    const STORAGE_KEY_PENDING_DELETIONS = 'acu_pending_deletions';
+    const STORAGE_KEY_ACTIVE_TAB = 'acu_active_tab';
+    const STORAGE_KEY_UI_CONFIG = 'acu_ui_config_v19';
+    const STORAGE_KEY_LAST_SNAPSHOT = 'acu_data_snapshot_v19';
+    const STORAGE_KEY_IS_COLLAPSED = 'acu_ui_collapsed_state';
+    const STORAGE_KEY_ROUND_BASELINE = 'acu_round_baseline_v19'; // [新增] 专门用于撤销回档
+    const STORAGE_KEY_TABLE_HEIGHTS = 'acu_table_heights_v19';
+    const STORAGE_KEY_TABLE_STYLES = 'acu_table_styles_v19';
+    const STORAGE_KEY_HIDDEN_TABLES = 'acu_hidden_tables_v19';
+    const STORAGE_KEY_DISABLE_HIGHLIGHT_TOP = 'acu_disable_highlight_top_v19'; // [修改] 改为默认开启的高亮黑名单
+    const STORAGE_KEY_RELATION_POSITIONS = 'acu_relation_positions_v19'; // [新增] 人物关系网节点位置记忆
+    const VIRTUAL_RELATIONSHIP_TAB = '🔗 人物关系'; // [新增] 虚拟标签名常量
+const EXCLUDED_NAMES = ['无', '无关系', '暂无', '未知', '空', 'N/A', 'NA', 'None', 'null', '-', '—', '/']; // [新增] 关系提取排除词
+    const MAX_ACTION_BUTTONS = 6;  // 活动栏最大按钮数
+    const DEFAULT_ACTION_ORDER = ['acu-btn-save-global', 'acu-btn-collapse', 'acu-btn-force-update', 'acu-btn-settings']; // 刷新已移至备选池，强制更新已上架
+    const MIN_PANEL_HEIGHT = 200;  // 面板最小高度
+    const MAX_PANEL_HEIGHT = 1200; // 面板最大高度
+
+    // [新增] 全局定义功能按钮池
+    const ALL_ACTION_BUTTONS = [
+        {id: 'acu-btn-save-global', icon: 'fa-save', title: '保存所有修改'},
+        {id: 'acu-btn-settings', icon: 'fa-cog', title: '全能设置'},
+        {id: 'acu-btn-refresh', icon: 'fa-sync-alt', title: '重新加载'},
+        
+        {id: 'acu-btn-collapse', icon: 'fa-chevron-down', title: '收起面板 (旧版)'},
+        {id: 'acu-btn-force-update', icon: 'fa-bolt', title: '手动触发后端更新'},
+        {id: 'acu-btn-open-editor', icon: 'fa-table-columns', title: '打开内置编辑器'},
+        // [新增] 数据库原生设置面板快捷入口
+        {id: 'acu-btn-open-db-settings', icon: 'fa-database', title: '打开数据库原生设置'}
+    ];
+
+    // [新增] 内置魔改 SQL 模板数据 (按需加载)
+    const DEFAULT_BUILTIN_TEMPLATE = {
+  "mate": {
+    "type": "chatSheets",
+    "version": 2,
+    "updateConfigUiSentinel": -1,
+    "globalInjectionConfig": {
+      "readableEntryPlacement": {
+        "position": "before_character_definition",
+        "depth": 2,
+        "order": 99981
+      },
+      "wrapperPlacement": {
+        "position": "before_character_definition",
+        "depth": 2,
+        "order": 99980
+      }
+    }
+  },
+  "sheet_NcBlYRH5": {
+    "uid": "sheet_NcBlYRH5",
+    "name": "重要角色表",
+    "sourceData": {
+      "note": "记录所有关键NPC的详细信息和动态状态。\n- 列1: 姓名 - NPC的名字。\n- 列2: 性别/年龄 - NPC的生理性别和年龄。\n- 列3: 外貌特征 - 记录NPC的固有外貌特征，包含发型、发色、身高、身材、肤色、五官外貌。严禁包含神态描写、服装、姿势或临时状态。另外女性角色还需填写身材数据例如三围和身高体重等，并且允许NSFW内容，男性角色则不需要填写。\n- 列4: 当前衣着/装扮 - 记录NPC当前的服装搭配和装饰。女性角色必须按照上身、下身、内衣、内裤、袜子、鞋子的顺序描述，未明确的穿着需要根据场景推断；脱下需标注(脱)但不删除条目；明确不穿内衣/内裤时需标注\"无内衣/无内裤\"。\n- 列5: 持有的重要物品 - 记录NPC拥有的关键重要物品/神兵利器列表，用分号分隔。\n- 列6: 初夜状态 - 非女性角色填\"处\"或\"非处\"。女性角色需明确前后器官，格式为\"阴道：处/非处；肛门：处/非处\"。\n- 列7: 是否离场 - 填写\"是\"或\"否\"。\n- 列8: 对主角的了解(已知) - 记录该NPC当前掌握的主角情报。上限5项。\n- 列9: 对主角的了解(未知) - 记录该NPC当前想要探明或误解的主角情报。上限5项。\n- 列10: 职业/境界 - 记录NPC的当前职业和境界。\n- 列11: 技能 - 记录NPC掌握的技能名称及简短说明。\n- 列12: 背景故事 - 记录该角色遭遇主角前的简单背景。已知填后不更新，未知填\"未知\"。\n- 列13: 目前经历 - 记录该角色在遭遇主角之后的关键经历。格式要求：必须按照1、2、3的数字列表格式，上限10条。每条经历不得超过 50字。总字数不得超过 500字。当总字数接近 500字或条目超过10条时，必须将最早、内容最相近的2-3个经历条目合并为一个条目，合并后的描述需保持在一句话（50字以内），简练概括。用词要求：必须使用客观、中性的描述词语，杜绝使用\"极度\"、\"非常\"、\"极其\"、\"无比\"等夸大或极端化的修饰词。\n- 列14: 人际关系 - 记录该角色的人际关系，格式: \"{角色名}:{关系词}\"。多组用分号分隔。（例如：主角:挚友; 艾莉丝:隐秘盟友; 某某:旧日仇敌），禁止用括号补充说明废话。\n- 列15: 人物简介 - 用一句话记录客观视角下的角色简介。",
+      "initNode": "游戏初始化时为当前在场的重要人物分别插入一个条目",
+      "deleteNode": "禁止删除",
+      "updateNode": "条目中已有角色的状态、关系、想法或经历变化时更新，角色死亡需在其姓名旁用小括号备注（已死亡）。获得或失去重要物品时更新。\nSQL示例: UPDATE important_npc SET current_clothing = '散乱的裙摆, (脱)亵裤', virgin_status = '阴道：非处；肛门：处', is_absent = '否', relationships = '主角:隐秘情人' WHERE name = '艾莉丝';",
+      "insertNode": "剧情中有未记录的重要人物登场时添加。\nSQL示例: INSERT INTO important_npc (row_id, name, gender_age, appearance, current_clothing, important_items, virgin_status, is_absent, known_info, unknown_info, job_realm, skills, background, current_experience, relationships, brief_intro) VALUES ((SELECT COALESCE(MAX(row_id), 0) + 1 FROM important_npc), '索菲亚', '女/22', '银发红瞳', '修女服', '圣典', '阴道：处；肛门：处', '否', '主角是异乡人', '未知', '高阶牧师', '圣光治愈', '孤儿院出身', '在教堂偶遇主角', '主角:警惕对象', '虔诚且死板的修女');",
+      "ddl": "CREATE TABLE important_npc ( -- 重要角色表\n  row_id INTEGER PRIMARY KEY, -- 行号\n  name TEXT NOT NULL UNIQUE, -- 姓名\n  gender_age TEXT NOT NULL, -- 性别/年龄\n  appearance TEXT NOT NULL CHECK(LENGTH(appearance) <= 80), -- 外貌特征\n  current_clothing TEXT NOT NULL, -- 当前衣着/装扮\n  important_items TEXT, -- 持有的重要物品\n  virgin_status TEXT NOT NULL CHECK(LENGTH(virgin_status) <= 30), -- 初夜状态\n  is_absent TEXT NOT NULL CHECK(is_absent IN ('是', '否')), -- 是否离场\n  known_info TEXT, -- 对主角的了解(已知)\n  unknown_info TEXT, -- 对主角的了解(未知)\n  job_realm TEXT CHECK(LENGTH(job_realm) <= 20), -- 职业/境界\n  skills TEXT CHECK(LENGTH(skills) <= 150), -- 技能\n  background TEXT CHECK(LENGTH(background) <= 150), -- 背景故事\n  current_experience TEXT NOT NULL CHECK(LENGTH(current_experience) <= 400), -- 目前经历\n  relationships TEXT, -- 人际关系\n  brief_intro TEXT NOT NULL CHECK(LENGTH(brief_intro) <= 30) -- 人物简介\n);"
+    },
+    "content": [
+      [
+        "row_id",
+        "姓名",
+        "性别/年龄",
+        "外貌特征",
+        "当前衣着/装扮",
+        "持有的重要物品",
+        "初夜状态",
+        "是否离场",
+        "对主角的了解(已知)",
+        "对主角的了解(未知)",
+        "职业/境界",
+        "技能",
+        "背景故事",
+        "目前经历",
+        "人际关系",
+        "人物简介"
+      ]
+    ],
+    "updateConfig": {
+      "uiSentinel": -1,
+      "contextDepth": -1,
+      "updateFrequency": -1,
+      "batchSize": -1,
+      "skipFloors": -1,
+      "groupId": 2
+    },
+    "exportConfig": {
+      "enabled": true,
+      "splitByRow": true,
+      "entryName": "重要角色表",
+      "entryType": "keyword",
+      "keywords": "姓名",
+      "preventRecursion": true,
+      "injectionTemplate": "",
+      "extraIndexEnabled": true,
+      "extraIndexEntryName": "重要角色表-索引",
+      "extraIndexColumns": [
+        "姓名",
+        "人物简介"
+      ],
+      "extraIndexColumnModes": {
+        "姓名": "both",
+        "人物简介": "index_only"
+      },
+      "extraIndexInjectionTemplate": "以下为已经登场过的角色：\n<已登场角色>\n$1\n</已登场角色>",
+      "entryPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 10000,
+        "order": 10000
+      },
+      "extraIndexPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 10000,
+        "order": 8000
+      },
+      "fixedEntryPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 10000,
+        "order": 99983
+      },
+      "fixedIndexPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 10000,
+        "order": 99984
+      }
+    },
+    "orderNo": 0
+  },
+  "sheet_lEARaBa8": {
+    "uid": "sheet_lEARaBa8",
+    "name": "主角技能表",
+    "sourceData": {
+      "note": "记录主角获得的所有技能项目。\n- 列1: 技能名称 - 技能的名称。\n- 列2: 技能类型 - 技能的类别（如：“被动”、“主动”）。\n- 列3: 等级/阶段 - 技能的当前等级或阶段。\n- 列4: 效果描述 - 技能在当前等级下的具体效果。",
+      "initNode": "游戏初始化时，根据设定为主角添加初始技能。",
+      "deleteNode": "技能因剧情被剥夺或替换时删除。\nSQL示例: DELETE FROM skills WHERE skill_name = '新手治愈';",
+      "updateNode": "已有技能被升级时，更新其等级/阶段和效果描述。\nSQL示例: UPDATE skills SET level_stage = 'Lv.2', effect_desc = '能治愈中度伤口' WHERE skill_name = '治愈术';",
+      "insertNode": "主角获得新的技能时添加。\nSQL示例: INSERT INTO skills (row_id, skill_name, skill_type, level_stage, effect_desc) VALUES ((SELECT COALESCE(MAX(row_id), 0) + 1 FROM skills), '暗步', '主动', '入门', '在阴影中隐藏身形');",
+      "ddl": "CREATE TABLE skills ( -- 主角技能表\n  row_id INTEGER PRIMARY KEY, -- 行号\n  skill_name TEXT NOT NULL UNIQUE, -- 技能名称\n  skill_type TEXT NOT NULL, -- 技能类型\n  level_stage TEXT NOT NULL, -- 等级/阶段\n  effect_desc TEXT NOT NULL -- 效果描述\n);"
+    },
+    "content": [
+      [
+        "row_id",
+        "技能名称",
+        "技能类型",
+        "等级/阶段",
+        "效果描述"
+      ]
+    ],
+    "updateConfig": {
+      "uiSentinel": -1,
+      "contextDepth": -1,
+      "updateFrequency": -1,
+      "batchSize": -1,
+      "skipFloors": -1,
+      "groupId": 2
+    },
+    "exportConfig": {
+      "enabled": false,
+      "splitByRow": false,
+      "entryName": "主角技能表",
+      "entryType": "constant",
+      "keywords": "",
+      "preventRecursion": true,
+      "injectionTemplate": "",
+      "extraIndexEnabled": false,
+      "extraIndexEntryName": "主角技能表-索引",
+      "extraIndexColumns": [],
+      "extraIndexColumnModes": {},
+      "extraIndexInjectionTemplate": "",
+      "entryPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 10000
+      },
+      "extraIndexPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 10010
+      },
+      "fixedEntryPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 99990
+      },
+      "fixedIndexPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 99991
+      }
+    },
+    "orderNo": 3
+  },
+  "sheet_in05z9vz": {
+    "uid": "sheet_in05z9vz",
+    "name": "背包物品表",
+    "sourceData": {
+      "note": "记录主角拥有的所有物品、装备、特殊道具等。\n- 列1: 物品名称 - 物品的名称。\n- 列2: 数量 - 拥有的数量。\n- 列3: 描述/效果 - 物品的功能、效果或背景描述。\n- 列4: 类别 - 物品的类别。",
+      "initNode": "游戏初始化时，根据剧情与设定添加主角的初始携带物品。",
+      "deleteNode": "物品被完全消耗、丢弃、转交他人或摧毁时彻底删除。\nSQL示例: DELETE FROM inventory WHERE item_name = '生锈的铁剑';",
+      "updateNode": "获得已有的物品使其数量增加时更新，已有物品状态变化时更新。\nSQL示例: UPDATE inventory SET quantity = quantity + 1 WHERE item_name = '伤药';",
+      "insertNode": "主角获得背包中没有的全新物品时添加。\nSQL示例: INSERT INTO inventory (row_id, item_name, quantity, description, category) VALUES ((SELECT COALESCE(MAX(row_id), 0) + 1 FROM inventory), '神秘钥匙', 1, '带有狼头图腾的铜色钥匙', '剧情道具');",
+      "ddl": "CREATE TABLE inventory ( -- 背包物品表\n  row_id INTEGER PRIMARY KEY, -- 行号\n  item_name TEXT NOT NULL UNIQUE, -- 物品名称\n  quantity INTEGER NOT NULL CHECK(quantity > 0), -- 数量\n  description TEXT NOT NULL CHECK(LENGTH(description) <= 60), -- 描述/效果\n  category TEXT NOT NULL CHECK(category IN ('武器', '防具', '服饰', '消耗品', '杂物', '剧情道具', '特殊信物')) -- 类别\n);"
+    },
+    "content": [
+      [
+        "row_id",
+        "物品名称",
+        "数量",
+        "描述/效果",
+        "类别"
+      ]
+    ],
+    "updateConfig": {
+      "uiSentinel": -1,
+      "contextDepth": -1,
+      "updateFrequency": -1,
+      "batchSize": -1,
+      "skipFloors": -1,
+      "groupId": 1
+    },
+    "exportConfig": {
+      "enabled": false,
+      "splitByRow": false,
+      "entryName": "背包物品表",
+      "entryType": "constant",
+      "keywords": "",
+      "preventRecursion": true,
+      "injectionTemplate": "",
+      "extraIndexEnabled": false,
+      "extraIndexEntryName": "背包物品表-索引",
+      "extraIndexColumns": [],
+      "extraIndexColumnModes": {},
+      "extraIndexInjectionTemplate": "",
+      "entryPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 10000
+      },
+      "extraIndexPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 10010
+      },
+      "fixedEntryPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 99990
+      },
+      "fixedIndexPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 99991
+      }
+    },
+    "orderNo": 4
+  },
+  "sheet_3NoMc1wI": {
+    "uid": "sheet_3NoMc1wI",
+    "name": "纪要表",
+    "sourceData": {
+      "note": "轮次日志，每轮交互后必须立即插入一条新记录。\n- 列1: 发生时间跨度 - 本轮事件发生的精确时间范围，格式：x年x月x日HH:MM ~ x年x月x日HH:MM（同一天内可省略第二个日期）。\n- 列2: 地点 - 本轮事件发生的地点，从大到小描述。\n- 列3: 纪要 - 【如实连贯概括，主次分明，无结案陈词】\n  请以旁观者的身份，用自然、流畅的语言如实记录正文中发生的情节。你要像在跟别人讲一个连贯的故事一样，按照事情发展的时间顺序推进。\n  【叙事结构与重点把握】\n  - 1. **抓主放次**：聚焦核心事件的推进（做了什么大事，说了什么严重的话）。跳过无关紧要的动作细节（如怎么穿衣服、水滴怎么滑落），不要记成流水账式的碎碎念。\n  - 2. **主语明确，逻辑连贯**：按照正文的时间顺序，必须清晰交代“谁对谁做了什么”，避免产生指代不清的歧义。动作与对话之间的衔接必须自然。\n  【最高警戒：禁止将情侣间的亲密互动曲解为“权力压制与掌控”】\n  大语言模型极易犯一个致命错误：一旦出现性爱、指令、调情场面，就会自动代入“主从/强迫/支配”的暗黑网文词库。并且喜欢在最后做升华评价。你必须记住：这是主角与恋人之间正常的感情与肉体交流！\n  【绝对禁止的“脑补定性”由于权力词汇】\n  - 禁止使用任何带有“权力压制、操控人心、高位掌控”色彩的词语！绝对禁用：支配、掌控局面、操控欲望、夺取反抗力、惩罚为名/诱饵、瓦解抵抗、屈服、臣服。\n  【针对性红线：严禁任何形式的结尾升华与氛围总结】\n  - 绝对不要在段落末尾加一句总结整体氛围或感情状态的废话！这也是大语言模型最爱犯的通病。\n  - 严禁写：“整个过程中，三人之间的互动充满了亲密的色情氛围”或“两人在欢愉中度过了夜晚”或“感情得到了升华”。\n  - 纪要必须以某一个具体的动作或对话作为句号【无情地直接收尾】（例如：“三人随后发出了喘息声。”）。不要做任何总体回顾！\n  【如何正确记录亲热戏码】\n  - 错误写法：“遥通过这种方式操控着两人的欲望，表现出掌控感。”\n  - 正确写法：“遥轮流与两人发生关系，三人在此过程中均获得了极大的快感。”\n  - 错误写法：“惠惠在极度羞耻中最终选择屈服。”\n  - 正确写法：“惠惠最终同意了遥的提议。”\n  【正确示范】：主次分明，按时间顺序客观陈述，结尾利落：“口交结束后，遥提议平局并要求两人继续服侍。遥亲吻惠惠后，两人以侧入位发生了关系，期间爱丽丝也加入帮忙。惠惠迎来高潮后，遥提出让两人展示身体，两人先后照做。随后遥让惠惠趴在爱丽丝身上，三人交替发生了关系。”\n  【整体要求】：总字数≥300字。在自然连贯、主次分明的前提下，摒弃“权力滤镜”，只概括正文事实。\n- 列4: 重要对话 - 只摘录原文中造成事实重点的重要对白本身(需标明由谁说的)。\n- 列5: 编码索引 - 为本轮记录生成一个唯一的编码索引，格式为 AMXXXX，XXXX从0001开始递增。\n- 列6: 概要 - 30字以内，对本轮事件进行准确精炼的一句话概括，无主观推演。",
+      "initNode": "故事初始化时，插入一条新记录用于记录正文剧情。",
+      "deleteNode": "禁止删除。",
+      "updateNode": "禁止操作。",
+      "insertNode": "每轮交互结束后，插入一条新记录。\nSQL示例: INSERT INTO chronicle (row_id, time_span, location, chronicle_text, key_dialogue, code_index, summary) VALUES ((SELECT COALESCE(MAX(row_id), 0) + 1 FROM chronicle), '1024年5月3日14:00~14:30', '领主府邸-后花园', '主角在此处遭遇卫兵搜查，利用潜行技能躲避了第一波巡逻。', '卫兵队长:\"仔细搜，一只苍蝇都别放过！\"', 'AM0002', '后花园的惊险躲避');",
+      "ddl": "CREATE TABLE chronicle ( -- 纪要表\n  row_id INTEGER PRIMARY KEY, -- 行号\n  time_span TEXT NOT NULL, -- 发生时间跨度\n  location TEXT NOT NULL, -- 地点\n  chronicle_text TEXT NOT NULL CHECK(LENGTH(chronicle_text) >= 150 AND LENGTH(chronicle_text) <= 500), -- 纪要\n  key_dialogue TEXT CHECK(LENGTH(key_dialogue) <= 100), -- 重要对话\n  code_index TEXT NOT NULL UNIQUE CHECK(code_index GLOB 'AM[0-9][0-9][0-9][0-9]'), -- 编码索引\n  summary TEXT NOT NULL CHECK(LENGTH(summary) <= 30) -- 概要\n);"
+    },
+    "content": [
+      [
+        "row_id",
+        "发生时间跨度",
+        "地点",
+        "纪要",
+        "重要对话",
+        "编码索引",
+        "概要"
+      ]
+    ],
+    "updateConfig": {
+      "uiSentinel": -1,
+      "contextDepth": -1,
+      "updateFrequency": 3,
+      "batchSize": -1,
+      "skipFloors": -1,
+      "groupId": 3
+    },
+    "exportConfig": {
+      "enabled": true,
+      "splitByRow": true,
+      "entryName": "纪要",
+      "entryType": "keyword",
+      "keywords": "编码索引",
+      "preventRecursion": true,
+      "injectionTemplate": "<记忆回溯>\n$1\n</记忆回溯>",
+      "extraIndexEnabled": true,
+      "extraIndexEntryName": "纪要索引",
+      "extraIndexColumns": [
+        "编码索引",
+        "概要"
+      ],
+      "extraIndexColumnModes": {
+        "编码索引": "both",
+        "概要": "index_only"
+      },
+      "extraIndexInjectionTemplate": "<已发生的事件概览>\n$1\n</已发生的事件概览>",
+      "entryPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 999,
+        "order": 10000
+      },
+      "extraIndexPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 1000,
+        "order": 10010
+      },
+      "fixedEntryPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 9999,
+        "order": 99987
+      },
+      "fixedIndexPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 9999,
+        "order": 99988
+      }
+    },
+    "orderNo": 1
+  },
+  "sheet_DpKcVGqg": {
+    "uid": "sheet_DpKcVGqg",
+    "name": "主角信息",
+    "sourceData": {
+      "note": "记录主角的核心身份信息。此表在流程层设计上有且仅有一行，并约定仅保留 row_id=1。\n- 列1: 人物名称 - 主角的名字。\n- 列2: 性别/年龄 - 主角的生理性别和年龄。\n- 列3: 外貌特征 - 记录主角的固有外貌特征，必须包含发型、发色、身高、身材、肤色、五官外貌。严禁包含神态描写（如\"嘴角勾起一抹冷笑\"）、服装、姿势或临时状态。另外女性角色还需填写身材数据例如三围和身高体重等，并且允许NSFW内容，男性角色则不需要填写。\n- 列4: 当前衣着/装扮 - 记录主角当前的服装搭配和装饰。不含姿势或临时状态。若主角为女性则必须按照上身、下身、内衣、内裤、袜子、鞋子的顺序描述，未明确的穿着需要根据场景推断；脱下需在该服装条目后标注(脱)但不删除该服装条目；明确不穿内衣/内裤时需在对应部位标注\"无内衣/无内裤\"。\n- 列5: 初夜状态 - 记录是否为第一次。非女性角色填\"处\"或\"非处\"。女性角色需明确前后，格式为\"阴道：处/非处；肛门：处/非处\"。\n- 列6: 职业/身份 - 主角在社会中的主要角色。\n【检查】在填写表格的每一行时，必须逐列严格对应表头的列定义内容进行填写，禁止将本应填入该列的内容错误填写到其他列，需进行二次检查。",
+      "initNode": "游戏初始化时，插入主角的唯一条目。",
+      "deleteNode": "禁止删除。",
+      "updateNode": "当主角各项状态发生改变时更新对应列。\nSQL示例: UPDATE protagonist_info SET current_clothing = '破损的布衣, (脱)内衣, 无内裤', virgin_status = '非处' WHERE row_id = 1;",
+      "insertNode": "禁止操作。",
+      "ddl": "CREATE TABLE protagonist_info ( -- 主角信息\n  row_id INTEGER PRIMARY KEY CHECK(row_id = 1), -- 行号\n  name TEXT NOT NULL, -- 人物名称\n  gender_age TEXT NOT NULL, -- 性别/年龄\n  appearance TEXT NOT NULL CHECK(LENGTH(appearance) <= 60), -- 外貌特征\n  current_clothing TEXT NOT NULL, -- 当前衣着/装扮\n  virgin_status TEXT NOT NULL CHECK(LENGTH(virgin_status) <= 40), -- 初夜状态\n  job_identity TEXT NOT NULL CHECK(LENGTH(job_identity) <= 20) -- 职业/身份\n);"
+    },
+    "content": [
+      [
+        "row_id",
+        "人物名称",
+        "性别/年龄",
+        "外貌特征",
+        "当前衣着/装扮",
+        "初夜状态",
+        "职业/身份"
+      ]
+    ],
+    "updateConfig": {
+      "uiSentinel": -1,
+      "contextDepth": -1,
+      "updateFrequency": -1,
+      "batchSize": -1,
+      "skipFloors": -1,
+      "groupId": 2
+    },
+    "exportConfig": {
+      "enabled": false,
+      "splitByRow": false,
+      "entryName": "主角信息",
+      "entryType": "constant",
+      "keywords": "",
+      "preventRecursion": true,
+      "injectionTemplate": "",
+      "extraIndexEnabled": false,
+      "extraIndexEntryName": "主角信息-索引",
+      "extraIndexColumns": [],
+      "extraIndexColumnModes": {},
+      "extraIndexInjectionTemplate": "",
+      "entryPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 10000
+      },
+      "extraIndexPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 10010
+      },
+      "fixedEntryPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 99990
+      },
+      "fixedIndexPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 99991
+      }
+    },
+    "orderNo": 6
+  },
+  "sheet_s2yuewuh8": {
+    "uid": "sheet_s2yuewuh8",
+    "name": "本月事件表",
+    "sourceData": {
+      "note": "【世界动态引擎】向世界注入“活体背景音”，专门记录独立于主角之外、但能极大地增加世界生活气息的背景动态。\n- 列1: 日期/节点 - 具体的日期、时间段或“近日”（必须符合当前世界观的历法与季节）。\n- 列2: 事件名称 - 简短的标题。\n- 列3: 事件类型 - 必须从以下四类选择：[公众节日]、[时政新闻]、[圈层动态]、[市井传闻]。\n- 列4: 详情与影响 - 【核心要求】不仅要简述事件背景，更要着重描写该事件对周遭NPC行为、物价、环境氛围的“实质性影响”。\n【推演法则与防幻觉警告】\n1. 顺水推舟：从主角当前的职业、所在地或近期接触的人际圈中自然发散传闻（如：主角是演员，就推演剧组八卦；主角在京城，就推演朝堂变动）。\n2. 宁缺毋滥：绝对禁止凭空捏造充满违和感、毫无逻辑支撑的废话节日凑数。平淡的月份可以多写“市井传闻”，少写甚至不写“公众节日”。",
+      "initNode": "跨入新月份、新地区或游戏初始化时，主动发散思维，生成1~3条符合当前世界观、能提升沉浸感的背景动态或传闻，充当剧情润滑剂。\nSQL示例: INSERT INTO monthly_events (row_id, event_date, event_name, event_type, details) VALUES ((SELECT COALESCE(MAX(row_id), 0) + 1 FROM monthly_events), '近日', '连环失窃案', '市井传闻', '镇上多家商户失窃，导致巡逻卫兵增加，夜晚宵禁提前，NPC们人心惶惶。');",
+      "insertNode": "当世界局势发生突发变故，或主角的行动引发了蝴蝶效应（如主角破坏了某个帮派，导致江湖上出现新的传闻）时主动添加。\nSQL示例: INSERT INTO monthly_events (row_id, event_date, event_name, event_type, details) VALUES ((SELECT COALESCE(MAX(row_id), 0) + 1 FROM monthly_events), '近日', '黑市重开', '圈层动态', '原本被捣毁的地下黑市似乎在城南废墟重新有了活动的迹象。');",
+      "updateNode": "传闻被证实/证伪，或事件的发展阶段发生改变时更新其详情与影响。\nSQL示例: UPDATE monthly_events SET details = '镇上多家商户失窃，昨夜已被证实是流寇所为。' WHERE event_name = '连环失窃案';",
+      "deleteNode": "进入下个月份时彻底清空上月所有失效的日常动态。\nSQL示例: DELETE FROM monthly_events;",
+      "ddl": "CREATE TABLE monthly_events ( -- 本月事件表\n  row_id INTEGER PRIMARY KEY, -- 行号\n  event_date TEXT NOT NULL, -- 日期/节点\n  event_name TEXT NOT NULL, -- 事件名称\n  event_type TEXT NOT NULL CHECK(event_type IN ('公众节日', '时政新闻', '圈层动态', '市井传闻')), -- 事件类型\n  details TEXT NOT NULL -- 详情与影响\n);"
+    },
+    "content": [
+      [
+        "row_id",
+        "日期/节点",
+        "事件名称",
+        "事件类型",
+        "详情与影响"
+      ]
+    ],
+    "updateConfig": {
+      "uiSentinel": -1,
+      "contextDepth": -1,
+      "updateFrequency": -1,
+      "batchSize": -1,
+      "skipFloors": -1,
+      "groupId": 1
+    },
+    "exportConfig": {
+      "enabled": false,
+      "splitByRow": false,
+      "entryName": "本月事件表",
+      "entryType": "constant",
+      "keywords": "",
+      "preventRecursion": true,
+      "injectionTemplate": "",
+      "extraIndexEnabled": false,
+      "extraIndexEntryName": "本月事件表-索引",
+      "extraIndexColumns": [],
+      "extraIndexColumnModes": {},
+      "extraIndexInjectionTemplate": "",
+      "entryPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 10000
+      },
+      "extraIndexPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 10010
+      },
+      "fixedEntryPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 99990
+      },
+      "fixedIndexPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 99991
+      }
+    },
+    "orderNo": 7
+  },
+  "sheet_dCudvUnH": {
+    "uid": "sheet_dCudvUnH",
+    "name": "全局数据表",
+    "sourceData": {
+      "note": "记录当前主角所在地点及时间相关参数。此表在流程层设计上有且仅有一行，并约定仅保留 row_id=1。\n- 列1: 主角当前所在地点 - 主角当前所在的具体场景名称。\n- 列2: 当前时间 - 游戏世界的当前时间。格式：“xxxx年x月x日 HH:MM”，初始化时如果剧情没有明确具体的日期和时间，则必须根据世界观和设定自行设定一个明确的日期时间。\n- 列3: 上轮场景时间 - 上一轮交互结束时的时间。\n- 列4: 经过的时间 - 根据当前与上轮时间计算得出的文本描述（如：“几分钟”）。",
+      "initNode": "插入一条关于当前世界状态的记录。",
+      "deleteNode": "禁止删除。",
+      "updateNode": "当主角从当前所在区域离开时，更新所在地点。每轮必须更新时间。\nSQL示例: UPDATE global_data SET current_location = '领主府邸', cur_time = '1024年5月3日 14:00', prev_scene_time = '1024年5月3日 13:45', elapsed_time = '15分钟' WHERE row_id = 1;",
+      "insertNode": "禁止操作。",
+      "ddl": "CREATE TABLE global_data ( -- 全局数据表\n  row_id INTEGER PRIMARY KEY CHECK(row_id = 1), -- 行号\n  current_location TEXT NOT NULL, -- 主角当前所在地点\n  cur_time TEXT NOT NULL CHECK(cur_time GLOB '*年*月*日 *:*'), -- 当前时间\n  prev_scene_time TEXT, -- 上轮场景时间\n  elapsed_time TEXT NOT NULL -- 经过的时间\n);"
+    },
+    "content": [
+      [
+        "row_id",
+        "主角当前所在地点",
+        "当前时间",
+        "上轮场景时间",
+        "经过的时间"
+      ]
+    ],
+    "updateConfig": {
+      "uiSentinel": -1,
+      "contextDepth": -1,
+      "updateFrequency": -1,
+      "batchSize": -1,
+      "skipFloors": -1,
+      "groupId": 1
+    },
+    "exportConfig": {
+      "enabled": false,
+      "splitByRow": false,
+      "entryName": "全局数据表",
+      "entryType": "constant",
+      "keywords": "",
+      "preventRecursion": true,
+      "injectionTemplate": "",
+      "extraIndexEnabled": false,
+      "extraIndexEntryName": "全局数据表-索引",
+      "extraIndexColumns": [],
+      "extraIndexColumnModes": {},
+      "extraIndexInjectionTemplate": "",
+      "entryPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 10000
+      },
+      "extraIndexPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 10010
+      },
+      "fixedEntryPlacement": {
+        "position": "before_character_definition",
+        "depth": 2,
+        "order": 99981
+      },
+      "fixedIndexPlacement": {
+        "position": "before_character_definition",
+        "depth": 2,
+        "order": 99982
+      }
+    },
+    "orderNo": 2
+  },
+  "sheet_Memo": {
+    "uid": "sheet_Memo",
+    "name": "当前待办事项",
+    "sourceData": {
+      "note": "记录主角的待办任务、线索、成就与约定。\n- 列1: 标题 - 简短的关键词。\n- 列2: 分类 - 必须从以下四类选择：[待办任务]、[秘密线索]、[誓约承诺]、[重大事件]。\n- 列3: 状态 - 填写“进行中”、“挂起”或“已归档”。\n- 列4: 开始时间 - 接取任务或事件发生的时间。\n- 列5: 事项详情 - 记录详情、要求及进度。单条控制在100字内。\n- 列6: 涉及对象 - 关键NPC或势力名称。\n- 列7: 备注 - 记录硬性限制或重要提示。\n【核心机制：双轨处理与颗粒度控制】\n1. 待办任务(跑腿/收集/普通打怪)：采取「阅后即焚」。一旦任务完成，必须立即彻底删除该行，保持面板清爽。\n2. 秘密线索/誓约承诺/重大事件：采取「归档沉淀」。事件彻底闭环或取得最终结果后，将状态改为「已归档」并停止更新，永远保留作为主角的经历背书。\n3. 严禁流水账：对于连续性事件，绝对禁止走一步记一步。必须等整个事件链闭环后，浓缩为一条高密度的结果记录。",
+      "initNode": "初始化时，检查当前剧情是否有正在进行的任务或未解之谜，如有则插入条目。",
+      "deleteNode": "仅针对分类为[待办任务]的条目，当任务完成后必须彻底删除。其他分类严禁删除，应转为已归档。\nSQL示例: DELETE FROM todos WHERE title = '寻找解药' AND category = '待办任务';",
+      "updateNode": "当任务进度变化或线索推进时更新。若重大事件、誓约或线索已彻底完结，将其状态更新为“已归档”。若状态已是“已归档”，则禁止再次更新该行。\nSQL示例: UPDATE todos SET details = '已解开全部谜团', status = '已归档' WHERE title = '古堡之谜';",
+      "insertNode": "接取新任务、发现新秘密或许下新承诺时添加。\nSQL示例: INSERT INTO todos (row_id, title, category, status, start_time, details, target_entity, remarks) VALUES ((SELECT COALESCE(MAX(row_id), 0) + 1 FROM todos), '调查废弃矿洞', '待办任务', '进行中', '1024年5月3日', '前往东郊废弃矿洞寻找失踪矿工的线索。', '矿工工会', '洞内可能有毒气，需提前准备解药');",
+      "ddl": "CREATE TABLE todos ( -- 当前待办事项\n  row_id INTEGER PRIMARY KEY, -- 行号\n  title TEXT NOT NULL UNIQUE, -- 标题\n  category TEXT NOT NULL CHECK(category IN ('待办任务', '秘密线索', '誓约承诺', '重大事件')), -- 分类\n  status TEXT NOT NULL CHECK(status IN ('进行中', '挂起', '已归档')), -- 状态\n  start_time TEXT NOT NULL, -- 开始时间\n  details TEXT NOT NULL, -- 事项详情\n  target_entity TEXT, -- 涉及对象\n  remarks TEXT -- 备注\n);"
+    },
+    "content": [
+      [
+        "row_id",
+        "标题",
+        "分类",
+        "状态",
+        "开始时间",
+        "事项详情",
+        "涉及对象",
+        "备注"
+      ]
+    ],
+    "updateConfig": {
+      "uiSentinel": -1,
+      "contextDepth": -1,
+      "updateFrequency": -1,
+      "batchSize": -1,
+      "skipFloors": -1,
+      "groupId": 2
+    },
+    "exportConfig": {
+      "enabled": true,
+      "splitByRow": true,
+      "entryName": "待办与记录",
+      "entryType": "keyword",
+      "keywords": "标题,涉及对象",
+      "preventRecursion": true,
+      "injectionTemplate": "<待办与记录详情>\n$1\n</待办与记录详情>",
+      "extraIndexEnabled": false,
+      "extraIndexEntryName": "待办与记录-索引",
+      "extraIndexColumns": [
+        "标题",
+        "状态"
+      ],
+      "extraIndexColumnModes": {
+        "标题": "both",
+        "状态": "index_only"
+      },
+      "extraIndexInjectionTemplate": "<当前记录状态概览>\n$1\n</当前记录状态概览>",
+      "entryPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 10000
+      },
+      "extraIndexPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 10010
+      },
+      "fixedEntryPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 99992
+      },
+      "fixedIndexPlacement": {
+        "position": "at_depth_as_system",
+        "depth": 2,
+        "order": 99993
+      }
+    },
+    "orderNo": 5
+  }
+};
+
+    let isInitialized = false;
+    let isSaving = false;
+    let isEditingOrder = false;
+    let isWaitingForDbUpdate = false; // [新增] 数据库专属的更新锁
+    let dbUpdateTimeout = null;       // [新增] 防止转圈死锁的看门狗
+    let currentDiffMap = new Set();
+    let _boundRenderHandler = null;
+
+    // --- 全局状态变量 ---
+    let cachedRawData = null;
+    let hasUnsavedChanges = false;
+    let tablePageStates = {};
+    let tableSearchStates = {};
+    let lastOptionHash = null;      // [补回] 选项指纹
+    let optionPanelVisible = false; // [补回] 选项可见性控制
+    // [修改] 初始化时从硬盘读取记忆
+    const STORAGE_KEY_SCROLL = 'acu_scroll_v19_fixed';
+    let tableScrollStates = {};
+    try {
+        const saved = localStorage.getItem(STORAGE_KEY_SCROLL);
+        if (saved) tableScrollStates = JSON.parse(saved);
+    } catch(e) { console.warn('[ACU] Error:', e); } 
+
+// [修改] 智能更新控制器 (含自动头像迁移 & 自动清理失效缓存)
+    const UpdateController = { 
+        handleUpdate: () => {
+            isWaitingForDbUpdate = false; // [新增] 数据库更新完毕，立刻解锁
+            if (dbUpdateTimeout) clearTimeout(dbUpdateTimeout); // [新增] 成功获取数据，销毁看门狗
+            const api = window.AutoCardUpdaterAPI || window.parent.AutoCardUpdaterAPI;
+            const newData = api && api.exportTableAsJson ? api.exportTableAsJson() : null;
+            
+            if (newData) {
+                // --- [核心升级] 智能侦测改名迁移 & 孤儿头像普查清理 ---
+                const oldData = cachedRawData || loadSnapshot();
+                const ctxId = getCurrentContextFingerprint();
+                const avatars = getCustomAvatars();
+                let ctxAvatars = avatars[ctxId];
+                
+                // 1. 建立本回合的"存活人口"普查名单
+                const validNames = new Set();
+                
+                if (ctxAvatars) {
+                    let hasAvatarChanges = false;
+                    
+                    // 2. 遍历新表：收集名单 + 侦测同行改名
+                    for (const sheetId in newData) {
+                        const newSheet = newData[sheetId];
+                        if (!newSheet || !newSheet.content) continue;
+                        
+                        const headers = newSheet.content[0];
+                        const nameIdx = headers.findIndex(h => /姓名|名字|角色名|人物名称|Name/i.test(h));
+                        if (nameIdx === -1) continue;
+                        
+                        for (let i = 1; i < newSheet.content.length; i++) {
+                            const newRow = newSheet.content[i];
+                            const newName = String(newRow[nameIdx] || '').trim();
+                            if (newName) validNames.add(newName); // 登记到存活名单
+                            
+                            // 对比上一回合数据，看是不是改名了
+                            if (oldData && oldData[sheetId] && oldData[sheetId].content[i]) {
+                                const oldRow = oldData[sheetId].content[i];
+                                const oldName = String(oldRow[nameIdx] || '').trim();
+                                
+                                if (oldName && newName && oldName !== newName && ctxAvatars[oldName]) {
+                                    ctxAvatars[newName] = ctxAvatars[oldName]; // 继承头像
+                                    delete ctxAvatars[oldName]; // 销毁老名字数据
+                                    hasAvatarChanges = true;
+                                    console.log(`[ACU] 侦测到改名: ${oldName} -> ${newName}，已自动迁移头像`);
+                                }
+                            }
+                        }
+                    }
+                    
+                    // 3. 终极清理：查无此人的孤儿头像，全部销毁
+                    for (const savedName in ctxAvatars) {
+                        if (!validNames.has(savedName)) {
+                            delete ctxAvatars[savedName];
+                            hasAvatarChanges = true;
+                            console.log(`[ACU] 自动清理已删除/失效的角色头像缓存: ${savedName}`);
+                        }
+                    }
+                    
+                    // 有任何变动才写入硬盘，减少性能损耗
+                    if (hasAvatarChanges) {
+                        AvatarDB.saveToDB(ctxId, ctxAvatars); // 使用异步新引擎保存清理后的数据
+                    }
+                }
+                // ----------------------------------------------------
+
+                cachedRawData = newData;
+                Store.set(STORAGE_KEY_ROUND_BASELINE, newData);
+            }
+
+            // 🛡️ 防闪烁护盾：如果是前端主动保存引起的数据回传，吸收数据但拦截重绘
+            if (window._acuMuteRenderUntil && Date.now() < window._acuMuteRenderUntil) {
+                return;
+            }
+
+            renderInterface(); 
+        } 
+    };
+
+
+
+
+    
+
+    // --- [重构] 上下文指纹工具 ---
+    const getCurrentContextFingerprint = () => {
+        try {
+            // 方式1: 酒馆标准 API
+            if (typeof SillyTavern !== 'undefined' && SillyTavern.getCurrentChatId) {
+                return SillyTavern.getCurrentChatId();
+            }
+            // 方式2: 直接访问属性
+            if (typeof SillyTavern !== 'undefined' && SillyTavern.chatId) {
+                return SillyTavern.chatId;
+            }
+            // 方式3: 父窗口 (iframe 场景)
+            if (window.parent?.SillyTavern?.getCurrentChatId) {
+                return window.parent.SillyTavern.getCurrentChatId();
+            }
+        } catch (e) {
+            console.warn('[ACU] getCurrentContextFingerprint error:', e);
+        }
+        return 'unknown_context';
+    };
+
+    // 全局状态追踪 (已清理死代码)
+
+    const DEFAULT_CONFIG = {
+        layout: 'horizontal',
+        collapseStyle: 'bar',
+        collapseAlign: 'right',
+        fontFamily: 'default',
+        theme: 'native',
+        cardWidth: 260,
+        fontSize: 13,
+        optionFontSize: 12,
+        highlightNew: true,
+        itemsPerPage: 20, // 已改为20条
+        actionsPosition: 'bottom',
+        gridColumns: 'auto', // [修改] 默认为智能自动列数
+        showStatusBar: false, // [修改] 默认关闭跟随消息的状态栏
+        beautifyToastr: false,      // [修改] 默认关闭美化右上角系统提示
+        showOptionPanel: true,      // [补回] 显示选项面板
+        clickOptionToAutoSend: false // [修改] 默认关闭点击选项自动发送
+    };
+
+    const FONTS = [
+        { id: 'default', name: '系统默认 (Modern)', val: `'Segoe UI', 'Microsoft YaHei', sans-serif` },
+        { id: 'hanchan', name: '寒蝉全圆体', val: `"寒蝉全圆体", sans-serif` },
+        { id: 'maple', name: 'Maple Mono (代码风)', val: `"Maple Mono NF CN", monospace` },
+        { id: 'huiwen', name: '汇文明朝体 (Huiwen)', val: `"Huiwen-mincho", serif` },
+        { id: 'cooper', name: 'Cooper正楷', val: `"CooperZhengKai", serif` },
+        { id: 'yffyt', name: 'YFFYT (艺术体)', val: `"YFFYT", sans-serif` },
+        { id: 'wenkai', name: '霞鹜文楷 (WenKai)', val: `"LXGW WenKai", serif` },
+        { id: 'notosans', name: '思源黑体 (Noto Sans)', val: `"Noto Sans CJK", sans-serif` },
+        { id: 'zhuque', name: '朱雀仿宋 (Zhuque)', val: `"Zhuque Fangsong (technical preview)", serif` }
+    ];
+
+    const THEMES = [
+        { id: 'native', name: '跟随酒馆 (Native)', icon: 'fa-palette' },
+        { id: 'retro', name: '复古羊皮 (Retro)', icon: 'fa-scroll' },
+        { id: 'dark', name: '极夜深空 (Dark)', icon: 'fa-moon' },
+        { id: 'modern', name: '现代清爽 (Modern)', icon: 'fa-sun' },
+        { id: 'forest', name: '森之物语 (Forest)', icon: 'fa-tree' },
+        { id: 'ocean', name: '深海幽蓝 (Ocean)', icon: 'fa-water' },
+        { id: 'cyber', name: '赛博霓虹 (Cyber)', icon: 'fa-bolt' },
+        { id: 'sakura', name: '樱花之恋 (Sakura)', icon: 'fa-fan' },
+        { id: 'lavender', name: '紫罗兰梦 (Lavender)', icon: 'fa-moon' },
+        { id: 'palace', name: '蔷薇王座 (Palace)', icon: 'fa-crown' },
+        { id: 'coffee', name: '焦糖拿铁 (Coffee)', icon: 'fa-mug-hot' },
+        { id: 'wuxia', name: '水墨修仙 (Wuxia)', icon: 'fa-yin-yang' },
+        { id: 'mecha', name: '机甲风暴 (Mecha)', icon: 'fa-robot' },
+        { id: 'gothic', name: '暗黑深渊 (Gothic)', icon: 'fa-skull' }
+    ];
+
+    // [优化] 缓存 core 对象 (修复竞态条件 + 增强 ST 穿透查找)
+    let _coreCache = null;
+    const getCore = () => {
+        const w = window.parent || window;
+        // 动态获取 jQuery
+        const $ = window.jQuery || w.jQuery;
+        
+        // 只有当缓存存在且有效($存在)时，才直接返回
+        if (_coreCache && _coreCache.$) return _coreCache;
+
+        const core = {
+            $: $,
+            getDB: () => w.AutoCardUpdaterAPI || window.AutoCardUpdaterAPI,
+            // 增强查找：依次尝试 当前窗口 -> 父窗口 -> 顶层窗口 (带跨域保护)
+            ST: window.SillyTavern || w.SillyTavern || (() => {
+                try { return window.top ? window.top.SillyTavern : null; } catch(e) { return null; }
+            })()
+        };
+        
+        // 只有成功获取到 jQuery 后才锁定缓存，防止初始化过早导致永久失效
+        if ($) _coreCache = core;
+        return core;
+    };
+
+    const updateSaveButtonState = () => {
+        const { $ } = getCore();
+        const $btn = $('#acu-btn-save-global');
+        const $icon = $btn.find('i');
+        const deletions = getPendingDeletions();
+        let hasDeletions = false;
+        if (deletions) {
+            for (const key in deletions) {
+                if (deletions[key] && deletions[key].length > 0) {
+                    hasDeletions = true;
+                    break;
+                }
+            }
+        }
+        if (hasUnsavedChanges || hasDeletions) {
+            $icon.addClass('acu-icon-breathe');
+            $btn.attr('title', '你有未保存的手动修改或删除操作');
+        } else {
+            $icon.removeClass('acu-icon-breathe');
+            $btn.attr('title', '保存');
+            $btn.css('color', '');
+        }
+    };
+
+    const getIconForTableName = (name) => {
+        if (!name) return 'fa-table';
+        // [修复] 给关系网标签分配专用图标
+        if (name === VIRTUAL_RELATIONSHIP_TAB) return 'fa-project-diagram';
+        const n = name.toLowerCase();
+        if (n.includes('主角') || n.includes('角色')) return 'fa-user-circle';
+        if (n.includes('通用') || n.includes('全局')) return 'fa-globe-asia';
+        if (n.includes('装备') || n.includes('背包')) return 'fa-briefcase';
+        if (n.includes('技能') || n.includes('武魂')) return 'fa-dragon';
+        if (n.includes('关系') || n.includes('周边')) return 'fa-user-friends';
+        if (n.includes('任务') || n.includes('日志')) return 'fa-scroll';
+        if (n.includes('总结') || n.includes('大纲')) return 'fa-book-reader';
+        return 'fa-table';
+    };
+
+    const getBadgeStyle = (text) => {
+        if (!text) return '';
+        const str = String(text).trim();
+        if (/^[0-9]+%?$/.test(str) || /^Lv\.\d+$/.test(str)) return 'acu-badge-green';
+        if (str.length <= 6 && !str.includes('http')) return 'acu-badge-neutral';
+        if (['是', '否', '有', '无', '死亡', '存活'].includes(str)) return 'acu-badge-neutral';
+        return '';
+    };
+
+    // [优化] 统一存储封装 (带静默自动清理)
+    const Store = {
+        get: (key, def = null) => { try { return JSON.parse(localStorage.getItem(key)) ?? def; } catch { return def; } },
+        set: (key, val) => { 
+            try { 
+                localStorage.setItem(key, JSON.stringify(val)); 
+            } catch (e) { 
+                // 捕获存储空间已满错误
+                if (e.name === 'QuotaExceededError' || e.message.includes('quota')) {
+                    console.warn('[ACU] 存储空间已满，触发静默清理策略...');
+                    try {
+                        // 1. 优先删除最占空间的“数据快照” (不影响功能，只会导致下次刷新暂时没有蓝色高亮)
+                        localStorage.removeItem(STORAGE_KEY_LAST_SNAPSHOT);
+                        
+                        // 2. 再次尝试保存
+                        localStorage.setItem(key, JSON.stringify(val));
+                        console.log('[ACU] 静默清理完成，数据已保存');
+                    } catch (retryErr) {
+                        // 如果清理后还是存不下，才弹窗打扰用户
+                        console.error('[ACU Store] 清理后依然失败', retryErr);
+                        if (window.toastr && !window._acuQuotaAlerted) {
+                            AcuToast.warning('⚠️ 浏览器存储空间严重不足，配置保存失败');
+                            window._acuQuotaAlerted = true; setTimeout(() => window._acuQuotaAlerted = false, 10000);
+                        }
+                    }
+                } else {
+                    console.error('[ACU Store]', e);
+                }
+            } 
+        }
+    };
+
+
+
+    const getActiveTabState = () => Store.get(STORAGE_KEY_ACTIVE_TAB);
+    const saveActiveTabState = (v) => Store.set(STORAGE_KEY_ACTIVE_TAB, v);
+    const getPendingDeletions = () => Store.get(STORAGE_KEY_PENDING_DELETIONS, {});
+    const savePendingDeletions = (v) => Store.set(STORAGE_KEY_PENDING_DELETIONS, v);
+    const getSavedTableOrder = () => Store.get(STORAGE_KEY_TABLE_ORDER);
+    const saveTableOrder = (v) => Store.set(STORAGE_KEY_TABLE_ORDER, v);
+    const getCollapsedState = () => Store.get(STORAGE_KEY_IS_COLLAPSED, false);
+    const saveCollapsedState = (v) => Store.set(STORAGE_KEY_IS_COLLAPSED, v);
+    // [修改] 读取快照时，严格核对身份证 (Chat ID)
+    const loadSnapshot = () => {
+        const data = Store.get(STORAGE_KEY_LAST_SNAPSHOT);
+        if (!data) return null;
+        // 获取当前环境指纹
+        const currentCtx = getCurrentContextFingerprint();
+        // 如果快照里的指纹存在，但和当前不一致，说明是上个角色的数据，必须作废
+        if (data._contextId && data._contextId !== currentCtx) {
+            // console.log('[ACU] 快照指纹不匹配，视为无效');
+            return null; 
+        }
+        return data;
+    };
+
+    // [修改] 保存快照时，自动注入当前的身份证
+    const saveSnapshot = (v) => {
+        if (!v) return;
+        // 确保数据对象里带有当前 ChatID
+        if (typeof v === 'object') {
+            v._contextId = getCurrentContextFingerprint();
+        }
+        Store.set(STORAGE_KEY_LAST_SNAPSHOT, v);
+    };
+
+    // ============================================================
+    // [降维打击] IndexedDB 专属头像存储引擎 (打破 5MB 容量限制)
+    // ============================================================
+    const AvatarDB = {
+        dbName: 'ACU_Avatar_DB',
+        storeName: 'avatars',
+        db: null,
+        cache: {}, // 内存缓存：保障原有同步代码的秒级读取
+
+        init: function() {
+            return new Promise((resolve) => {
+                const request = indexedDB.open(this.dbName, 1);
+                request.onupgradeneeded = (e) => {
+                    const db = e.target.result;
+                    if (!db.objectStoreNames.contains(this.storeName)) db.createObjectStore(this.storeName);
+                };
+                request.onsuccess = (e) => {
+                    this.db = e.target.result;
+                    // 初始化时全量读入内存缓存
+                    const store = this.db.transaction([this.storeName], 'readonly').objectStore(this.storeName);
+                    const getAll = store.getAll();
+                    const getKeys = store.getAllKeys();
+                    
+                    getAll.onsuccess = () => {
+                        getKeys.onsuccess = () => {
+                            getKeys.result.forEach((key, i) => { this.cache[key] = getAll.result[i]; });
+                            this.migrateOldData(); // 检查并迁移旧数据
+                            resolve();
+                        };
+                    };
+                };
+                request.onerror = () => resolve(); // 出错也不阻塞主流程
+            });
+        },
+
+        migrateOldData: function() {
+            try {
+                const oldDataStr = localStorage.getItem('acu_custom_avatars_v19');
+                if (oldDataStr) {
+                    const oldData = JSON.parse(oldDataStr);
+                    for (const ctxId in oldData) {
+                        if (!this.cache[ctxId]) {
+                            this.cache[ctxId] = oldData[ctxId];
+                            this.saveToDB(ctxId, oldData[ctxId]);
+                        }
+                    }
+                    localStorage.removeItem('acu_custom_avatars_v19'); // 释放旧版占用的宝贵 5MB 空间！
+                    console.log('[ACU] 🎉 头像数据已无损迁移至 IndexedDB，并释放了 localStorage 空间！');
+                }
+            } catch(e) {}
+        },
+
+        saveToDB: function(ctxId, data) {
+            if (!this.db) return;
+            const store = this.db.transaction([this.storeName], 'readwrite').objectStore(this.storeName);
+            store.put(data, ctxId); // 异步静默写入，不卡顿
+        }
+    };
+
+    // [新增] 模板专属 IndexedDB 引擎
+    const TemplateDB = {
+        dbName: 'ACU_Template_DB',
+        storeName: 'templates',
+        db: null,
+
+        init: function() {
+            return new Promise((resolve) => {
+                const request = indexedDB.open(this.dbName, 1);
+                request.onupgradeneeded = (e) => {
+                    const db = e.target.result;
+                    if (!db.objectStoreNames.contains(this.storeName)) {
+                        db.createObjectStore(this.storeName);
+                    }
+                };
+                request.onsuccess = (e) => {
+                    this.db = e.target.result;
+                    resolve();
+                };
+                request.onerror = () => resolve();
+            });
+        },
+
+        saveTemplate: function(templateId, jsonData) {
+            return new Promise((resolve) => {
+                if (!this.db) return resolve(false);
+                const store = this.db.transaction([this.storeName], 'readwrite').objectStore(this.storeName);
+                store.put(jsonData, templateId).onsuccess = () => resolve(true);
+            });
+        },
+
+        getAllTemplates: function() {
+            return new Promise((resolve) => {
+                const injectBuiltin = (resultObj) => {
+                    resultObj['tpl_builtin_sql_hongqu'] = JSON.parse(JSON.stringify(DEFAULT_BUILTIN_TEMPLATE));
+                    resultObj['tpl_builtin_sql_hongqu'].mate.templateName = " SQL魔改红曲 (内置)";
+                    return resultObj;
+                };
+
+                if (!this.db) return resolve(injectBuiltin({}));
+
+                const store = this.db.transaction([this.storeName], 'readonly').objectStore(this.storeName);
+                const reqKeys = store.getAllKeys();
+                const reqVals = store.getAll();
+                
+                reqKeys.onsuccess = () => {
+                    reqVals.onsuccess = () => {
+                        const result = {};
+                        reqKeys.result.forEach((k, i) => {
+                            if (k !== 'tpl_builtin_sql_hongqu') {
+                                result[k] = reqVals.result[i];
+                            }
+                        });
+                        resolve(injectBuiltin(result));
+                    };
+                };
+                reqVals.onerror = () => resolve(injectBuiltin({}));
+            });
+        }
+    };
+
+    // 完美兼容原有同步逻辑的代理方法
+    const getCustomAvatars = () => AvatarDB.cache;
+    const saveCustomAvatar = (ctxId, charName, imgDataBase64) => {
+        if (!AvatarDB.cache[ctxId]) AvatarDB.cache[ctxId] = {};
+        AvatarDB.cache[ctxId][charName] = imgDataBase64;
+        AvatarDB.saveToDB(ctxId, AvatarDB.cache[ctxId]); 
+        return true; // IndexedDB 容量极大，不再会报错了
+    };
+
+    // --- [新增] 移植的辅助函数 ---
+    // [终极修复] 将面板高度记忆与“角色卡/聊天 ID”强绑定，实现千人千面，互不污染
+    const getTableHeights = () => {
+        const allHeights = Store.get(STORAGE_KEY_TABLE_HEIGHTS, {});
+        const ctxId = getCurrentContextFingerprint(); // 获取当前角色卡的身份证
+        return allHeights[ctxId] || {}; // 只返回当前角色的高度记忆
+    };
+    
+    const saveTableHeights = (v) => {
+        const allHeights = Store.get(STORAGE_KEY_TABLE_HEIGHTS, {});
+        const ctxId = getCurrentContextFingerprint(); // 获取当前角色卡的身份证
+        allHeights[ctxId] = v; // 将高度只保存在当前角色名下
+        Store.set(STORAGE_KEY_TABLE_HEIGHTS, allHeights);
+    };
+    const getTableStyles = () => Store.get(STORAGE_KEY_TABLE_STYLES, {});
+    const saveTableStyles = (v) => Store.set(STORAGE_KEY_TABLE_STYLES, v);
+    const getHiddenTables = () => Store.get(STORAGE_KEY_HIDDEN_TABLES, []);
+    const saveHiddenTables = (v) => Store.set(STORAGE_KEY_HIDDEN_TABLES, v);
+    
+    // [新增] 人物关系网位置记忆
+    const getRelationPositions = () => Store.get(STORAGE_KEY_RELATION_POSITIONS, { nodes: {}, viewTransform: null });
+    const saveRelationPositions = (v) => Store.set(STORAGE_KEY_RELATION_POSITIONS, v);
+
+    // [新增] 中心节点锁定记忆
+    const getPinnedRelationCenter = () => Store.get('acu_rel_pinned_center_' + getCurrentContextFingerprint(), null);
+    const savePinnedRelationCenter = (v) => Store.set('acu_rel_pinned_center_' + getCurrentContextFingerprint(), v);
+
+    // [新增] 整体编辑模态框
+    const showCardEditModal = (row, headers, tableName, rowIndex, tableKey) => {
+        const { $ } = getCore();
+        const config = getConfig();
+        let rawData = cachedRawData || getTableData() || loadSnapshot();
+        
+        let displayRow = row;
+        // 确保获取的是最新数据
+        if (rawData && rawData[tableKey] && rawData[tableKey]?.content?.[rowIndex + 1]) {
+            displayRow = rawData[tableKey]?.content?.[rowIndex + 1];
+        }
+
+        const inputsHtml = displayRow.map((cell, idx) => {
+            if (idx === 0) return ''; // 跳过索引列
+            const headerName = headers[idx] || `列 ${idx}`;
+            const val = cell || '';
+            // 自动高度的 textarea
+            return `
+                <div class="acu-card-edit-field" style="margin-bottom: 10px;">
+                    <label style="display:block;font-size:12px;color:var(--acu-accent);font-weight:bold;margin-bottom:4px;">${escapeHtml(headerName)}</label>
+                    <textarea class="acu-card-edit-input" data-col="${idx}" spellcheck="false" rows="1" 
+                        style="width:100%;min-height:40px;max-height:500px;padding:10px;border:1px solid var(--acu-border);background-color:var(--acu-btn-bg) !important;color:var(--acu-text-main) !important;border-radius:6px;resize:none;font-size:14px;line-height:1.5;box-shadow:inset 0 1px 3px rgba(0,0,0,0.1);overflow-y:hidden;">${escapeHtml(val)}</textarea>
+                </div>`;
+        }).join('');
+
+        const dialog = $(`
+            <div class="acu-edit-overlay">
+                <div class="acu-edit-dialog acu-theme-${config.theme}">
+                    <div class="acu-edit-title">整体编辑 (#${rowIndex + 1} - ${escapeHtml(tableName)})</div>
+                    <div class="acu-settings-content" style="flex:1; overflow-y:auto; padding:15px;">
+                        ${inputsHtml}
+                    </div>
+                     <div class="acu-dialog-btns">
+                        <button class="acu-dialog-btn" id="dlg-card-cancel"><i class="fa-solid fa-times"></i> 取消</button>
+                        <button class="acu-dialog-btn acu-btn-confirm" id="dlg-card-save"><i class="fa-solid fa-check"></i> 保存</button>
+                    </div>
+                </div>
+            </div>
+        `);
+        $('body').append(dialog);
+
+        // --- [新增] 自动高度调节逻辑 (rAF 防抖优化版) ---
+        const adjustHeight = (el) => {
+            if (el._isAdjusting) return;
+            el._isAdjusting = true;
+            requestAnimationFrame(() => {
+                el.style.height = '0px'; // 先重置为0，强制重排获取真实高度
+                const contentHeight = el.scrollHeight + 2;
+                const maxHeight = 500;
+                el.style.height = Math.min(contentHeight, maxHeight) + 'px';
+                el.style.overflowY = contentHeight > maxHeight ? 'auto' : 'hidden';
+                el._isAdjusting = false;
+            });
+        };
+
+        // 1. 初始化时：对所有有内容的框自动拉长
+        dialog.find('textarea').each(function(){ 
+            adjustHeight(this); 
+        });
+
+        // 2. 输入时：实时调整
+        dialog.find('textarea').on('input', function(){ 
+            adjustHeight(this); 
+        });
+        // -----------------------------
+
+        
+
+        const closeDialog = () => dialog.remove();
+        dialog.find('#dlg-card-cancel').click(closeDialog);
+        
+        // [极速优化版] 保存逻辑：接入 updateRow 原生 API
+        dialog.find('#dlg-card-save').click(async () => {
+            let rawData = cachedRawData || getTableData() || loadSnapshot();
+            if (rawData && rawData[tableKey]) {
+                const currentRow = rawData[tableKey]?.content?.[rowIndex + 1];
+                if (!currentRow) { closeDialog(); return; }
+                
+                let hasChanges = false;
+                const updateData = {}; // 用于构建 API 需要的 {列名: 新值} 对象
+                
+                dialog.find('textarea').each(function () {
+                    const colIdx = parseInt($(this).data('col'));
+                    const newVal = $(this).val();
+                    if (String(currentRow[colIdx]) !== String(newVal)) {
+                        hasChanges = true;
+                        currentRow[colIdx] = newVal;
+                        
+                        // 提取对应的列名
+                        const colName = headers[colIdx];
+                        if (colName) {
+                            updateData[colName] = newVal;
+                        }
+                    }
+                });
+                
+                if (hasChanges) {
+                    let actOrd = Store.get(STORAGE_KEY_ACTION_ORDER);
+                    if (!actOrd || !Array.isArray(actOrd)) actOrd = DEFAULT_ACTION_ORDER;
+                    const isInstantMode = !actOrd.includes('acu-btn-save-global');
+                    
+                    if (isInstantMode) {
+                        // --- A. 即时模式：统一使用全局覆盖接口，保证绝对成功 ---
+                        dialog.find('#dlg-card-save').html('<i class="fa-solid fa-check"></i> 已保存');
+                        await saveDataToDatabase(rawData, false, true);
+                        AcuToast.success('修改已保存');
+                    } else {
+                        // --- B. 暂存模式 ---
+                        if (!window.acuModifiedSet) window.acuModifiedSet = new Set();
+                        Object.keys(updateData).forEach(colName => {
+                            const cIdx = headers.indexOf(colName);
+                            window.acuModifiedSet.add(`${tableKey}-${rowIndex}-${cIdx}`);
+                        });
+                        hasUnsavedChanges = true;
+                        updateSaveButtonState();
+                        AcuToast.info('整行修改已暂存，请点击保存');
+                    }
+                    
+                    renderInterface();
+                }
+            }
+            closeDialog();
+        });
+        dialog.on('click', function(e) { if ($(e.target).hasClass('acu-edit-overlay')) closeDialog(); });
+    };
+
+    // [优化] 内存配置缓存
+    let _configCache = null;
+    const getConfig = () => {
+        if (!_configCache) _configCache = { ...DEFAULT_CONFIG, ...Store.get(STORAGE_KEY_UI_CONFIG, {}) };
+        return _configCache;
+    };
+    const saveConfig = (newCfg) => { 
+        _configCache = { ...getConfig(), ...newCfg }; 
+        Store.set(STORAGE_KEY_UI_CONFIG, _configCache); 
+        applyConfigStyles(_configCache); 
+    };
+
+    const generateDiffMap = (currentData) => {
+        const lastData = loadSnapshot();
+        const diffSet = new Set();
+        if (!lastData) return diffSet;
+
+        for (const sheetId in currentData) {
+            const newSheet = currentData[sheetId];
+            const oldSheet = lastData[sheetId];
+            if (!newSheet || !newSheet.name) continue;
+            const tableName = newSheet.name;
+            
+            if (!oldSheet) {
+                if (newSheet.content) {
+                    newSheet.content.forEach((row, rIdx) => { if (rIdx > 0) diffSet.add(`${tableName}-row-${rIdx - 1}`); });
+                }
+                continue;
+            }
+            
+            const newRows = newSheet.content || [];
+            const oldRows = oldSheet.content || [];
+            
+            // --- 🚀 魔法：为旧数据建立基于 row_id (第一列) 的字典，告别死板的索引比对 ---
+            const oldRowMap = new Map();
+            oldRows.forEach((r, idx) => {
+                if (idx > 0) {
+                    // 优先取 row_id，取不到再用原行号兜底
+                    const key = r[0] ? String(r[0]) : `fallback_${idx}`;
+                    oldRowMap.set(key, r);
+                }
+            });
+
+            newRows.forEach((row, rIdx) => {
+                if (rIdx === 0) return; // 跳过表头
+                
+                const key = row[0] ? String(row[0]) : `fallback_${rIdx}`;
+                let oldRow = oldRowMap.get(key);
+                
+                // 如果按 ID 找不到，且也没有 row_id，就退回旧版的直接索引比对
+                if (!oldRow && !row[0]) {
+                    oldRow = oldRows[rIdx];
+                }
+
+                if (!oldRow) {
+                    // 如果旧字典里完全找不到这个身份证，那这就是新行
+                    diffSet.add(`${tableName}-row-${rIdx - 1}`);
+                } else {
+                    // 找到了旧数据，逐个单元格比对变化
+                    row.forEach((cell, cIdx) => {
+                        if (cIdx === 0) return; // 不比对 row_id 本身
+                        const oldCell = oldRow[cIdx];
+                        if (String(cell) !== String(oldCell)) diffSet.add(`${tableName}-${rIdx - 1}-${cIdx}`);
+                    });
+                }
+            });
+        }
+        return diffSet;
+    };
+
+    const applyConfigStyles = (config) => {
+        const { $ } = getCore();
+        const $wrapper = $('.acu-wrapper');
+        const fontVal = FONTS.find(f => f.id === config.fontFamily)?.val || FONTS[0].val;
+        
+        // [优化] 只有字体 ID 变化时才重写 Style 标签，避免闪烁
+        const $styleTag = $('#acu-dynamic-font, #acu-dynamic-font-marker');
+        const currentFontId = $styleTag.attr('data-font-id');
+        
+if (currentFontId !== config.fontFamily) {
+                $styleTag.remove();
+                const fontImport = `
+                    @import url("https://fontsapi.zeoseven.com/3/main/result.css");
+                    @import url("https://fontsapi.zeoseven.com/442/main/result.css");
+                    @import url("https://fontsapi.zeoseven.com/256/main/result.css");
+                    @import url("https://fontsapi.zeoseven.com/482/main/result.css");
+                    @import url("https://fontsapi.zeoseven.com/446/main/result.css");
+                    @import url("https://fontsapi.zeoseven.com/570/main/result.css");
+                    @import url("https://fontsapi.zeoseven.com/292/main/result.css");
+                    @import url("https://fontsapi.zeoseven.com/69/main/result.css");
+                    @import url("https://fontsapi.zeoseven.com/7/main/result.css");
+                `;
+                
+                const cssText = `
+                    ${fontImport}
+                    .acu-wrapper, .acu-edit-dialog, .acu-cell-menu, .acu-nav-container, .acu-data-card, .acu-panel-title, .acu-settings-label, .acu-btn-block, .acu-nav-btn, .acu-edit-textarea, #acu-ghost-preview {
+                        font-family: ${fontVal} !important;
+                    }
+                `;
+                
+                // [核心修复] 抛弃 replaceSync，因为现代浏览器会直接静默丢弃其中的 @import 规则而不报错
+                $('head').append(`
+                    <style id="acu-dynamic-font" data-font-id="${config.fontFamily}">
+                        ${cssText}
+                    </style>
+                `);
+            }
+
+        // [优化] 尺寸和颜色变化只更新 CSS 变量，完全不闪烁
+        const cssVars = {
+            '--acu-card-width': `${config.cardWidth}px`,
+            '--acu-font-size': `${config.fontSize}px`,
+            '--acu-opt-font-size': `${config.optionFontSize || 12}px`,
+            '--acu-grid-cols': config.gridColumns
+        };
+
+        // [性能优化] 定义平滑过渡属性，交给 GPU 处理颜色渐变，彻底消灭黑闪
+        const themeTransition = 'background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease';
+
+        if ($wrapper.length) {
+            $wrapper.addClass(`acu-theme-${config.theme}`);
+            // 安全剔除：遍历已知的 THEMES 列表，只删掉不是当前选择的主题
+            THEMES.forEach(t => { if (t.id !== config.theme) $wrapper.removeClass(`acu-theme-${t.id}`); });
+            $wrapper.css(cssVars);
+            $wrapper.find('.acu-data-display, .acu-nav-container').css('transition', themeTransition);
+        }
+        
+        // [修复] 同时为 RPG 状态栏更新 Theme 类名和 CSS 变量
+        const $statusBar = $('.acu-status-bar-container');
+        if ($statusBar.length) {
+            $statusBar.addClass(`acu-theme-${config.theme}`);
+            // 安全剔除
+            THEMES.forEach(t => { if (t.id !== config.theme) $statusBar.removeClass(`acu-theme-${t.id}`); });
+            $statusBar.css(cssVars);
+            $statusBar.find('.acu-rpg-widget, .acu-rpg-summary, .acu-rpg-details').css('transition', themeTransition);
+        }
+
+        // [新增] 动态挂载/卸载系统提示消息美化样式
+        const $toastrStyle = $('#acu-toastr-styles');
+        if (config.beautifyToastr === true) {
+            if ($toastrStyle.length === 0) {
+                $('head').append(`
+                    <style id="acu-toastr-styles">
+                        #toast-container > .toast { padding: 12px 24px !important; background: var(--SmartThemeBlurColor, var(--bg-color, #232323)) !important; backdrop-filter: blur(var(--SmartThemeBlurStrength, 10px)) !important; -webkit-backdrop-filter: blur(var(--SmartThemeBlurStrength, 10px)) !important; border: 1px solid var(--SmartThemeBorderColor, var(--border-color, #3a3a3a)) !important; border-radius: 50px !important; color: var(--SmartThemeTextColor, var(--text-color, #e0e0e0)) !important; box-shadow: 0 6px 16px rgba(0,0,0,0.3) !important; background-image: none !important; text-align: center !important; width: max-content !important; min-width: 300px !important; max-width: 92vw !important; margin: 10px auto !important; box-sizing: border-box !important; animation: toast-fade-up 0.3s ease forwards !important; }
+                        #toast-container > .toast:before, #toast-container > .toast:after { display: none !important; }
+                        #toast-container > .toast-success { border-color: rgba(46, 204, 113, 0.4) !important; }
+                        #toast-container > .toast-success .toast-message { color: #2ecc71 !important; }
+                        #toast-container > .toast-warning { border-color: rgba(241, 196, 15, 0.4) !important; }
+                        #toast-container > .toast-warning .toast-message { color: #f1c40f !important; }
+                        #toast-container > .toast-info { border-color: rgba(52, 152, 219, 0.4) !important; }
+                        #toast-container > .toast-info .toast-message { color: #3498db !important; }
+                        #toast-container > .toast-error { border-color: rgba(231, 76, 60, 0.4) !important; }
+                        #toast-container > .toast-error .toast-message { color: #e74c3c !important; }
+                        @keyframes toast-fade-up { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
+                        .toast-title { display: none !important; }
+                        .toast-message { font-size: 13px !important; font-weight: 500 !important; word-break: break-word !important; }
+                    </style>
+                `);
+            }
+        } else {
+            $toastrStyle.remove();
+        }
+    };
+
+    const addStyles = () => {
+    if (window._acuStylesInjected && $(`#${SCRIPT_ID}-styles`).length) return;
+    window._acuStylesInjected = true;
+    const { $ } = getCore();
+    $('style').each(function () {
+        if (this.id && this.id.startsWith('acu_') && this.id.endsWith('-styles') && this.id !== `${SCRIPT_ID}-styles`) $(this).remove();
+    });
+    $(`#${SCRIPT_ID}-styles`).remove();
+    const styles = `
+            <style id="${SCRIPT_ID}-styles">
+                .acu-theme-native { --acu-bg-nav: var(--SmartThemeBlurColor, var(--bg-color, rgba(30, 30, 30, 0.8))); --acu-bg-panel: var(--SmartThemeBlurColor, var(--bg-color, rgba(20, 20, 20, 0.9))); --acu-border: var(--SmartThemeBorderColor, var(--border-color, #555)); --acu-text-main: var(--SmartThemeTextColor, var(--text-color, #eee)); --acu-text-sub: var(--SmartThemeMutedTextColor, #aaa); --acu-btn-bg: rgba(128, 128, 128, 0.15); --acu-btn-hover: rgba(128, 128, 128, 0.3); --acu-btn-active-bg: var(--SmartThemeQuoteColor, var(--mes_user_color, #6a5acd)); --acu-btn-active-text: #fff; --acu-accent: var(--SmartThemeQuoteColor, var(--mes_user_color, #6a5acd)); --acu-table-head: rgba(128, 128, 128, 0.1); --acu-table-hover: rgba(128, 128, 128, 0.2); --acu-shadow: rgba(0,0,0,0.5); --acu-card-bg: var(--SmartThemeBlurColor, rgba(40, 40, 40, 0.6)); --acu-badge-bg: rgba(128, 128, 128, 0.2); --acu-menu-bg: var(--bg-color, #333); --acu-menu-text: var(--SmartThemeTextColor, var(--text-color, #eee)); --acu-success-text: #4cd964; --acu-success-bg: rgba(76, 217, 100, 0.15); --acu-scrollbar-track: transparent; --acu-scrollbar-thumb: var(--SmartThemeBorderColor, #555); --acu-hl-manual: #ff6b81; --acu-hl-manual-bg: rgba(255, 107, 129, 0.2); --acu-hl-diff: #00d2d3; --acu-hl-diff-bg: rgba(0, 210, 211, 0.2); }
+                .acu-theme-native .acu-nav-container, .acu-theme-native .acu-data-display, .acu-theme-native .acu-rpg-widget, .acu-theme-native.acu-edit-dialog { backdrop-filter: blur(var(--SmartThemeBlurStrength, 10px)); -webkit-backdrop-filter: blur(var(--SmartThemeBlurStrength, 10px)); }
+                .acu-theme-retro { --acu-bg-nav: #e6e2d3; --acu-bg-panel: #e6e2d3; --acu-border: #dcd0c0; --acu-text-main: #5e4b35; --acu-text-sub: #999; --acu-btn-bg: #dcd0c0; --acu-btn-hover: #cbbba8; --acu-btn-active-bg: #8d7b6f; --acu-btn-active-text: #fdfaf5; --acu-accent: #7a695f; --acu-table-head: #efebe4; --acu-table-hover: #f0ebe0; --acu-shadow: rgba(0,0,0,0.15); --acu-card-bg: #fffef9; --acu-badge-bg: #efebe4; --acu-menu-bg: #fff; --acu-menu-text: #333; --acu-success-text: #27ae60; --acu-success-bg: rgba(39, 174, 96, 0.15); --acu-scrollbar-track: #e6e2d3; --acu-scrollbar-thumb: #cbbba8; --acu-hl-manual: #d35400; --acu-hl-manual-bg: rgba(211, 84, 0, 0.15); --acu-hl-diff: #2980b9; --acu-hl-diff-bg: rgba(41, 128, 185, 0.15); }
+            .acu-theme-dark { --acu-bg-nav: rgba(43, 43, 43, 0.95); --acu-bg-panel: rgba(37, 37, 37, 0.95); --acu-border: #444; --acu-text-main: #eee; --acu-text-sub: #aaa; --acu-btn-bg: rgba(58, 58, 58, 0.5); --acu-btn-hover: #4a4a4a; --acu-btn-active-bg: #6a5acd; --acu-btn-active-text: #fff; --acu-accent: #6a5acd; --acu-table-head: rgba(51, 51, 51, 0.8); --acu-table-hover: rgba(58, 58, 58, 0.5); --acu-shadow: rgba(0,0,0,0.6); --acu-card-bg: rgba(45, 48, 53, 0.6); --acu-badge-bg: #3a3f4b; --acu-menu-bg: #333; --acu-menu-text: #eee; --acu-success-text: #4cd964; --acu-success-bg: rgba(76, 217, 100, 0.2); --acu-scrollbar-track: #2b2b2b; --acu-scrollbar-thumb: #555; --acu-hl-manual: #ff6b81; --acu-hl-manual-bg: rgba(255, 107, 129, 0.2); --acu-hl-diff: #00d2d3; --acu-hl-diff-bg: rgba(0, 210, 211, 0.2); }
+            .acu-theme-modern { --acu-bg-nav: #ffffff; --acu-bg-panel: #f8f9fa; --acu-border: #e0e0e0; --acu-text-main: #333; --acu-text-sub: #666; --acu-btn-bg: #f1f3f5; --acu-btn-hover: #e9ecef; --acu-btn-active-bg: #007bff; --acu-btn-active-text: #fff; --acu-accent: #007bff; --acu-table-head: #f8f9fa; --acu-table-hover: #f1f3f5; --acu-shadow: rgba(0,0,0,0.1); --acu-card-bg: #ffffff; --acu-badge-bg: #f1f3f5; --acu-menu-bg: #fff; --acu-menu-text: #333; --acu-success-text: #28a745; --acu-success-bg: rgba(40, 167, 69, 0.15); --acu-scrollbar-track: #fff; --acu-scrollbar-thumb: #ccc; --acu-hl-manual: #fd7e14; --acu-hl-manual-bg: rgba(253, 126, 20, 0.15); --acu-hl-diff: #0d6efd; --acu-hl-diff-bg: rgba(13, 110, 253, 0.15); }
+            .acu-theme-forest { --acu-bg-nav: #e8f5e9; --acu-bg-panel: #e8f5e9; --acu-border: #c8e6c9; --acu-text-main: #2e7d32; --acu-text-sub: #81c784; --acu-btn-bg: #c8e6c9; --acu-btn-hover: #a5d6a7; --acu-btn-active-bg: #43a047; --acu-btn-active-text: #fff; --acu-accent: #4caf50; --acu-table-head: #dcedc8; --acu-table-hover: #f1f8e9; --acu-shadow: rgba(0,0,0,0.1); --acu-card-bg: #ffffff; --acu-badge-bg: #dcedc8; --acu-menu-bg: #fff; --acu-menu-text: #2e7d32; --acu-success-text: #2e7d32; --acu-success-bg: rgba(46, 125, 50, 0.2); --acu-scrollbar-track: #e8f5e9; --acu-scrollbar-thumb: #a5d6a7; --acu-hl-manual: #e67e22; --acu-hl-manual-bg: rgba(230, 126, 34, 0.15); --acu-hl-diff: #2ecc71; --acu-hl-diff-bg: rgba(46, 204, 113, 0.15); }
+            .acu-theme-ocean { --acu-bg-nav: #e3f2fd; --acu-bg-panel: #e3f2fd; --acu-border: #bbdefb; --acu-text-main: #1565c0; --acu-text-sub: #64b5f6; --acu-btn-bg: #bbdefb; --acu-btn-hover: #90caf9; --acu-btn-active-bg: #1976d2; --acu-btn-active-text: #fff; --acu-accent: #2196f3; --acu-table-head: rgba(255, 255, 255, 0.55); --acu-table-hover: #e1f5fe; --acu-shadow: rgba(0,0,0,0.15); --acu-card-bg: #ffffff; --acu-badge-bg: #e3f2fd; --acu-menu-bg: #fff; --acu-menu-text: #1565c0; --acu-success-text: #0288d1; --acu-success-bg: rgba(2, 136, 209, 0.15); --acu-scrollbar-track: #e3f2fd; --acu-scrollbar-thumb: #90caf9; --acu-hl-manual: #ff4757; --acu-hl-manual-bg: rgba(255, 71, 87, 0.15); --acu-hl-diff: #2ed573; --acu-hl-diff-bg: rgba(46, 213, 115, 0.15); }
+            .acu-theme-cyber { --acu-bg-nav: #000000; --acu-bg-panel: #0a0a0a; --acu-border: #333; --acu-text-main: #00ffcc; --acu-text-sub: #ff00ff; --acu-btn-bg: #111; --acu-btn-hover: #222; --acu-btn-active-bg: #ff00ff; --acu-btn-active-text: #fff; --acu-accent: #00ffcc; --acu-table-head: #050505; --acu-table-hover: #111; --acu-shadow: 0 0 15px rgba(0,255,204,0.15); --acu-card-bg: #050505; --acu-badge-bg: #1a1a1a; --acu-menu-bg: #111; --acu-menu-text: #00ffcc; --acu-success-text: #0f0; --acu-success-bg: rgba(0, 255, 0, 0.15); --acu-scrollbar-track: #000; --acu-scrollbar-thumb: #333; --acu-hl-manual: #ff9f43; --acu-hl-manual-bg: rgba(255, 159, 67, 0.2); --acu-hl-diff: #0abde3; --acu-hl-diff-bg: rgba(10, 189, 227, 0.2); }
+            .acu-theme-cyber .acu-nav-btn { border-color: #222; }
+            .acu-theme-cyber .acu-data-card { border-color: #222; }
+
+            .acu-theme-sakura { --acu-bg-nav: #fff0f5; --acu-bg-panel: #ffe4e1; --acu-border: #ffb6c1; --acu-text-main: #d05a6e; --acu-text-sub: #db7093; --acu-btn-bg: #fff5ee; --acu-btn-hover: #ffdcb9; --acu-btn-active-bg: #ff69b4; --acu-btn-active-text: #fff; --acu-accent: #ff69b4; --acu-table-head: #fff5ee; --acu-table-hover: #fff0f5; --acu-shadow: rgba(255,105,180,0.15); --acu-card-bg: #ffffff; --acu-badge-bg: #ffe4e1; --acu-menu-bg: #fff; --acu-menu-text: #d05a6e; --acu-success-text: #eb6ea5; --acu-success-bg: rgba(235,110,165,0.15); --acu-scrollbar-track: #fff0f5; --acu-scrollbar-thumb: #ffb6c1; --acu-hl-manual: #ff7f50; --acu-hl-manual-bg: rgba(255,127,80,0.15); --acu-hl-diff: #00ced1; --acu-hl-diff-bg: rgba(0,206,209,0.15); }
+            .acu-theme-lavender { --acu-bg-nav: #f5f0fa; --acu-bg-panel: #faf7fc; --acu-border: #dcd0eb; --acu-text-main: #5e4b8a; --acu-text-sub: #9280b5; --acu-btn-bg: #ede6f5; --acu-btn-hover: #e0d4ed; --acu-btn-active-bg: #8e44ad; --acu-btn-active-text: #fff; --acu-accent: #8e44ad; --acu-table-head: #f5f0fa; --acu-table-hover: #ede6f5; --acu-shadow: rgba(142,68,173,0.1); --acu-card-bg: #ffffff; --acu-badge-bg: #f5f0fa; --acu-menu-bg: #fff; --acu-menu-text: #5e4b8a; --acu-success-text: #2ecc71; --acu-success-bg: rgba(46,204,113,0.15); --acu-scrollbar-track: #faf7fc; --acu-scrollbar-thumb: #dcd0eb; --acu-hl-manual: #f39c12; --acu-hl-manual-bg: rgba(243,156,18,0.15); --acu-hl-diff: #3498db; --acu-hl-diff-bg: rgba(52,152,219,0.15); }
+            .acu-theme-palace { --acu-bg-nav: #211114; --acu-bg-panel: #1a0b0d; --acu-border: #4a1f26; --acu-text-main: #f0dfc8; --acu-text-sub: #b59283; --acu-btn-bg: #30161a; --acu-btn-hover: #4a1f26; --acu-btn-active-bg: #b02a39; --acu-btn-active-text: #f0dfc8; --acu-accent: #d4af37; --acu-table-head: #2a1114; --acu-table-hover: #3a161b; --acu-shadow: rgba(0,0,0,0.4); --acu-card-bg: #211114; --acu-badge-bg: #30161a; --acu-menu-bg: #1a0b0d; --acu-menu-text: #f0dfc8; --acu-success-text: #27ae60; --acu-success-bg: rgba(39,174,96,0.2); --acu-scrollbar-track: #1a0b0d; --acu-scrollbar-thumb: #4a1f26; --acu-hl-manual: #e67e22; --acu-hl-manual-bg: rgba(230,126,34,0.2); --acu-hl-diff: #8e44ad; --acu-hl-diff-bg: rgba(142,68,173,0.2); }
+            .acu-theme-coffee { --acu-bg-nav: #fdfaf6; --acu-bg-panel: #f8f3ea; --acu-border: #e3d5c8; --acu-text-main: #5c4033; --acu-text-sub: #8b7355; --acu-btn-bg: #f0e6d6; --acu-btn-hover: #e6d5c0; --acu-btn-active-bg: #8b5a2b; --acu-btn-active-text: #fff; --acu-accent: #8b5a2b; --acu-table-head: #fdfaf6; --acu-table-hover: #f5eedf; --acu-shadow: rgba(139,90,43,0.1); --acu-card-bg: #ffffff; --acu-badge-bg: #fdfaf6; --acu-menu-bg: #fff; --acu-menu-text: #5c4033; --acu-success-text: #6b8e23; --acu-success-bg: rgba(107,142,35,0.15); --acu-scrollbar-track: #f8f3ea; --acu-scrollbar-thumb: #e3d5c8; --acu-hl-manual: #cd853f; --acu-hl-manual-bg: rgba(205,133,63,0.15); --acu-hl-diff: #4682b4; --acu-hl-diff-bg: rgba(70,130,180,0.15); }
+            .acu-theme-wuxia { --acu-bg-nav: #f5f5f5; --acu-bg-panel: #f0f0f0; --acu-border: #dcdcdc; --acu-text-main: #2a2a2a; --acu-text-sub: #707070; --acu-btn-bg: #e8e8e8; --acu-btn-hover: #dcdcdc; --acu-btn-active-bg: #1d953f; --acu-btn-active-text: #fff; --acu-accent: #1d953f; --acu-table-head: #e8e8e8; --acu-table-hover: #f0f0f0; --acu-shadow: rgba(0,0,0,0.08); --acu-card-bg: #ffffff; --acu-badge-bg: #e8e8e8; --acu-menu-bg: #fff; --acu-menu-text: #2a2a2a; --acu-success-text: #1d953f; --acu-success-bg: rgba(29,149,63,0.15); --acu-scrollbar-track: #f5f5f5; --acu-scrollbar-thumb: #c0c0c0; --acu-hl-manual: #c03f3c; --acu-hl-manual-bg: rgba(192,63,60,0.15); --acu-hl-diff: #41555d; --acu-hl-diff-bg: rgba(65,85,93,0.15); }
+            .acu-theme-mecha { --acu-bg-nav: #16181d; --acu-bg-panel: #1e2229; --acu-border: #353b45; --acu-text-main: #e0e6ed; --acu-text-sub: #7a879e; --acu-btn-bg: #272c35; --acu-btn-hover: #353b45; --acu-btn-active-bg: #ff6b00; --acu-btn-active-text: #fff; --acu-accent: #ff6b00; --acu-table-head: #16181d; --acu-table-hover: #272c35; --acu-shadow: 0 0 10px rgba(255,107,0,0.15); --acu-card-bg: #21252d; --acu-badge-bg: #2d333b; --acu-menu-bg: #1e2229; --acu-menu-text: #e0e6ed; --acu-success-text: #2ecc71; --acu-success-bg: rgba(46,204,113,0.15); --acu-scrollbar-track: #16181d; --acu-scrollbar-thumb: #353b45; --acu-hl-manual: #e74c3c; --acu-hl-manual-bg: rgba(231,76,60,0.2); --acu-hl-diff: #3498db; --acu-hl-diff-bg: rgba(52,152,219,0.2); }
+            .acu-theme-gothic { --acu-bg-nav: #090909; --acu-bg-panel: #0d0d0d; --acu-border: #2c1010; --acu-text-main: #d4b8b8; --acu-text-sub: #8c5c5c; --acu-btn-bg: #170d0d; --acu-btn-hover: #2c1010; --acu-btn-active-bg: #8a0303; --acu-btn-active-text: #e6dada; --acu-accent: #a60c0c; --acu-table-head: #0f0909; --acu-table-hover: #1a0f0f; --acu-shadow: 0 0 15px rgba(166,12,12,0.15); --acu-card-bg: #120b0b; --acu-badge-bg: #211111; --acu-menu-bg: #0a0505; --acu-menu-text: #d4b8b8; --acu-success-text: #27ae60; --acu-success-bg: rgba(39,174,96,0.15); --acu-scrollbar-track: #090909; --acu-scrollbar-thumb: #2c1010; --acu-hl-manual: #d35400; --acu-hl-manual-bg: rgba(211,84,0,0.2); --acu-hl-diff: #2980b9; --acu-hl-diff-bg: rgba(41,128,185,0.2); }
+
+            .acu-wrapper { position: relative; width: 100%; margin: 15px 0; z-index: 2147483640 !important; font-family: 'Microsoft YaHei', sans-serif; display: flex; flex-direction: column-reverse; order: 999999; }
+            .acu-wrapper.acu-mode-embedded { position: relative !important; width: 100% !important; margin-top: 8px !important; z-index: 2147483641 !important; clear: both; display: flex !important; flex-direction: column-reverse !important; padding: 0 !important; }
+            .acu-wrapper.acu-mode-embedded .acu-nav-container { position: relative !important; z-index: 2147483642 !important; }
+            .acu-wrapper.acu-mode-embedded .acu-data-display { position: absolute !important; bottom: 100% !important; left: 0 !important; right: 0 !important; width: 100% !important; box-shadow: 0 -10px 30px rgba(0,0,0,0.25) !important; border: 1px solid var(--acu-border); margin-bottom: 5px; z-index: 2147483647 !important; max-height: 70vh !important; overflow-y: auto !important; }
+            .acu-nav-container { display: grid; grid-template-columns: repeat(var(--acu-grid-cols, 3), 1fr); gap: 4px; padding: 6px; background: var(--acu-bg-nav); border: 1px solid var(--acu-border); border-radius: 10px; align-items: center; box-shadow: 0 2px 6px var(--acu-shadow); position: relative; z-index: 2147483641 !important; }
+            .acu-nav-btn { touch-action: manipulation; -webkit-tap-highlight-color: transparent; width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 3px; padding: 4px 2px; border: 1px solid transparent; border-radius: 6px; background: var(--acu-btn-bg); color: var(--acu-text-main); font-weight: 600; font-size: 11px; cursor: pointer; transition: all 0.2s ease; user-select: none; overflow: hidden; height: 28px; }
+            .acu-nav-btn span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; margin-top: 1px; }
+            .acu-nav-btn:hover { background: var(--acu-btn-hover); transform: translateY(-2px); }
+            /* --- [新增] 手动更新选中状态的样式 --- */
+            .acu-nav-btn.acu-update-selected { border: 1px dashed var(--acu-accent) !important; box-shadow: inset 0 0 8px rgba(0,0,0,0.1) !important; position: relative; overflow: visible !important; }
+            .acu-nav-btn.acu-update-selected::after { content: "\\f0e7"; font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", fas; font-weight: 900; position: absolute; top: -6px; right: -6px; font-size: 10px; background: var(--acu-accent); color: #fff; border-radius: 50%; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; z-index: 10; box-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+            /* [新增] 移植功能样式 */
+            /* 添加了 touch-action: none */
+/* --- 1. 外层容器：防止误触边缘 --- */
+.acu-height-control { 
+    display: flex; 
+    align-items: center; 
+    margin-right: 8px; 
+    cursor: ns-resize; 
+    padding: 4px; 
+    border-radius: 4px; 
+    color: var(--acu-text-sub); 
+    transition: all 0.2s; 
+    /* 关键属性：禁止在此区域触发浏览器默认手势 */
+    touch-action: none; 
+}
+
+/* 交互反馈 */
+.acu-height-control:hover, .acu-height-control.active { 
+    color: var(--acu-accent); 
+    background: var(--acu-table-hover); 
+}
+
+/* --- 2. [加保险] 内部图标：这是事件绑定的主体，必须禁止触摸 --- */
+.acu-height-drag-handle { 
+    cursor: ns-resize; 
+    /* 双重保险：确保直接按在图标上也不会触发滚动 */
+    touch-action: none; 
+}
+            
+            /* 视图切换样式 */
+            .acu-view-btn { background: transparent; border: none; color: var(--acu-text-main); cursor: pointer; padding: 4px; margin-right: 5px; font-size: 14px; opacity: 0.7; }
+            .acu-view-btn:hover { opacity: 1; color: var(--acu-accent); }
+
+            /* Grid 视图 (双列) */
+            .acu-card-body.view-grid { display: grid !important; grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px !important; }
+            /* 修复版：强制 Grid 模式使用 Flex 布局并允许高度自适应 */
+.acu-card-body.view-grid .acu-card-row { display: flex !important; height: auto !important; min-height: fit-content; border: 1px solid var(--acu-border); border-radius: 6px; padding: 4px 6px !important; flex-direction: column !important; align-items: flex-start !important; background: rgba(0,0,0,0.02); box-sizing: border-box; }
+            .acu-card-body.view-grid .acu-card-row.acu-grid-span-full { grid-column: 1 / -1; }
+            .acu-card-body.view-grid .acu-card-label { width: 100% !important; font-size: 0.85em; opacity: 0.8; margin-bottom: 2px; }
+            .acu-card-body.view-grid .acu-card-value { width: 100% !important; }
+            
+            /* List 视图 (单列 - 原版增强) */
+            .acu-card-body.view-list { display: flex !important; flex-direction: column; gap: 0; }
+            .acu-nav-btn.active { background: var(--acu-btn-active-bg); color: var(--acu-btn-active-text); box-shadow: inset 0 1px 3px rgba(0,0,0,0.2); }
+            .acu-action-btn { flex: 1; height: 36px; display: flex; align-items: center; justify-content: center; background: var(--acu-btn-bg); border-radius: 8px; color: var(--acu-text-sub); cursor: pointer; border: 1px solid transparent; transition: all 0.2s; margin: 0; }
+            .acu-action-btn:hover { background: var(--acu-btn-hover); color: var(--acu-text-main); transform: translateY(-2px); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+            #acu-btn-save-global { color: var(--acu-btn-active-bg); } #acu-btn-save-global:hover { background: var(--acu-btn-active-bg); color: var(--acu-btn-active-text); }
+
+            .acu-data-display { position: absolute; bottom: calc(100% + 10px); left: 0; right: 0; max-height: 80vh; height: auto; background: var(--acu-bg-panel); border: 1px solid var(--acu-border); border-radius: 8px; box-shadow: 0 8px 30px var(--acu-shadow); display: none; flex-direction: column; z-index: 2147483642 !important; animation: popUp 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28); }
+            .acu-data-display.visible { display: flex; }
+            @keyframes popUp { from { opacity: 0; transform: translateY(10px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+            .acu-panel-header { flex: 0 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; background: var(--acu-table-head); border-bottom: 1px dashed var(--acu-border); border-radius: 8px 8px 0 0; }
+            /* 核心修改：增加了 flex: 1 和 min-width: 0，强制标题在空间不足时自动变短显示省略号 */
+/* --- 新的标题布局：纵向排列 --- */
+.acu-panel-title { 
+    display: flex; 
+    flex-direction: column; /* 垂直堆叠 */
+    justify-content: center; 
+    align-items: flex-start; 
+    flex: 1; /* 占据剩余空间 */
+    min-width: 0; /* 允许压缩 */
+    margin-right: 8px; 
+    overflow: hidden; 
+}
+
+/* 第一行：标题主体 (加粗，稍大) */
+.acu-title-main {
+    display: flex; 
+    align-items: center; 
+    gap: 6px; 
+    width: 100%;
+    font-size: 13px; /* 你要求的：字体变小一点，但保持加粗 */
+    font-weight: bold;
+    color: var(--acu-text-main);
+    line-height: 1.2;
+}
+
+/* 标题文字本身 (溢出省略) */
+.acu-title-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 第二行：页码信息 (灰色，更小) */
+.acu-title-sub {
+    font-size: 10px;
+    color: var(--acu-text-sub);
+    font-weight: normal;
+    opacity: 0.8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    line-height: 1.2;
+    margin-top: 1px;
+}
+            /* 增加了 flex-shrink: 0; 防止被标题挤压 */
+/* 核心修改：flex-shrink: 0 确保这一块区域永远不会被压缩 */
+.acu-header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+            .acu-search-wrapper { position: relative; display: flex; align-items: center; }
+            .acu-search-input { background-color: var(--acu-btn-bg) !important; border: 1px solid var(--acu-border) !important; color: var(--acu-text-main) !important; padding: 4px 8px 4px 24px; border-radius: 12px; font-size: 12px; width: 120px; transition: width 0.2s; }
+            .acu-search-input:focus { width: 160px; outline: none; border-color: var(--acu-accent); }
+            .acu-search-icon { position: absolute; left: 8px; font-size: 10px; color: var(--acu-text-sub); pointer-events: none; }
+            /* 增加了 min-width 和 flex-shrink: 0 */
+.acu-close-btn { background: none; border: none; color: var(--acu-text-sub); cursor: pointer; font-size: 16px; padding: 4px; flex-shrink: 0; min-width: 24px; text-align: center; } .acu-close-btn:hover { color: #e74c3c; }
+            .acu-panel-content { flex: 1; overflow-x: auto; overflow-y: hidden; padding: 15px; background: transparent; scrollbar-width: thin; scrollbar-color: var(--acu-scrollbar-thumb) var(--acu-scrollbar-track); overscroll-behavior: auto; touch-action: manipulation; }
+            .acu-panel-content::-webkit-scrollbar { width: 6px; height: 6px; }
+            .acu-panel-content::-webkit-scrollbar-track { background: var(--acu-scrollbar-track); border-radius: 3px; }
+            .acu-panel-content::-webkit-scrollbar-thumb { background: var(--acu-scrollbar-thumb); border-radius: 3px; }
+            .acu-panel-content::-webkit-scrollbar-thumb:hover { background: var(--acu-accent); }
+            /* 增加了 height: 100%; 让网格容器填满面板的高度 */
+.acu-card-grid { display: flex; flex-wrap: nowrap; gap: 12px; align-items: flex-start; }
+            .acu-layout-vertical .acu-panel-content { overflow-x: hidden !important; overflow-y: auto !important; overscroll-behavior: auto; touch-action: manipulation; min-height: 0; }
+            /* 竖向布局时恢复 auto 高度 */
+.acu-layout-vertical .acu-card-grid { flex-wrap: wrap !important; justify-content: center; padding-bottom: 20px; height: auto; }
+/* 修改了 max-height: 100%; 让卡片高度跟随面板高度变化 */
+/* 修正版：同时限制网格高度和卡片高度 */
+/* 修复版：横向模式限制网格高度，竖向模式自动高度，并增加防滚动卡死属性 */
+/* 修复版：恢复滚动链，允许卡片到底后带动页面滚动 */
+.acu-wrapper:not(.acu-layout-vertical) .acu-manual-mode .acu-card-grid { height: 100%; } .acu-manual-mode .acu-data-card { max-height: 100% !important; overscroll-behavior-y: auto; } .acu-data-card { flex: 0 0 var(--acu-card-width, 260px); width: var(--acu-card-width, 260px); background: var(--acu-card-bg); border: 1px solid var(--acu-border); border-radius: 8px; height: auto; max-height: 60vh; overflow-y: auto; overscroll-behavior-y: auto; touch-action: manipulation; transition: all 0.2s ease; display: flex; flex-direction: column; position: relative; }
+            .acu-data-card::-webkit-scrollbar { width: 4px; }
+            .acu-data-card::-webkit-scrollbar-track { background: transparent; }
+            .acu-data-card::-webkit-scrollbar-thumb { background: var(--acu-scrollbar-thumb); border-radius: 2px; }
+            .acu-data-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px var(--acu-shadow); border-color: var(--acu-accent); }
+            .acu-data-card.pending-deletion { opacity: 0.6; border: 1px dashed #e74c3c; }
+            .acu-data-card.pending-deletion::after { content: "待删除"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg); color: #e74c3c; font-size: 24px; font-weight: bold; border: 2px solid #e74c3c; padding: 5px 10px; border-radius: 8px; opacity: 0.8; pointer-events: none; }
+            @keyframes pulse-highlight { 0% { opacity: 0.7; } 50% { opacity: 1; } 100% { opacity: 0.7; } }
+            .acu-highlight-manual { color: var(--acu-hl-manual) !important; background-color: var(--acu-hl-manual-bg) !important; border-radius: 4px; padding: 0 4px; font-weight: bold; animation: pulse-highlight 2s infinite; display: inline-block; }
+            .acu-highlight-diff { color: var(--acu-hl-diff) !important; background-color: var(--acu-hl-diff-bg) !important; border-radius: 4px; padding: 0 4px; font-weight: bold; animation: pulse-highlight 2s infinite; display: inline-block; }
+            .acu-editable-title.acu-highlight-manual, .acu-editable-title.acu-highlight-diff { width: auto; display: inline-block; }
+            .acu-card-header { flex: 0 0 auto; padding: 8px 10px; background: var(--acu-table-head); border-bottom: 1px dashed var(--acu-border); font-weight: bold; color: var(--acu-text-main); font-size: 14px; display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: flex-start !important; gap: 8px; min-height: 40px; height: auto !important; }
+            .acu-editable-title { flex: 1; width: auto !important; cursor: pointer; border-bottom: 1px dashed transparent; transition: all 0.2s; white-space: pre-wrap !important; overflow: visible !important; word-break: break-word !important; text-align: center; line-height: 1.3; margin: 0 !important; }
+            .acu-editable-title:hover { border-bottom-color: var(--acu-accent); color: var(--acu-accent); }
+            .acu-card-index { position: static !important; transform: none !important; margin: 0 !important; flex-shrink: 0; font-size: 11px; color: var(--acu-text-sub); font-weight: normal; background: var(--acu-badge-bg); padding: 2px 6px; border-radius: 4px; }
+            .acu-card-body { padding: 6px 12px; display: flex; flex-direction: column; gap: 0; font-size: var(--acu-font-size, 13px); flex: 1; }
+            .acu-card-row { display: block !important; padding: 6px 0 !important; border-bottom: 1px dashed var(--acu-border); cursor: pointer; overflow: hidden; }
+            .acu-card-row:last-child { border-bottom: none; }
+            /* 已干掉表格条目的点击/悬停高亮背景 */
+            .acu-card-label { float: left !important; clear: left; width: auto !important; margin-right: 8px !important; color: var(--acu-text-sub); font-size: 0.9em; line-height: 1.5; padding-top: 0; }
+            .acu-card-value { display: block !important; width: auto !important; margin: 0 !important; text-align: left !important; word-break: break-all !important; white-space: pre-wrap !important; line-height: 1.5 !important; color: var(--acu-text-main); font-size: 1em; }
+            .acu-tag-container { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; margin-top: 2px; width: 100%; box-sizing: border-box; }
+            .acu-badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 12px; font-size: 0.9em; font-weight: 500; line-height: 1.2; white-space: nowrap !important; word-break: keep-all !important; flex-shrink: 0; }
+            .acu-badge-green { background: var(--acu-success-bg); color: var(--acu-success-text); }
+            .acu-badge-neutral { background: var(--acu-badge-bg); color: var(--acu-text-main); border: 1px solid var(--acu-border); }
+            .acu-panel-footer { flex: 0 0 auto; padding: 8px; border-top: 1px dashed var(--acu-border); background: var(--acu-table-head); display: flex; justify-content: center; align-items: center; gap: 5px; flex-wrap: wrap; }
+            .acu-page-btn { padding: 4px 10px; min-width: 32px; height: 28px; border-radius: 4px; border: 1px solid var(--acu-border); background: var(--acu-btn-bg); color: var(--acu-text-main); cursor: pointer; font-size: 12px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+            .acu-page-btn:hover:not(.disabled):not(.active) { background: var(--acu-btn-hover); transform: translateY(-1px); }
+            .acu-page-btn.active { background: var(--acu-accent); color: #fff; border-color: var(--acu-accent); font-weight: bold; }
+            .acu-page-btn.disabled { opacity: 0.5; cursor: not-allowed; }
+            .acu-page-info { font-size: 12px; color: var(--acu-text-sub); margin: 0 10px; }
+            /* --- [新增] 行动选项面板样式 --- */
+            /* 改为 Flex Column 垂直布局 */
+            /* --- [修改] 袖珍型·垂直紧凑布局 --- */
+            .acu-option-panel { 
+                display: flex; 
+                flex-direction: column; 
+                gap: 2px;                 /* 间距极小，排列更紧密 */
+                padding: 4px;             /* 容器内边距缩小 */
+                background: var(--acu-bg-nav); 
+                border: 1px solid var(--acu-border); 
+                border-radius: 6px;       /* 圆角缩小 */
+                margin-top: 0; 
+                margin-bottom: 4px; 
+                backdrop-filter: blur(5px); 
+                width: 100%; 
+                box-sizing: border-box; 
+                z-index: 10; 
+                animation: acuFadeIn 0.3s ease; 
+            }
+            
+            .acu-embedded-options-container { 
+                width: 100%; 
+                max-width: 100%; 
+                margin-top: 6px; 
+                clear: both; 
+                animation: acuFadeIn 0.3s ease; 
+            }
+
+            .acu-opt-header { 
+                text-align: center; 
+                font-size: 10px;          /* 标题字体更小 */
+                font-weight: bold; 
+                color: var(--acu-text-sub); 
+                padding-bottom: 2px; 
+                border-bottom: 1px dashed var(--acu-border); 
+                margin-bottom: 2px; 
+            }
+
+            /* --- [修改] 袖珍按钮样式 --- */
+            .acu-opt-btn { 
+                background: var(--acu-btn-bg); 
+                border: 1px solid transparent; /* 默认无边框，更干净 */
+                padding: 3px 6px;              /* 极窄内边距 */
+                border-radius: 4px; 
+                cursor: pointer; 
+                color: var(--acu-text-main); 
+                font-size: var(--acu-opt-font-size, 12px) !important; /* [修改] 使用独立变量 */
+                transition: all 0.15s; 
+                font-weight: normal;           /* 去除加粗 */
+                text-align: left;              /* 左对齐 */
+                white-space: pre-wrap; 
+                word-break: break-word; 
+                min-height: 22px;              /* 压低高度，超薄 */
+                line-height: 1.3;
+                display: flex; 
+                align-items: center; 
+                justify-content: flex-start; 
+                opacity: 0.9;
+            }
+
+            .acu-opt-btn:hover { 
+                background: var(--acu-table-hover); 
+                color: var(--acu-accent); 
+                border-color: var(--acu-accent); /* 悬停时显示边框 */
+                transform: translateX(3px);      /* 悬停时轻微右移反馈 */
+                opacity: 1;
+            }
+            .acu-opt-btn:active { background: var(--acu-btn-active-bg); color: var(--acu-btn-active-text); }
+            @keyframes acuFadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+            .acu-menu-backdrop { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: transparent; z-index: 2147483645 !important; }
+            /* 1. 菜单容器：背景色、边框、阴影全部跟随主题变量 */
+.acu-cell-menu { 
+    position: fixed !important; 
+    background: var(--acu-menu-bg) !important; 
+    border: 1px solid var(--acu-border) !important; 
+    box-shadow: 0 6px 20px var(--acu-shadow) !important; 
+    z-index: 2147483647 !important; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    min-width: 150px; 
+    color: var(--acu-menu-text);
+}
+
+/* 2. 菜单项：文字颜色跟随主题 */
+.acu-cell-menu-item { 
+    padding: 12px 16px; 
+    cursor: pointer; 
+    font-size: 14px; 
+    display: flex; 
+    gap: 12px; 
+    align-items: center; 
+    color: var(--acu-menu-text); 
+    font-weight: 500; 
+    background: transparent; 
+    transition: background 0.2s;
+}
+
+/* 3. 悬停效果：使用主题定义的通用悬停色 */
+.acu-cell-menu-item:hover { 
+    background: var(--acu-table-hover); 
+}
+
+/* 4. 特殊按钮优化 */
+.acu-cell-menu-item#act-delete { color: #e74c3c; } 
+.acu-cell-menu-item#act-delete:hover { background: rgba(231, 76, 60, 0.1); } /* 红色半透明背景，任何主题都适配 */
+.acu-cell-menu-item#act-close { border-top: 1px dashed var(--acu-border); color: var(--acu-text-sub); }
+            .acu-edit-overlay { position: fixed !important; top: 0; left: 0; right: 0; bottom: 0; width: 100vw; height: 100%; height: 100dvh; background: rgba(0,0,0,0.75) !important; z-index: 2147483646 !important; display: flex !important; justify-content: center !important; align-items: center !important; backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); transform: translateZ(0); backface-visibility: hidden; will-change: opacity, backdrop-filter; }
+            .acu-edit-dialog { background-color: var(--acu-bg-panel, #333) !important; width: 95%; max-width: 500px; max-height: 95vh; padding: 16px; border-radius: 12px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 15px 50px rgba(0,0,0,0.6); color: var(--acu-text-main, #fff) !important; border: 1px solid var(--acu-border, #555); margin: auto !important; overflow: hidden; transform: translate3d(0, 0, 0); will-change: transform, opacity; } 
+            @media (min-width: 768px) { .acu-edit-dialog { max-width: 900px !important; width: 90% !important; } }
+            .acu-edit-title { margin: 0; font-size: 16px; font-weight: bold; color: var(--acu-text-main, #fff); padding-bottom: 8px; border-bottom: 1px solid var(--acu-border, #555); }
+            .acu-edit-textarea { width: 100%; height: 200px; padding: 12px; border: 1px solid var(--acu-border) !important; background-color: var(--acu-btn-bg, rgba(0,0,0,0.3)) !important; color: var(--acu-text-main, #fff) !important; border-radius: 6px; resize: vertical; box-sizing: border-box; font-size: 14px; line-height: 1.6; overflow-y: auto !important; } 
+            @media (min-width: 768px) { .acu-edit-textarea { height: 60vh !important; font-size: 15px !important; } }
+            .acu-edit-textarea:focus { outline: 1px solid #aaa; }
+            .acu-dialog-btns { display: flex; justify-content: flex-end; gap: 20px; margin-top: 10px; }
+            .acu-dialog-btn { background: none; border: none; cursor: pointer; font-size: 14px; font-weight: bold; display: flex; align-items: center; gap: 6px; color: #ccc; transition: color 0.2s; }
+            .acu-dialog-btn:hover { color: #fff; } .acu-btn-confirm { color: #4cd964; } .acu-btn-confirm:hover { color: #6eff88; }
+            /* --- [UI Optimization] PC-First Edit Mode Styles --- */
+            .acu-order-controls { grid-column: 1 / -1; order: -2; display: none; width: 100%; text-align: left; background: var(--acu-accent); color: #fff; padding: 6px 12px; margin: 0 0 8px 0; border-radius: 4px; font-weight: bold; font-size: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+            .acu-order-controls.visible { display: flex; align-items: center; justify-content: space-between; }
+            
+            .acu-nav-container.editing-order { border: 2px solid var(--acu-accent); background: var(--acu-bg-panel); }
+            .acu-nav-container.editing-order .acu-nav-btn, .acu-nav-container.editing-order .acu-action-btn { opacity: 1 !important; cursor: grab !important; border: 1px solid var(--acu-border); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+            .acu-nav-container.editing-order .acu-nav-btn:hover, .acu-nav-container.editing-order .acu-action-btn:hover { border-color: var(--acu-accent); transform: translateY(-1px); }
+            
+            .acu-swap-selected { background-color: var(--acu-accent) !important; color: #fff !important; border-color: var(--acu-accent) !important; box-shadow: 0 0 0 2px rgba(255,255,255,0.5), 0 4px 12px rgba(0,0,0,0.2); transform: scale(1.05); z-index: 10; }
+            .acu-drag-over { border: 2px dashed var(--acu-accent) !important; opacity: 0.5; transform: scale(0.95); background: rgba(var(--acu-accent-rgb), 0.1); }
+            
+            /* --- [PC Style] Unused Pool Optimization (工具架样式) --- */
+            .acu-unused-pool { 
+                grid-column: 1 / -1; 
+                display: none; 
+                flex-wrap: wrap; 
+                gap: 8px; 
+                background: var(--acu-table-head); /* 使用表头背景色，更融合 */
+                border: 1px dashed var(--acu-border); /* 虚线框表示这是编辑区域 */
+                padding: 10px 15px; 
+                margin: 0 0 10px 0; 
+                border-radius: 8px; 
+                justify-content: flex-start; 
+                align-items: center; 
+                min-height: 50px; 
+                box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
+            }
+            .acu-unused-pool.visible { display: flex; animation: acuFadeIn 0.2s ease-out; }
+            
+            /* PC端清晰的文字引导 */
+            .acu-unused-pool::before { 
+                content: "备选功能池 (拖拽图标到下方启用 ↘)"; 
+                display: flex; 
+                align-items: center;
+                height: 32px;
+                font-size: 12px; 
+                font-weight: bold; 
+                color: var(--acu-text-sub); 
+                margin-right: 15px; 
+                padding-right: 15px;
+                border-right: 1px solid var(--acu-border); 
+                white-space: nowrap; 
+                opacity: 0.8;
+            }
+            
+            .acu-actions-group { grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 4px; border-top: 1px dashed var(--acu-border); padding-top: 8px; margin-top: 4px; min-height: 36px; transition: all 0.2s; }
+            
+            /* [修复] 移动端顶部布局适配：强制提升顺序 */
+            .acu-pos-top .acu-actions-group { order: -1; border-top: none; border-bottom: 1px dashed var(--acu-border); margin-top: 0; margin-bottom: 6px; padding-top: 0; padding-bottom: 8px; }
+            
+            /* [修复] 编辑模式下，备选池也跟随置顶 */
+            .acu-pos-top .acu-unused-pool { order: -1; margin-bottom: 10px; border-bottom: 1px dashed var(--acu-border); }
+            .acu-actions-group.dragging-over { background: rgba(127, 127, 127, 0.05); box-shadow: inset 0 0 10px rgba(0,0,0,0.05); }
+            
+            /* Mobile adjustments to keep it usable there */
+            @media (max-width: 768px) {
+                .acu-unused-pool { justify-content: center; background: rgba(0,0,0,0.05); border: 1px dashed var(--acu-border); border-bottom: none; margin: 0 0 8px 0; border-radius: 6px; }
+                .acu-unused-pool::before { display: block; width: 100%; text-align: center; margin-bottom: 4px; content: "可选功能池 (拖拽或点击)"; }
+                .acu-order-controls { flex-direction: column; gap: 6px; text-align: center; }
+            }
+            .acu-actions-group.dragging-over { background: rgba(var(--acu-accent-rgb), 0.1); border-color: var(--acu-accent); }
+            .acu-actions-group .acu-divider { display: none; }
+            .acu-settings-item { margin-bottom: 15px; }
+            .acu-settings-label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 13px; color: #ccc; }
+            .acu-settings-val { float: right; color: #4cd964; font-size: 12px; }
+            .acu-slider { width: 100%; height: 4px; background: #555; border-radius: 2px; outline: none; -webkit-appearance: none; }
+            .acu-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; background: #fff; border-radius: 50%; cursor: pointer; }
+            .acu-select { width: 100%; padding: 8px; background: rgba(0,0,0,0.3); border: 1px solid #555; color: #fff; border-radius: 4px; outline: none; }
+            .acu-checkbox { margin-right: 10px; }
+            .acu-btn-block { width: 100%; padding: 10px; background: #444; color: #eee; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px; }
+            .acu-btn-block:hover { background: #555; color: #fff; }
+            .acu-expand-trigger { background: var(--acu-bg-nav); border: 1px solid var(--acu-border); box-shadow: 0 2px 6px var(--acu-shadow); cursor: pointer; color: var(--acu-text-main); font-size: 13px; font-weight: bold; display: flex; align-items: center; gap: 6px; transition: all 0.2s; z-index: 2147483645 !important; }
+            .acu-expand-trigger:hover { background: var(--acu-btn-hover); transform: translateY(-2px); }
+            /* [优化] 小眼睛图标悬停效果 */
+            .acu-nav-toggle-btn:hover { opacity: 1 !important; transform: scale(1.2); color: var(--acu-accent); }
+            .acu-align-right { margin-left: auto; align-self: flex-end; }
+            .acu-align-left { margin-right: auto; margin-left: 0; align-self: flex-start; }
+            .acu-nav-container.acu-left-mode .acu-actions-group { order: -1; margin-left: 0; margin-right: 10px; }
+            .acu-col-bar { width: 100%; justify-content: center; padding: 8px 10px; border-radius: 6px; }
+            .acu-col-pill { width: auto !important; padding: 6px 16px; border-radius: 50px; }
+            .acu-col-mini { width: 40px !important; height: 40px !important; padding: 0; justify-content: center; border-radius: 50%; }
+            .acu-col-mini span { display: none; }
+            #acu-btn-collapse { color: var(--acu-text-sub); }
+            #acu-btn-collapse:hover { color: var(--acu-text-main); background: rgba(0,0,0,0.05); }
+            @keyframes acu-breathe { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(0.85); color: #ff7e67; } 100% { opacity: 1; transform: scale(1); } } .acu-icon-breathe { animation: acu-breathe 3s infinite ease-in-out !important; display: inline-block; }
+
+            /* [新增] 日历组件专用样式 */
+            .acu-calendar-dialog { max-width: 350px !important; padding: 20px !important; user-select: none; }
+            .acu-cal-header { text-align: center; margin-bottom: 10px; }
+            /* [优化] 标题栏增加导航按钮布局 */
+            .acu-cal-title { font-size: 18px; font-weight: bold; color: var(--acu-accent); margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; padding: 0 5px; }
+            .acu-cal-nav-btn { cursor: pointer; padding: 4px 10px; opacity: 0.6; transition: all 0.2s; border-radius: 4px; font-size: 16px; color: var(--acu-text-sub); }
+            .acu-cal-nav-btn:hover { opacity: 1; color: var(--acu-accent); background: var(--acu-btn-hover); transform: scale(1.1); }
+            .acu-cal-week-row { display: grid; grid-template-columns: repeat(7, 1fr); font-weight: bold; color: var(--acu-text-sub); margin-bottom: 5px; font-size: 12px; }
+            .acu-cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+            .acu-cal-cell { height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 6px; cursor: default; font-size: 14px; color: var(--acu-text-main); font-family: monospace; }
+            .acu-cal-cell.today { background: var(--acu-accent); color: #fff; font-weight: bold; box-shadow: 0 2px 8px rgba(0,0,0,0.3); transform: scale(1.1); border: 1px solid rgba(255,255,255,0.2); z-index: 2; }
+            .acu-cal-cell:not(.empty):not(.today):hover { background: var(--acu-table-hover); cursor: pointer; transform: scale(1.1); z-index: 2; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+            .acu-calendar-trigger { transition: transform 0.2s; display:inline-block; }
+            
+            /* [新增] 事件标记点样式 */
+            .acu-event-dot { width: 6px; height: 6px; border-radius: 50%; position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%); box-shadow: 0 1px 2px rgba(0,0,0,0.3); pointer-events: none; }
+            .acu-evt-world { background-color: #ff4757; box-shadow: 0 0 5px #ff4757; }
+            .acu-evt-large { background-color: #ffa502; }
+            .acu-evt-personal { background-color: #3742fa; }
+            .acu-evt-char { background-color: #2ed573; }
+            .acu-cal-cell { position: relative; transition: all 0.2s; border: 2px solid transparent; }
+            .acu-cal-cell.selected { border-color: var(--acu-accent); background: var(--acu-table-hover); transform: scale(1.05); z-index: 5; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+            
+            /* [新增] 事件详情面板 */
+            .acu-event-details { margin-top: 15px; padding: 10px; background: rgba(0,0,0,0.03); border-radius: 8px; border: 1px dashed var(--acu-border); display: none; animation: acuFadeIn 0.2s; text-align: left; }
+            .acu-event-item { padding: 8px; border-bottom: 1px solid var(--acu-border); margin-bottom: 4px; background: rgba(255,255,255,0.05); border-radius: 4px; }
+            .acu-event-item:last-child { border-bottom: none; margin-bottom: 0; }
+            .acu-event-tag { display: inline-block; padding: 2px 6px; border-radius: 4px; color: #fff; font-size: 10px; margin-right: 6px; font-weight: bold; vertical-align: middle; }
+            .acu-event-title { font-weight: bold; font-size: 13px; color: var(--acu-text-main); vertical-align: middle; }
+            .acu-event-desc { font-size: 12px; color: var(--acu-text-sub); margin-top: 4px; line-height: 1.4; padding-left: 2px; }
+            .acu-calendar-trigger:hover { transform: scale(1.2); }
+
+            @media (min-width: 768px) {
+                .acu-wrapper.acu-mode-embedded .acu-nav-container { width: fit-content !important; min-width: 300px; max-width: 100%; margin: 0 auto; border-radius: 50px !important; box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important; border: 1px solid var(--acu-border); padding: 6px 20px !important; background: var(--acu-bg-nav) !important; }
+                .acu-wrapper.acu-mode-embedded .acu-data-display { bottom: calc(100% + 12px) !important; border-radius: 12px !important; box-shadow: 0 10px 40px rgba(0,0,0,0.2) !important; }
+                .acu-nav-container { display: flex !important; flex-wrap: wrap !important; gap: 6px !important; padding: 6px 10px !important; grid-template-columns: none !important; flex-direction: row !important; justify-content: flex-start !important; align-items: center !important; height: auto !important; }
+                .acu-nav-container .acu-nav-btn { width: fit-content !important; flex: 0 0 auto !important; height: 32px !important; padding: 0 12px !important; font-size: 13px !important; min-width: auto !important; }
+                .acu-nav-btn span { max-width: 200px; }
+                .acu-action-btn { flex: 0 0 32px !important; width: 32px !important; height: 32px !important; background: transparent !important; color: var(--acu-text-sub) !important; border-radius: 6px !important; border: 1px solid transparent; }
+                .acu-action-btn:hover { background: var(--acu-btn-hover) !important; color: var(--acu-text-main) !important; transform: scale(1.1); box-shadow: none; }
+                #acu-btn-save-global { color: var(--acu-accent) !important; }
+                #acu-btn-save-global:hover { background: var(--acu-accent) !important; color: #fff !important; }
+                .acu-order-controls { margin: 0 0 8px 0 !important; padding: 4px !important; }
+                .acu-actions-group { width: auto !important; margin-left: auto !important; border-top: none !important; border-bottom: none !important; padding: 0 !important; margin-top: 0 !important; margin-bottom: 0 !important; gap: 4px !important; background: transparent; justify-content: flex-end; order: 9999 !important; display: flex !important; }
+                .acu-pos-top .acu-actions-group { order: -1 !important; margin-left: 0 !important; margin-right: 10px !important; justify-content: flex-start !important; }
+            }
+            @media (max-width: 768px) {
+                .acu-panel-content { -webkit-overflow-scrolling: touch !important; overscroll-behavior-y: auto; }
+                .acu-data-card { box-shadow: none !important; border: 1px solid var(--acu-border) !important; transform: translateZ(0); transition: none !important; }
+                .acu-data-card:hover { transform: none !important; box-shadow: none !important; }
+                .acu-nav-btn:hover { transform: none !important; }
+                .acu-nav-btn, .acu-action-btn, .acu-opt-btn, .acu-page-btn { transition: none !important; }
+                /* .acu-icon-breathe { animation: none !important; } */
+                .acu-highlight-manual, .acu-highlight-diff { animation: none !important; }
+                .acu-card-row:hover { background: transparent !important; }
+                .acu-option-panel, .acu-data-display { animation: none !important; }
+                /* [核心优化 6] 限定通配符的作用域，防止污染酒馆全局 DOM 导致严重卡顿 */
+                .acu-wrapper *, .acu-edit-overlay *, .acu-status-bar-container * { -webkit-tap-highlight-color: transparent; }
+            }
+
+            /* === RPG 交互式状态栏核心样式 (极致美化版) === */
+            .acu-rpg-widget { margin-top: 8px; background: var(--acu-bg-panel); border: 1px solid var(--acu-border); border-radius: 12px; box-shadow: none; overflow: hidden; font-size: var(--acu-font-size, 13px); color: var(--acu-text-main); transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); pointer-events: auto; position: relative; }
+            /* 移除了顶部的渐变反光线，减少塑料感 */
+            .acu-rpg-summary { display: flex; flex-wrap: wrap; gap: 12px; padding: 12px 16px; align-items: center; cursor: pointer; background: var(--acu-table-head); transition: background 0.2s; }
+            .acu-rpg-summary:hover { background: var(--acu-table-hover); }
+            .acu-rpg-details { display: none; background: var(--acu-bg-panel); border-top: 1px solid var(--acu-border); }
+            
+            /* 游戏化 Tab 切换栏 */
+            .acu-rpg-tabs { display: flex; overflow-x: auto; background: var(--acu-bg-nav); padding: 6px 10px 0 10px; gap: 4px; scrollbar-width: none; border-bottom: 1px solid var(--acu-border); }
+            .acu-rpg-tabs::-webkit-scrollbar { display: none; }
+            .acu-rpg-tab-btn { flex: 1; min-width: 70px; padding: 10px 0; text-align: center; background: transparent; border: 1px solid transparent; border-bottom: none; border-radius: 8px 8px 0 0; color: var(--acu-text-sub); font-weight: bold; cursor: pointer; transition: all 0.2s; white-space: nowrap; position: relative; overflow: hidden; }
+            .acu-rpg-tab-btn:hover { color: var(--acu-text-main); background: var(--acu-btn-hover); }
+            .acu-rpg-tab-btn.active { color: var(--acu-accent); background: var(--acu-bg-panel); border-color: var(--acu-border); box-shadow: none; }
+            .acu-rpg-tab-btn.active::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 40%; height: 3px; background: var(--acu-accent); border-radius: 3px 3px 0 0; }
+            
+            .acu-rpg-tab-content { display: none; padding: 16px; max-height: 450px; overflow-y: auto; overscroll-behavior: auto; }
+            .acu-rpg-tab-content.active { display: block; animation: none; }
+            .acu-rpg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+            
+            /* 游戏化物品/状态卡片 */
+            .acu-rpg-item-card { background: var(--acu-card-bg); border: 1px solid var(--acu-border); border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; box-shadow: 0 2px 4px var(--acu-shadow); transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+            /* 已干掉资产条目的点击/悬停发光反馈 */
+            .acu-rpg-item-title { font-weight: bold; color: var(--acu-accent); font-size: 1.05em; display: flex; align-items: center; gap: 4px; }
+            .acu-rpg-item-desc { font-size: 0.9em; color: var(--acu-text-sub); line-height: 1.5; }
+            .acu-rpg-badge { display: inline-flex; align-items: center; padding: 3px 10px; font-size: 11px; border-radius: 20px; background: var(--acu-badge-bg); border: 1px solid var(--acu-border); color: var(--acu-text-main); max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+            .acu-rpg-item-card span, .acu-rpg-item-card div { word-break: break-word; white-space: pre-wrap; }
+            
+            /* 进度条美化 (扁平化) */
+            .acu-resource-track { position: relative; flex: 1; min-width: 80px; height: 16px; background: var(--acu-table-hover); border-radius: 8px; overflow: hidden; border: 1px solid var(--acu-border); }
+            .acu-resource-fill { height: 100%; border-radius: 8px; transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); position: relative; overflow: hidden; }
+            .acu-resource-fill.hp { background: #e74c3c; }
+            .acu-resource-fill.mp { background: #3498db; }
+            .acu-resource-text { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 11px; font-weight: 900; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.8); white-space: nowrap; font-family: 'Courier New', monospace; letter-spacing: 0.5px; }
+            
+            /* [新增] 剥离的内联卡片样式 (极致性能) */
+            .acu-rpg-card-header { display:flex; justify-content:space-between; align-items:flex-start; gap:8px; }
+            .acu-rpg-card-title { color:var(--acu-text-main); font-size:14px; flex:1; min-width:0; word-break:break-all; }
+            .acu-rpg-card-badges { display:flex; gap:4px; flex-wrap:wrap; justify-content:flex-end; flex-shrink:0; max-width:50%; }
+            .acu-rpg-card-desc { margin-top:6px; padding-top:6px; border-top:1px dashed var(--acu-border); font-size:12px; }
+            .acu-rank-badge { background:rgba(243,156,18,0.15); color:#e67e22; border:1px solid rgba(243,156,18,0.3); padding:1px 8px; border-radius:4px; font-weight:900; font-style:italic; letter-spacing:1px; }
+            .acu-realm-text { background:linear-gradient(to right, #1D976C, #93F9B9); -webkit-background-clip:text; color:transparent; font-weight:bold; }
+            .acu-val-pct-bar { display:flex; align-items:center; gap:6px; width:100%; }
+            .acu-val-pct-text { font-weight:bold; color:var(--acu-accent); font-family:monospace; font-size:13px; }
+            .acu-val-pct-track { flex:1; height:5px; background:var(--acu-table-hover); border-radius:3px; overflow:hidden; }
+            .acu-val-pct-fill { height:100%; background:var(--acu-accent); border-radius:3px; }
+            .acu-rpg-loc-time { display: flex; flex: 1; min-width: 0; margin: 0 16px; gap: 12px; align-items: stretch; }
+
+            /* === 移动端 RPG 状态栏专属适配 (安卓/iOS) === */
+            @media (max-width: 768px) {
+                /* 1. 增加上下网格间距，适应双行结构 */
+                .acu-rpg-summary { padding: 8px 10px; gap: 8px 6px; }
+                /* 2. 徽章开启 flex 收缩属性，保护容器不被撑爆 */
+                .acu-rpg-badge { max-width: none !important; padding: 2px 6px; font-size: 11px; display: inline-flex; align-items: center; flex-shrink: 1; min-width: 0; }
+                
+                /* 3. 名字区块 (左上角)：利用 order=1 锁定在第一行，并放开最大宽度给它更大空间 */
+                .acu-rpg-summary > div:first-child { order: 1; font-size: 1.05em !important; max-width: calc(100% - 150px) !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+                
+                /* 4. 操作区块 (右上角)：利用 order=2 锁定在第一行右侧 */
+                .acu-rpg-summary > div:last-child { 
+                    order: 2; width: auto; margin-left: auto !important; justify-content: flex-end; 
+                    border-top: none; padding-top: 0; margin-top: 0; gap: 6px;
+                }
+                
+                /* 5. 地点与时间区块 (第二行)：强制不换行 (nowrap) 杜绝第三行，超长时触发内部收缩或滚动 */
+                .acu-rpg-loc-time { order: 3; width: 100%; display: flex; flex-wrap: nowrap; overflow: hidden; gap: 6px; margin-top: 2px; flex: none; margin: 0; align-items: stretch; }
+                /* 5. 金币和任务的字号恢复正常比例 */
+                .acu-rpg-summary > div:last-child > span { padding: 2px 6px !important; font-size: 12px !important; }
+                .acu-rpg-tab-btn { min-width: 55px; padding: 8px 0; font-size: 12px; }
+                .acu-rpg-tab-content { padding: 10px; max-height: 50vh; }
+                .acu-rpg-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)) !important; gap: 8px; }
+                .acu-rpg-grid.acu-grid-responsive { grid-template-columns: 1fr !important; }
+                .acu-rpg-item-card { padding: 8px; gap: 4px; }
+                .acu-rpg-item-title { font-size: 12px; }
+                .acu-rpg-item-desc { font-size: 11px; line-height: 1.4; }
+            }
+
+            /* --- 修复酒馆系统提示层级被遮挡 --- */
+            #toast-container { z-index: 2147483649 !important; }
+
+            /* ========================================== */
+            /* 🚀 原生控件主题适配补丁 (滚动条/拖拽块/复选框/滑块/图标) */
+            /* ========================================== */
+            
+            /* 1. 统一接管滚动条 (包含 RPG 状态栏容器) */
+            .acu-wrapper *::-webkit-scrollbar,
+            .acu-edit-overlay *::-webkit-scrollbar,
+            .acu-status-bar-container *::-webkit-scrollbar {
+                width: 6px !important;
+                height: 6px !important;
+            }
+            .acu-wrapper *::-webkit-scrollbar-track,
+            .acu-edit-overlay *::-webkit-scrollbar-track,
+            .acu-status-bar-container *::-webkit-scrollbar-track {
+                background: var(--acu-scrollbar-track, transparent) !important;
+                border-radius: 3px !important;
+            }
+            .acu-wrapper *::-webkit-scrollbar-thumb,
+            .acu-edit-overlay *::-webkit-scrollbar-thumb,
+            .acu-status-bar-container *::-webkit-scrollbar-thumb {
+                background: var(--acu-scrollbar-thumb, #888) !important;
+                border-radius: 3px !important;
+            }
+            .acu-wrapper *::-webkit-scrollbar-thumb:hover,
+            .acu-edit-overlay *::-webkit-scrollbar-thumb:hover,
+            .acu-status-bar-container *::-webkit-scrollbar-thumb:hover {
+                background: var(--acu-accent) !important;
+            }
+
+            /* 2. 适配多行文本框右下角的拖拽块 (Resizer) */
+            .acu-edit-overlay textarea::-webkit-resizer,
+            .acu-wrapper textarea::-webkit-resizer,
+            .acu-status-bar-container textarea::-webkit-resizer {
+                background-color: var(--acu-btn-bg) !important;
+                border-top: 1px solid var(--acu-border) !important;
+                border-left: 1px solid var(--acu-border) !important;
+            }
+
+            /* 3. 强力破除酒馆对 Checkbox 的劫持，强制使用原生外观+主题色 */
+            /* 排除 .acu-checkbox (开关滑块)，专治普通勾选框 */
+            .acu-wrapper input[type="checkbox"]:not(.acu-checkbox),
+            .acu-edit-overlay input[type="checkbox"]:not(.acu-checkbox) {
+                -webkit-appearance: checkbox !important;
+                appearance: checkbox !important;
+                background: transparent !important; /* 清除混合渲染导致的底色重叠 */
+                background-image: none !important;
+                border: none !important; /* 交给原生控件自己画边框 */
+                box-shadow: none !important;
+                accent-color: var(--acu-accent) !important;
+                width: 14px !important;
+                height: 14px !important;
+                cursor: pointer !important;
+                margin: 0 4px 0 0 !important;
+                outline: none !important;
+            }
+            /* 斩草除根：杀掉酒馆可能附加在原生框上的伪元素假框 */
+            .acu-wrapper input[type="checkbox"]:not(.acu-checkbox)::before,
+            .acu-wrapper input[type="checkbox"]:not(.acu-checkbox)::after,
+            .acu-edit-overlay input[type="checkbox"]:not(.acu-checkbox)::before,
+            .acu-edit-overlay input[type="checkbox"]:not(.acu-checkbox)::after {
+                display: none !important;
+                content: none !important;
+            }
+
+            /* 4. 强力接管滑块 (Range Slider) */
+            .acu-edit-overlay input[type="range"].acu-slider {
+                -webkit-appearance: none !important;
+                appearance: none !important;
+                background-color: var(--acu-border) !important;
+                background-image: none !important;
+                height: 6px !important;
+                border-radius: 3px !important;
+                border: none !important;
+                padding: 0 !important;
+            }
+            .acu-edit-overlay input[type="range"].acu-slider::-webkit-slider-thumb {
+                -webkit-appearance: none !important;
+                appearance: none !important;
+                background-color: var(--acu-accent) !important;
+                width: 16px !important;
+                height: 16px !important;
+                border-radius: 50% !important;
+                border: 2px solid var(--acu-text-main) !important;
+                box-shadow: 0 0 4px rgba(0,0,0,0.5) !important;
+                cursor: pointer !important;
+            }
+
+            /* 5. 修复搜索框放大镜图标被遮挡或颜色融合的问题 */
+            .acu-wrapper .acu-search-icon {
+                color: var(--acu-text-sub) !important;
+                opacity: 0.8 !important;
+                z-index: 2 !important;
+            }
+            </style>
+    `;
+    $('head').append(styles);
+};
+
+    const getTableData = () => { const api = getCore().getDB(); return api && api.exportTableAsJson ? api.exportTableAsJson() : null; };
+
+const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes = false) => {
+    if (isSaving) return;
+    isSaving = true;
+    
+    // 🛡️ 升起“渲染静音护盾”：在接下来的 1500ms 内，无视后台回音重绘请求，消灭全局闪烁
+    window._acuMuteRenderUntil = Date.now() + 1500;
+    
+    const { $, ST } = getCore();
+
+    // [优化] 辅助函数：让出主线程，允许 UI 响应
+    const yieldToMain = () => new Promise(resolve => setTimeout(resolve, 0));
+
+    try {
+        // 1. 构建保存数据
+        const dataToSave = {};
+        if (!tableData.mate) dataToSave.mate = { type: "chatSheets", version: 1 };
+        else dataToSave.mate = tableData.mate;
+
+        Object.keys(tableData).forEach(k => {
+            if (k.startsWith('sheet_')) {
+                dataToSave[k] = tableData[k];
+            }
+        });
+
+        // 2. 处理删除
+        if (commitDeletes) {
+            const deletions = getPendingDeletions();
+            Object.keys(deletions).forEach(key => {
+                if (dataToSave[key] && dataToSave[key].content) {
+                    deletions[key].sort((a, b) => b - a).forEach(idx => {
+                        if (dataToSave[key].content[idx + 1]) dataToSave[key].content.splice(idx + 1, 1);
+                    });
+                }
+            });
+            savePendingDeletions({});
+        }
+
+        // [优化] 让出主线程
+        await yieldToMain();
+
+        // 3. 同步聊天记录楼层数据
+        try {
+            let rawIsolationCode = '';
+            // [v2兼容] 新版将隔离标识写入聊天消息，不再存localStorage
+            if (ST && ST.chat && ST.chat.length > 0) {
+                for (let i = ST.chat.length - 1; i >= 0; i--) {
+                    const msg = ST.chat[i];
+                    if (!msg.is_user && msg.TavernDB_ACU_Identity) {
+                        rawIsolationCode = msg.TavernDB_ACU_Identity;
+                        break;
+                    }
+                }
+            }
+
+            if (ST && ST.chat && ST.chat.length > 0) {
+                let targetMsg = null;
+                for (let i = ST.chat.length - 1; i >= 0; i--) {
+                    if (!ST.chat[i].is_user) {
+                        targetMsg = ST.chat[i];
+                        break;
+                    }
+                }
+
+                if (targetMsg) {
+                    if (!targetMsg.TavernDB_ACU_IsolatedData) targetMsg.TavernDB_ACU_IsolatedData = {};
+                    if (!targetMsg.TavernDB_ACU_IsolatedData[rawIsolationCode]) {
+                        targetMsg.TavernDB_ACU_IsolatedData[rawIsolationCode] = { independentData: {}, modifiedKeys: [] };
+                    }
+
+                    const tagData = targetMsg.TavernDB_ACU_IsolatedData[rawIsolationCode];
+                    if (!tagData.independentData) tagData.independentData = {};
+
+                    // [T0 优化] 分片深拷贝：使用现代浏览器原生的 structuredClone 替代 JSON 解析，消除主线程阻塞峰值
+                    const sheetsToSave = Object.keys(dataToSave).filter(k => k.startsWith('sheet_'));
+                    for (const k of sheetsToSave) {
+                        tagData.independentData[k] = typeof structuredClone === 'function' 
+                            ? structuredClone(dataToSave[k]) 
+                            : JSON.parse(JSON.stringify(dataToSave[k]));
+                        await yieldToMain(); // 每个 sheet 后让出
+                    }
+
+                    const existingKeys = tagData.modifiedKeys || [];
+                    tagData.modifiedKeys = [...new Set([...existingKeys, ...sheetsToSave])];
+
+                    // [优化] saveChat 前让出，确保 UI 流畅
+                    await yieldToMain();
+                    if (ST.saveChat) {
+                        await ST.saveChat();
+                    }
+                }
+            }
+        } catch (syncErr) {
+            console.warn('[ACU] 聊天记录同步失败 (不影响主功能):', syncErr);
+        }
+
+        // [优化] 让出主线程
+        await yieldToMain();
+
+        // 4. 同步到后端 API (序列化也是阻塞的，但 API 本身是异步的)
+        // [恢复] 坚决抛弃前端的 delete+insert 模拟，交由后端高速引擎处理全量覆盖
+        const api = getCore().getDB();
+        if (api && api.importTableAsJson) {
+            const jsonStr = JSON.stringify(dataToSave);
+            await yieldToMain(); // 序列化后让出主线程
+            await api.importTableAsJson(jsonStr);
+        }
+
+        // [优化] 让出主线程
+        await yieldToMain();
+
+        // [v2兼容] 通知后端刷新，确保 SQLite 模式下手动修改落盘
+        try {
+            const _dbApi = getCore().getDB();
+            if (_dbApi && typeof _dbApi.refreshDataAndWorldbook === 'function') {
+                await _dbApi.refreshDataAndWorldbook();
+            }
+        } catch (_ignored) {}
+
+        // 5. 更新本地状态
+        cachedRawData = dataToSave;
+        saveSnapshot(dataToSave);
+        hasUnsavedChanges = false;
+        currentDiffMap = new Set();
+        if (window.acuModifiedSet) window.acuModifiedSet.clear();
+
+        if (!skipRender) {
+            window._acuMuteRenderUntil = 0; // 强制破盾，允许渲染
+            renderInterface();
+            AcuToast.success('✅ 保存成功');
+        }
+    } catch (e) {
+        console.error('Save error:', e);
+        AcuToast.error('保存出错');
+    } finally {
+        isSaving = false;
+    }
+};
+
+
+    const processJsonData = (json) => {
+        const tables = {};
+        if (!json || typeof json !== 'object') return tables;
+        for (const sheetId in json) {
+            if (json[sheetId]?.name) {
+                const sheet = json[sheetId];
+                tables[sheet.name] = {
+                    key: sheetId,
+                    headers: sheet.content ? (sheet.content[0] || []) : [],
+                    rows: sheet.content ? sheet.content.slice(1) : [],
+                    updateConfig: sheet.updateConfig || {},
+                    ...sheet
+                };
+            }
+        }
+        return tables;
+    };
+
+    const showSettingsModal = () => {
+    const { $ } = getCore();
+    $('.acu-edit-overlay').remove();
+    const config = getConfig();
+    const currentThemeClass = `acu-theme-${config.theme}`;
+    const reversedTables = Store.get('acu_reverse_tables', []);
+    const hiddenTables = getHiddenTables();
+    const allTables = cachedRawData ? processJsonData(cachedRawData) : (getTableData() ? processJsonData(getTableData()) : {});
+    // [修改] 允许在设置里管理人物关系网的显示状态
+    let tableNames = Object.keys(allTables);
+    // 如果列表中没有虚拟标签，手动追加进去，这样用户就能对其进行隐藏或排序操作了
+    if (!tableNames.includes(VIRTUAL_RELATIONSHIP_TAB)) {
+        tableNames.unshift(VIRTUAL_RELATIONSHIP_TAB);
+    }
+
+    const modalStyles = `
+        <style>
+            .acu-edit-dialog { transition: background 0.3s ease, color 0.3s ease, opacity 0.15s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+            #acu-ghost-preview { position: fixed; opacity: 0; pointer-events: none; z-index: 2147483647; box-shadow: 0 10px 40px rgba(0,0,0,0.6) !important; border: 2px solid var(--acu-accent); background: var(--acu-card-bg); display: flex; flex-direction: column; transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+            #acu-ghost-preview.visible { opacity: 1 !important; }
+            @media (min-width: 769px) {
+                .acu-edit-overlay { background: rgba(0, 0, 0, 0.4) !important; backdrop-filter: blur(2px); }
+                .acu-edit-dialog { width: 400px !important; max-width: 90% !important; max-height: 85vh !important; box-shadow: 0 10px 40px rgba(0,0,0,0.4) !important; margin: auto !important; }
+                #acu-ghost-preview { top: 50%; left: calc(50% + 220px); right: auto; transform: translateY(-50%) scale(0.95); width: var(--acu-card-width); font-size: var(--acu-font-size); z-index: 2147483648; }
+                #acu-ghost-preview.visible { transform: translateY(-50%) scale(1); }
+            }
+            @media (min-width: 769px) and (max-width: 1100px) { #acu-ghost-preview { left: auto !important; right: calc(50% + 220px) !important; } }
+            @media (min-width: 769px) and (max-width: 850px) { #acu-ghost-preview { left: 50% !important; right: auto !important; top: 10% !important; transform: translateX(-50%) !important; } #acu-ghost-preview.visible { transform: translateX(-50%) scale(1) !important; } }
+            @media (max-width: 768px) {
+                /* [优化] 遮罩层改为底部对齐，为上方的智能幻影留出展示空间 */
+                .acu-edit-overlay { align-items: flex-end !important; justify-content: center !important; background: rgba(0, 0, 0, 0.6) !important; backdrop-filter: blur(4px); padding: 0 !important; }
+                /* [瘦身] 弹窗整体拉高，最大高度从75vh提升到85vh，圆角收敛 */
+                .acu-edit-dialog { width: 100% !important; max-width: 100% !important; border-radius: 20px 20px 0 0 !important; height: auto !important; max-height: 85vh !important; max-height: 85dvh !important; margin: 0 !important; bottom: 0 !important; animation: acuSlideUp 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; box-shadow: 0 -10px 40px rgba(0,0,0,0.6) !important; border-bottom: none !important; }
+                /* [瘦身] 极限压缩顶部小把手的上下间距和粗细 */
+                .acu-edit-dialog::before { content: ''; display: block; width: 36px; height: 4px; background: rgba(128, 128, 128, 0.4); border-radius: 2px; margin: 8px auto -6px auto; flex-shrink: 0; position: relative; z-index: 1; }
+                /* [瘦身] 强制削减标题栏的 padding 和字号 */
+                .acu-edit-dialog .acu-edit-title { padding: 10px 15px 6px 15px !important; }
+                .acu-edit-dialog .acu-edit-title > div:first-child { font-size: 15px !important; }
+                /* [瘦身] 压缩底部固定按钮栏的空间占用 */
+                .acu-settings-footer { padding: 8px 16px !important; padding-bottom: max(8px, env(safe-area-inset-bottom, 8px)) !important; }
+                .acu-settings-footer #dlg-close { height: 38px !important; font-size: 14px !important; }
+                /* 调整幽灵卡片(滑块预览)位置，放置于抽屉上方 */
+                #acu-ghost-preview { top: 6% !important; bottom: auto !important; left: 50% !important; transform: translateX(-50%) !important; width: min(var(--acu-card-width), calc(100vw - 32px)) !important; max-height: 25vh !important; overflow-y: auto !important; overflow-x: hidden !important; margin: 0 !important; box-shadow: 0 10px 50px rgba(0,0,0,0.5) !important; border: 2px solid var(--acu-accent) !important; } 
+            }
+            @keyframes acuSlideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+            .acu-edit-dialog { background-color: var(--acu-bg-panel) !important; color: var(--acu-text-main) !important; border: 1px solid var(--acu-border) !important; display: flex; flex-direction: column; }
+            .acu-edit-title { flex: 0 0 auto; color: var(--acu-text-main) !important; border-bottom: 1px solid var(--acu-border) !important; }
+            .acu-settings-group-box { background: var(--acu-table-head) !important; border: 1px dashed var(--acu-border) !important; padding: 12px; border-radius: 8px; margin-bottom: 15px; }
+            .acu-settings-label { color: var(--acu-text-sub) !important; }
+            .acu-settings-val { color: var(--acu-accent) !important; }
+            .acu-select, .acu-slider { background: var(--acu-btn-bg) !important; border: 1px solid var(--acu-border) !important; color: var(--acu-text-main) !important; }
+            .acu-btn-block { background: var(--acu-btn-bg) !important; color: var(--acu-text-main) !important; border: 1px solid var(--acu-border) !important; }
+            .acu-btn-block:hover { background: var(--acu-btn-hover) !important; }
+            .acu-reverse-item { display:flex; justify-content:space-between; align-items:center; padding:8px; border-bottom:1px dashed var(--acu-border); }
+            .acu-reverse-item:last-child { border-bottom:none; }
+            .acu-switch { position: relative; display: inline-block; width: 36px; height: 20px; margin-right: 10px; flex-shrink: 0; vertical-align: middle; }
+            .acu-switch input { opacity: 0; width: 0; height: 0; }
+            .acu-slider-toggle { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(128,128,128,0.3); transition: .3s; border-radius: 20px; }
+            .acu-slider-toggle:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: var(--acu-text-sub); transition: .3s cubic-bezier(0.4, 0.0, 0.2, 1); border-radius: 50%; }
+            .acu-switch input:checked + .acu-slider-toggle { background-color: var(--acu-accent); }
+            .acu-switch input:checked + .acu-slider-toggle:before { transform: translateX(16px); background-color: #fff; }
+            .acu-settings-label.has-switch { display: flex; align-items: center; cursor: pointer; }
+            
+            
+        </style>
+    `;
+
+    const dialog = $(`
+        <div class="acu-edit-overlay">
+            ${modalStyles}
+            <div class="acu-edit-dialog ${currentThemeClass}">
+                <div class="acu-edit-title" style="text-align:center; padding: 12px 15px;">
+    <div style="font-weight:bold; font-size:16px;">设置选项</div>
+    <div style="font-size:11px; opacity:0.6; font-weight:normal; margin-top:4px;">💡 按住滑块可实时预览效果 (点击空白处可退出)</div>
+</div>
+
+                <div class="acu-settings-content" style="flex: 1; overflow-y: auto; padding: 15px;">
+                    <div class="acu-settings-group-box">
+                        <div class="acu-settings-item"><label class="acu-settings-label">卡片宽度 <span class="acu-settings-val" id="val-width">${config.cardWidth}px</span></label><input type="range" id="cfg-width" class="acu-slider" min="200" max="500" step="10" value="${config.cardWidth}"></div>
+                        <div class="acu-settings-item"><label class="acu-settings-label">字体大小 (界面) <span class="acu-settings-val" id="val-font">${config.fontSize}px</span></label><input type="range" id="cfg-font" class="acu-slider" min="10" max="24" step="1" value="${config.fontSize}"></div>
+                        <div class="acu-settings-item"><label class="acu-settings-label">选项字体大小 <span class="acu-settings-val" id="val-opt-font">${config.optionFontSize || 12}px</span></label><input type="range" id="cfg-opt-font" class="acu-slider" min="10" max="24" step="1" value="${config.optionFontSize || 12}"></div>
+                    </div>
+                    <div class="acu-settings-item"><label class="acu-settings-label">背景主题 (Theme)</label><select id="cfg-theme" class="acu-select">${THEMES.map(t => `<option value="${t.id}" ${t.id === config.theme ? 'selected' : ''}>${t.name}</option>`).join('')}</select></div>
+                    <div class="acu-settings-item"><label class="acu-settings-label">字体风格 (Font)</label><select id="cfg-font-family" class="acu-select">${FONTS.map(f => `<option value="${f.id}" ${f.id === config.fontFamily ? 'selected' : ''}>${f.name}</option>`).join('')}</select></div>
+                    <div class="acu-settings-item"><label class="acu-settings-label has-switch"><div class="acu-switch"><input type="checkbox" id="cfg-show-status" class="acu-checkbox" ${config.showStatusBar !== false ? 'checked' : ''}><span class="acu-slider-toggle"></span></div> 显示 RPG 状态栏 (跟随气泡底部)</label></div>
+                    <div class="acu-settings-item"><label class="acu-settings-label">布局模式 (Layout)</label><select id="cfg-layout" class="acu-select"><option value="horizontal" ${config.layout !== 'vertical' ? 'selected' : ''}>↔️ 横向滚动 (默认)</option><option value="vertical" ${config.layout === 'vertical' ? 'selected' : ''}>↕️ 竖向网格 (PC推荐)</option></select></div>
+                    <div class="acu-settings-item" style="display:${$(window).width() > 768 ? 'none' : 'block'};"><label class="acu-settings-label">底部按钮列数 (Grid Columns)</label><select id="cfg-grid-cols" class="acu-select"><option value="2" ${config.gridColumns == 2 ? 'selected' : ''}>2 列 (宽大)</option><option value="3" ${config.gridColumns == 3 ? 'selected' : ''}>3 列 (标准)</option><option value="4" ${config.gridColumns == 4 ? 'selected' : ''}>4 列 (紧凑)</option><option value="auto" ${config.gridColumns === 'auto' ? 'selected' : ''}>🤖 自动 (智能填满)</option></select></div>
+                    <div class="acu-settings-item"><label class="acu-settings-label">收起后的样式 (Collapsed Style)</label><select id="cfg-col-style" class="acu-select"><option value="bar" ${config.collapseStyle === 'bar' ? 'selected' : ''}>🟦 全宽长条</option><option value="pill" ${config.collapseStyle === 'pill' ? 'selected' : ''}>💊 胶囊按钮</option><option value="mini" ${config.collapseStyle === 'mini' ? 'selected' : ''}>🔘 迷你圆钮</option></select></div>
+                    <div class="acu-settings-item" id="row-col-align" style="display:${config.collapseStyle === 'bar' ? 'none' : 'block'};"><label class="acu-settings-label">收起后的位置 (Position)</label><select id="cfg-col-align" class="acu-select"><option value="right" ${config.collapseAlign !== 'left' ? 'selected' : ''}>➡️ 靠右 (默认)</option><option value="left" ${config.collapseAlign === 'left' ? 'selected' : ''}>⬅️ 靠左</option></select></div>
+                    <div class="acu-settings-item"><label class="acu-settings-label" style="display:flex; justify-content:space-between; align-items:center;"><span>每页显示条数</span><input type="number" id="cfg-per-page" value="${config.itemsPerPage}" min="1" max="9999" style="width: 80px; background-color: var(--acu-btn-bg) !important; border: 1px solid var(--acu-border) !important; color: var(--acu-text-main) !important; font-weight: bold; border-radius: 4px; padding: 4px 8px; text-align: center; outline: none;"></label></div>
+                    <div class="acu-settings-item"><label class="acu-settings-label">功能按钮位置 (Action Bar)</label><select id="cfg-action-pos" class="acu-select"><option value="bottom" ${config.actionsPosition !== 'top' ? 'selected' : ''}>⬇️ 底部 (默认)</option><option value="top" ${config.actionsPosition === 'top' ? 'selected' : ''}>⬆️ 顶部</option></select></div>
+                    <div class="acu-settings-item"><label class="acu-settings-label has-switch"><div class="acu-switch"><input type="checkbox" id="cfg-new" class="acu-checkbox" ${config.highlightNew ? 'checked' : ''}><span class="acu-slider-toggle"></span></div> 高亮变化/新增的内容 (Diff)</label></div>
+                    <div class="acu-settings-item"><label class="acu-settings-label has-switch"><div class="acu-switch"><input type="checkbox" id="cfg-beautify-toastr" class="acu-checkbox" ${config.beautifyToastr === true ? 'checked' : ''}><span class="acu-slider-toggle"></span></div> 优化酒馆系统提示消息</label></div>
+                    <div class="acu-settings-item"><label class="acu-settings-label has-switch"><div class="acu-switch"><input type="checkbox" id="cfg-show-opt" class="acu-checkbox" ${config.showOptionPanel !== false ? 'checked' : ''}><span class="acu-slider-toggle"></span></div> 显示行动选项 (识别"选项"表)</label></div>
+                    <div class="acu-settings-item" id="row-auto-send" style="display:${config.showOptionPanel !== false ? 'block' : 'none'}"><label class="acu-settings-label has-switch"><div class="acu-switch"><input type="checkbox" id="cfg-auto-send" class="acu-checkbox" ${config.clickOptionToAutoSend !== false ? 'checked' : ''}><span class="acu-slider-toggle"></span></div> 点击选项直接发送</label></div>
+
+                    <div class="acu-settings-group-box" style="margin-top:20px;">
+                        <label class="acu-settings-label" style="margin-bottom:6px; display:block;"><i class="fa-solid fa-sort-amount-up"></i> 表格显示顺序偏好</label>
+                        <div style="font-size:10px; color:var(--acu-text-sub); margin-bottom:8px; line-height:1.4;">
+                            <i class="fa-solid fa-eye" style="margin-right:3px;"></i>点击眼睛图标可隐藏/显示该标签页
+                        </div>
+                        <div style="max-height:220px; overflow-y:auto; border:1px solid var(--acu-border); border-radius:4px; padding:5px; background:rgba(0,0,0,0.05);">
+                            ${tableNames.length > 0 ? tableNames.map(name => {
+    const safeName = escapeHtml(name); // 转义处理
+    const isHidden = hiddenTables.includes(name);
+    const isVirtual = name === VIRTUAL_RELATIONSHIP_TAB;
+    const disabledHighlightTables = Store.get(STORAGE_KEY_DISABLE_HIGHLIGHT_TOP, []);
+    const isHighlightTop = !disabledHighlightTables.includes(name); // [修改] 不在黑名单里即为开启高亮置顶
+    return `<div class="acu-reverse-item" style="flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:120px;">
+            <button class="acu-visibility-toggle" data-table="${safeName}" style="background:none;border:none;cursor:pointer;padding:4px;color:${isHidden ? '#666' : 'var(--acu-accent)'}" title="${isHidden ? '不在导航栏显示' : '在导航栏显示'}"><i class="fa-solid ${isHidden ? 'fa-eye-slash' : 'fa-eye'}"></i></button>
+            <span style="font-size:13px;color:${isHidden ? 'var(--acu-text-sub)' : 'var(--acu-text-main)'};text-decoration:${isHidden ? 'line-through' : 'none'}">${safeName}</span>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;${isVirtual ? 'display:none;' : ''}">
+            <label style="display:flex;align-items:center;cursor:pointer;"><input type="checkbox" class="acu-highlight-top-check" value="${safeName}" ${isHighlightTop ? 'checked' : ''} style="margin-right:4px;"><span style="font-size:11px;color:var(--acu-hl-diff);">高亮置顶</span></label>
+            <label style="display:flex;align-items:center;cursor:pointer;"><input type="checkbox" class="acu-reverse-check" value="${safeName}" ${!reversedTables.includes(name) ? 'checked' : ''} style="margin-right:4px;"><span style="font-size:11px;">倒序</span></label>
+        </div>
+    </div>`;
+}).join('') : '<div style="font-size:12px;text-align:center;padding:10px;color:var(--acu-text-sub);">暂无表格数据</div>'}
+                        </div>
+                        <div style="font-size:10px; color:var(--acu-text-sub); margin-top:8px; line-height:1.5; padding:6px; background:rgba(0,0,0,0.03); border-radius:4px;">
+                            <div><b>说明：</b></div>
+                            <div>• <b>高亮置顶</b>：AI修改的行会优先显示在最前面</div>
+                            <div>• <b>倒序</b>：最新添加的行显示在前（不勾选则最早的在前）</div>
+                            <div>• 两个都勾选 = 高亮行置顶 + 其余倒序</div>
+                        </div>
+                    </div>
+                    <div class="acu-divider" style="width:100%; height:1px; margin:15px 0; background:var(--acu-border);"></div>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="acu-btn-block" id="btn-enter-sort" style="width: 100%; margin-top: 0;"><i class="fa-solid fa-arrows-alt"></i> 进入表格排序模式</button>
+                    </div>
+                    
+                    <div class="acu-settings-group-box" style="margin-top:20px; border-color:var(--acu-accent);">
+                        <label class="acu-settings-label" style="margin-bottom:10px; display:block; color:var(--acu-accent) !important;"><i class="fa-solid fa-database"></i> 模板与数据管理</label>
+                        
+                        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:10px;">
+                            <select class="acu-select" id="cfg-template-select" style="width:100%;">
+                                <option value="">-- 当前使用的默认库 --</option>
+                            </select>
+                            <div style="display:flex; gap:8px; align-items:center; justify-content:space-between;">
+                                <button class="acu-btn-block" id="btn-import-tpl-outside" style="flex:1; margin:0; padding:8px 0;" title="导入新模板"><i class="fa-solid fa-file-import"></i> 导入</button>
+                                <button class="acu-btn-block" id="btn-export-tpl-outside" style="flex:1; margin:0; padding:8px 0; background:var(--acu-accent); border-color:var(--acu-accent); color:#fff;" title="导出选中模板"><i class="fa-solid fa-download"></i> 导出</button>
+                                <button class="acu-btn-block" id="btn-delete-tpl-outside" style="flex:1; margin:0; padding:8px 0; background:#e74c3c; border-color:#e74c3c; color:#fff;" title="删除选中模板"><i class="fa-solid fa-trash-can"></i> 删除</button>
+                                <button class="acu-btn-block" id="btn-inject-tpl-db" style="flex:1; margin:0; padding:8px 0; background:#f39c12; border-color:#f39c12; color:#fff;" title="⚡ 将选中模板一键注入当前世界数据库"><i class="fa-solid fa-bolt"></i> 注入</button>
+                                <input type="file" id="input-import-tpl-outside" accept=".json" style="display:none;">
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 8px;">
+                            <button class="acu-btn-block" id="btn-open-stitcher" style="width: 100%; margin-top: 0; background: rgba(155, 89, 182, 0.2); color: #9b59b6; border-color: #9b59b6;"><i class="fa-solid fa-puzzle-piece"></i> 打开模板缝合中心</button>
+                        </div>
+                    </div>
+                <div style="height: 10px;"></div>
+            </div>
+
+            <div class="acu-settings-footer" style="flex: 0 0 auto; padding: 10px 16px; padding-bottom: max(10px, env(safe-area-inset-bottom, 10px)); border-top: 1px solid var(--acu-border); background: var(--acu-bg-panel); z-index: 10;">
+                <button id="dlg-close" class="acu-btn-block" style="margin:0; background:var(--acu-accent) !important; color:#fff !important; border:none; justify-content:center; font-weight:bold; font-size:14px; height:40px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+                    <i class="fa-solid fa-check"></i> 完成并保存
+                </button>
+            </div>
+        </div>
+            <style> /* [优化] 居中模式下不需要底部巨型留白，留一点余量即可 */
+@media (max-width: 768px) { .acu-mobile-spacer { height: 20px !important; } } </style>
+        </div>
+    `);
+    dialog.css('opacity', '0');
+    $('body').append(dialog);
+    dialog[0].offsetHeight;
+    requestAnimationFrame(() => {
+        dialog.css({ 'opacity': '1', 'transition': 'opacity 0.15s ease-out' });
+    });
+
+    dialog.find('.acu-visibility-toggle').click(function(e) {
+        e.stopPropagation(); const tName = $(this).data('table'); let hList = getHiddenTables();
+        const isHidden = hList.includes(tName);
+        if (isHidden) { hList = hList.filter(n => n !== tName); $(this).find('i').attr('class', 'fa-solid fa-eye'); $(this).css('color', 'var(--acu-accent)'); $(this).siblings('span').css({'color':'var(--acu-text-main)','text-decoration':'none'}); } 
+        else { hList.push(tName); $(this).find('i').attr('class', 'fa-solid fa-eye-slash'); $(this).css('color', '#666'); $(this).siblings('span').css({'color':'var(--acu-text-sub)','text-decoration':'line-through'}); }
+        saveHiddenTables(hList); renderInterface();
+    });
+
+    
+    dialog.find('.acu-highlight-top-check').on('change', function() {
+        const tName = $(this).val(); const checked = $(this).is(':checked'); let currentList = Store.get(STORAGE_KEY_DISABLE_HIGHLIGHT_TOP, []);
+        // [修改] 黑名单逻辑：取消勾选(checked为false)时加入黑名单，勾选(checked为true)时移出黑名单
+        if (!checked) { if (!currentList.includes(tName)) currentList.push(tName); } else { currentList = currentList.filter(n => n !== tName); }
+        Store.set(STORAGE_KEY_DISABLE_HIGHLIGHT_TOP, currentList);
+        const activeTab = getActiveTabState(); if (activeTab === tName) { renderInterface(); }
+    });
+    dialog.find('.acu-reverse-check').on('change', function() {
+        const tName = $(this).val(); const checked = $(this).is(':checked'); let currentList = Store.get('acu_reverse_tables', []);
+        if (checked) { if (!currentList.includes(tName)) currentList.push(tName); } else { currentList = currentList.filter(n => n !== tName); }
+        Store.set('acu_reverse_tables', currentList);
+        const activeTab = getActiveTabState(); if (activeTab === tName) { renderInterface(); }
+    });
+    dialog.find('#cfg-font-family').on('change', function() { saveConfig({ fontFamily: $(this).val() }); });
+    dialog.find('#cfg-show-status').on('change', function() { saveConfig({ showStatusBar: $(this).is(':checked') }); renderInterface(); });
+    dialog.find('#cfg-layout').on('change', function() { saveConfig({ layout: $(this).val() }); renderInterface(); });
+    dialog.find('#cfg-grid-cols').on('change', function() { saveConfig({ gridColumns: $(this).val() }); renderInterface(); });
+    dialog.find('#cfg-col-style').on('change', function() {
+        const val = $(this).val();
+        saveConfig({ collapseStyle: val });
+        if (val === 'bar') dialog.find('#row-col-align').slideUp(200); else dialog.find('#row-col-align').slideDown(200);
+        renderInterface();
+    });
+    dialog.find('#cfg-col-align').on('change', function() { saveConfig({ collapseAlign: $(this).val() }); renderInterface(); });
+    dialog.find('#cfg-action-pos').on('change', function() { saveConfig({ actionsPosition: $(this).val() }); renderInterface(); });
+    dialog.find('#cfg-new').on('change', function() { saveConfig({ highlightNew: $(this).is(':checked') }); renderInterface(); });
+    dialog.find('#cfg-beautify-toastr').on('change', function() { saveConfig({ beautifyToastr: $(this).is(':checked') }); });
+    dialog.find('#cfg-show-opt').on('change', function() {
+        const checked = $(this).is(':checked');
+        saveConfig({ showOptionPanel: checked }); 
+        if(checked) dialog.find('#row-auto-send').slideDown(200); else dialog.find('#row-auto-send').slideUp(200);
+        renderInterface(); 
+    });
+    dialog.find('#cfg-auto-send').on('change', function() { saveConfig({ clickOptionToAutoSend: $(this).is(':checked') }); });
+    dialog.find('#cfg-theme').on('change', function() { 
+        const newTheme = $(this).val(); saveConfig({ theme: newTheme }); 
+        
+        // [性能优化] 先穿新衣服，再脱旧衣服，防止 CSS 变量出现真空期导致“黑闪”
+        const $editDialog = dialog.find('.acu-edit-dialog');
+        $editDialog.addClass(`acu-theme-${newTheme}`);
+        THEMES.forEach(t => { if (t.id !== newTheme) $editDialog.removeClass(`acu-theme-${t.id}`); });
+
+        // [新增] 给点延迟让浏览器算完 CSS 变量，然后广播主题更新事件
+        setTimeout(() => $(window).trigger('acu_theme_updated'), 50);
+    });
+
+    const showGhostCard = (forceRebuild = false) => {
+        const isOptionMode = window._acuPreviewType === 'option';
+        const targetType = isOptionMode ? 'option' : 'main';
+        const curCfg = getConfig();
+        const currentThemeClass = `acu-theme-${curCfg.theme}`;
+        
+        let $ghost = $('#acu-ghost-preview');
+
+        // [性能核心] 如果已经存在且类型匹配且没强制重构，就直接复用，拒绝重建！
+        if (!forceRebuild && $ghost.length > 0 && $ghost.data('type') === targetType) {
+            $ghost.addClass('visible');
+            // 确保主题类名也是新的
+            if (!$ghost.hasClass(currentThemeClass)) {
+                $ghost.removeClass(THEMES.map(t => `acu-theme-${t.id}`).join(' ')).addClass(currentThemeClass);
+            }
+            return; // 直接结束，极速响应
+        }
+
+        // 只有不存在或类型不匹配时，才重建 DOM
+        $ghost.remove();
+
+        let ghostHtml = '';
+        if (isOptionMode) {
+            // 模式A: 选项样式 (修复：完全还原底层真实界面的袖珍紧凑面板)
+            ghostHtml = `
+                <div id="acu-ghost-preview" class="acu-option-panel ${currentThemeClass}" data-type="option" style="width: 240px; pointer-events: none; background: var(--acu-bg-nav) !important; border: 1px solid var(--acu-border) !important; border-radius: 6px !important; padding: 4px !important; gap: 2px !important; box-shadow: 0 15px 50px rgba(0,0,0,0.8) !important;">
+                    <div class="acu-opt-header">行动选项 (预览)</div>
+                    <button class="acu-opt-btn">💬 询问关于那个传闻</button>
+                    <button class="acu-opt-btn">⚔️ 发起攻击 (检定)</button>
+                    <button class="acu-opt-btn">👋 暂时离开</button>
+                </div>`;
+        } else {
+            // 模式B: 表格样式
+            ghostHtml = `
+                <div id="acu-ghost-preview" class="acu-data-card ${currentThemeClass}" data-type="main">
+                    <div class="acu-card-header"><span class="acu-card-index">#示例</span><span class="acu-cell acu-editable-title">预览卡片效果</span></div>
+                    <div class="acu-card-body">
+                        <div class="acu-card-row acu-cell"><div class="acu-card-label">姓名</div><div class="acu-card-value">陈默</div></div>
+                        <div class="acu-card-row acu-cell"><div class="acu-card-label">状态</div><div class="acu-card-value"><span class="acu-badge acu-badge-green">正常</span></div></div>
+                    </div>
+                </div>`;
+        }
+
+        $('body').append(ghostHtml);
+        $ghost = $('#acu-ghost-preview');
+        
+        // 初始化变量
+        const $wrapper = $('.acu-wrapper').length ? $('.acu-wrapper') : $('body');
+        $ghost.css({
+            '--acu-card-width': $wrapper.css('--acu-card-width') || curCfg.cardWidth + 'px',
+            '--acu-font-size': $wrapper.css('--acu-font-size') || curCfg.fontSize + 'px',
+            '--acu-opt-font-size': $wrapper.css('--acu-opt-font-size') || (curCfg.optionFontSize || 12) + 'px'
+        });
+
+        requestAnimationFrame(() => $ghost.addClass('visible'));
+    };
+
+    let hideTimer = null;
+    const hideGhostCard = () => { if (hideTimer) clearTimeout(hideTimer); hideTimer = setTimeout(() => { $('#acu-ghost-preview').removeClass('visible'); setTimeout(() => { if(!$('#acu-ghost-preview').hasClass('visible')) $('#acu-ghost-preview').remove(); }, 300); }, 1000); };
+    const cancelHide = () => { if (hideTimer) clearTimeout(hideTimer); };
+    
+    const bindLivePreview = ($el, callback) => {
+        $el.on('input', function() { const val = $(this).val(); callback(val); cancelHide(); showGhostCard(); $('#acu-ghost-preview').css({ '--acu-card-width': $('.acu-wrapper').css('--acu-card-width'), '--acu-font-size': $('.acu-wrapper').css('--acu-font-size') }); });
+        $el.on('change', function() { dialog.find('.acu-edit-dialog').css('opacity', '1'); dialog.find('.acu-edit-overlay').css('background', ''); hideGhostCard(); });
+        $el.on('touchstart mousedown', function() { cancelHide(); showGhostCard(); });
+        $(document).on('touchend.temp_vis mouseup.temp_vis', function() { dialog.find('.acu-edit-dialog').css('opacity', '1'); dialog.find('.acu-edit-overlay').css('background', ''); hideGhostCard(); });
+    };
+    bindLivePreview(dialog.find('#cfg-width'), (val) => { dialog.find('#val-width').text(val + 'px'); $('.acu-wrapper').css('--acu-card-width', val + 'px'); });
+    dialog.find('#cfg-width').on('change', function() { saveConfig({ cardWidth: $(this).val() }); });
+    const $sliderFont = dialog.find('#cfg-font');
+    const $valFont = dialog.find('#val-font');
+
+    $sliderFont.on('touchstart mousedown', () => { window._acuPreviewType = 'main'; });
+    bindLivePreview($sliderFont, (val) => {
+        $valFont.text(val + 'px');
+        $('.acu-wrapper, .acu-status-bar-container').css('--acu-font-size', val + 'px');
+        $('#acu-ghost-preview').css('--acu-font-size', val + 'px'); 
+    });
+
+    $sliderFont.on('change', function() {
+        saveConfig({ fontSize: $(this).val() });
+    });
+
+    const $sliderOptFont = dialog.find('#cfg-opt-font');
+    const $valOptFont = dialog.find('#val-opt-font');
+
+    $sliderOptFont.on('touchstart mousedown', () => { window._acuPreviewType = 'option'; });
+    bindLivePreview($sliderOptFont, (val) => {
+        $valOptFont.text(val + 'px');
+        $('.acu-wrapper, .acu-status-bar-container').css('--acu-opt-font-size', val + 'px');
+        $('#acu-ghost-preview').css('--acu-opt-font-size', val + 'px');
+    });
+
+    $sliderOptFont.on('change', function() {
+        saveConfig({ optionFontSize: parseInt($(this).val()) });
+    });
+    dialog.find('#cfg-per-page').on('change', function() { let val = parseInt($(this).val(), 10); if (isNaN(val) || val < 1) { val = 50; $(this).val(val); } saveConfig({ itemsPerPage: val }); renderInterface(); });
+    
+    const closeAndCleanup = () => { $(document).off('.temp_vis'); cancelHide(); $('#acu-ghost-preview').remove(); dialog.remove(); };
+
+    dialog.find('#btn-enter-sort').click(() => { $(document).off('.temp_vis'); dialog.remove(); toggleOrderEditMode(); });
+    dialog.find('#btn-open-stitcher').click(() => { $(document).off('.temp_vis'); dialog.hide(); StitcherModule.show(dialog); });
+
+    // [新增] 外部模板管理逻辑
+    const refreshTemplateSelect = async () => {
+        const templates = await TemplateDB.getAllTemplates();
+        const options = '<option value="">-- 当前系统库 --</option>' + Object.keys(templates).map(k => {
+            const tName = templates[k].mate?.templateName || k;
+            return `<option value="${k}">${escapeHtml(tName)}</option>`;
+        }).join('');
+        dialog.find('#cfg-template-select').html(options);
+    };
+    refreshTemplateSelect(); // 初始化加载
+
+    dialog.find('#btn-import-tpl-outside').click(() => dialog.find('#input-import-tpl-outside').click());
+    dialog.find('#input-import-tpl-outside').change(function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = async (event) => {
+            try {
+                const json = JSON.parse(event.target.result);
+                if (!json.mate || json.mate.type !== "chatSheets") throw new Error("无效的数据库模板格式");
+                
+                let templateName = prompt("请为该模板命名 (例如: 修仙模组A):", file.name.replace('.json', ''));
+                    if (!templateName) return;
+                    
+                    json.mate.templateName = templateName;
+                    
+                    // [修复] 检查是否存在同名模板，如果存在则覆盖原有 ID
+                    const templates = await TemplateDB.getAllTemplates();
+                    let tplId = 'tpl_' + Date.now(); // 默认生成新ID
+                    for (const key in templates) {
+                        if (templates[key].mate && templates[key].mate.templateName === templateName) {
+                            tplId = key; // 找到同名，沿用旧ID进行静默覆盖
+                            break;
+                        }
+                    }
+                    
+                    await TemplateDB.saveTemplate(tplId, json);
+                    await refreshTemplateSelect();
+                dialog.find('#cfg-template-select').val(tplId);
+                AcuToast.success('模板导入成功！');
+            } catch(err) {
+                AcuToast.error('导入失败: ' + err.message);
+            }
+        };
+        reader.readAsText(file);
+        $(this).val('');
+    });
+
+    dialog.find('#btn-export-tpl-outside').click(async () => {
+        const selectedId = dialog.find('#cfg-template-select').val();
+        if (!selectedId) {
+            AcuToast.info('请先选择一个要导出的模板');
+            return;
+        }
+        const templates = await TemplateDB.getAllTemplates();
+        const targetTpl = templates[selectedId];
+        if (!targetTpl) return;
+
+        const jsonString = JSON.stringify(targetTpl, null, 2);
+        const fileName = `TavernDB_Template_${targetTpl.mate?.templateName || 'Export'}.json`;
+        
+        // 使用新的兼容性助手
+        acuDownloadFile(fileName, jsonString);
+        AcuToast.success('已发起导出请求');
+    });
+
+    // [新增] 删除模板逻辑 (带智能连删轮换)
+    dialog.find('#btn-delete-tpl-outside').click(async () => {
+        const $select = dialog.find('#cfg-template-select');
+        const selectedId = $select.val();
+        
+        if (!selectedId) {
+            AcuToast.info('请先选择一个要删除的模板');
+            return;
+        }
+        if (selectedId === 'tpl_builtin_sql_hongqu') {
+            AcuToast.warning('🛡️ 此为系统内置核心模板，禁止删除！');
+            return;
+        }
+        
+        const templates = await TemplateDB.getAllTemplates();
+        const targetTpl = templates[selectedId];
+        if (!targetTpl) return;
+
+        const tplName = targetTpl.mate?.templateName || '未命名模板';
+        if (confirm(`【警告】\n确定要永久删除模板【${tplName}】吗？\n此操作不可逆！`)) {
+            try {
+                // 1. 在删除前，先计算"下一个"该选中谁
+                const $options = $select.find('option[value!=""]'); // 获取所有真实模板选项
+                const currentIndex = $options.index($options.filter(`[value="${selectedId}"]`));
+                let nextIdToSelect = "";
+                
+                if ($options.length > 1) {
+                    // 如果不是最后一项，就顺延到下一项；如果是最后一项，就退回上一项
+                    if (currentIndex < $options.length - 1) {
+                        nextIdToSelect = $options.eq(currentIndex + 1).val();
+                    } else {
+                        nextIdToSelect = $options.eq(currentIndex - 1).val();
+                    }
+                }
+
+                // 2. 执行删除
+                const store = TemplateDB.db.transaction([TemplateDB.storeName], 'readwrite').objectStore(TemplateDB.storeName);
+                store.delete(selectedId).onsuccess = async () => {
+                    AcuToast.success(`模板【${tplName}】已删除`);
+                    await refreshTemplateSelect(); // 刷新下拉列表
+                    
+                    // 3. 删除完毕后，瞬间将下拉框恢复到相邻的模板上
+                    if (nextIdToSelect) {
+                        dialog.find('#cfg-template-select').val(nextIdToSelect);
+                    }
+                };
+            } catch (err) {
+                console.error('[ACU] 删除模板失败:', err);
+                AcuToast.error('删除失败，请查看控制台');
+            }
+        }
+    });
+
+    // [终极优化] 一键注入模板逻辑 (根据 @types 规范，严格以模板原名作为独立ID注入)
+    dialog.find('#btn-inject-tpl-db').click(async () => {
+        const selectedId = dialog.find('#cfg-template-select').val();
+        if (!selectedId) {
+            AcuToast.warning('请先在上方选择一个要注入的模板');
+            return;
+        }
+
+        const templates = await TemplateDB.getAllTemplates();
+        const targetTpl = templates[selectedId];
+        if (!targetTpl) return;
+        const tplName = targetTpl.mate?.templateName || '未命名模板';
+
+        if (!confirm(`确定要将模板【${tplName}】注入到数据库中吗？\n\n⚠️ 注意：确定后，将注入数据库模板预设，并且会覆盖当前聊天正在使用的模板！`)) {
+            return;
+        }
+
+        const api = getCore().getDB();
+        if (api && typeof api.initGameSession === 'function') {
+            AcuToast.info(`⚡ 正在以名称【${tplName}】注入模板...`);
+            try {
+                // [核心修复] 严格遵照 @types.txt 中的 v1CharData/v2CharData 定义
+                // 传入 name, chat, name2 等官方识别键，全面覆盖底层的回退机制
+                const result = await api.initGameSession(
+                    { name: tplName, chat: tplName, name2: tplName }, 
+                    {
+                        injectTemplate: true,
+                        loadPreset: false,
+                        templateData: targetTpl
+                    }
+                );
+
+                if (result && result.success) {
+                    AcuToast.success(`✅ 模板【${tplName}】独立注入成功！`);
+                    cachedRawData = null; 
+                    renderInterface(); 
+                } else {
+                    AcuToast.error('❌ 注入失败，请检查控制台');
+                }
+            } catch (err) {
+                AcuToast.error('❌ 注入异常');
+            }
+        } else {
+            AcuToast.warning('⚠️ 找不到后端注入接口');
+        }
+    });
+
+    dialog.find('#dlg-close').click(closeAndCleanup);
+    dialog.on('click', function(e) { if ($(e.target).hasClass('acu-edit-overlay')) closeAndCleanup(); });
+};
+
+    
+
+const parseRelationshipString = (str, knownNames = []) => {
+        if (!str) return [];
+        const results = [];
+        const rawStr = String(str).trim();
+        // 预处理：把中文顿号、逗号都变成标准分隔符
+        const parts = rawStr.replace(/[、，,]/g, ';').split(/[;；\n]/);
+        const sortedNames = knownNames.sort((a, b) => b.length - a.length);
+
+        for (const part of parts) {
+            const trimmed = part.trim();
+            if (!trimmed) continue;
+
+            // [修复] 调整优先级：冒号具有最高优先级，因为它是不易混淆的显式分隔符
+            const colonMatch = trimmed.match(/^与?(.+?)[:\：](.+)$/);
+            const hyphenMatch = trimmed.match(/^(.+?)\-(.+)$/);
+            const parenMatch = trimmed.match(/^([^(（]+)[(（]([^)）]+)[)）]$/);
+            
+            // 优先处理冒号：完美处理 "蒙卡(斧手)(已死亡):敌对" 这种带有复杂前缀的格式
+            if (colonMatch) {
+                results.push({ name: colonMatch[1].trim(), relation: colonMatch[2].trim() });
+                continue;
+            }
+
+            // 其次处理减号
+            if (hyphenMatch) {
+                results.push({ name: hyphenMatch[1].trim(), relation: hyphenMatch[2].trim() });
+                continue;
+            }
+            
+            // 然后是整体括号包裹
+            if (parenMatch) {
+                results.push({ name: parenMatch[1].trim(), relation: parenMatch[2].trim() });
+                continue;
+            }
+
+            // 2. 尝试自然语言模糊匹配
+            let matchedName = null;
+            for (const name of sortedNames) {
+                if (trimmed.includes(name)) { matchedName = name; break; }
+            }
+
+            if (matchedName) {
+                let rel = trimmed.replace(matchedName, '').replace(/的|之|是|为/g, '').trim();
+                if (!rel) rel = "关联";
+                results.push({ name: matchedName, relation: rel });
+            } else if (trimmed.includes(' ')) {
+                const sp = trimmed.split(/\s+/);
+                if(sp.length >= 2) results.push({ name: sp[0], relation: sp[1] });
+            } else if (trimmed.length > 0 && trimmed.length < 5) {
+                 // 兜底：如果只有名字且很短，认为是关联
+                 results.push({ name: trimmed, relation: "" });
+            }
+        }
+        return results;
+    };
+
+
+    
+    
+    // ============================================================
+    // [回归版] 人物关系网 - 静态圆形布局 + 完美缩放平移
+    // ============================================================
+    const renderRelationshipPanel = () => {
+        const config = getConfig();
+        
+        // 1. 数据解析
+        const rawData = cachedRawData || getTableData();
+        if (!rawData) {
+            return `<div class="acu-panel-header"><div class="acu-panel-title">人物关系网</div><button class="acu-close-btn"><i class="fa-solid fa-times"></i></button></div><div class="acu-panel-content" style="text-align:center;padding:40px;color:#999;">无数据</div>`;
+        }
+        
+        const nodes = new Map(); 
+        const edges = [];        
+        // [修复] 放宽节点名称校验规则，允许中英文括号、空格、减号等，以兼容附带状态的名称
+        const validNameRegex = /^[\u4e00-\u9fa5a-zA-Z0-9·.()（）【】\[\]\-\s]{1,40}$/; 
+
+        // 收集节点
+        Object.values(rawData).forEach(sheet => {
+            if (!sheet.content || sheet.content.length < 2) return;
+            const headers = sheet.content[0];
+            const nameColIdx = headers.findIndex(h => /姓名|名字|角色名|人物名称|Name|Character/i.test(h));
+            const avatarColIdx = headers.findIndex(h => /头像|立绘|Image|Avatar|Icon/i.test(h));
+
+            if (nameColIdx === -1) return; 
+
+            sheet.content.slice(1).forEach((row) => {
+                const name = String(row[nameColIdx] || '').trim();
+                if (name && isNaN(name) && validNameRegex.test(name) && !EXCLUDED_NAMES.includes(name)) {
+                    let avatar = (avatarColIdx !== -1) ? String(row[avatarColIdx] || '').trim() : null;
+                    if (avatar && !avatar.startsWith('http')) avatar = null;
+                    if (!nodes.has(name) || (avatar && !nodes.get(name).image)) {
+                        nodes.set(name, { id: name, label: name, image: avatar, group: sheet.name });
+                    }
+                }
+            });
+        });
+
+        // 收集关系
+        const knownNameList = Array.from(nodes.keys());
+        Object.values(rawData).forEach(sheet => {
+            if (!sheet.content) return;
+            const headers = sheet.content[0];
+            const nameColIdx = headers.findIndex(h => /姓名|名字|人物名称|Name/i.test(h));
+            if (nameColIdx === -1) return;
+
+            const relationColIndices = headers.map((h, i) => {
+                if (i === nameColIdx) return -1;
+                if (/关系|人际|Relation/i.test(h)) return i; 
+                return -1;
+            }).filter(i => i !== -1);
+
+            sheet.content.slice(1).forEach(row => {
+                const sourceName = String(row[nameColIdx] || '').trim();
+                if (!nodes.has(sourceName)) return; 
+
+                relationColIndices.forEach(colIdx => {
+                    const cellFullText = String(row[colIdx] || '').trim();
+                    if (!cellFullText) return;
+                    const relations = parseRelationshipString(cellFullText, knownNameList);
+relations.forEach(rel => {
+                        let targetName = rel.name;
+                        
+                        // [修复] 模糊匹配
+                        if (!nodes.has(targetName)) {
+                            for (const existingName of nodes.keys()) {
+                                if (existingName.includes(targetName) || targetName.includes(existingName)) {
+                                    targetName = existingName;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (!nodes.has(targetName) && validNameRegex.test(targetName) && !EXCLUDED_NAMES.includes(targetName)) {
+                             nodes.set(targetName, { id: targetName, label: targetName, image: null, group: 'Unknown' });
+                        }
+                        if (nodes.has(targetName) && sourceName !== targetName) {
+                            let existing = edges.find(e => e.source === sourceName && e.target === targetName);
+                            if (existing) {
+                                if (!existing.labels.includes(rel.relation)) existing.labels.push(rel.relation);
+                            } else {
+                                edges.push({ source: sourceName, target: targetName, labels: [rel.relation] });
+                            }
+                        }
+                    });
+                });
+            });
+        });
+
+        if (nodes.size === 0) return `<div class="acu-panel-content">无有效人物节点</div>`;
+
+        // [新增] 将本地自定义头像注入到关系网节点中
+        const currentCtxId = getCurrentContextFingerprint();
+        const customAvatars = getCustomAvatars()[currentCtxId] || {};
+        nodes.forEach((nodeData, nodeName) => {
+            // 如果本地缓存里有这个角色的专属头像，强制覆盖掉表格里原本的图片
+            if (customAvatars[nodeName]) {
+                nodeData.image = customAvatars[nodeName]; 
+            }
+        });
+
+        // --- [重构] 智能布局计算 (带位置记忆) ---
+        const nodeArr = Array.from(nodes.values());
+        const width = 1000;
+        const height = 800;
+        const centerX = width / 2;
+        const centerY = height / 2;
+        
+        // 布局参数
+        const r = 42; // [修改] 放大节点半径
+        const layoutRadius = Math.min(width, height) * 0.35; // 布局圈半径
+
+        // 1. 读取保存的位置记忆
+        const savedPositions = getRelationPositions();
+        const savedNodes = savedPositions.nodes || {};
+        
+        // 2. 计算匹配率：有多少旧节点还存在？
+        const currentNodeIds = new Set(nodeArr.map(n => n.id));
+        const savedNodeIds = Object.keys(savedNodes);
+        const matchCount = savedNodeIds.filter(id => currentNodeIds.has(id)).length;
+        const matchRatio = savedNodeIds.length > 0 ? matchCount / savedNodeIds.length : 0;
+        
+        // 3. 如果匹配率 < 30%，说明换了数据，清空记忆
+        const shouldReset = savedNodeIds.length > 0 && matchRatio < 0.3;
+        if (shouldReset) {
+            console.log('[ACU] 关系网数据变化过大，重置布局');
+            saveRelationPositions({ nodes: {}, viewTransform: null });
+        }
+        
+        // 4. 分离已保存位置的节点和新节点
+        const existingNodes = [];
+        const newNodes = [];
+        nodeArr.forEach(node => {
+            if (!shouldReset && savedNodes[node.id]) {
+                // 使用保存的位置
+                node.x = savedNodes[node.id].x;
+                node.y = savedNodes[node.id].y;
+                existingNodes.push(node);
+            } else {
+                newNodes.push(node);
+            }
+        });
+        
+        // 5. 为新节点计算位置（放在圆环边缘的空位，确保不重叠）
+        if (newNodes.length > 0) {
+            const NODE_RADIUS = 42; // [修改] 放大节点排斥半径
+            const MIN_DISTANCE = NODE_RADIUS * 2.5;
+            
+            // 辅助函数：检测位置是否与已放置的节点重叠
+            const isPositionFree = (x, y, placedNodes) => {
+                for (const placed of placedNodes) {
+                    const dist = Math.sqrt((x - placed.x) ** 2 + (y - placed.y) ** 2);
+                    if (dist < MIN_DISTANCE) return false;
+                }
+                return true;
+            };
+            
+            // 已放置的节点（包括已有的和新放置的）
+            const placedNodes = [...existingNodes];
+            
+            // 为新节点分配位置
+            newNodes.forEach((node) => {
+                let placed = false;
+                
+                // 尝试多个半径层（从外圈向更外圈扩展）
+                for (let radiusMultiplier = 1.15; radiusMultiplier <= 2.0 && !placed; radiusMultiplier += 0.2) {
+                    const tryRadius = layoutRadius * radiusMultiplier;
+                    
+                    // 尝试多个角度（每 15 度尝试一次）
+                    for (let angleDeg = 0; angleDeg < 360 && !placed; angleDeg += 15) {
+                        const angle = (angleDeg * Math.PI) / 180;
+                        const tryX = centerX + tryRadius * Math.cos(angle);
+                        const tryY = centerY + tryRadius * Math.sin(angle);
+                        
+                        if (isPositionFree(tryX, tryY, placedNodes)) {
+                            node.x = tryX;
+                            node.y = tryY;
+                            placedNodes.push(node);
+                            placed = true;
+                        }
+                    }
+                }
+                
+                // 如果还是找不到位置，使用螺旋向外的策略
+                if (!placed) {
+                    let spiralAngle = Math.random() * Math.PI * 2;
+                    let spiralRadius = layoutRadius * 1.5;
+                    
+                    for (let attempt = 0; attempt < 100; attempt++) {
+                        const tryX = centerX + spiralRadius * Math.cos(spiralAngle);
+                        const tryY = centerY + spiralRadius * Math.sin(spiralAngle);
+                        
+                        if (isPositionFree(tryX, tryY, placedNodes)) {
+                            node.x = tryX;
+                            node.y = tryY;
+                            placedNodes.push(node);
+                            placed = true;
+                            break;
+                        }
+                        
+                        // 螺旋向外
+                        spiralAngle += 0.5;
+                        spiralRadius += MIN_DISTANCE * 0.3;
+                    }
+                }
+                
+                // 最后的兜底：随机位置（几乎不会触发）
+                if (!placed) {
+                    node.x = centerX + (Math.random() - 0.5) * layoutRadius * 3;
+                    node.y = centerY + (Math.random() - 0.5) * layoutRadius * 3;
+                    placedNodes.push(node);
+                }
+            });
+        }
+        
+        // 6. 如果全是新节点（首次加载或重置后），使用集中随机布局，让物理引擎自然排斥展开
+        if (existingNodes.length === 0) {
+            nodeArr.forEach((node, i) => {
+                // 抛弃死板的圆形，采用类似重置按钮的随机扰动簇，打破绝对对称导致的力矩死锁
+                node.x = centerX + (Math.random() - 0.5) * 250;
+                node.y = centerY + (Math.random() - 0.5) * 250;
+            });
+        }
+
+        // [Canvas 极速重构] 将计算好的图谱数据挂载到全局，供 Canvas 引擎直接读取
+        window._acuCurrentGraphData = { nodes: nodeArr, edges: edges };
+
+        // [新增修复] 生成防篡改指纹，确保关系增删时一定能触发 RPG 面板重绘
+        let graphStr = nodes.size + '|' + edges.length + '|' + edges.map(e => e.source+e.target).join('');
+        let graphHash = 0;
+        for (let i = 0; i < graphStr.length; i++) {
+            graphHash = ((graphHash << 5) - graphHash) + graphStr.charCodeAt(i);
+            graphHash |= 0;
+        }
+
+        return `
+            <div class="acu-panel-header">
+                <div class="acu-panel-title">
+                    <div class="acu-title-main"><i class="fa-solid fa-project-diagram"></i> <span class="acu-title-text">人物关系网</span></div>
+                    <div class="acu-title-sub">(${nodes.size}人 · Canvas 2D 极速引擎)</div>
+                </div>
+                <div class="acu-header-actions">
+                    <button class="acu-view-btn" id="acu-rel-pin-center" title="设定固定的中心节点"><i class="fa-solid fa-crosshairs"></i></button>
+                    <button class="acu-view-btn" id="acu-rel-reset" title="重置视图"><i class="fa-solid fa-compress-arrows-alt"></i></button>
+                    <button class="acu-close-btn" title="关闭"><i class="fa-solid fa-times"></i></button>
+                </div>
+            </div>
+            <div class="acu-panel-content acu-rel-canvas-wrapper" data-graph-hash="${graphHash}" style="padding:0;overflow:hidden;background:var(--acu-bg-panel);touch-action:none;height:45vh;min-height:300px;position:relative;">
+                <canvas class="acu-rel-canvas" style="display:block;width:100%;height:100%;cursor:grab;"></canvas>
+            </div>
+        `;
+    };
+
+
+// --- [新增功能] 弹出人物专属档案卡 ---
+    const showCharacterProfile = (charName) => {
+        const { $ } = getCore();
+        const rawData = cachedRawData || getTableData();
+        if (!rawData) return;
+
+        let charRow = null;
+        let charHeaders = null;
+        let tableName = '';
+
+        // 1. 遍历所有表，寻找含有"姓名"的列，并匹配名字
+        for (const key in rawData) {
+            const sheet = rawData[key];
+            if (!sheet.content || sheet.content.length < 2) continue;
+            const headers = sheet.content[0];
+            // 嗅探名字列
+            const nameIdx = headers.findIndex(h => /姓名|名字|人物名称|角色名|Name/i.test(h));
+            if (nameIdx !== -1) {
+                // 寻找该角色的具体行
+                const row = sheet.content.slice(1).find(r => String(r[nameIdx] || '').trim() === charName);
+                if (row) {
+                    charRow = row;
+                    charHeaders = headers;
+                    tableName = sheet.name;
+                    break;
+                }
+            }
+        }
+
+        // 如果在表格里没找到详细数据，给个轻提示
+        if (!charRow) {
+            AcuToast.warning(`未找到【${escapeHtml(charName)}】的详细表格记录`);
+            return;
+        }
+
+        // 2. 构建漂亮的详情 HTML
+        const config = getConfig();
+        let detailsHtml = '';
+        
+        charHeaders.forEach((header, idx) => {
+            if (idx === 0) return; // 跳过索引列
+            const val = String(charRow[idx] || '').trim();
+            if (!val || val === '无' || val === '未知' || val === '待定') return;
+
+            // 智能渲染标签（复用原有的颜色徽章逻辑）
+            const badgeStyle = getBadgeStyle(val);
+            let displayVal = escapeHtml(val);
+            if (val.length <= 15 && badgeStyle && !val.includes('http')) {
+                displayVal = `<span class="acu-badge ${badgeStyle}">${displayVal}</span>`;
+            }
+
+            detailsHtml += `
+                <div style="margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px dashed var(--acu-border);">
+                    <div style="font-size: 12px; color: var(--acu-text-sub); margin-bottom: 4px; font-weight: bold;">
+                        <i class="fa-solid fa-tag" style="opacity:0.5; font-size: 10px; margin-right: 4px;"></i>${escapeHtml(header)}
+                    </div>
+                    <div style="font-size: 13px; color: var(--acu-text-main); white-space: pre-wrap; line-height: 1.5; word-break: break-all;">${displayVal}</div>
+                </div>
+            `;
+        });
+
+        // 3. 生成模态框
+        const dialog = $(`
+            <div class="acu-char-profile-overlay acu-edit-overlay" style="z-index: 2147483648 !important; backdrop-filter: blur(3px);">
+                <div class="acu-edit-dialog acu-theme-${config.theme}" style="max-width: 400px; width: 90%; max-height: 80vh; overflow: hidden; display: flex; flex-direction: column; gap: 0 !important; background-color: transparent !important; box-shadow: 0 15px 50px rgba(0,0,0,0.8); border: 1px solid var(--acu-accent); padding: 0;">
+                    <div class="acu-panel-header" style="flex: 0 0 auto; background: var(--acu-table-head); border-bottom: 1px solid var(--acu-border); padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; border-radius: 12px 12px 0 0;">
+                        ${(() => {
+                            const ctxId = getCurrentContextFingerprint();
+                            const savedAvatar = getCustomAvatars()[ctxId]?.[charName] || '';
+                            return `
+                                <div style="display:flex; align-items:center; gap:12px;">
+                                    <div style="position:relative;">
+                                        <div class="acu-char-avatar-btn" data-char="${escapeHtml(charName)}" style="width:42px; height:42px; border-radius:50%; background:var(--acu-bg-panel); border:2px solid var(--acu-accent); background-image:url('${savedAvatar}'); background-size:cover; background-position:center; cursor:pointer; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.3); transition:transform 0.2s;" title="点击更换专属头像">
+                                            ${savedAvatar ? '' : '<i class="fa-solid fa-camera" style="opacity:0.5; font-size:16px; color:var(--acu-text-sub);"></i>'}
+                                        </div>
+                                        <div class="acu-char-avatar-reset" data-char="${escapeHtml(charName)}" style="display:${savedAvatar ? 'flex' : 'none'}; position:absolute; bottom:-4px; right:-8px; background:var(--acu-bg-panel); border:1px solid var(--acu-border); border-radius:50%; width:20px; height:20px; align-items:center; justify-content:center; cursor:pointer; color:#e74c3c; font-size:10px; box-shadow:0 2px 4px rgba(0,0,0,0.3); transition:all 0.2s;" title="恢复默认头像并清理内存"><i class="fa-solid fa-trash-can"></i></div>
+                                    </div>
+                                    <div style="font-weight: bold; font-size: 16px; color: var(--acu-accent);">
+                                        <span>${escapeHtml(charName)}</span>
+                                    </div>
+                                </div>
+                            `;
+                        })()}
+                        <button class="acu-close-profile-btn" style="background: none; border: none; color: var(--acu-text-sub); cursor: pointer; font-size: 16px; padding:4px;"><i class="fa-solid fa-times"></i></button>
+                    </div>
+                    <div style="flex: 1; overflow-y: auto; padding: 15px; background: var(--acu-bg-panel); border-radius: 0 0 12px 12px;">
+                        <div style="font-size: 11px; color: var(--acu-text-sub); margin-bottom: 15px; text-align: right; opacity: 0.8;"><i class="fa-solid fa-database"></i> 来源表: ${escapeHtml(tableName)}</div>
+                        ${detailsHtml}
+                    </div>
+                </div>
+            </div>
+        `);
+
+        $('body').append(dialog);
+
+        // 4. 绑定关闭事件
+        const closeDialog = () => dialog.fadeOut(150, () => dialog.remove());
+        dialog.find('.acu-close-profile-btn').click(closeDialog);
+        dialog.click(function(e) {
+            if ($(e.target).hasClass('acu-char-profile-overlay')) closeDialog();
+        });
+
+        // [新增] 绑定头像重置/删除事件
+        dialog.find('.acu-char-avatar-reset').hover(
+            function() { $(this).css('transform', 'scale(1.2)'); },
+            function() { $(this).css('transform', 'scale(1)'); }
+        ).click(function(e) {
+            e.stopPropagation();
+            const targetChar = $(this).data('char');
+            const currentCtxId = getCurrentContextFingerprint();
+            const avatars = getCustomAvatars();
+            
+            // 1. 删除本地存储的 Base64 数据释放内存 (IndexedDB 极速版)
+            if (avatars[currentCtxId] && avatars[currentCtxId][targetChar]) {
+                delete avatars[currentCtxId][targetChar];
+                AvatarDB.saveToDB(currentCtxId, avatars[currentCtxId]);
+            }
+            
+            // 2. 更新面板 UI：清除背景图，显示相机图标，并隐藏垃圾桶
+            const $btn = dialog.find('.acu-char-avatar-btn');
+            $btn.css('background-image', 'none').html('<i class="fa-solid fa-camera" style="opacity:0.5; font-size:16px; color:var(--acu-text-sub);"></i>');
+            $(this).hide(); 
+            
+            // 3. [Canvas兼容] 触发事件，通知底层关系网瞬间无缝切换头像
+            $(window).trigger('acu_avatar_updated', { char: targetChar, image: null });
+            
+            AcuToast.success('已恢复默认头像并清理内存');
+        });
+
+        // [新增] 绑定头像点击上传事件 (带 Canvas 智能压缩裁切 + 容量异常处理)
+        dialog.find('.acu-char-avatar-btn').hover(
+            function() { $(this).css('transform', 'scale(1.1)'); },
+            function() { $(this).css('transform', 'scale(1)'); }
+        ).click(function(e) {
+            e.stopPropagation();
+            const $btn = $(this);
+            const targetChar = $btn.data('char');
+            
+            const $fileInput = $('<input type="file" accept="image/*" style="display:none;">');
+            $('body').append($fileInput);
+            
+            $fileInput.on('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        const size = 400; // [优化] 解除 150px 封印，提升至 400px 高清分辨率
+                        canvas.width = size;
+                        canvas.height = size;
+                        
+                        const scale = Math.max(size / img.width, size / img.height);
+                        const x = (size / scale - img.width) / 2;
+                        const y = (size / scale - img.height) / 2;
+                        
+                        ctx.drawImage(img, x, y, img.width, img.height, 0, 0, size, size);
+                        const base64Data = canvas.toDataURL('image/webp', 0.95); // [优化] WebP 压缩率提升至 95%，减少涂抹感
+                        
+                        const currentCtxId = getCurrentContextFingerprint();
+                        const isSaved = saveCustomAvatar(currentCtxId, targetChar, base64Data);
+                        
+                        if (isSaved) {
+                            $btn.css('background-image', `url('${base64Data}')`);
+                            $btn.empty();
+                            dialog.find('.acu-char-avatar-reset').css('display', 'flex'); // 上传成功后显示垃圾桶
+                            AcuToast.success('专属头像已更新并保存');
+                            
+                            // [Canvas兼容] 触发事件，通知底层关系网瞬间无缝渲染新头像
+                            $(window).trigger('acu_avatar_updated', { char: targetChar, image: base64Data });
+                        } else {
+                            AcuToast.error('⛔ 存储空间已满！头像保存失败，请清理浏览器缓存数据');
+                        }
+                        
+                        $fileInput.remove();
+                    };
+                    img.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+            $fileInput.click();
+        });
+
+        dialog.hide().fadeIn(150);
+    };
+
+// ============================================================
+    // [Canvas 极速版 v3.0] 彻底抛弃 DOM 渲染，支持千人同屏，含高分屏适配
+    // ============================================================
+    const bindRelationshipPanelEvents = () => {
+        const { $ } = getCore();
+
+        $('.acu-rel-canvas-wrapper').each(function() {
+            const $wrapper = $(this);
+            if ($wrapper.data('physics-bound')) return;
+            $wrapper.data('physics-bound', true);
+
+            const wrapperEl = this;
+            const canvas = $wrapper.find('.acu-rel-canvas')[0];
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            const isEmbedded = $wrapper.closest('.acu-rpg-widget').length > 0;
+            const visualOffsetY = isEmbedded ? 50 : 0;
+
+            let transform = { x: 0, y: 0, k: 1 };
+            const logicalCx = 500, logicalCy = 400; // 物理宇宙中心
+
+            // 从全局读取之前组装好的数据
+            const graphData = window._acuCurrentGraphData || { nodes: [], edges: [] };
+            const nodeElMap = {};
+            const edges = graphData.edges;
+            // [T0 优化] 将 imageCache 挂载到全局，方便在切换聊天时彻底释放图片解码内存
+            if (!window._acuImageCache) window._acuImageCache = {};
+            const imageCache = window._acuImageCache;
+
+            graphData.nodes.forEach(n => {
+                nodeElMap[n.id] = {
+                    id: n.id, label: n.label, image: n.image,
+                    x: n.x || logicalCx + (Math.random() - 0.5) * 10,
+                    y: n.y || logicalCy + (Math.random() - 0.5) * 10,
+                    vx: 0, vy: 0, fixed: false,
+                    color: getDefaultAvatarColor(n.id)
+                };
+                
+                // [修复1] 异步图片加载完成后，强制唤醒重绘，防止图片加载慢导致空白
+                        if (n.image && !imageCache[n.image]) {
+                            const img = new Image();
+                            img.onload = () => {
+                                // [性能优化] 优先级2：离屏预渲染。裁切圆形头像并缓存为画布，省去每帧 clip() 的恐怖开销
+                                const offCanvas = document.createElement('canvas');
+                                const dpr = window.devicePixelRatio || 1;
+                                const size = 84; // r=42 的两倍
+                                offCanvas.width = size * dpr;
+                                offCanvas.height = size * dpr;
+                                const offCtx = offCanvas.getContext('2d');
+                                offCtx.scale(dpr, dpr);
+                                offCtx.beginPath();
+                                offCtx.arc(42, 42, 42, 0, Math.PI * 2);
+                                offCtx.clip();
+                                offCtx.drawImage(img, 0, 0, size, size);
+                                img._cachedAvatar = offCanvas;
+                                
+                                if (!isPhysicsRunning) draw(); 
+                            };
+                            img.src = n.image;
+                            imageCache[n.image] = img;
+                        }
+            });
+
+            let width = 0, height = 0;
+            const resizeCanvas = () => {
+                const rect = wrapperEl.getBoundingClientRect();
+                width = rect.width || 800;
+                height = rect.height || 600;
+                const dpr = window.devicePixelRatio || 1; 
+                canvas.width = width * dpr;
+                canvas.height = height * dpr;
+                ctx.scale(dpr, dpr);
+            };
+            resizeCanvas();
+            
+            let isSelectingPin = false;
+            const updatePinBtnStyle = () => {
+                const $pinBtn = $wrapper.find('#acu-rel-pin-center-embedded').length ? $wrapper.find('#acu-rel-pin-center-embedded') : $wrapper.closest('.acu-data-display').find('#acu-rel-pin-center');
+                const pinned = getPinnedRelationCenter();
+                if (isSelectingPin) {
+                    $pinBtn.css('color', 'var(--acu-hl-manual)');
+                } else if (pinned) {
+                    $pinBtn.css('color', 'var(--acu-accent)');
+                } else {
+                    $pinBtn.css('color', '');
+                }
+            };
+            setTimeout(updatePinBtnStyle, 50);
+
+            const THEME = {
+                textMain: $wrapper.css('--acu-text-main') || '#eee',
+                textSub: $wrapper.css('--acu-text-sub') || '#aaa',
+                accent: $wrapper.css('--acu-accent') || '#6a5acd',
+                bgPanel: $wrapper.css('--acu-bg-panel') || '#222',
+                border: $wrapper.css('--acu-border') || '#555'
+            };
+
+            const initFitView = () => {
+                const nodesArr = Object.values(nodeElMap);
+                if (nodesArr.length === 0) return;
+
+                const nodesCount = nodesArr.length;
+
+                // [视角优化] 放大理论预期半径，并引入留白系数
+                const expectedRadius = Math.max(300, 150 + Math.sqrt(nodesCount) * 90);
+                const PADDING_FACTOR = 0.75;
+                
+                const scaleX = ((width / 2) / expectedRadius) * PADDING_FACTOR;
+                const scaleY = (((height - visualOffsetY) / 2) / expectedRadius) * PADDING_FACTOR;
+                
+                // [优化] 设定最低可读缩放底线，拒绝缩成蚂蚁
+                const isMobile = width < 768;
+                const MIN_READABLE_SCALE = isMobile ? 0.35 : 0.25; 
+                const MAX_SCALE = isMobile ? 0.9 : 1.2;
+
+                let targetScale = Math.min(scaleX, scaleY);
+                transform.k = Math.max(MIN_READABLE_SCALE, Math.min(MAX_SCALE, targetScale));
+
+                // [优化] 智能镜头聚焦：如果人数过多（>15），找出社交核心
+                let focusX = logicalCx;
+                let focusY = logicalCy;
+                const pinnedNodeId = getPinnedRelationCenter();
+
+                if (pinnedNodeId && nodeElMap[pinnedNodeId]) {
+                    // [修复] 物理引擎必定会将 pinned 节点拉向物理宇宙中心 (logicalCx, Cy)
+                    // 为了防止节点从随机边缘飞走导致镜头偏移，初始时直接将其瞬间传送到中心
+                    nodeElMap[pinnedNodeId].x = logicalCx;
+                    nodeElMap[pinnedNodeId].y = logicalCy;
+                    focusX = logicalCx;
+                    focusY = logicalCy;
+                }
+
+                transform.x = width / 2 - focusX * transform.k;
+                transform.y = height / 2 - focusY * transform.k - visualOffsetY;
+
+                draw();
+            };
+            setTimeout(initFitView, 50);
+
+            // [核心优化 8] 彻底封堵 ResizeObserver 引起的致命内存泄漏
+            if (window.ResizeObserver) {
+                // 清理挂载在旧 DOM 上的遗留 Observer
+                if (wrapperEl._acuResizeObserver) {
+                    wrapperEl._acuResizeObserver.disconnect();
+                }
+                let hasFixedView = false;
+                const ro = new ResizeObserver((entries) => {
+                    if (!hasFixedView && entries[0].contentRect.width > 0) {
+                        resizeCanvas(); initFitView(); hasFixedView = true; ro.disconnect();
+                    } else {
+                        resizeCanvas(); draw();
+                    }
+                });
+                ro.observe(wrapperEl);
+                wrapperEl._acuResizeObserver = ro; // 挂载到 DOM 实例上供下次清理
+            }
+
+            let isPhysicsRunning = false;
+            let physicsRafId = null;
+            let focusedNodeId = null;
+            let hoveredNodeId = null;
+            let focusedNeighbors = new Set();
+
+            const PHYSICS = {
+                REPULSION: 25000 + Math.min(Object.keys(nodeElMap).length * 300, 50000),
+                SPRING_TENSION: 0.012,
+                IDEAL_LENGTH: 220 + Math.min(Object.keys(nodeElMap).length * 2, 200),
+                CENTER_GRAVITY: 0.008,
+                // [手感优化] 降低弹簧张力，提升基础阻尼，防止节点过少时像皮筋一样疯狂弹跳
+                FRICTION: Math.max(0.45, 0.75 - Object.keys(nodeElMap).length * 0.005),
+                MIN_ENERGY: 0.5,
+                MAX_DISTANCE_SQ: 800 * 800
+            };
+
+            // --- 🎨 核心渲染函数 (60fps 性能优化版) ---
+            const draw = () => {
+                ctx.clearRect(0, 0, width, height);
+                ctx.save();
+                ctx.translate(transform.x, transform.y);
+                ctx.scale(transform.k, transform.k);
+
+                const r = 42;
+                const nodesArr = Object.values(nodeElMap);
+
+                // [新增优化: 视野外剔除] 计算当前屏幕在物理世界中的真实坐标边界
+                // 这样做是为了提前判断哪些球在屏幕外，从而直接跳过渲染
+                const viewLeft = -transform.x / transform.k;
+                const viewRight = (width - transform.x) / transform.k;
+                const viewTop = -transform.y / transform.k;
+                const viewBottom = (height - transform.y) / transform.k;
+                
+                // padding 是缓冲区，防止角色在屏幕边缘时“半个身子”突然消失
+                // 我们设定为 2.5 倍半径，确保顺滑
+                const renderPadding = r * 2.5;
+
+                // 1. 绘制连线 (批量绘制提升性能)
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                // [修复2] 移除所有 ctx.shadowBlur，改用 strokeText 实现描边，帧数暴涨
+                ctx.shadowBlur = 0; 
+                ctx.lineJoin = 'round';
+
+                edges.forEach(edge => {
+                    const s = nodeElMap[edge.source], t = nodeElMap[edge.target];
+                    if (!s || !t) return;
+
+                    let opacity = 0.3;
+                    let strokeColor = THEME.textSub;
+                    let isEdgeHighlighted = false;
+
+                    if (focusedNodeId || hoveredNodeId) {
+                        const focusId = focusedNodeId || hoveredNodeId;
+                        if (s.id === focusId || t.id === focusId) {
+                            opacity = 0.8; strokeColor = THEME.accent; isEdgeHighlighted = true;
+                        } else if (focusedNeighbors.has(s.id) && focusedNeighbors.has(t.id)) {
+                            opacity = 0.15;
+                        } else {
+                            // [TOP 1 优化: 渲染剔除] 聚焦模式下，无关连线直接跳过绘制，极大节省 Canvas 性能
+                            if (focusedNodeId) return; 
+                            opacity = 0.02; 
+                        }
+                    }
+
+                    if (opacity <= 0.05 && !isEdgeHighlighted) return;
+
+                    const dx = t.x - s.x; const dy = t.y - s.y;
+                    const isBi = edges.some(e => e.source === edge.target && e.target === edge.source);
+                    const curvature = isBi ? 0.15 : 0;
+                    const cx = (s.x + t.x) / 2 - dy * curvature;
+                    const cy = (s.y + t.y) / 2 + dx * curvature;
+
+                    ctx.beginPath();
+                    ctx.moveTo(s.x, s.y);
+                    ctx.quadraticCurveTo(cx, cy, t.x, t.y);
+                    ctx.strokeStyle = strokeColor;
+                    ctx.globalAlpha = opacity;
+                    ctx.lineWidth = isEdgeHighlighted ? 2 : 1.5;
+                    ctx.stroke();
+
+                    // --- [修正] 绘制完美贴合曲线的箭头逻辑 ---
+                    const targetR = (t.id === focusedNodeId || t.id === hoveredNodeId) ? r * 1.15 : r;
+                    
+                    // 计算两点之间的直线距离，用来估算在曲线上的步长比例 t
+                    const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+                    // 箭头需要后退的比例 (半径 + 2px的呼吸偏移量)
+                    const tParam = Math.max(0, 1 - (targetR + 2) / dist); 
+
+                    // 用二阶贝塞尔曲线公式，计算出箭头精确的附着坐标
+                    const arrowX = Math.pow(1 - tParam, 2) * s.x + 2 * (1 - tParam) * tParam * cx + Math.pow(tParam, 2) * t.x;
+                    const arrowY = Math.pow(1 - tParam, 2) * s.y + 2 * (1 - tParam) * tParam * cy + Math.pow(tParam, 2) * t.y;
+
+                    // 用贝塞尔曲线导数公式，计算出该点精确的切线角度
+                    const angle = Math.atan2(
+                        2 * (1 - tParam) * (cy - s.y) + 2 * tParam * (t.y - cy),
+                        2 * (1 - tParam) * (cx - s.x) + 2 * tParam * (t.x - cx)
+                    );
+
+                    const arrowSize = 10;
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(arrowX, arrowY);
+                    ctx.lineTo(arrowX - arrowSize * Math.cos(angle - Math.PI / 7), arrowY - arrowSize * Math.sin(angle - Math.PI / 7));
+                    ctx.lineTo(arrowX - arrowSize * Math.cos(angle + Math.PI / 7), arrowY - arrowSize * Math.sin(angle + Math.PI / 7));
+                    ctx.closePath();
+                    ctx.fillStyle = strokeColor;
+                    ctx.fill();
+                    // ------------------------
+
+                    // 绘制文字 (使用描边代替阴影，性能极高)
+                    if (edge.labels && edge.labels.length > 0) {
+                        const tx = 0.25 * s.x + 0.5 * cx + 0.25 * t.x;
+                        const ty = 0.25 * s.y + 0.5 * cy + 0.25 * t.y;
+                        ctx.globalAlpha = isEdgeHighlighted ? 1 : Math.max(0.1, opacity + 0.2);
+                        ctx.font = isEdgeHighlighted ? 'bold 14px sans-serif' : '12px sans-serif';
+                        
+                        // 文字描边(模拟外发光底色)
+                        ctx.lineWidth = 3;
+                        ctx.strokeStyle = THEME.bgPanel;
+                        ctx.strokeText(edge.labels.join('/'), tx, ty - 8);
+                        
+                        // 文字实体
+                        ctx.fillStyle = isEdgeHighlighted ? THEME.accent : THEME.textSub;
+                        ctx.fillText(edge.labels.join('/'), tx, ty - 8);
+                    }
+                });
+
+                // 2. 绘制节点
+                nodesArr.forEach(n => {
+                    // [核心拦截] 视野外剔除：如果节点坐标不在屏幕边界内（算上缓冲区），直接跳过
+                    if (n.x < viewLeft - renderPadding || n.x > viewRight + renderPadding || 
+                        n.y < viewTop - renderPadding || n.y > viewBottom + renderPadding) {
+                        return;
+                    }
+
+                    let isCenter = false, isNeighbor = false, isUnrelated = false;
+                    const isHovered = (n.id === hoveredNodeId);
+                    
+                    if (focusedNodeId || hoveredNodeId) {
+                        const focusId = focusedNodeId || hoveredNodeId;
+                        if (n.id === focusId) isCenter = true;
+                        else if (focusedNeighbors.has(n.id) || (hoveredNodeId && edges.some(e => (e.source===n.id && e.target===hoveredNodeId) || (e.target===n.id && e.source===hoveredNodeId)))) isNeighbor = true;
+                        else isUnrelated = true;
+                    }
+
+                    // [TOP 1 优化: 渲染剔除] 聚焦模式下，彻底跳过无关节点的绘制
+                    if (focusedNodeId && isUnrelated) return;
+
+                    const currentR = (isCenter || isHovered) ? r * 1.15 : r;
+                    ctx.save();
+                    ctx.translate(n.x, n.y);
+
+                    // [性能优化] 精细化发光效果：减小半径（1.15x）并降低透明度（0.15），使其精致且若隐若现
+                    if (isCenter || isHovered) {
+                        ctx.beginPath();
+                        ctx.arc(0, 0, currentR * 1.15, 0, Math.PI * 2); // 半径倍率从 1.35 降低到 1.15
+                        ctx.fillStyle = THEME.accent;
+                        ctx.globalAlpha = 0.15; // 透明度从 0.25 降低到 0.15，更通透
+                        ctx.fill();
+                        ctx.globalAlpha = 1.0;  // 恢复透明度供后续节点使用
+                    }
+
+                    // [修复3] 规范裁剪路径：必须保持路径开口状态执行 ctx.clip()
+                    ctx.beginPath();
+                    ctx.arc(0, 0, currentR, 0, Math.PI * 2);
+
+                    if (n.image && imageCache[n.image] && imageCache[n.image]._cachedAvatar) {
+                        ctx.globalAlpha = isUnrelated ? 0.15 : 1;
+                        // [性能优化] 优先级2：直接绘制预先缓存好的离屏画布，彻底消灭 ctx.clip()
+                        ctx.drawImage(imageCache[n.image]._cachedAvatar, -currentR, -currentR, currentR * 2, currentR * 2);
+                        
+                        ctx.lineWidth = (isCenter || isHovered) ? 3 : 2;
+                        ctx.strokeStyle = (isCenter || isHovered) ? THEME.accent : THEME.border;
+                        ctx.stroke(); // 盖上圆形边框
+                    } else {
+                        // [修复] 1. 先用 100% 不透明的面板背景色打个底，彻底挡住下方的连线
+                        ctx.globalAlpha = 1;
+                        ctx.fillStyle = THEME.bgPanel;
+                        ctx.fill();
+
+                        // 2. 然后再按照原来的透明度盖上主题色，保持原有的色彩质感
+                        ctx.fillStyle = n.color;
+                        ctx.globalAlpha = isUnrelated ? 0.05 : 0.2;
+                        ctx.fill();
+                        
+                        ctx.globalAlpha = isUnrelated ? 0.15 : 1;
+                        ctx.lineWidth = (isCenter || isHovered) ? 3 : 2;
+                        ctx.strokeStyle = (isCenter || isHovered) ? THEME.accent : n.color;
+                        ctx.stroke();
+                        
+                        // 首字母
+                        ctx.fillStyle = THEME.textMain;
+                        ctx.font = `bold ${currentR * 0.5}px sans-serif`;
+                        ctx.shadowBlur = 0; // 确保文字不带模糊阴影
+                        // [修复] Canvas 配合 textBaseline='middle' 时，Y轴偏移量给个 1~2px 视觉上最完美居中
+                        ctx.fillText(n.label.charAt(0), 0, 2);
+                    }
+
+                    // 底部名字标签 (同样使用极速的 strokeText 描边代替 shadowBlur)
+                    ctx.shadowBlur = 0;
+                    ctx.globalAlpha = isUnrelated ? 0.15 : 1;
+                    ctx.font = `bold ${isCenter || isHovered ? 16 : 14}px sans-serif`;
+                    
+                    ctx.lineWidth = 4;
+                    ctx.strokeStyle = THEME.bgPanel;
+                    ctx.strokeText(n.label, 0, currentR + 18); // 纯黑描边兜底
+                    
+                    ctx.fillStyle = THEME.textMain;
+                    ctx.fillText(n.label, 0, currentR + 18); // 亮色文字
+
+                    ctx.restore();
+                });
+
+                ctx.restore();
+            };
+
+            const physicsTick = () => {
+                // [终极修复] 使用 isConnected 完美穿透 Shadow DOM，准确判断画布存活状态
+                if (!canvas.isConnected) {
+                    isPhysicsRunning = false;
+                    return;
+                }
+                if (!isPhysicsRunning) return;
+                let totalEnergy = 0;
+                const nodesArr = Object.values(nodeElMap);
+
+                // --- [核心升级] 引入空间划分 (Spatial Partitioning) ---
+                // 将无限宇宙划分为 600x600 的区块，时间复杂度从 O(N^2) 降至 O(N*K)
+                const CELL_SIZE = 600;
+                const grid = new Map();
+                
+                for (let i = 0; i < nodesArr.length; i++) {
+                    const n = nodesArr[i];
+                    n._idx = i; // 附加索引以避免重复计算
+                    const cx = Math.floor(n.x / CELL_SIZE);
+                    const cy = Math.floor(n.y / CELL_SIZE);
+                    const key = `${cx},${cy}`;
+                    if (!grid.has(key)) grid.set(key, []);
+                    grid.get(key).push(n);
+                }
+
+                for (let i = 0; i < nodesArr.length; i++) {
+                    const n1 = nodesArr[i];
+                    const cx = Math.floor(n1.x / CELL_SIZE);
+                    const cy = Math.floor(n1.y / CELL_SIZE);
+                    
+                    // 遍历自身及周围 8 个相邻区块
+                    for (let ox = -1; ox <= 1; ox++) {
+                        for (let oy = -1; oy <= 1; oy++) {
+                            const neighbors = grid.get(`${cx + ox},${cy + oy}`);
+                            if (!neighbors) continue;
+                            
+                            for (let j = 0; j < neighbors.length; j++) {
+                                const n2 = neighbors[j];
+                                // 利用 _idx 单向计算一次，彻底避免双倍开销和自斥
+                                if (n1._idx >= n2._idx) continue;
+
+                                // [TOP 1 优化: 物理剔除] 聚焦模式下，如果两个节点都不是焦点及一跳邻居，直接跳过斥力计算
+                                if (focusedNodeId) {
+                                    const n1Active = n1.id === focusedNodeId || focusedNeighbors.has(n1.id);
+                                    const n2Active = n2.id === focusedNodeId || focusedNeighbors.has(n2.id);
+                                    if (!n1Active && !n2Active) continue;
+                                }
+                                
+                                let dx = n1.x - n2.x; let dy = n1.y - n2.y;
+                                let distSq = dx * dx + dy * dy;
+                                
+                                if (distSq > PHYSICS.MAX_DISTANCE_SQ) continue;
+                                if (distSq < 100) { dx += (Math.random() - 0.5) * 10; dy += (Math.random() - 0.5) * 10; distSq = 100; }
+                                
+                                const SOFTENING = 400; // [优化] 引力软化常数，防止距离过近时分母趋近0导致斥力爆炸
+                                const force = PHYSICS.REPULSION / (distSq + SOFTENING);
+                                const dist = Math.sqrt(distSq);
+                                const fx = (dx / dist) * force; const fy = (dy / dist) * force;
+
+                                if (!n1.fixed) { n1.vx += fx; n1.vy += fy; }
+                                if (!n2.fixed) { n2.vx -= fx; n2.vy -= fy; }
+                            }
+                        }
+                    }
+                }
+
+                edges.forEach(edge => {
+                    const s = nodeElMap[edge.source], t = nodeElMap[edge.target];
+                    if (!s || !t) return;
+                    
+                    if (focusedNodeId) {
+                        const sIsFocus = s.id === focusedNodeId, tIsFocus = t.id === focusedNodeId;
+                        const sIsNeighbor = focusedNeighbors.has(s.id), tIsNeighbor = focusedNeighbors.has(t.id);
+                        if (!sIsFocus && !tIsFocus && (!sIsNeighbor || !tIsNeighbor)) return;
+                    }
+
+                    let dx = t.x - s.x; let dy = t.y - s.y;
+                    let dist = Math.sqrt(dx * dx + dy * dy) || 1;
+                    const force = PHYSICS.SPRING_TENSION * (dist - PHYSICS.IDEAL_LENGTH);
+                    const fx = (dx / dist) * force; const fy = (dy / dist) * force;
+                    if (!s.fixed) { s.vx += fx; s.vy += fy; }
+                    if (!t.fixed) { t.vx -= fx; t.vy -= fy; }
+                });
+
+                const pinnedNodeId = getPinnedRelationCenter();
+                nodesArr.forEach(n => {
+                    if (!n.fixed) {
+                        if (focusedNodeId) {
+                            if (n.id === focusedNodeId) {
+                                n.vx += (logicalCx - n.x) * 0.08; n.vy += (logicalCy - n.y) * 0.08;
+                            } else if (focusedNeighbors.has(n.id)) {
+                                n.vx += (logicalCx - n.x) * 0.002; n.vy += (logicalCy - n.y) * 0.002;
+                            } else {
+                                // [修复隐形墙] 允许无关节点(如前任中心点)受斥力被正常挤走，而不是变成一块冻结的石头
+                                n.vx += (logicalCx - n.x) * 0.0002; 
+                                n.vy += (logicalCy - n.y) * 0.0002;
+                            }
+                        } else {
+                            if (pinnedNodeId && n.id === pinnedNodeId) {
+                                n.vx += (logicalCx - n.x) * 0.08; 
+                                n.vy += (logicalCy - n.y) * 0.08;
+                            } else {
+                                n.vx += (logicalCx - n.x) * PHYSICS.CENTER_GRAVITY;
+                                n.vy += (logicalCy - n.y) * PHYSICS.CENTER_GRAVITY;
+                            }
+                        }
+                        n.vx *= PHYSICS.FRICTION; n.vy *= PHYSICS.FRICTION;
+                        n.vx = Math.max(-30, Math.min(30, n.vx));
+                        n.vy = Math.max(-30, Math.min(30, n.vy));
+                        n.x += n.vx; n.y += n.vy;
+                        totalEnergy += Math.abs(n.vx) + Math.abs(n.vy);
+                    }
+                });
+
+                draw(); // 每一帧结算后立即重绘画布
+
+                if (totalEnergy < PHYSICS.MIN_ENERGY && !focusedNodeId && !hoveredNodeId) {
+                    isPhysicsRunning = false;
+                } else {
+                    physicsRafId = requestAnimationFrame(physicsTick);
+                }
+            };
+
+            const startPhysics = () => { if (!isPhysicsRunning) { isPhysicsRunning = true; physicsTick(); } };
+            startPhysics();
+
+            // [修复] 生成唯一命名空间，防止同时存在多个画布时，全局事件被互相覆盖
+            const uniqueNs = '.acu_rel_' + Math.random().toString(36).substring(2, 8);
+
+            // [新增] 监听主题切换，瞬间更新 Canvas 内部配色字典并重绘
+            $(window).off('acu_theme_updated' + uniqueNs).on('acu_theme_updated' + uniqueNs, () => {
+                requestAnimationFrame(() => {
+                    THEME.textMain = $wrapper.css('--acu-text-main') || '#eee';
+                    THEME.textSub = $wrapper.css('--acu-text-sub') || '#aaa';
+                    THEME.accent = $wrapper.css('--acu-accent') || '#6a5acd';
+                    THEME.bgPanel = $wrapper.css('--acu-bg-panel') || '#222';
+                    THEME.border = $wrapper.css('--acu-border') || '#555';
+                    if (!isPhysicsRunning) draw(); // 如果球停了，强制推一帧重绘
+                });
+            });
+
+            // [新增] 监听头像更新事件，瞬间局部重绘，不打断正在运动的物理引擎
+            $(window).off('acu_avatar_updated' + uniqueNs).on('acu_avatar_updated' + uniqueNs, (e, data) => {
+                if (nodeElMap[data.char]) {
+                    nodeElMap[data.char].image = data.image; // 更新内存数据
+                    if (data.image) {
+                        const img = new Image();
+                        img.onload = () => { 
+                            const offCanvas = document.createElement('canvas');
+                            const dpr = window.devicePixelRatio || 1;
+                            const size = 84;
+                            offCanvas.width = size * dpr;
+                            offCanvas.height = size * dpr;
+                            const offCtx = offCanvas.getContext('2d');
+                            offCtx.scale(dpr, dpr);
+                            offCtx.beginPath();
+                            offCtx.arc(42, 42, 42, 0, Math.PI * 2);
+                            offCtx.clip();
+                            offCtx.drawImage(img, 0, 0, size, size);
+                            img._cachedAvatar = offCanvas;
+                            
+                            if (!isPhysicsRunning) draw(); 
+                        }; // 图片加载并缓存完瞬间画上去
+                        img.src = data.image;
+                        imageCache[data.image] = img;
+                    } else {
+                        if (!isPhysicsRunning) draw(); // 如果是删除头像，直接重绘
+                    }
+                }
+            });
+
+            let cameraRafId = null;
+            const smoothCameraTo = (targetX, targetY, targetK) => {
+                if (cameraRafId) cancelAnimationFrame(cameraRafId);
+                const startX = transform.x, startY = transform.y, startK = transform.k;
+                let frame = 0; const totalFrames = 35; 
+                const animate = () => {
+                    frame++;
+                    const p = frame / totalFrames;
+                    const ease = 1 - Math.pow(1 - p, 3);
+                    transform.x = startX + (targetX - startX) * ease;
+                    transform.y = startY + (targetY - startY) * ease;
+                    transform.k = startK + (targetK - startK) * ease;
+                    draw();
+                    if (frame < totalFrames) {
+                        cameraRafId = requestAnimationFrame(animate);
+                    } else {
+                        cameraRafId = null;
+                    }
+                };
+                animate();
+            };
+
+            const toggleFocus = (id) => {
+                if (id !== null && focusedNodeId === id) {
+                    if (typeof showCharacterProfile === 'function') showCharacterProfile(id);
+                    return; 
+                }
+
+                if (id === null) {
+                    focusedNodeId = null; focusedNeighbors.clear();
+                    
+                    // [视角优化] 与 initFitView 保持完全一致的留白算法
+                    const nodesCount = Object.keys(nodeElMap).length;
+                    const expectedRadius = Math.max(300, 150 + Math.sqrt(nodesCount) * 90);
+                    const PADDING_FACTOR = 0.75;
+                    
+                    const scaleX = ((width / 2) / expectedRadius) * PADDING_FACTOR;
+                    const scaleY = (((height - visualOffsetY) / 2) / expectedRadius) * PADDING_FACTOR;
+                    
+                    // 同样应用最小缩放底线
+                    const isMobile = width < 768;
+                    const MIN_READABLE_SCALE = isMobile ? 0.35 : 0.25;
+                    let finalScale = Math.min(scaleX, scaleY);
+                    finalScale = Math.max(MIN_READABLE_SCALE, Math.min(1.2, finalScale));
+                    
+                    smoothCameraTo(width / 2 - logicalCx * finalScale, height / 2 - logicalCy * finalScale - visualOffsetY, finalScale);
+                } else {
+                    focusedNodeId = id; focusedNeighbors.clear();
+                    edges.forEach(e => {
+                        if (e.source === id) focusedNeighbors.add(e.target);
+                        if (e.target === id) focusedNeighbors.add(e.source);
+                    });
+                    const requiredLogicalSize = 500 + focusedNeighbors.size * 35;
+                    const autoScale = Math.min(width / requiredLogicalSize, height / requiredLogicalSize) * 1.0;
+                    const finalScale = Math.max(0.25, Math.min(1.5, autoScale)); 
+                    smoothCameraTo(width / 2 - logicalCx * finalScale, height / 2 - logicalCy * finalScale - visualOffsetY, finalScale);
+                }
+                startPhysics(); 
+            };
+
+            // --- Canvas 原生交互检测 ---
+            let isDragging = false, isPinching = false, isDragMoved = false;
+            let draggedNode = null;
+            let startX = 0, startY = 0, startTx = 0, startTy = 0;
+            let lastPinchDist = 0;
+            let pinchRect = null; // 缓存缩放时的画布边界
+
+            // [性能优化] 节流高频的交互重绘，消除缩放与拖拽卡顿
+            let drawRafId = null;
+            const fastDraw = () => {
+                if (isPhysicsRunning) return; // 如果球还在动，物理引擎会自己画
+                if (!drawRafId) {
+                    drawRafId = requestAnimationFrame(() => {
+                        draw();
+                        drawRafId = null;
+                    });
+                }
+            };
+
+            const getTouchDist = (t) => Math.hypot(t[1].clientX - t[0].clientX, t[1].clientY - t[0].clientY);
+            
+            // 将鼠标屏幕坐标转化为 Canvas 宇宙物理坐标，并判定命中了哪个球
+            const getNodeAt = (clientX, clientY) => {
+                const rect = canvas.getBoundingClientRect();
+                const mx = (clientX - rect.left - transform.x) / transform.k;
+                const my = (clientY - rect.top - transform.y) / transform.k;
+                const rSq = 42 * 42;
+                for (let key in nodeElMap) {
+                    const n = nodeElMap[key];
+                    if ((n.x - mx)**2 + (n.y - my)**2 <= rSq) return n;
+                }
+                return null;
+            };
+
+            $(canvas).on('mousemove.acu_rel', (e) => {
+                if (draggedNode) {
+                    e.preventDefault();
+                    const rect = canvas.getBoundingClientRect();
+                    draggedNode.x = (e.clientX - rect.left - transform.x) / transform.k;
+                    draggedNode.y = (e.clientY - rect.top - transform.y) / transform.k;
+                    isDragMoved = true;
+                    startPhysics();
+                } else if (isDragging) {
+                    e.preventDefault();
+                    if (Math.abs(e.clientX - startX) > 3 || Math.abs(e.clientY - startY) > 3) isDragMoved = true;
+                    transform.x = startTx + (e.clientX - startX);
+                    transform.y = startTy + (e.clientY - startY);
+                    fastDraw(); // [优化] 使用节流重绘
+                } else {
+                    // Hover 侦测：模拟 CSS 的 :hover
+                    const targetNode = getNodeAt(e.clientX, e.clientY);
+                    const targetId = targetNode ? targetNode.id : null;
+                    if (hoveredNodeId !== targetId) {
+                        hoveredNodeId = targetId;
+                        canvas.style.cursor = targetId ? 'pointer' : 'grab';
+                        fastDraw(); // [优化] 使用节流重绘
+                    }
+                }
+            });
+
+            $(canvas).on('mousedown.acu_rel', (e) => {
+                if (e.button !== 0) return;
+                e.preventDefault();
+                startX = e.clientX; startY = e.clientY;
+                startTx = transform.x; startTy = transform.y;
+                isDragMoved = false;
+
+                const targetNode = getNodeAt(e.clientX, e.clientY);
+                if (targetNode) {
+                    draggedNode = targetNode;
+                    draggedNode.fixed = true; draggedNode.vx = 0; draggedNode.vy = 0;
+                    startPhysics();
+                } else {
+                    isDragging = true; canvas.style.cursor = 'grabbing';
+                }
+            });
+
+            $(window).on('mouseup.acu_rel', () => {
+                if (draggedNode) {
+                    draggedNode.fixed = false;
+                    if (!isDragMoved) {
+                        if (isSelectingPin) {
+                            savePinnedRelationCenter(draggedNode.id);
+                            AcuToast.success(`✅ 已将【${draggedNode.label}】固定为中心`);
+                            isSelectingPin = false;
+                            updatePinBtnStyle();
+                            canvas.style.cursor = 'grab';
+                        } else {
+                            toggleFocus(draggedNode.id);
+                        }
+                    }
+                    draggedNode = null;
+                    startPhysics();
+                } else if (isDragging && !isDragMoved) {
+                    if (focusedNodeId) { toggleFocus(null); } else if (typeof closePanel === 'function') { isPhysicsRunning = false; cancelAnimationFrame(physicsRafId); closePanel(); }
+                }
+                isDragging = false;
+                if (!hoveredNodeId) canvas.style.cursor = 'grab';
+            });
+            
+            // 移动端 Touch 适配
+            canvas.addEventListener('touchstart', (e) => {
+                if (e.touches.length === 1) {
+                    e.preventDefault();
+                    const touch = e.touches[0];
+                    startX = touch.clientX; startY = touch.clientY;
+                    startTx = transform.x; startTy = transform.y;
+                    isDragMoved = false;
+                    const targetNode = getNodeAt(touch.clientX, touch.clientY);
+                    if (targetNode) {
+                        draggedNode = targetNode; draggedNode.fixed = true; draggedNode.vx = 0; draggedNode.vy = 0; startPhysics();
+                    } else { isDragging = true; }
+                } else if (e.touches.length === 2) {
+                    e.preventDefault();
+                    isPinching = true; isDragging = false; draggedNode = null; lastPinchDist = getTouchDist(e.touches);
+                    pinchRect = canvas.getBoundingClientRect(); // [优化] 缓存在按下的瞬间，彻底干掉高频测距布局抖动
+                }
+            }, { passive: false });
+
+            canvas.addEventListener('touchmove', (e) => {
+                if (isPinching && e.touches.length === 2) {
+                    e.preventDefault();
+                    const dist = getTouchDist(e.touches);
+                    const center = { x: (e.touches[0].clientX + e.touches[1].clientX)/2, y: (e.touches[0].clientY + e.touches[1].clientY)/2 };
+                    const scaleDelta = dist / lastPinchDist;
+                    const newK = Math.max(0.1, Math.min(5, transform.k * scaleDelta));
+                    const rect = pinchRect || canvas.getBoundingClientRect(); // [优化] 提取缓存
+                    const cx = center.x - rect.left; const cy = center.y - rect.top;
+                    transform.x = cx - (cx - transform.x) * (newK / transform.k);
+                    transform.y = cy - (cy - transform.y) * (newK / transform.k);
+                    transform.k = newK;
+                    lastPinchDist = dist;
+                    fastDraw(); // [优化] 使用节流重绘
+                } else if (e.touches.length === 1) {
+                    e.preventDefault();
+                    const touch = e.touches[0];
+                    if (draggedNode) {
+                        const rect = canvas.getBoundingClientRect();
+                        draggedNode.x = (touch.clientX - rect.left - transform.x) / transform.k;
+                        draggedNode.y = (touch.clientY - rect.top - transform.y) / transform.k;
+                        isDragMoved = true; startPhysics();
+                    } else if (isDragging) {
+                        if (Math.abs(touch.clientX - startX) > 3 || Math.abs(touch.clientY - startY) > 3) isDragMoved = true;
+                        transform.x = startTx + (touch.clientX - startX);
+                        transform.y = startTy + (touch.clientY - startY);
+                        fastDraw(); // [优化] 使用节流重绘
+                    }
+                }
+            }, { passive: false });
+
+            canvas.addEventListener('touchend', (e) => {
+                if (draggedNode) {
+                    draggedNode.fixed = false; 
+                    if (!isDragMoved) {
+                        if (isSelectingPin) {
+                            savePinnedRelationCenter(draggedNode.id);
+                            AcuToast.success(`✅ 已将【${draggedNode.label}】固定为中心`);
+                            isSelectingPin = false;
+                            updatePinBtnStyle();
+                            canvas.style.cursor = 'grab';
+                        } else {
+                            toggleFocus(draggedNode.id);
+                        }
+                    }
+                    draggedNode = null; startPhysics();
+                } else if (isDragging && !isDragMoved && !isPinching) {
+                    if (focusedNodeId) { toggleFocus(null); } else if (typeof closePanel === 'function') { isPhysicsRunning = false; cancelAnimationFrame(physicsRafId); closePanel(); }
+                }
+                if (e.touches.length === 0) { isDragging = false; isPinching = false; lastPinchDist = 0; } 
+                else if (e.touches.length === 1 && isPinching) {
+                    isPinching = false; startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+                    startTx = transform.x; startTy = transform.y; isDragging = true; isDragMoved = true;
+                }
+            }, { passive: true });
+
+            canvas.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const newK = Math.max(0.1, Math.min(5, transform.k * (e.deltaY > 0 ? 0.9 : 1.1)));
+                const rect = canvas.getBoundingClientRect();
+                const mx = e.clientX - rect.left; const my = e.clientY - rect.top;
+                transform.x = mx - (mx - transform.x) * (newK / transform.k);
+                transform.y = my - (my - transform.y) * (newK / transform.k);
+                transform.k = newK;
+                fastDraw(); // [优化] 使用节流重绘
+            }, { passive: false });
+
+            // 中心锁定按钮绑定
+            const $pinBtn = $wrapper.find('#acu-rel-pin-center-embedded').length ?
+                            $wrapper.find('#acu-rel-pin-center-embedded') :
+                            $wrapper.closest('.acu-data-display').find('#acu-rel-pin-center');
+                            
+            $pinBtn.off('click').on('click', () => {
+                const pinned = getPinnedRelationCenter();
+                if (pinned && !isSelectingPin) {
+                    savePinnedRelationCenter(null);
+                    AcuToast.info('已解除中心节点固定');
+                    updatePinBtnStyle();
+                    startPhysics(); 
+                } else {
+                    isSelectingPin = !isSelectingPin;
+                    if (isSelectingPin) {
+                        AcuToast.info('🎯 请点击下方的一个角色节点将其固定在中心');
+                        canvas.style.cursor = 'crosshair';
+                    } else {
+                        canvas.style.cursor = 'grab';
+                    }
+                    updatePinBtnStyle();
+                }
+            });
+
+            // 重置按钮绑定
+            const $resetBtn = $wrapper.find('#acu-rel-reset-embedded').length ?
+                              $wrapper.find('#acu-rel-reset-embedded') :
+                              $wrapper.closest('.acu-data-display').find('#acu-rel-reset');
+                              
+            $resetBtn.off('click').on('click', () => {
+                // 1. 恢复视角到全局中心
+                toggleFocus(null); 
+                
+                // 2. [优化] 根据节点数量动态计算“舒适”的散开半径，避免空间划分算法失效
+                const nodesArr = Object.values(nodeElMap);
+                const scatterRadius = Math.max(300, 150 + Math.sqrt(nodesArr.length) * 80);
+
+                // 3. [优化] 使用极坐标（圆盘分布）代替原本的正方形拥挤分布
+                nodesArr.forEach(n => {
+                    const radius = Math.sqrt(Math.random()) * scatterRadius; 
+                    const angle = Math.random() * Math.PI * 2; 
+
+                    n.x = logicalCx + Math.cos(angle) * radius;
+                    n.y = logicalCy + Math.sin(angle) * radius;
+
+                    // 赋予轻微反向初速度，抵消部分爆开斥力，产生水母舒展般的自然呼吸感
+                    n.vx = -Math.cos(angle) * 2; 
+                    n.vy = -Math.sin(angle) * 2; 
+                });
+                
+                // 4. 重新启动物理引擎
+                startPhysics();
+            });
+
+            const $closeBtn = $wrapper.closest('.acu-data-display').find('.acu-close-btn');
+            $closeBtn.off('click.acu_phys').on('click.acu_phys', () => {
+                isPhysicsRunning = false; cancelAnimationFrame(physicsRafId);
+                $(window).off('mouseup.acu_rel'); // 防内存泄漏
+                // [修复] 彻底清理专属的全局监听器，防止切换标签页时内存泄漏
+                $(window).off('acu_theme_updated' + uniqueNs).off('acu_avatar_updated' + uniqueNs);
+                if (typeof closePanel === 'function') closePanel();
+            });
+            
+        }); 
+    };
+
+
+    
+// ============================================================
+    // [增强版] 智能日历模块 (支持 中文数字 + 阿拉伯数字 + 修仙纪元)
+    // ============================================================
+    const CalendarModule = {
+        getEventScore: (t) => {
+            if(t.includes('世界')) return 4;
+            if(t.includes('大型')) return 3;
+            if(t.includes('个人')) return 2;
+            return 1;
+        },
+        getEventClass: (t) => {
+            if (t.includes('世界')) return 'acu-evt-world';
+            if (t.includes('大型')) return 'acu-evt-large';
+            if (t.includes('个人')) return 'acu-evt-personal';
+            return 'acu-evt-char';
+        },
+        // [核心升级] 统一数字转换器：将中文数字转为阿拉伯数字
+        // logic: 年份通常是直读(二零二四 -> 2024)，月日通常是数值(二十五 -> 25)
+        cnToInt: (str, isYear = false) => {
+            if (!str) return 0;
+            const s = String(str).trim();
+            // 如果已经是纯阿拉伯数字，直接返回
+            if (/^\d+$/.test(s)) return parseInt(s, 10);
+
+            const map = { '零':0, '〇':0, '一':1, '二':2, '三':3, '四':4, '五':5, '六':6, '七':7, '八':8, '九':9 };
+            
+            // 模式1：年份直读 (例如：二零二四 -> 2024)
+            if (isYear) {
+                return parseInt(s.split('').map(c => map[c] !== undefined ? map[c] : c).join(''), 10) || 0;
+            }
+
+            // 模式2：月日数值 (例如：十二 -> 12, 二十五 -> 25, 三十 -> 30)
+            let val = 0;
+            // 简单处理 "十" 的逻辑
+            if (s === '十') return 10;
+            if (s.startsWith('十')) { // 十五 -> 15
+                return 10 + (map[s[1]] || 0);
+            }
+            if (s.endsWith('十')) { // 二十 -> 20
+                return (map[s[0]] || 0) * 10;
+            }
+            if (s.includes('十')) { // 二十五 -> 25
+                const parts = s.split('十');
+                return (map[parts[0]] || 0) * 10 + (map[parts[1]] || 0);
+            }
+            // 单个数字 (五 -> 5)
+            return map[s] || parseInt(s) || 0;
+        },
+
+        // [核心升级] 增强版时间解析器
+        parseTime: (str) => {
+            if (!str) return null;
+            let raw = String(str).trim();
+
+            // 1. 尝试标准格式 YYYY-MM-DD
+            let match = raw.match(/(\d{4})[-\/年](\d{1,2})[-\/月](\d{1,2})/);
+            if (match) {
+                return { year: parseInt(match[1]), month: parseInt(match[2]), day: parseInt(match[3]) };
+            }
+
+            // 2. 尝试中文格式 (支持 "二零二四年二月十五日" 或 "二〇二四年十二月一日")
+            // 正则说明：匹配 [中文数字或阿拉伯数字] + 年/月/日
+            match = raw.match(/([0-9零〇一二三四五六七八九十]+)\s*年\s*([0-9零〇一二三四五六七八九十]+)\s*月\s*([0-9零〇一二三四五六七八九十]+)[日号]?/);
+            
+            if (match) {
+                return { 
+                    year: CalendarModule.cnToInt(match[1], true),  // 年份：直读模式
+                    month: CalendarModule.cnToInt(match[2], false), // 月份：数值模式
+                    day: CalendarModule.cnToInt(match[3], false)    // 日期：数值模式
+                };
+            }
+
+            return null;
+        },
+
+        render: (year, month, currentDay, events = []) => {
+            const jsMonth = month - 1; 
+            const firstDayDate = new Date();
+            firstDayDate.setFullYear(year, jsMonth, 1);
+            const firstDayWeek = firstDayDate.getDay(); 
+            const lastDayDate = new Date();
+            lastDayDate.setFullYear(year, month, 0);
+            const daysInMonth = lastDayDate.getDate();
+            const weekNames = ['日', '一', '二', '三', '四', '五', '六'];
+            
+            // 容错：如果年份解析失败(NaN)，默认显示当前年份
+            const safeYear = isNaN(year) ? new Date().getFullYear() : year;
+            const safeMonth = isNaN(month) ? new Date().getMonth() + 1 : month;
+
+            let html = `<div class="acu-cal-header">
+                <div class="acu-cal-title">
+                    <i class="fa-solid fa-chevron-left acu-cal-nav-btn" id="cal-prev" title="上个月"></i>
+                    <span>${safeYear}年 ${safeMonth}月</span>
+                    <i class="fa-solid fa-chevron-right acu-cal-nav-btn" id="cal-next" title="下个月"></i>
+                </div>
+                <div class="acu-cal-week-row">${weekNames.map(w => `<span>${w}</span>`).join('')}</div>
+            </div>`;
+
+            html += `<div class="acu-cal-grid">`;
+            for (let i = 0; i < firstDayWeek; i++) html += `<div class="acu-cal-cell empty"></div>`;
+            
+            for (let d = 1; d <= daysInMonth; d++) {
+                const isToday = (currentDay !== -1 && d === currentDay);
+                // 构造日期 Key 时，统一转为阿拉伯数字格式 YYYY-MM-DD 以便匹配
+                const dateKey = `${safeYear}-${String(safeMonth).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+                
+                const dayEvents = events.filter(e => e.date === dateKey);
+                let dotHtml = '';
+                let titleText = `${safeYear}年${safeMonth}月${d}日`;
+                const evtCount = dayEvents.length;
+
+                if (evtCount > 0) {
+                    dayEvents.sort((a,b) => CalendarModule.getEventScore(b.type) - CalendarModule.getEventScore(a.type));
+                    
+                    const topEvent = dayEvents[0];
+                    let dotClass = CalendarModule.getEventClass(topEvent.type);
+                    
+                    dotHtml = `<span class="acu-event-dot ${dotClass}"></span>`;
+                    const details = dayEvents.map(e => `[${e.type.replace(/[\[\]]/g, '')}] ${e.title}: ${e.desc}`).join('\n');
+                    titleText += `\n----------------\n${details}`;
+                }
+
+                html += `<div class="acu-cal-cell ${isToday ? 'today' : ''}" data-date="${dateKey}" data-has-evt="${evtCount > 0}" title="${escapeHtml(titleText)}">${d}${dotHtml}</div>`;
+            }
+            html += `</div>`;
+            return html;
+        },
+
+        show: (timeStr) => {
+            const { $ } = getCore();
+            // 使用增强版解析
+            const date = CalendarModule.parseTime(timeStr);
+            
+            if (!date || isNaN(date.year) || isNaN(date.month)) {
+                AcuToast.warning('无法识别时间格式 (支持: 2024-01-01 或 二零二四年一月一日)');
+                return;
+            }
+
+            const currentEvents = [];
+            const rawData = cachedRawData || getTableData();
+            if (rawData) {
+                Object.values(rawData).forEach(sheet => {
+                    if (sheet.name && /日程|事件/.test(sheet.name) && sheet.content) {
+                        const headers = sheet.content[0];
+                        const dateIdx = headers.findIndex(h => /日期|Date/i.test(h));
+                        const titleIdx = headers.findIndex(h => /事件|Title|Name/i.test(h));
+                        const typeIdx = headers.findIndex(h => /类型|Type/i.test(h));
+                        const descIdx = headers.findIndex(h => /详情|描述|Desc/i.test(h));
+
+                        if (dateIdx !== -1) {
+                            sheet.content.slice(1).forEach(row => {
+                                const dStr = String(row[dateIdx] || '').trim();
+                                // 这里也要解析表格里的日期 (可能是中文)
+                                const rowDate = CalendarModule.parseTime(dStr);
+                                
+                                if (rowDate) {
+                                    // 统一转为标准格式存储
+                                    const fmtDate = `${rowDate.year}-${String(rowDate.month).padStart(2,'0')}-${String(rowDate.day).padStart(2,'0')}`;
+                                    currentEvents.push({
+                                        date: fmtDate,
+                                        title: titleIdx !== -1 ? String(row[titleIdx] || '未命名') : '事件',
+                                        type: typeIdx !== -1 ? String(row[typeIdx] || '其他').trim() : '其他',
+                                        desc: descIdx !== -1 ? String(row[descIdx] || '') : ''
+                                    });
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+
+            const allEvents = currentEvents; // 现已为纯实时数据，无历史合并
+            $('.acu-calendar-overlay').remove();
+            const config = getConfig();
+            
+            let viewYear = date.year;
+            let viewMonth = date.month;
+
+            const overlay = $(`
+                <div class="acu-calendar-overlay acu-edit-overlay">
+                    <div class="acu-calendar-dialog acu-edit-dialog acu-theme-${config.theme}">
+                        <div id="acu-cal-content-wrapper"></div> 
+                        <div class="acu-event-details">
+                            <div style="font-size:12px; color:var(--acu-text-sub); margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+                                <span>📅 <span id="acu-evt-date-title"></span></span>
+                                <span style="font-size:10px; opacity:0.7;">点击空白处收起</span>
+                            </div>
+                            <div id="acu-evt-list"></div>
+                        </div>
+                        <div style="text-align:center; padding:10px 0 0 0; margin-top:10px; border-top:1px dashed var(--acu-border);">
+                            <button class="acu-dialog-btn" id="cal-close" style="justify-content:center; width:100%;">
+                                <i class="fa-solid fa-times"></i> 关闭
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `);
+
+            $('body').append(overlay);
+
+            const updateCalendarView = () => {
+                const isCurrentMonth = (viewYear === date.year && viewMonth === date.month);
+                const html = CalendarModule.render(viewYear, viewMonth, isCurrentMonth ? date.day : -1, allEvents);
+                overlay.find('#acu-cal-content-wrapper').html(html);
+                bindCellEvents();
+                bindNavEvents();
+            };
+
+            const bindNavEvents = () => {
+                overlay.find('#cal-prev').click((e) => {
+                    e.stopPropagation();
+                    viewMonth--;
+                    if (viewMonth < 1) { viewMonth = 12; viewYear--; }
+                    overlay.find('.acu-event-details').slideUp(100);
+                    updateCalendarView();
+                });
+                overlay.find('#cal-next').click((e) => {
+                    e.stopPropagation();
+                    viewMonth++;
+                    if (viewMonth > 12) { viewMonth = 1; viewYear++; }
+                    overlay.find('.acu-event-details').slideUp(100);
+                    updateCalendarView();
+                });
+            };
+
+            const bindCellEvents = () => {
+                overlay.find('.acu-cal-cell').click(function(e) {
+                    e.stopPropagation();
+                    overlay.find('.acu-cal-cell').removeClass('selected');
+                    $(this).addClass('selected');
+
+                    const dateKey = $(this).data('date');
+                    const hasEvt = $(this).data('has-evt');
+                    const $detailPanel = overlay.find('.acu-event-details');
+                    const $list = overlay.find('#acu-evt-list');
+
+                    if (hasEvt) {
+                        const dayEvents = allEvents.filter(evt => evt.date === dateKey);
+                        dayEvents.sort((a,b) => CalendarModule.getEventScore(b.type) - CalendarModule.getEventScore(a.type));
+
+                        overlay.find('#acu-evt-date-title').text(dateKey);
+                        
+                        const listHtml = dayEvents.map(evt => {
+                            let tagClass = CalendarModule.getEventClass(evt.type);
+                            let cleanType = evt.type.replace(/[\[\]]/g, '');
+
+                            return `
+                                <div class="acu-event-item">
+                                    <div>
+                                        <span class="acu-event-tag ${tagClass}">${escapeHtml(cleanType)}</span>
+                                        <span class="acu-event-title">${escapeHtml(evt.title)}</span>
+                                    </div>
+                                    ${evt.desc ? `<div class="acu-event-desc">${escapeHtml(evt.desc)}</div>` : ''}
+                                </div>
+                            `;
+                        }).join('');
+
+                        $list.html(listHtml);
+                        $detailPanel.slideDown(200);
+                    } else {
+                        $detailPanel.slideUp(200);
+                    }
+                });
+            };
+
+            overlay.on('click', function(e) {
+                if ($(e.target).closest('.acu-calendar-dialog').length === 0) {
+                    overlay.remove();
+                } else {
+                    overlay.find('.acu-event-details').slideUp(200);
+                    overlay.find('.acu-cal-cell').removeClass('selected');
+                }
+            });
+            overlay.find('.acu-event-details').click((e) => e.stopPropagation());
+            overlay.find('#cal-close').click(() => overlay.remove());
+
+            updateCalendarView();
+        }
+    };
+
+// --- [补回] 选项栏点击事件与自动发送逻辑 ---
+const bindOptionEvents = () => {
+    const { $ } = getCore();
+    $('body').off('click.acu_opt').on('click.acu_opt', '.acu-opt-btn', async function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const config = getConfig();
+        const val = decodeURIComponent($(this).data('val'));
+
+        if (!config.clickOptionToAutoSend) {
+            const ta = $('#send_textarea');
+            if (ta.length) ta.val(val).trigger('input').trigger('change').focus();
+            return;
+        }
+
+        if (window.TavernHelper && window.TavernHelper.createChatMessages) {
+            try {
+                await window.TavernHelper.createChatMessages([{ role: 'user', message: val }], { refresh: 'affected' });
+                if (window.TavernHelper.triggerSlash) await window.TavernHelper.triggerSlash('/trigger');
+                return;
+            } catch (err) { console.warn('[ACU] TH发送失败', err); }
+        }
+
+        const ST = window.SillyTavern || window.parent?.SillyTavern;
+        if (ST && ST.executeSlashCommandsWithOptions) {
+            try {
+                const safeVal = val.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+                const sendResult = await ST.executeSlashCommandsWithOptions(`/send raw=true "${safeVal}"`);
+                if (!sendResult.isError && !sendResult.isAborted) {
+                    await ST.executeSlashCommandsWithOptions('/trigger');
+                    return;
+                }
+            } catch (err) { console.warn('[ACU] ST发送失败', err); }
+        }
+
+        const ta = $('#send_textarea');
+        if (ta.length) {
+            ta.val(val).trigger('input').trigger('change');
+            await new Promise(r => setTimeout(r, 50));
+            const sendBtn = $('#send_but').filter(':visible');
+            if (sendBtn.length) sendBtn[0].click();
+            else ta.trigger($.Event('keydown', { keyCode: 13, which: 13, bubbles: true }));
+        }
+    });
+};
+
+    // --- [核心升级] 渲染批处理 (Render Batching) ---
+    // 利用 rAF 节流，将同一事件循环内的多次重绘请求合并为一次，彻底消除连环卡顿
+    let _renderReq = null;
+    const renderInterface = () => {
+        if (_renderReq) return; 
+        _renderReq = requestAnimationFrame(() => {
+            _renderReq = null;
+            _renderInterfaceCore();
+        });
+    };
+
+    const _renderInterfaceCore = () => {
+        const { $ } = getCore();
+        
+        // [性能优化] DOM MutationObserver 已彻底移除。
+        // 现在全部依托酒馆的 TavernEvents (如 GENERATION_ENDED) 和内存校验精准控制。
+        let rawData;
+        // 【核心修复】数据库后台更新期间，强行冻结使用内存中的旧数据（cachedRawData），绝对不读取残缺的实时数据
+        if ((hasUnsavedChanges || isWaitingForDbUpdate) && cachedRawData) {
+            rawData = cachedRawData;
+} else {
+    rawData = getTableData();
+    
+    
+
+    if (rawData) {
+        cachedRawData = typeof structuredClone === 'function' 
+            ? structuredClone(rawData) 
+            : JSON.parse(JSON.stringify(rawData));
+
+        // [v8.7.1 修复] 兼容旧版快照 + 正确处理聊天切换
+        const existingSnapshot = loadSnapshot();
+        const currentCtx = getCurrentContextFingerprint();
+
+        if (!existingSnapshot) {
+            // 情况1：没有快照 → 保存新快照（首次加载建立基线）
+            console.log('[ACU] 首次加载，建立数据快照基线');
+            saveSnapshot({ ...cachedRawData, _contextId: currentCtx });
+        } else if (!existingSnapshot._contextId) {
+            // 情况2：旧版快照（无 ID）→ 打上当前上下文标记，但不覆盖数据
+            saveSnapshot({ ...existingSnapshot, _contextId: currentCtx });
+        } else if (existingSnapshot._contextId !== currentCtx) {
+            // 情况3：确认切换了聊天 → 覆盖为新数据
+            cachedRawData._contextId = currentCtx;
+            saveSnapshot(cachedRawData);
+        }
+        // 情况4：同一聊天 → 不动，保持高亮正常
+    }
+}
+
+        const $searchInput = $('.acu-search-input');
+        if ($('.acu-wrapper').length && $searchInput.is(':focus') ) {
+            if (rawData) {
+                if (!isSaving) {
+                    const currentDataHash = JSON.stringify(rawData).length.toString();
+                    if (window._acuLastDiffHash !== currentDataHash || !currentDiffMap) {
+                        currentDiffMap = generateDiffMap(rawData);
+                        window._acuLastDiffHash = currentDataHash;
+                    }
+                }
+                const tables = processJsonData(rawData);
+                const activeTab = getActiveTabState();
+                const currentTabName = activeTab && tables[activeTab] ? activeTab : null;
+
+                if (currentTabName && tables[currentTabName]) {
+                    const newHtml = renderTableContent(tables[currentTabName], currentTabName);
+                    
+                    // [T0 核心优化] 搜索过滤时同样使用原生 DOMParser，保障用户快速连续敲击键盘搜索时的丝滑度
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(`<div>${newHtml}</div>`, 'text/html');
+                    const $virtualDom = $(doc.body).children().first();
+                    
+                    $('.acu-card-grid').replaceWith($virtualDom.find('.acu-card-grid'));
+                    $('.acu-panel-title').html($virtualDom.find('.acu-panel-title').html());
+                    // [修复] 修正函数名错误，复用主事件绑定
+                    bindEvents(tables);
+                    updateSaveButtonState(); // 修复：搜索时也更新保存按钮状态
+                    return;
+
+                }
+            }
+        }
+
+        let lastScrollX = 0;
+        let lastScrollY = 0;
+        let instantInnerScrolls = {}; // 用于捕捉瞬间的内部滚动状态
+
+        const $oldContent = $('.acu-panel-content');
+        if ($oldContent.length) {
+            lastScrollX = $oldContent.scrollLeft();
+            lastScrollY = $oldContent.scrollTop();
+            
+            // 【微观修复】在 DOM 被推翻前一毫秒，瞬间抓取所有卡片及其内部容器的滚动条！
+            $oldContent.find('.acu-data-card, .acu-card-body').each(function() {
+                if (this.scrollTop > 0) {
+                    const $card = $(this).closest('.acu-data-card');
+                    const rIdx = $card.find('.acu-editable-title').data('row');
+                    if (rIdx !== undefined) {
+                        const type = $(this).hasClass('acu-card-body') ? 'body' : 'card';
+                        instantInnerScrolls[`${rIdx}-${type}`] = this.scrollTop;
+                    }
+                }
+            });
+        }
+
+        // [核心优化] 移除了 $('.acu-wrapper').remove(); 
+        // 彻底杜绝全局 DOM 销毁引起的闪烁与性能灾难
+        const tables = processJsonData(rawData || {});
+        
+        // [核心优化 1] 数据差异比对缓存 (降低 70% 的重绘计算卡顿)
+        if (isSaving) {
+            currentDiffMap = new Set();
+            window._acuLastDiffHash = null;
+        } else {
+            const currentDataHash = rawData ? JSON.stringify(rawData).length.toString() : 'empty';
+            if (window._acuLastDiffHash !== currentDataHash || !currentDiffMap) {
+                currentDiffMap = generateDiffMap(rawData);
+                window._acuLastDiffHash = currentDataHash;
+            }
+        }
+
+        const savedOrder = getSavedTableOrder();
+        let orderedNames = Object.keys(tables);
+        if (savedOrder) {
+            // [修复] 过滤时保留虚拟标签（它不在 tables 中但仍需保留）
+            orderedNames = savedOrder.filter(n => tables[n] || n === VIRTUAL_RELATIONSHIP_TAB)
+                .concat(orderedNames.filter(n => !savedOrder.includes(n)));
+        }
+        
+        const hiddenList = getHiddenTables();
+        orderedNames = orderedNames.filter(n => !hiddenList.includes(n));
+        
+        const uiCfg = getConfig();
+        if (uiCfg.showStatusBar !== false) {
+            // [新增] 如果 RPG 状态栏已开启，从顶部导航彻底剔除独立的关系网入口
+            orderedNames = orderedNames.filter(n => n !== VIRTUAL_RELATIONSHIP_TAB);
+            // 如果当前正好处于这个独立标签页，自动关掉面板，防止出现幽灵 UI
+            if (getActiveTabState() === VIRTUAL_RELATIONSHIP_TAB) saveActiveTabState(null);
+        } else {
+            // [修复] 只有未开启 RPG 状态栏，且虚拟标签未隐藏时才添加
+            if (!orderedNames.includes(VIRTUAL_RELATIONSHIP_TAB) && !hiddenList.includes(VIRTUAL_RELATIONSHIP_TAB)) {
+                orderedNames.unshift(VIRTUAL_RELATIONSHIP_TAB);
+            }
+        }
+
+        const activeTab = getActiveTabState();
+        let currentTabName = null;
+        if (activeTab === VIRTUAL_RELATIONSHIP_TAB) {
+            currentTabName = VIRTUAL_RELATIONSHIP_TAB; // 虚拟标签特殊处理
+        } else if (activeTab && tables[activeTab] && !hiddenList.includes(activeTab)) {
+            currentTabName = activeTab;
+        }
+        
+        const config = getConfig();
+        const isCollapsed = getCollapsedState();
+
+        const layoutClass = config.layout === 'vertical' ? 'acu-layout-vertical' : '';
+// 默认永远为悬浮模式
+const positionClass = 'acu-mode-fixed'; 
+
+// [新增] 自动列数 (智能填满) 逻辑
+let finalGridCols = config.gridColumns;
+    if (finalGridCols === 'auto') {
+        // 预先检查是否有“全能设置”按钮合并在网格里
+        let actionOrder = Store.get(STORAGE_KEY_ACTION_ORDER);
+        if (!actionOrder || !Array.isArray(actionOrder)) actionOrder = DEFAULT_ACTION_ORDER;
+        if (!actionOrder.includes('acu-btn-settings')) actionOrder.push('acu-btn-settings');
+
+        const isOnlySettings = actionOrder.length === 1 && actionOrder[0] === 'acu-btn-settings';
+        const shouldMergeSettings = isOnlySettings && !isEditingOrder;
+
+        // 计算总格子数 (标签数 + 可能存在的设置按钮)
+        const n = orderedNames.length + (shouldMergeSettings ? 1 : 0);
+
+        if (n <= 4) {
+                // 4个以内：有多少显示多少 (如果是1个就占满1列)
+                finalGridCols = Math.max(1, n);
+            } else {
+            // 超过4个：计算 3列 vs 4列 的空缺情况
+            const empty3 = (Math.ceil(n / 3) * 3) - n; // 3列时的空缺
+            const empty4 = (Math.ceil(n / 4) * 4) - n; // 4列时的空缺
+
+            // 逻辑：如果4列的空缺更少或相等，优先用4列 (扁度优先)；否则用3列
+            // 例如 n=7: 3列缺2, 4列缺1 -> 选4列
+            // 例如 n=8: 3列缺1, 4列缺0 -> 选4列
+            // 例如 n=6: 3列缺0, 4列缺2 -> 选3列
+            finalGridCols = (empty4 <= empty3) ? 4 : 3;
+        }
+    }
+
+        // [修复] 将 isNavHidden 的声明提前，解决暂时性死区(TDZ)导致的面板消失 Bug
+        const isNavHidden = Store.get('acu_hide_nav_only', false);
+
+        let html = `<div class="acu-wrapper ${positionClass} acu-theme-${config.theme} ${layoutClass}" style="--acu-card-width:${config.cardWidth}px; --acu-font-size:${config.fontSize}px; --acu-grid-cols:${finalGridCols}">`;
+
+        // [修改开始] 读取隐藏状态 (已提前声明)
+        const hideStyle = isNavHidden ? 'display:none !important;' : '';
+
+        if (isCollapsed) {
+            const colStyleClass = `acu-col-${config.collapseStyle || 'bar'}`;
+            // 如果处于隐藏模式，连收起的小条也隐藏
+            const collapseStyle = isNavHidden ? 'display:none !important;' : '';
+            const alignClass = `acu-align-${config.collapseAlign || 'right'}`;
+            html += `
+                <div class="acu-expand-trigger ${colStyleClass} ${alignClass}" id="acu-btn-expand" style="${collapseStyle}">
+                    <i class="fa-solid fa-table"></i> <span>数据库助手 (${Object.keys(tables).length})</span>
+                </div>
+            `;
+        } else {
+            // [修改] 读取保存的高度
+            const savedHeight = (currentTabName) ? getTableHeights()[currentTabName] : null;
+    
+            // [修复] 虚拟标签渲染关系图，普通标签渲染表格
+            const panelContent = currentTabName === VIRTUAL_RELATIONSHIP_TAB 
+                ? renderRelationshipPanel() 
+                : (currentTabName ? renderTableContent(tables[currentTabName], currentTabName) : '');
+            
+            // [新增] 关系网模式标记
+            const isRelationshipMode = currentTabName === VIRTUAL_RELATIONSHIP_TAB;
+
+            html += `
+                <div class="acu-data-display ${currentTabName ? 'visible' : ''} ${savedHeight ? 'acu-manual-mode' : ''} ${isRelationshipMode ? 'acu-relationship-mode' : ''}" id="acu-data-area" style="${savedHeight ? 'height:'+savedHeight+'px;' : ''} ${hideStyle}">
+                    ${panelContent}
+                </div>
+                `;
+
+            // [修复] 强制写入网格列数，防止浏览器初次渲染时卡成单列
+            // PC端(>768px) CSS使用了 display:flex !important，会自动忽略这个 grid 属性，所以很安全
+            const gridFixStyle = `grid-template-columns: repeat(${finalGridCols}, 1fr);`;
+
+            html += `
+                <div class="acu-nav-container ${config.actionsPosition === 'top' ? 'acu-pos-top' : ''}" id="acu-nav-bar" style="${hideStyle} ${gridFixStyle}">
+                    <div class="acu-order-controls" id="acu-order-hint"><i class="fa-solid fa-arrows-alt"></i> 拖动调整顺序，完成后点击保存退出</div>
+            `;
+
+            // [新增] 在渲染标签前，获取当前后端记录的“已选中表”
+            let selectedUpdateKeys = [];
+            const api = getCore().getDB();
+            if (api && api.getManualSelectedTables) {
+                const selInfo = api.getManualSelectedTables();
+                let keys = selInfo.selectedTables || [];
+                // 【核心防御】获取当前有效表格的总数
+                const totalKeys = Object.values(tables).map(t => t.key).filter(k => k);
+                
+                // 只有当后端明确标记被选择，且选中的数量 小于 表格总数时，前端才挂上角标
+                // 这样可以防止后端默认下发全选数组导致前端难看
+                if (selInfo.hasManualSelection && keys.length > 0 && keys.length < totalKeys.length) {
+                    selectedUpdateKeys = keys;
+                }
+            }
+
+            // [修改] 渲染表格标签，注入数据与选中状态
+            orderedNames.forEach(name => {
+                const iconClass = getIconForTableName(name);
+                const isActive = currentTabName === name ? 'active' : '';
+                const tableKey = tables[name] ? tables[name].key : ''; 
+                const isUpdateSelected = tableKey && selectedUpdateKeys.includes(tableKey) ? 'acu-update-selected' : '';
+                html += `<button class="acu-nav-btn ${isActive} ${isUpdateSelected}" data-table="${escapeHtml(name)}" data-key="${tableKey}"><i class="fa-solid ${iconClass}"></i><span>${escapeHtml(name)}</span></button>`;
+            });
+
+            let actionOrder = Store.get(STORAGE_KEY_ACTION_ORDER);
+            if (!actionOrder || !Array.isArray(actionOrder)) actionOrder = DEFAULT_ACTION_ORDER;
+
+            // [新增] 强制保护逻辑：如果设置按钮丢了，强制加回来
+            if (!actionOrder.includes('acu-btn-settings')) {
+                actionOrder.push('acu-btn-settings');
+            }
+
+            // [新增] 判断是否触发“极简设置模式” (场上只有设置按钮 + 非编辑模式)
+            const isOnlySettings = actionOrder.length === 1 && actionOrder[0] === 'acu-btn-settings';
+            const shouldMergeSettings = isOnlySettings && !isEditingOrder;
+
+            if (shouldMergeSettings) {
+    html += `<button class="acu-nav-btn acu-merged-settings" id="acu-btn-settings" style="color:var(--acu-text-sub); border:1px dashed var(--acu-border);"><i class="fa-solid fa-cog"></i><span>全能设置</span></button>`;
+}
+
+            
+            // 1. 渲染备选池 (Unused Pool)
+            html += `<div class="acu-unused-pool" id="acu-action-pool">`;
+            ALL_ACTION_BUTTONS.forEach(btn => {
+                // 如果是设置按钮，永远不允许出现在备选池里（除非处于极简模式下，需要逻辑互斥，这里简单处理即可）
+                if (btn.id === 'acu-btn-settings') return; 
+
+                if (!actionOrder.includes(btn.id)) {
+                    html += `<button class="acu-action-btn" id="${btn.id}" title="${btn.title}" draggable="false"><i class="fa-solid ${btn.icon}"></i></button>`;
+                }
+            });
+            html += `</div>`;
+
+            // 2. 渲染当前活动栏 (Active Group)
+            // 只有在“没有合并”的情况下，或者“正在编辑顺序”时，才显示底栏
+            if (!shouldMergeSettings) {
+                html += `<div class="acu-actions-group" id="acu-active-actions">`;
+                actionOrder.forEach(btnId => {
+                    const btnData = ALL_ACTION_BUTTONS.find(a => a.id === btnId);
+                    if (btnData) {
+                        html += `<button class="acu-action-btn" id="${btnData.id}" title="${btnData.title}"><i class="fa-solid ${btnData.icon}"></i></button>`;
+                    }
+                });
+                html += `</div>`;
+            }
+            
+            html += `</div>`;
+        }
+
+        html += `</div>`;
+
+        const $existing = $('.acu-wrapper');
+        if ($existing.length) {
+            // [T0 核心优化] 使用原生 DOMParser 替代 jQuery ($) 解析
+            // 彻底消除几千行 HTML 字符串转换 DOM 时引发的 GC 垃圾回收尖刺，内存占用直降 60%
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const $newDom = $(doc.body).children().first();
+            
+            // 1. 同步外层容器的属性 (防止主题切换、宽度拖拽等 CSS 变量丢失)
+            $existing.attr('class', $newDom.attr('class'));
+            $existing.attr('style', $newDom.attr('style'));
+            
+            // 2. 局部替换主数据面板
+            const $oldDataArea = $existing.find('#acu-data-area');
+            const $newDataArea = $newDom.find('#acu-data-area');
+
+            // [新增保护] 关系网 Canvas 防重置机制
+            const $oldCanvasWrapper = $oldDataArea.find('.acu-rel-canvas-wrapper');
+            const $newCanvasWrapper = $newDataArea.find('.acu-rel-canvas-wrapper');
+            if ($oldCanvasWrapper.length && $newCanvasWrapper.length) {
+                const oldHash = $oldCanvasWrapper.data('graph-hash');
+                const newHash = $newCanvasWrapper.data('graph-hash');
+                if (oldHash && newHash && String(oldHash) === String(newHash)) {
+                    $newCanvasWrapper.replaceWith($oldCanvasWrapper.detach()); 
+                }
+            }
+
+            if ($oldDataArea.length && $newDataArea.length) {
+                $oldDataArea.replaceWith($newDataArea);
+            } else if ($newDataArea.length) {
+                $existing.append($newDataArea);
+            } else {
+                $oldDataArea.remove();
+            }
+
+            // 3. 局部替换底部导航栏
+            const $oldNavBar = $existing.find('#acu-nav-bar');
+            const $newNavBar = $newDom.find('#acu-nav-bar');
+            if ($oldNavBar.length && $newNavBar.length) {
+                $oldNavBar.replaceWith($newNavBar);
+            } else if ($newNavBar.length) {
+                $existing.append($newNavBar);
+            } else {
+                $oldNavBar.remove();
+            }
+
+            // 4. 局部替换收缩/展开按钮
+            const $oldExpand = $existing.find('#acu-btn-expand');
+            const $newExpand = $newDom.find('#acu-btn-expand');
+            if ($oldExpand.length && $newExpand.length) {
+                $oldExpand.replaceWith($newExpand);
+            } else if ($newExpand.length) {
+                $existing.append($newExpand);
+            } else {
+                $oldExpand.remove();
+            }
+        } else {
+            insertHtmlToPage(html);
+        }
+
+                // ============================================================
+        // [融合版] 选项栏 + RPG 状态栏 聚合注入逻辑
+        // ============================================================
+        // 1. 生成选项栏 (Option Panel)
+        let optionHtml = '';
+        if (config.showOptionPanel !== false) {
+            const optionTables = Object.values(tables).filter(t => t.name.includes('选项'));
+            if (optionTables.length > 0) {
+                {
+                    let buttonsHtml = `<div class="acu-opt-header" style="position:relative;">行动选项</div>`;
+                    let hasBtns = false;
+                    let optionValues = [];
+                    optionTables.forEach(table => {
+                        if (table.rows) {
+                            table.rows.forEach(row => {
+                                row.forEach((cell, idx) => {
+                                    if (idx > 0 && cell && String(cell).trim()) {
+                                        const cellStr = String(cell).trim();
+                                        buttonsHtml += `<button class="acu-opt-btn" data-val="${encodeURIComponent(cellStr)}">${escapeHtml(cellStr)}</button>`;
+                                        optionValues.push(cellStr);
+                                        hasBtns = true;
+                                    }
+                                });
+                            });
+                        }
+                    });
+                    if (hasBtns) {
+                        optionHtml = `<div class="acu-option-panel" style="margin-bottom: 6px;">${buttonsHtml}</div>`;
+                        const currentOptionHash = optionValues.join('|||');
+                        if (currentOptionHash !== lastOptionHash) optionPanelVisible = true;
+                        lastOptionHash = currentOptionHash;
+                    }
+                }
+            }
+        }
+
+        // 2. 生成 RPG 状态栏 (Status Bar) 及其内部嵌套
+        let rpgHtml = '';
+        let finalEmbeddedHtml = '';
+        
+        if (config.showStatusBar !== false && typeof generateStatusBarHtml === 'function') {
+            // 将选项栏作为参数传入 RPG 生成器，实现内部嵌套
+            rpgHtml += generateStatusBarHtml(tables, config, optionHtml, optionPanelVisible);
+            finalEmbeddedHtml = rpgHtml;
+        } else {
+            // 如果关闭了 RPG 状态栏，则保持选项栏独立浮现
+            if (optionHtml && optionPanelVisible) finalEmbeddedHtml += optionHtml;
+        }
+
+        const checkIsGenerating = () => {
+            const TH = window.TavernHelper;
+            if (TH && TH.builtin && typeof TH.builtin.duringGenerating === 'function') {
+                return TH.builtin.duringGenerating(); 
+            }
+            return window._acuIsGenerating === true; 
+        };
+        const isGenerating = checkIsGenerating();
+
+        if (finalEmbeddedHtml) {
+            if (isGenerating) {
+                $('.acu-status-bar-container').show();
+                
+                // --- 【核心修复】AI 生成中（还没掉下来时），允许原地更新内部 HTML，解除 UI 冻结 ---
+                const currentEmbeddedHash = finalEmbeddedHtml + '_generating'; 
+                if (window._lastEmbeddedHash !== currentEmbeddedHash && $('.acu-status-bar-container').length > 0) {
+                    const $container = $('.acu-status-bar-container');
+
+                    // [新增保护] 拔下并缓存旧画布
+                    const $oldCanvasWrapper = $container.find('.acu-rel-canvas-wrapper');
+                    const oldHash = $oldCanvasWrapper.length ? $oldCanvasWrapper.data('graph-hash') : null;
+                    if ($oldCanvasWrapper.length) $oldCanvasWrapper.detach();
+
+                    $container
+                        .removeClass((idx, cls) => (cls.match(/(^|\s)acu-theme-\S+/g) || []).join(' '))
+                        .addClass(`acu-theme-${config.theme}`)
+                        .html(finalEmbeddedHtml);
+                    
+                    // [新增保护] 数据没变的话，完璧归赵
+                    if ($oldCanvasWrapper.length) {
+                         const $newCanvasWrapper = $container.find('.acu-rel-canvas-wrapper');
+                         if ($newCanvasWrapper.length && String(oldHash) === String($newCanvasWrapper.data('graph-hash'))) {
+                             $newCanvasWrapper.replaceWith($oldCanvasWrapper);
+                         }
+                    }
+
+                    window._lastEmbeddedHash = currentEmbeddedHash;
+                    
+                    setTimeout(() => {
+                        if ($('.acu-rpg-widget .acu-rel-canvas-wrapper').length > 0) bindRelationshipPanelEvents();
+                        bindOptionEvents();
+                    }, 50);
+                }
+                // -------------------------------------------------------------------------
+                
+            } else {
+                const $currentTarget = typeof getTargetContainer === 'function' ? getTargetContainer() : null;
+                const targetId = $currentTarget ? ($currentTarget.closest('.mes').attr('mesid') || $currentTarget.closest('.mes').index()) : 'none';
+                const currentEmbeddedHash = finalEmbeddedHtml + '_target_' + targetId; 
+                
+                if (window._lastEmbeddedHash !== currentEmbeddedHash || $('.acu-status-bar-container').length === 0) {
+                     injectStatusBar(finalEmbeddedHtml);
+                     window._lastEmbeddedHash = currentEmbeddedHash;
+                     
+                     setTimeout(() => {
+                         if ($('.acu-rpg-widget .acu-rel-canvas-wrapper').length > 0) {
+                             bindRelationshipPanelEvents();
+                         }
+                         // [补回] 确保注入后选项事件生效
+                         bindOptionEvents();
+                     }, 50);
+                }
+                $('.acu-status-bar-container').show();
+            }
+        } else {
+            $('.acu-status-bar-container').remove();
+            window._lastEmbeddedHash = null;
+        }
+
+        bindEvents(tables);
+        updateSaveButtonState();
+        
+        // 绑定状态栏快捷按钮事件
+        $('.acu-status-setting-btn').off('click').on('click', (e) => { e.stopPropagation(); showSettingsModal(); });
+        $('.acu-status-refresh-btn').off('click').on('click', async (e) => {
+            e.stopPropagation();
+            const api = getCore().getDB();
+            if (api && api.manualUpdate) {
+                AcuToast.info('🔄 正在请求后端更新数据...');
+                await api.manualUpdate();
+            }
+        });
+        
+        // [修复] 如果当前是关系图标签，需要绑定关系图的交互事件
+        if (getActiveTabState() === VIRTUAL_RELATIONSHIP_TAB) {
+            bindRelationshipPanelEvents();
+        }
+
+        
+
+        // 【终极修复】使用 requestAnimationFrame + 多重延迟兜底，彻底解决浏览器异步布局导致的滚动条重置回顶问题
+        requestAnimationFrame(() => {
+            const $newContent = $('.acu-panel-content');
+            const activeTab = getActiveTabState();
+            
+            // 1. 判断是否刚刚切换了标签页
+            const isTabSwitched = window._acuLastTabForScroll !== activeTab;
+            window._acuLastTabForScroll = activeTab;
+
+            // 2. 【精确判断】当前所处的标签页，是否包含暂存未保存的修改？
+            let currentTabHasUnsaved = false;
+            if (hasUnsavedChanges) {
+                const tableKey = tables[activeTab]?.key;
+                if (tableKey) {
+                    const dels = getPendingDeletions();
+                    if (dels[tableKey] && dels[tableKey].length > 0) currentTabHasUnsaved = true;
+                    if (window.acuModifiedSet) {
+                        for (let id of window.acuModifiedSet) {
+                            if (id.startsWith(tableKey + '-')) { currentTabHasUnsaved = true; break; }
+                        }
+                    }
+                }
+            }
+
+            if ($newContent.length) {
+                // 提取独立恢复函数，对抗浏览器异步渲染的高度坍塌
+                const applyScrollState = () => {
+                    // 3. 恢复面板整体位置
+                    if (!isTabSwitched) {
+                        if (window._acuForceScrollTop) {
+                            $newContent.scrollTop(0);
+                            window._acuForceScrollTop = false;
+                        } else {
+                            // 绝对信任瞬间抓取的 lastScrollY，死死钉在原地
+                            if (lastScrollY > 0) $newContent.scrollTop(lastScrollY);
+                            if (lastScrollX > 0) $newContent.scrollLeft(lastScrollX);
+                        }
+                    } else {
+                        const savedState = hasUnsavedChanges ? tableScrollStates[activeTab] : null;
+                        if (savedState) {
+                            $newContent.scrollTop(savedState.top || 0);
+                            $newContent.scrollLeft(savedState.left || 0);
+                        } else {
+                            $newContent.scrollTop(0);
+                            $newContent.scrollLeft(0);
+                        }
+                    }
+
+                    // 4. 恢复卡片内部滚动位置 (融合瞬间抓取的值与历史记忆)
+                    const savedStateForInner = tableScrollStates[activeTab]?.inner || {};
+                    
+                    // 优先使用刚才瞬间抓取的精确值，兜底使用历史记忆
+                    const activeInnerScrolls = Object.keys(instantInnerScrolls).length > 0 
+                        ? instantInnerScrolls 
+                        : savedStateForInner;
+
+                    if (activeInnerScrolls) {
+                        Object.keys(activeInnerScrolls).forEach(key => {
+                            const scrollTop = activeInnerScrolls[key];
+                            // 解析标记 (例如 "5-body" 或历史记录里的 "5")
+                            const rIdx = key.includes('-') ? key.split('-')[0] : key;
+                            const type = key.includes('-') ? key.split('-')[1] : 'all';
+                            
+                            const $targetTitle = $newContent.find(`.acu-editable-title[data-row="${rIdx}"]`);
+                            if ($targetTitle.length) {
+                                const $card = $targetTitle.closest('.acu-data-card');
+                                // 精确恢复外壳或内容区的滚动
+                                if (type === 'card' || type === 'all') $card.scrollTop(scrollTop);
+                                if (type === 'body' || type === 'all') $card.find('.acu-card-body').scrollTop(scrollTop);
+                            }
+                        });
+                    }
+                };
+
+                // 🚀 核心防抖魔法：强迫浏览器立即计算当前新 DOM 的真实布局高度 (Force Reflow)
+                $newContent[0].scrollHeight; 
+                
+                // 立即执行第一次定位
+                applyScrollState();
+                
+                // 🛡️ 终极兜底：应对懒加载或 Flex/Grid 引擎的延迟撑开现象，15ms和50ms后分别再校准一次
+                setTimeout(applyScrollState, 15);
+                setTimeout(applyScrollState, 50);
+            }
+        });
+    };
+
+// --- [极速优化版] 独立的消息数据验证逻辑 (免疫标签与代码块干扰) ---
+    const isValidMessage = (msgObj) => {
+        if (!msgObj || msgObj.is_system || msgObj.is_user) return false;
+        
+        // 1. 读取底层 Markdown 文本并移除零宽字符
+        let rawText = String(msgObj.mes || '').replace(/[\u200B-\u200D\uFEFF]/g, '');
+        
+        // 2. 剥离所有 HTML 标签 (<xxx> 等)
+        let cleanText = rawText.replace(/<[^>]+>/g, '');
+        
+        // 3. 剥离所有“完整闭合”的 Markdown 代码块 (```...``` 或 `...`)
+        cleanText = cleanText.replace(/```[\s\S]*?```/g, '').replace(/`[^`]+`/g, '').trim();
+
+        if (cleanText === '' || cleanText === '...' || cleanText === '…' || cleanText === '..') return false;
+
+        // 4. 闭合校验 (补上全角冒号：和右括号)）)
+        const isProperlyClosed = /[>\]}\*~"\'”’」』》…\.!\?。！？\-\:：\)）]$/.test(cleanText);
+        
+        // 5. 截断判定 (加入反引号`)
+        const isCutOff = !isProperlyClosed && /[a-zA-Z0-9\u4e00-\u9fa5\u3040-\u30ff\uac00-\ud7af,，、`]$/.test(cleanText);
+        
+        return !isCutOff;
+    };
+
+    // [极速优化版] 获取目标气泡容器 (带强行兜底)
+    const getTargetContainer = () => {
+        const { $, ST } = getCore();
+        if (!ST || !ST.chat || ST.chat.length === 0) return null;
+
+        // 第一轮：正常严格逻辑，寻找最后一个“生成完毕、非空回、非截断”的有效 AI 消息
+        for (let i = ST.chat.length - 1; i >= 0; i--) {
+            const msg = ST.chat[i];
+            
+            if (isValidMessage(msg)) {
+                const $targetMes = $(`#chat .mes[mesid="${i}"]`);
+                if ($targetMes.length && $targetMes.css('display') !== 'none') {
+                    const $targetBlock = $targetMes.find('.mes_block');
+                    return $targetBlock.length ? $targetBlock : $targetMes;
+                }
+            }
+        }
+
+        // 第二轮：终极兜底逻辑。寻找最后一个非 user 的楼层强行挂载
+        for (let i = ST.chat.length - 1; i >= 0; i--) {
+            const msg = ST.chat[i];
+            
+            if (!msg.is_user) {
+                const $targetMes = $(`#chat .mes[mesid="${i}"]`);
+                if ($targetMes.length && $targetMes.css('display') !== 'none') {
+                    const $targetBlock = $targetMes.find('.mes_block');
+                    return $targetBlock.length ? $targetBlock : $targetMes;
+                }
+            }
+        }
+
+        return null;
+    };
+
+// [修改] 独立插入状态栏到气泡，增加 Canvas 防重置保护
+    const injectStatusBar = (htmlContent) => {
+        const { $ } = getCore();
+        const $target = getTargetContainer();
+        if ($target && $target.length) {
+            let $container = $target.find('.acu-status-bar-container');
+            const optConfig = getConfig(); // 获取最新配置
+            
+            // [新增保护] 如果容器已存在，尝试抢救里面的 Canvas
+            let $oldCanvasWrapper = $();
+            let oldHash = null;
+            if ($container.length > 0) {
+                $oldCanvasWrapper = $container.find('.acu-rel-canvas-wrapper');
+                oldHash = $oldCanvasWrapper.length ? $oldCanvasWrapper.data('graph-hash') : null;
+                // 核心：拔下 DOM 节点。只要它还在内存里，canvas.isConnected 在同一同步周期内恢复，物理引擎就不会死
+                if ($oldCanvasWrapper.length) $oldCanvasWrapper.detach();
+            }
+            
+            if ($container.length === 0) {
+                $('.acu-status-bar-container').remove();
+                $container = $(`<div class="acu-status-bar-container" style="display:flex; flex-direction:column; gap:6px; margin-top:8px; clear:both;"></div>`);
+                $target.append($container);
+            }
+            
+            // 每次注入时，强制清洗并覆盖最新的主题类名
+            $container.removeClass((idx, cls) => (cls.match(/(^|\s)acu-theme-\S+/g) || []).join(' '))
+                      .addClass(`acu-theme-${optConfig.theme}`);
+                      
+            $container.html(htmlContent);
+
+            // [新增保护] 判断指纹，决定是初始化新画布，还是把原生的旧画布塞回去
+            if ($oldCanvasWrapper.length) {
+                 const $newCanvasWrapper = $container.find('.acu-rel-canvas-wrapper');
+                 if ($newCanvasWrapper.length && String(oldHash) === String($newCanvasWrapper.data('graph-hash'))) {
+                     $newCanvasWrapper.replaceWith($oldCanvasWrapper);
+                 }
+            }
+        }
+    };
+
+
+
+
+    const insertHtmlToPage = (html) => {
+        const { $ } = getCore();
+        const $chat = $('#chat');
+        const $oldWrapper = $('.acu-wrapper');
+        
+        // 永远保持悬浮底部模式 (Fixed)
+        if ($oldWrapper.length) {
+            $oldWrapper.replaceWith(html);
+        } else {
+            if ($chat.length) { $chat.append(html); } else { $('body').append(html); }
+        }
+    };
+
+// ============================================================
+// [核心优化] 预编译正则表达式缓存 (极大降低 CPU 消耗)
+// ============================================================
+const ACU_REGEX = {
+    // 表名匹配
+    tGlobal: /全局|世界状态|纪要/,
+    tChar: /主角信息|玩家状态|主角修为/,
+    tStatus: /主角信息|玩家状态|修为|境界|体质|肉身|恒定状态/,
+    tSkill: /技能|魔咒|武魂|蛊虫|杀招|流派|蛊方(?!(.*面板|.*核心))/,
+    tBag: /背包|物品|道具|装备|仙窍资源/,
+    tEvent: /日程|事件|任务|待办/,
+    
+    // 列名匹配 (全局与主角)
+    cLoc: [/地点/, /位置/],
+    cTime: [/当前时间/, /时间跨度/],
+    cName: [/人物名称/, /姓名/, /名字/],
+    cLoc2: [/所在主地点/, /所在地点/],
+    cMoney: [/拥有金钱/, /真元/, /仙元/, /现金/, /存款/, /余额/, /资产/, /资源数据/],
+    
+    // 列名匹配 (状态过滤)
+    cStatusSkip: /人物名称|姓名|名字|所在主地点|真元|仙元|拥有金钱/,
+    cStatusLong: /外貌|衣着|装扮|经历|故事/,
+    cStatusGender: /性别|年龄/,
+    cStatusJob: /职业|身份|阵营|学院/,
+    cStatusLevel: /等级|境界|道痕|寿元|战力|悬赏/,
+    
+    // 列名匹配 (技能)
+    cSkillName: [/名称/, /咒语/, /本体/, /杀招/, /目标蛊虫/, /流派/],
+    cSkillType: [/类型/, /类别/, /属性/, /修习定位/, /核心/],
+    cSkillLv: [/等级/, /阶段/, /年份/, /品质/, /转数/, /熟练度/, /掌握/, /境界/],
+    cSkillDesc: [/效果/, /描述/, /喂养/, /经验/, /互斥/],
+    
+    // 列名匹配 (背包)
+    cBagName: [/物品名称/, /项目名称/, /名称/],
+    cBagQty: [/数量/, /规模/, /数值/],
+    cBagDesc: [/描述/, /效果/, /产出/],
+    cBagType: [/类别/, /分类/, /类型/],
+    vBagMoneyType: /货币|资产|财富/,
+    vBagMoneyName: /金币|贝里|加隆|魂币|仙元石|现金|存款|余额|钞票|RMB|软妹币/,
+    
+    // 列名匹配 (事件)
+    cEvtDate: [/日期|时间|Date|期限/i],
+    cEvtTitle: [/事件|标题|任务名称|名称|Title|Name/i],
+    cEvtType: [/类型|分类|Type/i],
+    cEvtDesc: [/详情|描述|内容|Desc/i],
+    
+    // 值匹配 (智能渲染)
+    vPct: /^(\d+(?:\.\d+)?)\s*%$/,
+    vRank: /^(EX|SSS|SS|S|A|B|C)[+-]?$/i,
+    vRealm: /^(?!星期)[\u4e00-\u9fa5]{2,6}(期|境|层|转|阶|重|段|圆满|仙窍)$/
+};
+
+// ============================================================
+// [聚合嗅探·极致美化版] 终极 RPG 状态栏生成器
+// ============================================================
+const generateStatusBarHtml = (tables, config, optionHtml = '', optionPanelVisible = false) => {
+    const safeStr = escapeHtml; // 复用全局 escapeHtml
+    const isRpgExpanded = localStorage.getItem('acu_rpg_expanded') === 'true'; // 读取展开记忆
+    const activeRpgTab = localStorage.getItem('acu_rpg_active_tab') || 'rpg-tab-status'; // 读取标签页记忆
+    
+    // [新增] 读取显隐状态，为右上角小眼睛做准备
+    const isNavHidden = Store.get('acu_hide_nav_only', false);
+    const eyeIcon = isNavHidden ? 'fa-eye-slash' : 'fa-eye';
+    const eyeTitle = isNavHidden ? '显示主面板' : '隐藏主面板';
+    
+    // [终极升级] 聚合找表工具：使用全局预编译正则提升性能
+    const findTables = (regex) => Object.values(tables).filter(t => regex.test(t.name));
+    
+    // [核心优化 Top 2] 表头正则映射智能缓存 (Schema Cache)
+    if (!window._acuSchemaCache) window._acuSchemaCache = new Map();
+    const findColIdx = (headers, regexList) => {
+        if (!headers || headers.length === 0) return -1;
+        
+        // 利用“表头指纹”和“正则指纹”生成唯一缓存 Key
+        // 只要表格结构不变，后续同样的正则查找将直接从内存返回结果，时间复杂度从 O(N) 降为 O(1)
+        const cacheKey = headers.join('|') + '::' + regexList.map(r => r.source).join('|');
+        
+        if (window._acuSchemaCache.has(cacheKey)) {
+            return window._acuSchemaCache.get(cacheKey);
+        }
+
+        for (let i = 0; i < regexList.length; i++) {
+            const idx = headers.findIndex(h => regexList[i].test(h));
+            if (idx !== -1) {
+                window._acuSchemaCache.set(cacheKey, idx);
+                return idx;
+            }
+        }
+        window._acuSchemaCache.set(cacheKey, -1);
+        return -1;
+    };
+
+    // ==========================================
+    // 1. 嗅探核心全局数据 (顶栏 Header)
+    // ==========================================
+    let name = '主角', location = '未知地点', time = '未知时间', money = '0';
+    
+    const globalTables = findTables(ACU_REGEX.tGlobal);
+    if (globalTables.length > 0) {
+        // [优化] 优先级排序：优先使用"全局/世界"表，找不到才用"纪要"兜底
+        globalTables.sort((a, b) => {
+            const aIsGlobal = /全局|世界/.test(a.name);
+            const bIsGlobal = /全局|世界/.test(b.name);
+            return (aIsGlobal === bIsGlobal) ? 0 : (aIsGlobal ? -1 : 1);
+        });
+
+        const targetTable = globalTables[0];
+        if (targetTable.rows.length > 0) {
+            const locIdx = findColIdx(targetTable.headers, ACU_REGEX.cLoc);
+            const timeIdx = findColIdx(targetTable.headers, ACU_REGEX.cTime);
+            
+            // 全局表通常只有1行(取最后一行即第1行)，纪要表取最后一行(最新进度)
+            const targetRow = targetTable.rows[targetTable.rows.length - 1];
+            
+            if (locIdx !== -1 && targetRow[locIdx]) location = safeStr(targetRow[locIdx]);
+            if (timeIdx !== -1 && targetRow[timeIdx]) time = safeStr(targetRow[timeIdx]).replace(/\(.*?\)/g, '').replace(/（.*?）/g, ''); 
+        }
+    }
+
+    // 提取主角核心信息 (支持从主角表或修为表中抓取资源)
+    const charTables = findTables(ACU_REGEX.tChar);
+    charTables.forEach(t => {
+        if (!t.rows[0]) return;
+        const nameIdx = findColIdx(t.headers, ACU_REGEX.cName);
+        const locIdx2 = findColIdx(t.headers, ACU_REGEX.cLoc2); 
+        const moneyIdx = findColIdx(t.headers, ACU_REGEX.cMoney); 
+        
+        if (nameIdx !== -1 && t.rows[0][nameIdx]) name = safeStr(t.rows[0][nameIdx]);
+        if (locIdx2 !== -1 && t.rows[0][locIdx2]) location = safeStr(t.rows[0][locIdx2]);
+        if (moneyIdx !== -1 && t.rows[0][moneyIdx] && money === '0') money = safeStr(t.rows[0][moneyIdx]);
+    });
+
+    // --- 通用属性卡片渲染器 ---
+    const renderSmartValue = (header, raw) => {
+        if (!raw || raw === '无' || raw === '未知' || raw === '待定') return '<span style="color:var(--acu-text-sub); font-weight:500;">未记录</span>';
+        const pctMatch = raw.match(ACU_REGEX.vPct);
+        if (pctMatch) return `<div class="acu-val-pct-bar"><span class="acu-val-pct-text">${raw}</span><div class="acu-val-pct-track"><div class="acu-val-pct-fill" style="width:${Math.min(100, parseFloat(pctMatch[1]))}%;"></div></div></div>`;
+        if (ACU_REGEX.vRank.test(raw)) return `<span class="acu-rank-badge">${raw.toUpperCase()}</span>`;
+        if (ACU_REGEX.vRealm.test(raw)) return `<span class="acu-realm-text">☯️ ${raw}</span>`;
+        return `<span style="color:var(--acu-text-main); font-weight:500;">${raw}</span>`;
+    };
+
+    // ==========================================
+    // 2. 嗅探【状态】面板 (聚合：主角信息 + 修为 + 肉身体质)
+    // ==========================================
+    let statusHtml = '';
+    const statusTables = findTables(ACU_REGEX.tStatus);
+    statusTables.forEach(t => {
+        if (!t.rows[0]) return;
+        t.headers.forEach((header, idx) => {
+            if (idx === 0 || !header || ACU_REGEX.cStatusSkip.test(header)) return;
+            const val = safeStr(t.rows[0][idx]);
+            if (!val || val === '无' || val === '未知' || val === '待定') return;
+
+            if (val.length > 25 || ACU_REGEX.cStatusLong.test(header)) {
+                statusHtml += `<div style="grid-column: 1 / -1; margin-bottom: 4px; background:var(--acu-badge-bg); padding:10px 12px; border:1px solid var(--acu-border); border-radius:8px;">
+                    <strong style="color:var(--acu-text-sub); font-size:12px; display:block; margin-bottom:4px;"><i class="fa-solid fa-star" style="opacity:0.5; font-size:10px;"></i> ${safeStr(header)}</strong>
+                    <div style="line-height:1.5; color:var(--acu-text-main); font-size:13px; white-space:pre-wrap;">${val}</div>
+                </div>`;
+            } else {
+                let icon = 'fa-id-badge';
+                if (ACU_REGEX.cStatusGender.test(header)) icon = 'fa-venus-mars';
+                else if (ACU_REGEX.cStatusJob.test(header)) icon = 'fa-user-tie';
+                else if (ACU_REGEX.cStatusLevel.test(header)) icon = 'fa-arrow-up-right-dots';
+                
+                statusHtml += `<div class="acu-rpg-item-card" style="justify-content:center;">
+                    <span class="acu-rpg-item-title" style="font-size:11px; color:var(--acu-text-sub);"><i class="fa-solid ${icon}" style="opacity:0.6; margin-right:4px;"></i>${safeStr(header)}</span>
+                    ${renderSmartValue(header, val)}
+                </div>`;
+            }
+        });
+    });
+    if (!statusHtml) statusHtml = '<div style="color:var(--acu-text-sub); grid-column: 1/-1; text-align:center;">暂无详细记录</div>';
+
+    // ==========================================
+    // 3. 嗅探【能力】面板 (聚合：技能 + 蛊虫 + 杀招 + 蛊方 + 流派)
+    // ==========================================
+    let skillHtml = '';
+    const skillTables = findTables(ACU_REGEX.tSkill); 
+    skillTables.forEach(t => {
+        if (!t.rows) return;
+        const sNameIdx = findColIdx(t.headers, ACU_REGEX.cSkillName);
+        const sTypeIdx = findColIdx(t.headers, ACU_REGEX.cSkillType);
+        const sLvIdx = findColIdx(t.headers, ACU_REGEX.cSkillLv);
+        const sDescIdx = findColIdx(t.headers, ACU_REGEX.cSkillDesc);
+
+        t.rows.forEach(row => {
+            if (!row || row.length <= 1) return;
+            const sName = sNameIdx !== -1 ? safeStr(row[sNameIdx]) : safeStr(row[1]);
+            if (!sName) return;
+
+            const sType = sTypeIdx !== -1 ? safeStr(row[sTypeIdx]) : '';
+            const sLv = sLvIdx !== -1 ? safeStr(row[sLvIdx]) : '';
+            const sDesc = sDescIdx !== -1 ? safeStr(row[sDescIdx]) : '';
+
+            // 如果该行数据全是空的，跳过
+            if (!sType && !sLv && !sDesc) return;
+
+            // 根据表名智能更换卡片左边框颜色
+            let borderColor = '#9b59b6';
+            let icon = 'fa-bolt';
+            if (t.name.includes('蛊虫')) { borderColor = '#27ae60'; icon = 'fa-bug'; }
+            else if (t.name.includes('流派')) { borderColor = '#f39c12'; icon = 'fa-yin-yang'; }
+            else if (t.name.includes('杀招')) { borderColor = '#e74c3c'; icon = 'fa-fire-flame-curved'; }
+
+            skillHtml += `<div class="acu-rpg-item-card" style="border-left: 3px solid ${borderColor};">
+                <div class="acu-rpg-card-header">
+                    <span class="acu-rpg-card-title"><i class="fa-solid ${icon}" style="color:${borderColor}; opacity:0.8;"></i> ${sName}</span>
+                    <div class="acu-rpg-card-badges">
+                        ${sType ? `<span class="acu-badge" style="background:rgba(155,89,182,0.15); border-color:rgba(155,89,182,0.3); color:var(--acu-text-main);">${sType}</span>` : ''}
+                        ${sLv ? `<span class="acu-badge" style="background:rgba(46,204,113,0.15); color:#2ecc71; border-color:rgba(46,204,113,0.3);">${sLv}</span>` : ''}
+                    </div>
+                </div>
+                ${sDesc ? `<div class="acu-rpg-card-desc">${sDesc}</div>` : ''}
+            </div>`;
+        });
+    });
+    if (!skillHtml) skillHtml = '<div style="color:var(--acu-text-sub); text-align:center; grid-column: 1/-1;">暂无能力或装备记录</div>';
+
+    // ==========================================
+    // 4. 嗅探【资产】面板 (聚合：背包物品 + 仙窍资源 + 智能分页)
+    // ==========================================
+    let bagItemsArr = [];
+    const bagTables = findTables(ACU_REGEX.tBag);
+    bagTables.forEach(t => {
+        if (!t.rows) return;
+        const nameIdx = findColIdx(t.headers, ACU_REGEX.cBagName);
+        const qtyIdx = findColIdx(t.headers, ACU_REGEX.cBagQty);
+        const descIdx = findColIdx(t.headers, ACU_REGEX.cBagDesc);
+        const typeIdx = findColIdx(t.headers, ACU_REGEX.cBagType);
+
+const tableKey = t.key;
+            t.rows.forEach((row, rIdx) => {
+                if (!row || row.length <= 1) return;
+                const itemName = nameIdx !== -1 ? row[nameIdx] : row[1];
+                if (!itemName) return;
+
+                const qty = qtyIdx !== -1 ? safeStr(row[qtyIdx]) : '';
+                const desc = descIdx !== -1 ? safeStr(row[descIdx]) : '';
+                const type = typeIdx !== -1 ? safeStr(row[typeIdx]) : '';
+
+                if (((type && ACU_REGEX.vBagMoneyType.test(type)) || ACU_REGEX.vBagMoneyName.test(itemName)) && qty) {
+                    money = money === '0' ? qty : money + ' / ' + qty;
+                }
+
+                bagItemsArr.push(`<div class="acu-rpg-item-card">
+                    <style>.acu-bag-act-btn:hover { transform: scale(1.2); }</style>
+                    <div class="acu-rpg-card-header" style="align-items: flex-start;">
+                        <span class="acu-rpg-card-title" style="font-size:13.5px; padding-top:2px;">${safeStr(itemName)}</span>
+                        <div style="flex-shrink:0; max-width:50%; display:flex; flex-direction:column; align-items:flex-end; gap:6px;">
+                            ${type ? `<span class="acu-badge acu-badge-neutral" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; display:inline-block;">${type}</span>` : ''}
+                            <div style="display:flex; gap:10px; font-size:12px; opacity:0.8; padding-right:2px;">
+                                <i class="fa-solid fa-hand-pointer acu-bag-act-btn acu-bag-use-btn" data-name="${escapeHtml(itemName)}" style="cursor:pointer; color:var(--acu-accent); transition:transform 0.2s;" title="使用此物品"></i>
+                                <i class="fa-solid fa-trash-can acu-bag-act-btn acu-bag-del-btn" data-key="${escapeHtml(tableKey)}" data-row="${rIdx}" data-name="${escapeHtml(itemName)}" style="cursor:pointer; color:var(--acu-text-sub); transition:all 0.2s;" title="丢弃/彻底删除"></i>
+                            </div>
+                        </div>
+                    </div>
+                    ${qty ? `<div style="color:var(--acu-text-main); font-size:12px; margin-top:0px;">数量/规模: <b style="color:var(--acu-accent); font-family:monospace; font-size:14px;">${qty}</b></div>` : ''}
+                    ${desc ? `<div class="acu-rpg-card-desc">${desc}</div>` : ''}
+                </div>`);
+            });
+    });
+
+    let bagHtml = '';
+    let bagPaginationHtml = '';
+    const bagPerPage = config.rpgBagPerPage || 0; // 0 表示自动滚动不分页
+
+    if (bagItemsArr.length === 0) {
+        bagHtml = '<div style="color:var(--acu-text-sub); text-align:center; grid-column: 1/-1;">资产与背包空空如也</div>';
+    } else if (bagPerPage > 0 && bagItemsArr.length > bagPerPage) {
+        const totalPages = Math.ceil(bagItemsArr.length / bagPerPage);
+        let curPage = window._acuRpgBagPage || 1;
+        if (curPage > totalPages) curPage = totalPages;
+        
+        const startIdx = (curPage - 1) * bagPerPage;
+        bagHtml = bagItemsArr.slice(startIdx, startIdx + bagPerPage).join('');
+        
+        bagPaginationHtml = `
+            <div style="flex-shrink: 0; background: var(--acu-bg-panel); display:flex; justify-content:center; align-items:center; gap:10px; margin: 0 16px; padding: 10px 0; border-top: 1px dashed var(--acu-border);">
+                <button class="acu-rpg-page-btn ${curPage <= 1 ? 'disabled' : ''}" data-page="${curPage - 1}" style="background:var(--acu-btn-bg); border:1px solid var(--acu-border); color:var(--acu-text-main); padding:2px 10px; border-radius:4px; cursor:${curPage <= 1 ? 'not-allowed' : 'pointer'}; opacity:${curPage <= 1 ? '0.5' : '1'};"><i class="fa-solid fa-chevron-left"></i></button>
+                <span style="font-size:12px; color:var(--acu-text-sub); font-weight:bold;">${curPage} / ${totalPages}</span>
+                <button class="acu-rpg-page-btn ${curPage >= totalPages ? 'disabled' : ''}" data-page="${curPage + 1}" style="background:var(--acu-btn-bg); border:1px solid var(--acu-border); color:var(--acu-text-main); padding:2px 10px; border-radius:4px; cursor:${curPage >= totalPages ? 'not-allowed' : 'pointer'}; opacity:${curPage >= totalPages ? '0.5' : '1'};"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        `;
+    } else {
+        bagHtml = bagItemsArr.join('');
+    }
+
+    // ==========================================
+    // 5. 嗅探【日历】面板 (替代原指引面板)
+    // ==========================================
+    let calendarHtml = '';
+    let questCount = 0;
+    const currentEvents = [];
+    const eventTables = findTables(ACU_REGEX.tEvent).filter(t => !/任务|待办/.test(t.name));
+    
+    eventTables.forEach(t => {
+        if (!t.rows) return;
+        const dateIdx = findColIdx(t.headers, ACU_REGEX.cEvtDate);
+        const titleIdx = findColIdx(t.headers, ACU_REGEX.cEvtTitle);
+        const typeIdx = findColIdx(t.headers, ACU_REGEX.cEvtType);
+        const descIdx = findColIdx(t.headers, ACU_REGEX.cEvtDesc);
+
+        if (dateIdx !== -1) {
+            t.rows.forEach(row => {
+                if (!row || row.length <= 1) return;
+                const dStr = safeStr(row[dateIdx]);
+                const rowDate = CalendarModule.parseTime(dStr);
+                if (rowDate) {
+                    questCount++;
+                    const fmtDate = `${rowDate.year}-${String(rowDate.month).padStart(2,'0')}-${String(rowDate.day).padStart(2,'0')}`;
+                    currentEvents.push({
+                        date: fmtDate,
+                        title: titleIdx !== -1 ? (safeStr(row[titleIdx]) || '未命名') : '事件',
+                        type: typeIdx !== -1 ? safeStr(row[typeIdx]) : '其他',
+                        desc: descIdx !== -1 ? safeStr(row[descIdx]) : ''
+                    });
+                }
+            });
+        }
+    });
+
+    const allEvents = currentEvents;
+    
+    // 解析当前世界时间，用于决定日历翻到哪一页
+    let viewYear = new Date().getFullYear();
+    let viewMonth = new Date().getMonth() + 1;
+    let viewDay = new Date().getDate();
+    if (time !== '未知时间') {
+        const parsedCurrent = CalendarModule.parseTime(time);
+        if (parsedCurrent) {
+            viewYear = parsedCurrent.year;
+            viewMonth = parsedCurrent.month;
+            viewDay = parsedCurrent.day;
+        }
+    } else if (allEvents.length > 0) {
+        // [修复] 如果删除了全局表导致没有时间锚点，自动把日历翻到“第一个有效日程”所在的年月
+        const firstEvtDate = allEvents[0].date.split('-');
+        if (firstEvtDate.length >= 2) {
+            viewYear = parseInt(firstEvtDate[0], 10);
+            viewMonth = parseInt(firstEvtDate[1], 10);
+            viewDay = parseInt(firstEvtDate[2], 10) || 1;
+        }
+    }
+    
+    // 挂载到全局供交互事件使用
+    window._acuEmbeddedCalData = { year: viewYear, month: viewMonth, day: viewDay, events: allEvents };
+    
+    calendarHtml = `
+        <div id="acu-rpg-embedded-cal-container" style="padding-top:5px;">
+            ${CalendarModule.render(viewYear, viewMonth, viewDay, allEvents)}
+        </div>
+        <div id="acu-rpg-embedded-cal-details" class="acu-event-details" style="display:none; margin-top:10px; background:var(--acu-bg-panel);">
+            <div style="font-size:12px; color:var(--acu-text-sub); margin-bottom:8px;">
+                <span>📅 <span id="acu-emb-evt-date-title"></span></span>
+            </div>
+            <div id="acu-emb-evt-list"></div>
+        </div>
+    `;
+
+    // ==========================================
+    // 5.5 嗅探【任务与事件表】 (美化并追加在日历下方)
+    // ==========================================
+    let questHtml = '';
+    const questTables = findTables(/任务|事件|待办/); 
+    
+    questTables.forEach(t => {
+        if (!t.rows) return;
+        
+        // [修改] 兼容旧版任务表与新版“待办事项”表的列名映射
+        const qNameIdx = findColIdx(t.headers, [/任务名称|名称|标题/]);
+        const qTypeIdx = findColIdx(t.headers, [/任务类型|类型|分类/]);
+        const qPubIdx = findColIdx(t.headers, [/发布者|委托人|涉及对象/]);
+        const qDescIdx = findColIdx(t.headers, [/详细描述|描述|详情|事项详情/]);
+        const qProgIdx = findColIdx(t.headers, [/当前进度|进度|状态/]);
+        const qTimeIdx = findColIdx(t.headers, [/任务时限|时限|期限|开始时间/]);
+        const qRemarkIdx = findColIdx(t.headers, [/备注/]); // 新增备注列
+        const qRewIdx = findColIdx(t.headers, [/奖励/]);
+        const qPenIdx = findColIdx(t.headers, [/惩罚/]);
+
+        t.rows.forEach(row => {
+            if (!row || row.length <= 1) return;
+            const qName = qNameIdx !== -1 ? safeStr(row[qNameIdx]) : safeStr(row[1]);
+            if (!qName || qName === '无' || qName === '未知' || qName === '') return;
+questCount++; // [修复] 补充统计待办的数量
+
+            let qType = qTypeIdx !== -1 ? safeStr(row[qTypeIdx]) : '';
+            // [美化] 自动剥离文本里的中英文括弧（如 "[待办]" 变成 "待办"），让前端徽章更清爽
+            qType = qType.replace(/[\[\]【】]/g, '').trim();
+            
+            const qPub = qPubIdx !== -1 ? safeStr(row[qPubIdx]) : '';
+            const qDesc = qDescIdx !== -1 ? safeStr(row[qDescIdx]) : '';
+            const qProg = qProgIdx !== -1 ? safeStr(row[qProgIdx]) : '';
+            const qTime = qTimeIdx !== -1 ? safeStr(row[qTimeIdx]) : '';
+            const qRemark = qRemarkIdx !== -1 ? safeStr(row[qRemarkIdx]) : '';
+            const qRew = qRewIdx !== -1 ? safeStr(row[qRewIdx]) : '';
+            const qPen = qPenIdx !== -1 ? safeStr(row[qPenIdx]) : '';
+
+            let borderColor = '#3498db'; 
+            if (qType.includes('主线') || qType.includes('核心') || qType.includes('誓约')) borderColor = '#f1c40f'; 
+            else if (qType.includes('紧急') || qType.includes('限时') || qType.includes('危机') || qType.includes('待办')) borderColor = '#e74c3c'; 
+            else if (qType.includes('日常') || qType.includes('循环') || qType.includes('线索')) borderColor = '#2ecc71'; 
+
+            // 动态决定前缀文案，完美适配旧版任务表和新版待办表
+            const pubLabel = t.name.includes('待办') ? '涉及对象' : '发布者';
+            const pubIcon = t.name.includes('待办') ? 'fa-crosshairs' : 'fa-bullhorn';
+            const progLabel = t.name.includes('待办') ? '当前状态' : '当前进度';
+
+            questHtml += `<div class="acu-rpg-item-card" style="border-left: 3px solid ${borderColor}; margin-bottom: 12px; padding: 12px; background: var(--acu-card-bg); box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+                <div class="acu-rpg-card-header" style="display:flex; justify-content:space-between; align-items:center; border-bottom: 1px dashed var(--acu-border); padding-bottom: 6px; margin-bottom: 8px;">
+                    <span class="acu-rpg-card-title" style="font-size:14px; font-weight:bold; color:var(--acu-text-main);"><i class="fa-solid fa-scroll" style="color:${borderColor}; margin-right:4px;"></i> ${qName}</span>
+                    <div class="acu-rpg-card-badges" style="display:flex; gap:6px;">
+                        ${qType && qType !== '无' ? `<span class="acu-badge" style="background:rgba(52,152,219,0.15); color:var(--acu-accent); border:1px solid rgba(52,152,219,0.3); font-size:11px; padding:2px 8px;">${qType}</span>` : ''}
+                        ${qTime && qTime !== '无' ? `<span class="acu-badge" style="background:rgba(231,76,60,0.15); color:#e74c3c; border:1px solid rgba(231,76,60,0.3); font-size:11px; padding:2px 8px;"><i class="fa-regular fa-clock"></i> ${qTime}</span>` : ''}
+                    </div>
+                </div>
+                ${qPub && qPub !== '无' ? `<div style="font-size: 11px; color: var(--acu-text-sub); margin-bottom: 6px;"><i class="fa-solid ${pubIcon}" style="opacity:0.7;"></i> <b>${pubLabel}:</b> ${qPub}</div>` : ''}
+                ${qDesc && qDesc !== '无' ? `<div class="acu-rpg-card-desc" style="font-size: 12px; line-height:1.5; color:var(--acu-text-sub); margin-bottom: 8px;">${qDesc}</div>` : ''}
+                ${qProg && qProg !== '无' ? `<div style="font-size: 12px; color: var(--acu-accent); margin-bottom: 8px; background: var(--acu-badge-bg); padding: 6px 8px; border-radius: 4px; border-left: 2px solid var(--acu-accent);"><b>${progLabel}:</b> ${qProg}</div>` : ''}
+                ${qRemark && qRemark !== '无' ? `<div style="font-size: 11px; color: #f39c12; margin-bottom: 8px; background: rgba(243,156,18,0.1); padding: 6px 8px; border-radius: 4px; border: 1px dashed rgba(243,156,18,0.3);"><i class="fa-solid fa-thumbtack"></i> <b>备注:</b> ${qRemark}</div>` : ''}
+                
+                ${(qRew && qRew !== '无') || (qPen && qPen !== '无') ? `
+                <div style="display: flex; gap: 8px; font-size: 11px; margin-top: 4px;">
+                    ${qRew && qRew !== '无' ? `<div style="flex: 1; color: #27ae60; background: rgba(46,204,113,0.08); padding: 6px 8px; border-radius: 4px; border: 1px dashed rgba(46,204,113,0.3);"><i class="fa-solid fa-gift"></i> <b>奖励:</b> ${qRew}</div>` : ''}
+                    ${qPen && qPen !== '无' ? `<div style="flex: 1; color: #c0392b; background: rgba(231,76,60,0.08); padding: 6px 8px; border-radius: 4px; border: 1px dashed rgba(231,76,60,0.3);"><i class="fa-solid fa-skull"></i> <b>惩罚:</b> ${qPen}</div>` : ''}
+                </div>` : ''}
+            </div>`;
+        });
+    });
+
+    if (questHtml) {
+        questHtml = `
+            <div style="margin-top: 15px; border-top: 1px dashed var(--acu-border); padding-top: 15px;">
+                <div style="font-weight: bold; color: var(--acu-text-main); margin-bottom: 12px; font-size: 13px; display: flex; align-items: center; gap: 6px;">
+                    <i class="fa-solid fa-map-location-dot" style="color:var(--acu-accent);"></i> 当前任务日志
+                </div>
+                <div class="acu-rpg-quest-list" style="display: flex; flex-direction: column; gap: 2px;">
+                    ${questHtml}
+                </div>
+            </div>
+        `;
+    }
+
+    // ==========================================
+    // 6. [新增] 提取并移植【关系网】视图
+    // ==========================================
+    let rawRelHtml = typeof renderRelationshipPanel === 'function' ? renderRelationshipPanel() : '';
+    let relHtml = rawRelHtml
+        .replace(/<div class="acu-panel-header">[\s\S]*?<\/div>\s*(?=<div class="acu-panel-content)/, '')
+        .replace(/height:45vh;min-height:300px;/g, 'height:450px; max-height:60vh; min-height:350px; border-radius: 8px;')
+        .replace(/min-height:300px;height:45vh;/g, 'height:100%; min-height:100%;')
+        .replace(/<canvas class="acu-rel-canvas"/, '<div style="position:absolute; top:15px; right:15px; z-index:10;"><button class="acu-view-btn" id="acu-rel-pin-center-embedded" style="background:var(--acu-bg-panel); border:1px solid var(--acu-border); border-radius:4px; padding:4px 8px; margin-right:5px; box-shadow:0 2px 5px rgba(0,0,0,0.2);" title="设定固定的中心节点"><i class="fa-solid fa-crosshairs"></i></button><button class="acu-view-btn" id="acu-rel-reset-embedded" style="background:var(--acu-bg-panel); border:1px solid var(--acu-border); border-radius:4px; padding:4px 8px; box-shadow:0 2px 5px rgba(0,0,0,0.2);" title="重置视图"><i class="fa-solid fa-compress-arrows-alt"></i></button></div><canvas class="acu-rel-canvas"');
+
+    // ==========================================
+    // 最终组装与输出
+    // ==========================================
+    let embeddedOptionsHtml = '';
+    if (optionHtml && optionPanelVisible) {
+        // 去除独立气泡的边距与边框，使其完美融入 RPG 容器顶部
+        let cleanOptionHtml = optionHtml.replace(/margin-bottom:\s*6px;/g, 'margin-bottom: 0; border: none; background: transparent;').replace(/border:\s*1px\s*solid\s*var\(--acu-border\);/g, '');
+        embeddedOptionsHtml = `
+            <div class="acu-embedded-options-in-rpg" style="background: var(--acu-bg-nav); border-bottom: 1px dashed var(--acu-border); border-radius: 12px 12px 0 0;">
+                ${cleanOptionHtml}
+            </div>
+        `;
+    }
+
+    return `
+        <div class="acu-rpg-widget">
+            ${embeddedOptionsHtml}
+            <div class="acu-rpg-summary acu-rpg-summary-toggle" title="点击展开/收起详细面板" style="${embeddedOptionsHtml ? 'border-radius: 0;' : ''}">
+                <div style="font-weight: 900; font-size: 1.15em; color: var(--acu-accent);">
+                    <i class="fa-solid fa-user-astronaut"></i> ${name}
+                </div>
+                <style>
+                    /* 外层容器：控制溢出隐藏和渐变遮罩 */
+                    .acu-rpg-scroll-text { 
+                        flex: 1; 
+                        min-width: 0; 
+                        overflow: hidden; 
+                        white-space: nowrap; 
+                        -webkit-mask-image: linear-gradient(to right, black 90%, transparent);
+                        mask-image: linear-gradient(to right, black 90%, transparent);
+                    }
+                    /* 内部智能跑马灯容器 */
+                    .acu-smart-marquee {
+                        display: inline-block;
+                        white-space: nowrap;
+                    }
+                    /* 仅当 JS 检测到真溢出时，才会加上这个类名进行来回滚动 */
+                    .acu-smart-marquee.is-scrolling {
+                        animation: acu-ping-pong 5s ease-in-out infinite alternate;
+                    }
+                    .acu-smart-marquee.is-scrolling:hover {
+                        animation-play-state: paused;
+                    }
+                    @keyframes acu-ping-pong {
+                        0%, 15% { transform: translateX(0); }
+                        85%, 100% { transform: translateX(var(--scroll-dist)); }
+                    }
+                    
+                    /* 覆盖原有的 badge，使其完美平分空间并允许内部滚动 */
+                    .acu-loc-time-badge {
+                flex: 1;
+                min-width: 0;
+                display: flex;
+                align-items: center;
+                border: 1px solid var(--acu-border);
+                padding: 4px 12px;
+                border-radius: 20px;
+                max-width: none !important;
+                background: rgba(128,128,128,0.06);
+            }
+                </style>
+                ${(() => {
+                    let html = `<div class="acu-rpg-loc-time">
+                    <span class="acu-rpg-badge acu-loc-time-badge" title="${location}">
+                        <i class="fa-solid fa-location-dot" style="color: #ff6b81; margin-right:6px; flex-shrink:0;"></i>
+                        <div class="acu-rpg-scroll-text"><div class="acu-smart-marquee">${safeStr(location)}</div></div>
+                    </span>`;
+                    
+                    if (time !== '未知时间') {
+                        html += `
+                        <span class="acu-rpg-badge acu-loc-time-badge" title="${time}">
+                            <i class="fa-regular fa-clock" style="color: #7bed9f; margin-right:6px; flex-shrink:0;"></i>
+                            <div class="acu-rpg-scroll-text"><div class="acu-smart-marquee">${safeStr(time)}</div></div>
+                        </span>`;
+                    }
+                    html += `</div>`;
+                    return html;
+                })()}
+                
+                <div style="margin-left: auto; display:flex; gap:8px; align-items:center;">
+                    <span style="color:#f1c40f; font-weight:bold; font-family:monospace; font-size:13px; background:var(--acu-badge-bg); border:1px solid var(--acu-border); padding:3px 8px; border-radius:15px;" title="持有资产">
+                        <i class="fa-solid fa-coins"></i> ${money}
+                    </span>
+                    <span style="color:${questCount > 0 ? '#2ecc71' : 'var(--acu-text-sub)'}; font-weight:bold; font-size:13px; background:var(--acu-badge-bg); border:1px solid var(--acu-border); padding:3px 8px; border-radius:15px;" title="记录事件数">
+                        <i class="fa-solid fa-calendar-check"></i> ${questCount}
+                    </span>
+                    
+                    <i class="fa-solid ${eyeIcon} acu-nav-toggle-btn" style="cursor:pointer; opacity:0.6; font-size:14px; margin-left:4px; transition:all 0.2s;" title="${eyeTitle}"></i>
+                    
+                    <i class="fa-solid fa-chevron-down acu-rpg-chevron" style="transition: transform 0.3s; color:var(--acu-text-sub); ${isRpgExpanded ? 'transform: rotate(180deg);' : ''}"></i>
+                </div>
+            </div>
+
+            <div class="acu-rpg-details acu-rpg-details-panel" style="${isRpgExpanded ? 'display: block;' : ''}">
+                <div class="acu-rpg-tabs">
+                    <button class="acu-rpg-tab-btn ${activeRpgTab === 'rpg-tab-status' ? 'active' : ''}" data-target="rpg-tab-status"><i class="fa-solid fa-id-card"></i> 状态</button>
+                    <button class="acu-rpg-tab-btn ${activeRpgTab === 'rpg-tab-skills' ? 'active' : ''}" data-target="rpg-tab-skills"><i class="fa-solid fa-bolt"></i> 能力</button>
+                    <button class="acu-rpg-tab-btn ${activeRpgTab === 'rpg-tab-inventory' ? 'active' : ''}" data-target="rpg-tab-inventory"><i class="fa-solid fa-briefcase"></i> 资产</button>
+                    <button class="acu-rpg-tab-btn ${activeRpgTab === 'rpg-tab-calendar' ? 'active' : ''}" data-target="rpg-tab-calendar"><i class="fa-solid fa-calendar-days"></i> 日历</button>
+                    <button class="acu-rpg-tab-btn ${activeRpgTab === 'rpg-tab-relations' ? 'active' : ''}" data-target="rpg-tab-relations"><i class="fa-solid fa-project-diagram"></i> 关系</button>
+                    <button class="acu-rpg-tab-btn ${activeRpgTab === 'rpg-tab-settings' ? 'active' : ''}" data-target="rpg-tab-settings"><i class="fa-solid fa-cog"></i> 设置</button>
+                </div>
+
+                <div class="acu-rpg-tab-content ${activeRpgTab === 'rpg-tab-status' ? 'active' : ''} rpg-tab-status">
+                    <div class="acu-rpg-grid">${statusHtml}</div>
+                </div>
+
+                <div class="acu-rpg-tab-content ${activeRpgTab === 'rpg-tab-skills' ? 'active' : ''} rpg-tab-skills">
+                    <div class="acu-rpg-grid acu-grid-responsive" style="grid-template-columns: 1fr 1fr;">${skillHtml}</div>
+                </div>
+
+                <style>.acu-rpg-tab-content.rpg-tab-inventory.active { display: flex !important; }</style>
+                <div class="acu-rpg-tab-content ${activeRpgTab === 'rpg-tab-inventory' ? 'active' : ''} rpg-tab-inventory" style="padding: 0; flex-direction: column; overflow: hidden;">
+                    <div style="flex: 1; overflow-y: auto; padding: 16px; overscroll-behavior: auto;">
+                        <div class="acu-rpg-grid acu-grid-responsive">${bagHtml}</div>
+                    </div>
+                    ${typeof bagPaginationHtml !== 'undefined' ? bagPaginationHtml : ''}
+                </div>
+
+                <div class="acu-rpg-tab-content ${activeRpgTab === 'rpg-tab-calendar' ? 'active' : ''} rpg-tab-calendar" style="padding: 10px;">
+                    ${calendarHtml}
+                    ${typeof questHtml !== 'undefined' ? questHtml : ''}
+                </div>
+
+                <div class="acu-rpg-tab-content ${activeRpgTab === 'rpg-tab-relations' ? 'active' : ''} rpg-tab-relations" style="padding:0; position:relative; overflow:hidden;">
+                    ${relHtml}
+                </div>
+                
+                <div class="acu-rpg-tab-content ${activeRpgTab === 'rpg-tab-settings' ? 'active' : ''} rpg-tab-settings" style="padding: 15px;">
+                    <div style="background:var(--acu-badge-bg); border:1px solid var(--acu-border); border-radius:8px; padding:15px;">
+                        <div style="font-weight:bold; color:var(--acu-accent); margin-bottom:15px; border-bottom:1px dashed var(--acu-border); padding-bottom:8px;"><i class="fa-solid fa-sliders"></i> 资产面板专属设置</div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                            <span style="color:var(--acu-text-main); font-size:13px;">资产列表分页数量</span>
+                            <div style="display:flex; align-items:center; gap:6px;">
+                                <input type="number" id="acu-rpg-cfg-bag-page" value="${config.rpgBagPerPage || 0}" min="0" max="99" style="width:50px; background-color:var(--acu-btn-bg) !important; border:1px solid var(--acu-border) !important; color:var(--acu-text-main) !important; font-weight:bold; text-align:center; border-radius:4px; padding:4px; outline:none;">
+                                <span style="color:var(--acu-text-sub); font-size:11px;">(0为自动向下滚动)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+};
+
+const renderTableContent = (tableData, tableName) => {
+        if (!tableData || !tableData.rows.length) return `
+            <div class="acu-panel-header"><div class="acu-panel-title"><i class="fa-solid ${getIconForTableName(tableName)}"></i> ${tableName}</div><button class="acu-close-btn" title="关闭"><i class="fa-solid fa-times"></i></button></div>
+            <div class="acu-panel-content"><div style="text-align:center;color:var(--acu-text-sub);padding:20px;">暂无数据</div></div>`;
+
+        const config = getConfig();
+        const safeStr = escapeHtml;
+        const pendingDeletions = getPendingDeletions()[tableData.key] || [];
+        const headers = (tableData.headers || []).slice(1);
+        const reversedTables = Store.get('acu_reverse_tables', []);
+        const disabledHighlightTables = Store.get(STORAGE_KEY_DISABLE_HIGHLIGHT_TOP, []);
+        const isReversed = !reversedTables.includes(tableName); // 反转逻辑：不在排除列表里的默认为倒序
+        const isHighlightTop = !disabledHighlightTables.includes(tableName); // [修改] 不在黑名单里即为开启高亮置顶
+        
+        // [新增] 获取当前表格的视图模式 (默认 list)
+        const currentStyle = (getTableStyles() || {})[tableName] || 'list';
+        const isGridMode = currentStyle === 'grid';
+
+        let titleColIndex = 1;
+        if (tableData.headers.length === 1) { titleColIndex = 0; } 
+        else if (tableName.includes('总结') || tableName.includes('大纲')) { const idx = tableData.headers.findIndex(h => h && (h.includes('索引') || h.includes('编号') || h.includes('代码'))); if (idx > 0) titleColIndex = idx; }
+
+// --- 【新增】在排序和过滤之前，提前获取当前表格的锁定状态小本本 ---
+        const api = getCore().getDB();
+        let tableLockState = null;
+        if (api && api.getTableLockState && tableData.key) {
+            tableLockState = api.getTableLockState(tableData.key);
+        }
+
+        let processedRows = tableData.rows.map((row, index) => ({ data: row, originalIndex: index }));
+        const searchTerm = (tableSearchStates[tableName] || '').toLowerCase().trim();
+
+        // [新增] 搜索关键词高亮辅助函数 (完美兼容HTML转义防注入)
+        const highlightMatch = (str) => {
+            const txt = String(str);
+            if (!searchTerm || !txt) return escapeHtml(txt);
+            const escapedTxt = escapeHtml(txt);
+            // 对搜索词也进行转义，保证能匹配到 escapedTxt 中被转义的特殊字符，并剔除正则保留字
+            const escapedTerm = escapeHtml(searchTerm).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            if (!escapedTerm) return escapedTxt;
+            const regex = new RegExp(`(${escapedTerm})`, 'gi');
+            return escapedTxt.replace(regex, '<mark style="background:var(--acu-accent); color:#fff; border-radius:3px; padding:0 2px; box-shadow:0 1px 3px rgba(0,0,0,0.3);">$1</mark>');
+        };
+
+// [修复] 智能排序：只有当该行存在【非手动修改】的差异（即纯AI修改）时，才算高优先级置顶
+const isRowHighPriority = (idx) => {
+    if (!config.highlightNew) return false;
+    
+    // 1. 检查是否整行新增 
+    if (currentDiffMap.has(`${tableName}-row-${idx}`)) {
+        // 🚀 防止“手动插入的行”被误判为 AI 行为从而飞到顶部
+        if (tableData.rows[idx] && tableData.rows[idx]._isManualInsert) {
+            return false;
+        }
+        return true; // 纯 AI 新增，置顶
+    }
+    
+    // 2. 检查该行是否有任何单元格被修改
+    for (const key of currentDiffMap) {
+        if (key.startsWith(`${tableName}-${idx}-`)) {
+            // 提取列索引
+            const parts = key.split('-');
+            const colIdx = parts[parts.length - 1];
+            
+            // 组装手动修改记录的专属 key (格式: tableKey-行索引-列索引，例如: sheet_1-0-1)
+            const manualKey = `${tableData.key}-${idx}-${colIdx}`;
+            
+            // 如果这个差异没有记录在手动修改的集合里，说明是纯 AI 修改的，执行置顶！
+            if (!window.acuModifiedSet || !window.acuModifiedSet.has(manualKey)) {
+                return true;
+            }
+        }
+    }
+    
+    return false;
+};
+
+
+        if (searchTerm) {
+            processedRows = processedRows.filter(item => item.data.some(cell => String(cell).toLowerCase().includes(searchTerm)));
+            processedRows.sort((a, b) => {
+                const titleA = String(a.data[titleColIndex] || '').toLowerCase(); const titleB = String(b.data[titleColIndex] || '').toLowerCase();
+                const aHitTitle = titleA.includes(searchTerm); const bHitTitle = titleB.includes(searchTerm);
+                if (titleA === searchTerm && titleB !== searchTerm) return -1;
+                if (titleA !== searchTerm && titleB === searchTerm) return 1;
+                if (aHitTitle && !bHitTitle) return -1; if (!aHitTitle && bHitTitle) return 1;
+                return a.originalIndex - b.originalIndex;
+            });
+        } else {
+                        processedRows.sort((a, b) => {
+                // 1. 如果勾选了"高亮置顶"，则优先显示 AI 变化行
+                if (isHighlightTop) {
+                    const aHigh = isRowHighPriority(a.originalIndex);
+                    const bHigh = isRowHighPriority(b.originalIndex);
+                    
+                    if (aHigh && !bHigh) return -1; // A是高亮，排前面
+                    if (!aHigh && bHigh) return 1;  // B是高亮，排前面
+                }
+                
+                // 2. 根据"倒序"设置决定基础排序
+                if (isReversed) {
+                    return b.originalIndex - a.originalIndex; // 倒序：索引大的(新的)在前
+                } else {
+                    return a.originalIndex - b.originalIndex; // 正序：索引小的(旧的)在前
+                }
+            });
+        }
+
+        const itemsPerPage = config.itemsPerPage || 50;
+        const totalItems = processedRows.length;
+        const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
+        let currentPage = tablePageStates[tableName] || 1;
+        if (currentPage > totalPages) currentPage = totalPages; if (currentPage < 1) currentPage = 1;
+        tablePageStates[tableName] = currentPage;
+
+        const startIdx = (currentPage - 1) * itemsPerPage; const endIdx = startIdx + itemsPerPage;
+        const rowsToRender = processedRows.slice(startIdx, endIdx);
+        // [修改] 无论正逆序都显示图标，且添加 .acu-sort-toggle-btn 类名供点击事件绑定
+        const sortIcon = `<i class="fa-solid ${isReversed ? 'fa-sort-amount-up' : 'fa-sort-amount-down'} acu-sort-toggle-btn" data-table="${escapeHtml(tableName)}" title="点击切换排序 (当前: ${isReversed ? '倒序-最新在前' : '正序-最早在前'})" style="color:var(--acu-accent); margin-left:8px; font-size:14px; cursor:pointer; transition: transform 0.2s;"></i>`;
+
+        // [修改] 表头增加了 视图切换按钮 和 高度拖拽手柄
+        let html = `
+            <div class="acu-panel-header">
+                <div class="acu-panel-title">
+    <div class="acu-title-main"><i class="fa-solid ${getIconForTableName(tableName)}"></i> <span class="acu-title-text">${escapeHtml(tableName)}</span> ${sortIcon}</div>
+    <div class="acu-title-sub">(${startIdx + 1}-${Math.min(endIdx, totalItems)} / 共${totalItems}项)</div>
+</div>
+                <div class="acu-header-actions">
+                    <button class="acu-view-btn" id="acu-btn-switch-style" data-table="${escapeHtml(tableName)}" title="🔄 点击切换视图模式 (当前: ${isGridMode?'双列网格':'单列列表'})">
+                        <i class="fa-solid ${isGridMode ? 'fa-th-large' : 'fa-list'}"></i>
+                    </button>
+                    <div class="acu-height-control">
+                        <i class="fa-solid fa-arrows-up-down acu-height-drag-handle" data-table="${escapeHtml(tableName)}" title="↕️ 拖动调整面板高度 | 双击恢复默认"></i>
+                    </div>
+                    
+                    <div class="acu-search-wrapper"><i class="fa-solid fa-search acu-search-icon"></i><input type="text" class="acu-search-input" placeholder="搜索全部..." value="${(tableSearchStates[tableName] || '').replace(/"/g, '&quot;')}" style="background-color: var(--acu-btn-bg) !important; color: var(--acu-text-main) !important; background-image: none !important;" /></div>
+                    <button class="acu-close-btn" title="关闭"><i class="fa-solid fa-times"></i></button>
+                </div>
+            </div>
+            <div class="acu-panel-content"><div class="acu-card-grid">`;
+
+        html += rowsToRender.map((item) => {
+            const realRowIdx = item.originalIndex; const row = item.data;
+            const isPending = pendingDeletions.includes(realRowIdx);
+            const cardTitle = row[titleColIndex] || '未命名';
+            const showDefaultIndex = (titleColIndex === 1);
+            const titleCellId = `${tableData.key}-${realRowIdx}-${titleColIndex}`;
+            const isTitleModified = window.acuModifiedSet && window.acuModifiedSet.has(titleCellId);
+            const isRowNew = currentDiffMap.has(`${tableName}-row-${realRowIdx}`);
+            const isManualNewRow = row._isManualInsert; // 获取隐式标记
+            let rowClass = '';
+            if (config.highlightNew) { 
+                // 手动修改或手动插入的，统统套上橙色警告高亮；纯 AI 的才用蓝色
+                if (isTitleModified || isManualNewRow) rowClass = 'acu-highlight-manual'; 
+                else if (isRowNew) rowClass = 'acu-highlight-diff'; 
+            }
+
+            // 计算有效列数，用于网格视图末行占满处理
+const validColIndices = row.map((_, i) => i).filter(i => i > 0 && i !== titleColIndex);
+const isOddValidCount = validColIndices.length % 2 === 1;
+
+const cardBody = row.map((cell, cIdx) => {
+                if (cIdx <= 0 || cIdx === titleColIndex) return ''; 
+                const isLastValidCol = cIdx === validColIndices[validColIndices.length - 1];
+                const spanFullRow = isLastValidCol && isOddValidCount;
+                const headerName = headers[cIdx - 1] || `属性${cIdx}`;
+                // safeStr 已复用全局 escapeHtml，此处删除冗余声明
+                const rawStr = String(cell).trim();
+                
+                // [新增] 检测时间列，添加日历图标
+                let appendIcon = '';
+                if (tableName.includes('全局') && (headerName.includes('时间') || headerName.includes('Time') || headerName.includes('Date'))) {
+                    // 只有当单元格有内容时才显示图标
+                    if (rawStr && rawStr.length > 4) {
+                        appendIcon += ` <i class="fa-solid fa-calendar-alt acu-calendar-trigger" style="cursor:pointer; color:var(--acu-accent); margin-left:6px; opacity:0.8;" title="查看日历 (支持修仙年份)"></i>`;
+                    }
+                }
+
+                // --- 【核心新增】检查单元格是否被锁定，如果锁定则追加 🔒 图标 ---
+                if (tableLockState) {
+                    const r = realRowIdx;
+                    const c = cIdx - 1;
+                    if (
+                        (tableLockState.cells && (tableLockState.cells.includes(`${r}:${c}`) || tableLockState.cells.some(arr => arr[0] === r && arr[1] === c))) ||
+                        (tableLockState.rows && tableLockState.rows.includes(r)) ||
+                        (tableLockState.cols && tableLockState.cols.includes(c))
+                    ) {
+                        appendIcon += ` <i class="fa-solid fa-lock" style="color:#f39c12; margin-left:4px; opacity:0.9; font-size:11px;" title="该单元格已被物理锁定，免疫AI篡改"></i>`;
+                    }
+                }
+
+                let contentHtml = '';
+                const splitRegex = /[;；]/;
+                
+                // [修改] 定义临时去括号函数 (Visual Only) - 已移除去括号逻辑
+                const cleanVis = (s) => String(s).trim();
+
+                // 智能标签渲染：只有每段都≤6字符才用标签气泡
+                if (rawStr.length > 0 && splitRegex.test(rawStr) && !rawStr.includes('http')) {
+                    const parts = rawStr.split(splitRegex).map(s => s.trim()).filter(s => s);
+                    const allShort = parts.length > 1 && parts.every(p => p.length <= 6);
+                    if (allShort) {
+                        const tagsHtml = parts.map(part => {
+                            const subStyle = getBadgeStyle(part) || 'acu-badge-neutral'; 
+                            // [修改] 标签内部进行搜索词高亮
+                            return `<span class="acu-badge ${subStyle}">${highlightMatch(cleanVis(part))}</span>`;
+                        }).join('');
+                        contentHtml = `<div class="acu-tag-container">${tagsHtml}</div>`;
+                    } else {
+                        // [修改] 长文本进行搜索词高亮
+                        contentHtml = highlightMatch(cleanVis(rawStr));
+                    }
+                } else {
+                    const badgeStyle = getBadgeStyle(rawStr);
+                    // [修改] 普通单元格进行搜索词高亮
+                    const cleanText = cleanVis(rawStr);
+                    const displayCell = (cleanText === '' && String(cell) !== '0') ? '&nbsp;' : highlightMatch(cleanText);
+                    contentHtml = badgeStyle ? `<span class="acu-badge ${badgeStyle}">${displayCell}</span>` : displayCell;
+                }
+                
+                // [新增] 拼接日历图标
+                contentHtml += appendIcon;
+
+                const isDiffChanged = currentDiffMap.has(`${tableName}-${realRowIdx}-${cIdx}`);
+                const cellId = `${tableData.key}-${realRowIdx}-${cIdx}`;
+                const isUserModified = window.acuModifiedSet && window.acuModifiedSet.has(cellId);
+                let cellHighlight = '';
+                if (config.highlightNew) { if (isUserModified) cellHighlight = 'acu-highlight-manual'; else if (isDiffChanged) cellHighlight = 'acu-highlight-diff'; }
+
+                return `<div class="acu-card-row acu-cell${spanFullRow ? ' acu-grid-span-full' : ''}" data-key="${escapeHtml(tableData.key)}" data-tname="${escapeHtml(tableName)}" data-row="${realRowIdx}" data-col="${cIdx}" data-val="${encodeURIComponent(cell ?? '')}"><div class="acu-card-label">${headerName}</div><div class="acu-card-value ${cellHighlight}">${contentHtml}</div></div>`;
+            }).join('');
+            
+            // [新增] 判断整行是否被锁定，以渲染快捷锁定图标
+            let isRowLocked = false;
+            if (tableLockState && tableLockState.rows && tableLockState.rows.includes(realRowIdx)) {
+                isRowLocked = true;
+            }
+            const rowLockIcon = `<i class="fa-solid ${isRowLocked ? 'fa-lock' : 'fa-unlock'} acu-row-lock-btn" data-key="${escapeHtml(tableData.key)}" data-row="${realRowIdx}" title="${isRowLocked ? '整行已锁定 (点击解锁)' : '点击锁定整行 (防篡改)'}" style="cursor:pointer; margin-left:auto; color:${isRowLocked ? '#f39c12' : 'var(--acu-text-sub)'}; opacity:${isRowLocked ? '1' : '0.4'}; font-size:13px; transition:all 0.2s;"></i>`;
+
+            // [新增] 检查标题单元格本身的锁定状态 (防止用户误触单元格锁定但看不见)
+            let isTitleLocked = false;
+            if (tableLockState) {
+                const r = realRowIdx;
+            const c = titleColIndex - 1;
+            if ((tableLockState.cells && (tableLockState.cells.includes(`${r}:${c}`)
+ || tableLockState.cells.some(arr => arr[0] === r && arr[1] === c))) || (tableLockState.cols && tableLockState.cols.includes(c))) {
+                    isTitleLocked = true;
+                }
+            }
+            // 如果行没锁，但标题单元格被锁了，就在标题旁边加个小锁提示
+            const titleLockIcon = (isTitleLocked && !isRowLocked) ? ` <i class="fa-solid fa-lock" style="color:#f39c12; margin-left:4px; opacity:0.9; font-size:11px;" title="该标题格已被物理锁定"></i>` : '';
+
+            // [修改] 给 acu-card-body 增加了 view-grid 或 view-list 类，并在 header 注入了 rowLockIcon 和 titleLockIcon
+            return `<div class="acu-data-card ${isPending ? 'pending-deletion' : ''}"><div class="acu-card-header"><span class="acu-card-index">${showDefaultIndex ? '#' + (realRowIdx + 1) : ''}</span><span class="acu-cell acu-editable-title ${rowClass}" data-key="${escapeHtml(tableData.key)}" data-tname="${escapeHtml(tableName)}" data-row="${realRowIdx}" data-col="${titleColIndex}" data-val="${encodeURIComponent(cardTitle ?? '')}" title="点击编辑标题">${highlightMatch(cardTitle)}${titleLockIcon}</span>${rowLockIcon}</div><div class="acu-card-body ${isGridMode ? 'view-grid' : 'view-list'}">${cardBody}</div></div>`;
+        }).join('');
+        html += `</div></div>`;
+
+        if (totalPages > 1) {
+            html += `<div class="acu-panel-footer"><button class="acu-page-btn ${currentPage === 1 ? 'disabled' : ''}" data-page="${currentPage - 1}" ${currentPage === 1 ? 'disabled' : ''}><i class="fa-solid fa-chevron-left"></i></button>`;
+            const range = [];
+            if (totalPages <= 7) { for (let i = 1; i <= totalPages; i++) range.push(i); } 
+            else { if (currentPage <= 4) range.push(1, 2, 3, 4, 5, '...', totalPages); else if (currentPage >= totalPages - 3) range.push(1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages); else range.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages); }
+            range.forEach(p => { if (p === '...') html += `<span class="acu-page-info">...</span>`; else html += `<button class="acu-page-btn ${p === currentPage ? 'active' : ''}" data-page="${p}">${p}</button>`; });
+            html += `<button class="acu-page-btn ${currentPage === totalPages ? 'disabled' : ''}" data-page="${currentPage + 1}" ${currentPage === totalPages ? 'disabled' : ''}><i class="fa-solid fa-chevron-right"></i></button></div>`;
+        }
+        return html;
+    };
+
+    // [新增] 通用状态保存函数 (面板滚动 + 卡片内部滚动)
+    const saveCurrentTabState = () => {
+        const { $ } = getCore();
+        const activeTab = getActiveTabState();
+        const $content = $('.acu-panel-content');
+        
+        if (activeTab && $content.length) {
+            const innerScrolls = {};
+            // 遍历所有卡片，记录内部滚动条位置
+            $content.find('.acu-data-card, .acu-card-body, .acu-edit-textarea').each(function() {
+                if (this.scrollTop > 0) {
+                    // 尝试找到这张卡片的唯一标识 (Row Index)
+                    const $card = $(this).closest('.acu-data-card');
+                    const rIdx = $card.find('.acu-editable-title').data('row');
+                    // 如果是编辑框，还要加特殊标记
+                    const isEdit = $(this).hasClass('acu-edit-textarea');
+                    
+                    if (rIdx !== undefined) {
+                        const key = isEdit ? `edit-${rIdx}` : rIdx;
+                        innerScrolls[key] = this.scrollTop;
+                    }
+                }
+            });
+            
+            // 存入全局状态对象
+            tableScrollStates[activeTab] = {
+                left: $content.scrollLeft(),
+                top: $content.scrollTop(),
+                inner: innerScrolls,
+                timestamp: Date.now() // 加个时间戳方便调试
+            };
+        }
+    };
+
+    const closePanel = () => {
+        const { $ } = getCore();
+        saveCurrentTabState(); // <--- 调用通用保存
+        
+        $('#acu-data-area').removeClass('visible');
+        $('.acu-nav-btn').removeClass('active');
+        saveActiveTabState(null);
+    };
+
+    let _globalEventsBound = false;
+    let _acuScrollTimer = null; // 【修复】把定时器提出来防止闭包泄漏
+    const bindEvents = (tables) => {
+    const { $ } = getCore();
+
+    // 【新增】智能跑马灯物理宽度探测器
+    setTimeout(() => {
+        $('.acu-rpg-scroll-text').each(function() {
+            const container = this;
+            const content = container.querySelector('.acu-smart-marquee');
+            if (!content) return;
+            
+            // 核心：精准对比元素的真实滚动宽度与外框宽度
+            if (content.scrollWidth > container.clientWidth) {
+                const dist = container.clientWidth - content.scrollWidth - 4; // 算出需要向左平移多少距离
+                content.style.setProperty('--scroll-dist', dist + 'px');
+                content.classList.add('is-scrolling');
+            } else {
+                // 如果屏幕够大能装下，彻底取消滚动
+                content.classList.remove('is-scrolling');
+                content.style.transform = 'none';
+            }
+        });
+    }, 50);
+
+    // 【修复】滚动事件必须放在这里！每次重绘都会执行，确保新面板被成功绑定
+    const $panel = $('.acu-panel-content');
+    if ($panel.length) {
+        $panel.off('scroll.acu_save').on('scroll.acu_save', function() {
+            // 【修复】必须在 0 延迟的当下立刻抓取标签名和滚动值，防止 150ms 后因用户切换了标签导致记忆串台
+            const currentScrollTop = $(this).scrollTop();
+            const currentScrollLeft = $(this).scrollLeft();
+            const activeTab = getActiveTabState(); 
+
+            if (_acuScrollTimer) clearTimeout(_acuScrollTimer);
+            _acuScrollTimer = setTimeout(() => {
+                if (activeTab) {
+                    if (!tableScrollStates[activeTab]) tableScrollStates[activeTab] = { top: 0, left: 0, inner: {} };
+                    tableScrollStates[activeTab].top = currentScrollTop;
+                    tableScrollStates[activeTab].left = currentScrollLeft;
+                }
+            }, 150);
+        });
+    }
+
+    if (!_globalEventsBound) {
+        _globalEventsBound = true;
+
+    // ============================================================
+    // [优化版] 点击标签图标 -> 0延迟极速勾选/取消 (定向更新功能恢复！)
+    // ============================================================
+    $('body').off('click.acu_nav_icon').on('click.acu_nav_icon', '.acu-nav-btn i', function(e) {
+        if (isEditingOrder) return;
+        
+        // 【关键】阻止冒泡！这样点击图标就不会触发父级按钮的“切换面板”事件
+        e.preventDefault();
+        e.stopPropagation(); 
+
+        const $btn = $(this).closest('.acu-nav-btn');
+        const tableKey = $btn.data('key');
+        if (!tableKey) return;
+
+        // 极速震动反馈 (如果有马达的话，手感极佳)
+        if (navigator.vibrate) navigator.vibrate(30);
+
+        const api = getCore().getDB();
+        if (!api || !api.getManualSelectedTables || !api.setManualSelectedTables) return;
+
+        const selInfo = api.getManualSelectedTables();
+        let currentKeys = selInfo.hasManualSelection ? (selInfo.selectedTables || []) : [];
+        const totalTableCount = $('.acu-nav-btn[data-key!=""]').length;
+
+        if (currentKeys.length >= totalTableCount) currentKeys = [];
+
+        if (currentKeys.includes(tableKey)) {
+            currentKeys = currentKeys.filter(k => k !== tableKey);
+            $btn.removeClass('acu-update-selected');
+            AcuToast.info(`已取消定向更新: ${$btn.find('span').text()}`);
+        } else {
+            currentKeys.push(tableKey);
+            $btn.addClass('acu-update-selected');
+            AcuToast.success(`⚡ 加入定向更新: ${$btn.find('span').text()}`);
+        }
+
+        if (currentKeys.length === 0 || currentKeys.length >= totalTableCount) {
+            api.clearManualSelectedTables();
+            $('.acu-update-selected').removeClass('acu-update-selected');
+            if (currentKeys.length >= totalTableCount && window.toastr) {
+                AcuToast.info('已选中所有表格，自动恢复为全量更新');
+            }
+        } else {
+            api.setManualSelectedTables(currentKeys);
+        }
+    });
+
+    // [新增] 绑定日历图标点击事件
+    $('body').off('click.acu_cal').on('click.acu_cal', '.acu-calendar-trigger', function(e) {
+        e.stopPropagation();
+        // 获取同级文本节点内容 (移除 HTML 标签后的纯文本)
+        const timeStr = $(this).parent().text().trim();
+        CalendarModule.show(timeStr);
+    });
+
+    $('body').off('click.acu_nav_toggle').on('click.acu_nav_toggle', '.acu-nav-toggle-btn', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        
+        // 1. 切换数据状态
+        const current = Store.get('acu_hide_nav_only', false);
+        const newState = !current;
+        Store.set('acu_hide_nav_only', newState);
+        
+        // 2. [新增] 立即手动切换图标 (视觉瞬时反馈)
+        const $icon = $(this);
+        if (newState) {
+            $icon.removeClass('fa-eye').addClass('fa-eye-slash');
+            $icon.attr('title', '显示主面板');
+            AcuToast.info('🙈 主面板已隐藏');
+        } else {
+            $icon.removeClass('fa-eye-slash').addClass('fa-eye');
+            $icon.attr('title', '隐藏主面板');
+        }
+        
+        // 3. 触发重绘
+        renderInterface(); 
+    });
+    
+    // [新增] 嵌入式日历交互
+    $('body').off('click.acu_emb_cal_nav').on('click.acu_emb_cal_nav', '#acu-rpg-embedded-cal-container .acu-cal-nav-btn', function(e) {
+        e.stopPropagation();
+        const data = window._acuEmbeddedCalData;
+        if (!data) return;
+        if ($(this).attr('id') === 'cal-prev') {
+            data.month--;
+            if (data.month < 1) { data.month = 12; data.year--; }
+        } else {
+            data.month++;
+            if (data.month > 12) { data.month = 1; data.year++; }
+        }
+        $('#acu-rpg-embedded-cal-details').slideUp(100);
+        $('#acu-rpg-embedded-cal-container').html(CalendarModule.render(data.year, data.month, data.day, data.events));
+    });
+
+    $('body').off('click.acu_emb_cal_cell').on('click.acu_emb_cal_cell', '#acu-rpg-embedded-cal-container .acu-cal-cell', function(e) {
+        e.stopPropagation();
+        const data = window._acuEmbeddedCalData;
+        if (!data) return;
+        $('#acu-rpg-embedded-cal-container .acu-cal-cell').removeClass('selected');
+        $(this).addClass('selected');
+
+        const dateKey = $(this).data('date');
+        const hasEvt = $(this).data('has-evt');
+        const $detailPanel = $('#acu-rpg-embedded-cal-details');
+        const $list = $('#acu-emb-evt-list');
+
+        if (hasEvt) {
+            const dayEvents = data.events.filter(evt => evt.date === dateKey);
+            dayEvents.sort((a,b) => CalendarModule.getEventScore(b.type) - CalendarModule.getEventScore(a.type));
+
+            $('#acu-emb-evt-date-title').text(dateKey);
+            
+            const listHtml = dayEvents.map(evt => {
+                let tagClass = CalendarModule.getEventClass(evt.type);
+                let cleanType = evt.type.replace(/[\[\]]/g, '');
+
+                return `
+                    <div class="acu-event-item">
+                        <div>
+                            <span class="acu-event-tag ${tagClass}">${escapeHtml(cleanType)}</span>
+                            <span class="acu-event-title">${escapeHtml(evt.title)}</span>
+                        </div>
+                        ${evt.desc ? `<div class="acu-event-desc">${escapeHtml(evt.desc)}</div>` : ''}
+                    </div>
+                `;
+            }).join('');
+
+            $list.html(listHtml);
+            $detailPanel.slideDown(200);
+        } else {
+            $detailPanel.slideUp(200);
+        }
+    });
+
+
+    $('body').off('click.acu_autoclose').on('click.acu_autoclose', function(e) {
+        if (isEditingOrder) return;
+        
+        if (window._acuBlockNextClick || document.querySelector('.acu-inline-editing-row')) {
+            return;
+        }
+
+        // [核心优化 7] 使用极速的原生 DOM API (e.target.closest) 替代 jQuery 的查找，降低 90% 的点击事件开销
+        const target = e.target;
+        
+        if (target.closest('.acu-wrapper, .acu-cell-menu, .acu-menu-backdrop, .acu-edit-overlay, .acu-edit-dialog')) return;
+        if (target.closest('#send_textarea, #send_but, #send_form, .bottom_bar_container')) return;
+
+        const tagName = target.tagName ? target.tagName.toLowerCase() : '';
+        if (tagName === 'input' || tagName === 'textarea' || target.isContentEditable) return;
+        
+        const $target = $(target); // 保留向下兼容
+
+        // 原有逻辑：点击其他无关区域（如背景聊天记录）时关闭
+        const isPanelOpen = $('#acu-data-area').hasClass('visible');
+        const isCollapsed = $('#acu-btn-expand').length > 0;
+        if (isCollapsed) return;
+        if (isPanelOpen) { closePanel(); } else { saveCollapsedState(true); renderInterface(); }
+    });
+
+    $('body').off('click.acu_delegate').on('click.acu_delegate', '.acu-wrapper', function(e) {
+        if (isEditingOrder) return;
+
+        if ($('.acu-inline-editing-row').length > 0 || window._acuBlockNextClick) {
+            if ($(e.target).closest('.acu-inline-editing-row').length === 0) {
+                e.stopPropagation();
+                e.preventDefault();
+                return;
+            }
+        }
+
+        const $target = $(e.target);
+        const $navBtn = $target.closest('.acu-nav-btn');
+        if ($navBtn.length) {
+            e.stopPropagation();
+            const tableName = $navBtn.data('table'); const currentActiveTab = getActiveTabState();
+            if (currentActiveTab === tableName && $('#acu-data-area').hasClass('visible')) { closePanel(); return; }
+            $('.acu-nav-btn').removeClass('active'); $navBtn.addClass('active');
+            if ($('.acu-panel-content').length && currentActiveTab) { saveCurrentTabState(); }
+            saveActiveTabState(tableName); 
+            
+            // [新增] 如果是人物关系网标签，特殊处理
+            if (tableName === VIRTUAL_RELATIONSHIP_TAB) {
+                const $dataArea = $('#acu-data-area');
+                $dataArea.html(renderRelationshipPanel()).addClass('visible');
+                bindRelationshipPanelEvents();
+                
+                // 【核心修复】同步滚动条追踪器，防止第一次交互时误判为切页
+                window._acuLastTabForScroll = tableName;
+                return;
+            }
+            
+            // [核心优化 2] 标签页切换实行“局部 DOM 替换”，绕过主渲染引擎
+            const rawData = cachedRawData || getTableData();
+            if (rawData) {
+                const tables = processJsonData(rawData);
+                if (tables[tableName]) {
+                    const $dataArea = $('#acu-data-area');
+                    $dataArea.html(renderTableContent(tables[tableName], tableName)).addClass('visible');
+                    
+                    // 完美恢复滚动条状态
+                    const savedState = tableScrollStates[tableName];
+                    if (savedState) {
+                        const $newContent = $dataArea.find('.acu-panel-content');
+                        $newContent.scrollTop(savedState.top || 0);
+                        $newContent.scrollLeft(savedState.left || 0);
+                        if (savedState.inner) {
+                            Object.keys(savedState.inner).forEach(key => {
+                                const scrollTop = savedState.inner[key];
+                                const $targetTitle = $newContent.find(`.acu-editable-title[data-row="${key}"]`);
+                                if ($targetTitle.length) {
+                                    const $card = $targetTitle.closest('.acu-data-card');
+                                    $card.scrollTop(scrollTop);
+                                    $card.find('.acu-card-body').scrollTop(scrollTop);
+                                }
+                            });
+                        }
+                    }
+                    
+                    bindEvents(tables); // 重新绑定面板内事件
+                    updateSaveButtonState();
+                    
+                    // 【核心修复】同步滚动条追踪器，防止第一次交互时误判为切页
+                    window._acuLastTabForScroll = tableName;
+                    return; // 局部替换成功，直接结束，彻底干掉全局重绘的卡顿
+                }
+            }
+            
+            setTimeout(() => renderInterface(), 0); return;
+        }
+        const $cell = $target.closest('.acu-cell');
+        if ($cell.length) { 
+            if ($cell.closest('.acu-inline-editing-row').length) return; // [修复] 处于整体编辑模式时，点击单元格不触发菜单
+            e.stopPropagation(); showCellMenu(e, $cell[0]); return; 
+        }
+        const $pageBtn = $target.closest('.acu-page-btn');
+        if ($pageBtn.length) {
+            e.stopPropagation(); if ($pageBtn.hasClass('disabled') || $pageBtn.hasClass('active')) return;
+            const newPage = parseInt($pageBtn.data('page')); const activeTab = getActiveTabState();
+            if (activeTab) { 
+                tablePageStates[activeTab] = newPage; 
+                if (tableScrollStates[activeTab]) {
+                    tableScrollStates[activeTab].top = 0;
+                    tableScrollStates[activeTab].left = 0;
+                }
+                // [核心优化 3] 翻页也实行局部 DOM 替换
+                const rawData = cachedRawData || getTableData();
+                const tables = processJsonData(rawData || {});
+                if (tables[activeTab]) {
+                    $('#acu-data-area').html(renderTableContent(tables[activeTab], activeTab));
+                    const $newContent = $('.acu-panel-content');
+                    $newContent.scrollTop(0);
+                    $newContent.scrollLeft(0);
+                    bindEvents(tables);
+                } else {
+                    window._acuForceScrollTop = true; 
+                    renderInterface(); 
+                }
+            }
+            return;
+        }
+        const $dataArea = $target.closest('#acu-data-area'); const $navBar = $target.closest('#acu-nav-bar');
+        const isInteractive = $target.closest('.acu-data-card, .acu-nav-btn, .acu-action-btn, .acu-page-btn, .acu-search-wrapper, .acu-close-btn, .acu-panel-title, .acu-panel-header, .acu-header-actions, .acu-height-control, .acu-view-btn, .acu-expand-trigger, .acu-order-controls, .acu-search-input, .acu-panel-footer, .acu-rel-canvas-wrapper, .acu-rel-svg, .acu-rel-node, .acu-rel-edge').length > 0;
+        if (isInteractive) return;
+        if ($dataArea.length || $target.is('#acu-data-area')) { 
+            // [修复] 人物关系图模式下，仅点击面板内容区域不关闭（保留交互空间）
+            if (getActiveTabState() === VIRTUAL_RELATIONSHIP_TAB) return;
+            if (window._acuBlockNextClick) return; // 如果盾牌举着，说明刚退出编辑，只消耗点击，不关闭面板
+            if ($('.acu-inline-editing-row').length > 0) return; // 【终极防御】如果有正在编辑的卡片，绝不关闭面板！
+            closePanel(); 
+            return; 
+        }
+        else if ($navBar.length || $target.is('#acu-nav-bar')) { const isPanelOpen = $('#acu-data-area').hasClass('visible'); if (isPanelOpen) { closePanel(); } else { saveCollapsedState(true); renderInterface(); } }
+    });
+
+    $('body').off('click.acu_btn_expand').on('click.acu_btn_expand', '#acu-btn-expand', (e) => { e.stopPropagation(); if (isEditingOrder) return; saveCollapsedState(false); renderInterface(); });
+    // [回归] 收起按钮逻辑
+    $('body').off('click.acu_btn_collapse').on('click.acu_btn_collapse', '#acu-btn-collapse', (e) => { 
+        e.stopPropagation(); 
+        if (isEditingOrder) return; 
+        saveCollapsedState(true); 
+        renderInterface(); 
+    });
+    
+    // [修改版] 刷新按钮 = 极速回档 (Instant Revert)
+    $('body').off('click.acu_btn_refresh').on('click.acu_btn_refresh', '#acu-btn-refresh', async (e) => {
+        e.stopPropagation();
+
+        // [修复] 关键漏网之鱼：如果是编辑布局模式，禁止触发刷新，只允许被拖拽
+        if (isEditingOrder) return;
+
+        // 1. 安全锁：如果正在后台保存，禁止刷新，防止数据冲突
+        if (isSaving) {
+            AcuToast.warning('⏳ 正在后台同步数据，无法撤销，请稍后...');
+            return;
+        }
+
+        const $btn = $(e.currentTarget);
+        const $icon = $btn.find('i');
+
+        // 2. 【核心】彻底清除所有未保存状态 (瞬间丢弃脏数据)
+        // (1) 清空待删除记录
+        savePendingDeletions({}); 
+        
+        // (2) 清空内存缓存 -> 丢弃未保存的修改
+        cachedRawData = null; 
+        
+        // (3) 重置状态标记
+        hasUnsavedChanges = false;
+        currentDiffMap.clear();
+        if (window.acuModifiedSet) window.acuModifiedSet.clear();
+
+        // (4) 重置保存按钮样式 (去掉呼吸灯)
+        const $saveBtn = $('#acu-btn-save-global');
+        $saveBtn.find('i').removeClass('acu-icon-breathe');
+        $saveBtn.attr('title', '保存所有修改').css('color', '');
+
+        // 3. 【极速优化】移除 300ms 延时，直接读取快照
+        // await new Promise(r => setTimeout(r, 300)); // <--- 删掉这行人为延时
+        
+        // 尝试优先读取本地快照（Last Snapshot），这样最快，不需要等后端API
+        const snapshot = loadSnapshot();
+        if (snapshot) {
+            cachedRawData = snapshot; // 强制回滚到快照
+        }
+
+        // 4. 重新渲染界面
+        // 清理旧的样式标签，防止残留
+        $('.acu-edit-overlay, .acu-cell-menu, .acu-menu-backdrop').remove(); 
+        
+        // 立即重绘
+        renderInterface(); 
+        
+        AcuToast.success('已重置：未保存的修改已清除');
+    });
+
+    // [修复] 补回手动更新按钮的事件绑定头
+    $('body').off('click.acu_btn_force_update').on('click.acu_btn_force_update', '#acu-btn-force-update', async (e) => {
+        e.stopPropagation(); 
+        if (isEditingOrder) return;
+        const api = getCore().getDB();
+        if (api && typeof api.manualUpdate === 'function') {
+            // --- [新增] 动态提示：判断是全量还是部分更新 ---
+            if (api.getManualSelectedTables) {
+                const selInfo = api.getManualSelectedTables();
+                const totalTableCount = $('.acu-nav-btn[data-key!=""]').length || 999;
+                
+                // 加一道防线：不仅要有选中的表，而且不能是全选，才播报“定向更新”
+                if (selInfo && selInfo.hasManualSelection && selInfo.selectedTables.length > 0 && selInfo.selectedTables.length < totalTableCount) {
+                    AcuToast.info(`⚡ 已请求定向更新选中的 ${selInfo.selectedTables.length} 个表格...`);
+                } else {
+                    AcuToast.info('已请求全量更新，请等待后台生成...');
+                }
+            } else {
+                AcuToast.info('已请求更新，请等待后台生成...');
+            }
+            // ---------------------------------------------
+            try {
+                await api.manualUpdate();
+            } catch(err) {
+                console.error('[ACU] 手动更新失败:', err);
+                AcuToast.error('手动更新触发失败');
+            }
+        } else {
+            AcuToast.warning('⚠️ 后端脚本未提供 manualUpdate 接口，请确保同时也更新了最新的后端脚本');
+        }
+    });
+    $('body').off('click.acu_btn_settings').on('click.acu_btn_settings', '#acu-btn-settings', (e) => { e.stopPropagation(); if (isEditingOrder) return; showSettingsModal(); });
+    
+
+    $('body').off('click.acu_btn_open_editor').on('click.acu_btn_open_editor', '#acu-btn-open-editor', (e) => {
+        e.stopPropagation();
+        if (isEditingOrder) return;
+        const api = getCore().getDB();
+        if (api && typeof api.openVisualizer === 'function') {
+            api.openVisualizer();
+        } else if (window.toastr) {
+            AcuToast.warning('后端脚本(数据库)未就绪或版本过低');
+        }
+    });
+
+    // [新增] 绑定打开数据库原生设置面板的事件
+    $('body').off('click.acu_btn_open_db_settings').on('click.acu_btn_open_db_settings', '#acu-btn-open-db-settings', async (e) => {
+        e.stopPropagation();
+        if (isEditingOrder) return;
+        const api = getCore().getDB();
+        if (api && typeof api.openSettings === 'function') {
+            await api.openSettings(); // 调用文档中提供的 API
+        } else if (window.toastr) {
+            AcuToast.warning('后端脚本(数据库)未就绪或版本过低');
+        }
+    });
+    
+    $('body').off('click.acu_btn_save_global').on('click.acu_btn_save_global', '#acu-btn-save-global', function(e) { 
+        e.stopPropagation(); if (isEditingOrder) return;
+        
+        let dataToSave = null;
+        if (hasUnsavedChanges && cachedRawData) { dataToSave = cachedRawData; } else { dataToSave = getTableData(); }
+        
+        if (!dataToSave) { 
+            AcuToast.error('无法获取有效数据，保存失败'); 
+            return;
+        }
+        
+        // ============================================================
+        // [优化] 第一步：立即更新 UI（同步，0延迟）
+        // ============================================================
+        const $btn = $('#acu-btn-save-global');
+        const $icon = $btn.find('i');
+        
+        // 1. 按钮变成 spinner
+        $icon.removeClass('fa-save acu-icon-breathe').addClass('fa-spinner fa-spin');
+        $btn.prop('disabled', true);
+        
+        // 2. 立即清除所有橙色高亮（视觉上"秒变"）
+        $('.acu-highlight-manual').removeClass('acu-highlight-manual');
+
+        // 【新增修复】立即将所有标记为待删除的行从 UI 中物理抹除，补齐“乐观更新”的最后一块拼图！
+        $('.pending-deletion').each(function() {
+            const $card = $(this);
+            $card.css('transition', 'all 0.2s ease').css('opacity', '0').css('transform', 'scale(0.9)');
+            setTimeout(() => $card.slideUp(200, () => $card.remove()), 200);
+        });
+        
+        // 3. 立即清理状态标记
+        if (window.acuModifiedSet) window.acuModifiedSet.clear();
+        hasUnsavedChanges = false;
+        
+        // 4. 立即弹出提示（用户感知：点击即反馈，瞬间给予安全感）
+        AcuToast.success('💾 已保存');
+        
+        // ============================================================
+        // [优化] 第二步：后台异步保存（不阻塞 UI）
+        // ============================================================
+        (async () => {
+            try {
+                // 执行保存
+                await saveDataToDatabase(dataToSave, true, true);
+                
+                // 保存成功：恢复按钮状态
+                $icon.removeClass('fa-spinner fa-spin').addClass('fa-save');
+                $btn.attr('title', '保存所有修改').css('color', '');
+                $btn.prop('disabled', false);
+                
+            } catch (err) {
+                console.error('[ACU] 保存失败:', err);
+                // 保存失败：恢复按钮 + 提示
+                $icon.removeClass('fa-spinner fa-spin').addClass('fa-save');
+                $btn.prop('disabled', false);
+                AcuToast.error('保存失败，请重试');
+            }
+        })();
+    });
+
+
+    // [终极修复] 使用全局挂载与事件委托，彻底免疫 DOM 重绘导致的搜索失效与防抖失忆
+    $('body')
+        .off('compositionstart.acu_search compositionend.acu_search input.acu_search', '.acu-search-input')
+        .on('compositionstart.acu_search', '.acu-search-input', () => { 
+            window._acuIsComposing = true; 
+        })
+        .on('compositionend.acu_search', '.acu-search-input', function() { 
+            window._acuIsComposing = false; 
+            const val = $(this).val();
+            const activeTab = getActiveTabState();
+            if (activeTab) {
+                tableSearchStates[activeTab] = val;
+                tablePageStates[activeTab] = 1;
+                window._acuForceScrollTop = true; // [新增] 强制回顶标记
+                renderInterface();
+                setTimeout(() => { $('.acu-search-input').focus(); }, 0);
+            }
+        })
+        .on('input.acu_search', '.acu-search-input', function() {
+            if (window._acuIsComposing) return; 
+            const val = $(this).val(); 
+            const selectionStart = this.selectionStart;
+            const selectionEnd = this.selectionEnd;
+            
+            if (window._acuSearchTimeout) clearTimeout(window._acuSearchTimeout);
+            window._acuSearchTimeout = setTimeout(() => {
+                const activeTab = getActiveTabState();
+                if (activeTab) {
+                    tableSearchStates[activeTab] = val; 
+                    tablePageStates[activeTab] = 1;
+                    const isFocus = document.activeElement && document.activeElement.classList.contains('acu-search-input'); 
+                    window._acuForceScrollTop = true; // [新增] 强制回顶标记
+                    renderInterface();
+                    
+                    if (isFocus) { 
+                        const $newInput = $('.acu-search-input'); 
+                        $newInput.focus(); 
+                        if ($newInput.length && $newInput[0].setSelectionRange) {
+                            try { $newInput[0].setSelectionRange(selectionStart, selectionEnd); } catch(e) {}
+                        }
+                    }
+                }
+            }, 300);
+        });
+
+// --- [新增] 移植功能的事件绑定 (全局事件委托重构) ---
+
+        // 0.5. 卡片标题栏快捷【锁定/解锁整行】
+        $('body').off('click.acu_row_lock').on('click.acu_row_lock', '.acu-row-lock-btn', function(e) {
+            e.preventDefault(); e.stopPropagation();
+            const tableKey = $(this).data('key');
+            const rowIdx = parseInt($(this).data('row'), 10);
+            const api = getCore().getDB();
+            
+            if (api && api.toggleTableRowLock) {
+                // 触发 API 锁定/解锁整行 (0-based 数据行索引)
+                const success = api.toggleTableRowLock(tableKey, rowIdx);
+                if (success !== false) {
+                    const $btn = $(this);
+                    const $card = $btn.closest('.acu-data-card'); // 获取当前操作的整张卡片
+                    const isNowLocked = $btn.hasClass('fa-unlock');
+                    
+                    if (isNowLocked) {
+                        // 1. 改变行锁按钮状态
+                        $btn.removeClass('fa-unlock').addClass('fa-lock')
+                            .css({ 'color': '#f39c12', 'opacity': '1' })
+                            .attr('title', '整行已锁定 (点击解锁)');
+                            
+                        // 2. 移除标题格可能残留的独立小锁 (因为整行锁优先级更高，避免显示两个锁)
+                        $card.find('.acu-editable-title .fa-lock').remove();
+                        
+                        // 3. 给该行内部的所有普通单元格瞬间加上小锁
+                        $card.find('.acu-card-value').each(function() {
+                            if ($(this).find('.fa-lock').length === 0) {
+                                $(this).append(' <i class="fa-solid fa-lock" style="color:#f39c12; margin-left:4px; opacity:0.9; font-size:11px;" title="该单元格已被物理锁定，免疫AI篡改"></i>');
+                            }
+                        });
+                        
+                        AcuToast.success('🔒 已物理锁定整行，免疫 AI 篡改');
+                    } else {
+                        // 1. 改变行锁按钮状态
+                        $btn.removeClass('fa-lock').addClass('fa-unlock')
+                            .css({ 'color': 'var(--acu-text-sub)', 'opacity': '0.4' })
+                            .attr('title', '点击锁定整行 (防篡改)');
+                            
+                        // 2. 解锁时，瞬间移除该行内部所有普通单元格的小锁
+                        $card.find('.acu-card-value .fa-lock').remove();
+                        
+                        AcuToast.success('🔓 已解除整行锁定');
+                    }
+                }
+            } else if (api && api.toggleTableCellLock) {
+                // 降级处理：如果后端没提供整行锁 API，则退而求其次锁定该行标题格
+                const success = api.toggleTableCellLock(tableKey, rowIdx, 0); 
+                if (success !== false) {
+                    AcuToast.success('🔒 已锁定标题格 (提示: 后端版本较低，未提供整行锁API)');
+                    const $title = $(this).siblings('.acu-editable-title');
+                    if ($title.find('.fa-lock').length === 0) {
+                        $title.append(' <i class="fa-solid fa-lock" style="color:#f39c12; margin-left:4px; opacity:0.9; font-size:11px;" title="该标题格已被物理锁定"></i>');
+                    }
+                }
+            } else {
+                AcuToast.warning('后端脚本版本过低，请升级数据库');
+            }
+        });
+
+        // 0. 标题栏快捷排序切换
+        $('body').off('click.acu_sort_toggle').on('click.acu_sort_toggle', '.acu-sort-toggle-btn', function(e) {
+            e.preventDefault(); e.stopPropagation();
+            const tableName = $(this).data('table');
+            let currentList = Store.get('acu_reverse_tables', []);
+            
+            if (currentList.includes(tableName)) {
+                currentList = currentList.filter(n => n !== tableName);
+                AcuToast.success(`【${tableName}】已切换为：正序 (最早在前)`);
+            } else {
+                currentList.push(tableName);
+                AcuToast.success(`【${tableName}】已切换为：倒序 (最新在前)`);
+            }
+            Store.set('acu_reverse_tables', currentList);
+            
+            // [核心优化 5] 排序切换也实行“局部 DOM 替换”
+            const rawData = cachedRawData || getTableData();
+            const tables = processJsonData(rawData || {});
+            if (tables[tableName]) {
+                $('#acu-data-area').html(renderTableContent(tables[tableName], tableName));
+                bindEvents(tables); // 重新绑定面板内事件
+            } else {
+                renderInterface(); 
+            }
+        });
+        
+        // 1. 视图切换
+        $('body').off('click.acu_switch_style').on('click.acu_switch_style', '#acu-btn-switch-style', function(e) {
+            e.preventDefault(); e.stopPropagation();
+            const tableName = $(this).data('table');
+            const styles = getTableStyles();
+            const current = styles[tableName] || 'list';
+            const newStyle = current === 'grid' ? 'list' : 'grid';
+            styles[tableName] = newStyle; 
+            saveTableStyles(styles);
+            
+            // [核心优化 4] 纯 CSS 切换网格/列表视图，不重建整个大面板 DOM
+            const $icon = $(this).find('i');
+            $icon.removeClass('fa-th-large fa-list').addClass(newStyle === 'grid' ? 'fa-th-large' : 'fa-list');
+            $(this).attr('title', `🔄 点击切换视图模式 (当前: ${newStyle === 'grid' ? '双列网格' : '单列列表'})`);
+            
+            const $cardBodies = $('#acu-data-area').find('.acu-card-body');
+            if (newStyle === 'grid') {
+                $cardBodies.removeClass('view-list').addClass('view-grid');
+            } else {
+                $cardBodies.removeClass('view-grid').addClass('view-list');
+            }
+        });
+
+        // 2. 高度拖拽
+        $('body').off('pointerdown.acu_height_drag').on('pointerdown.acu_height_drag', '.acu-height-drag-handle', function(e) {
+            if (e.button && e.button !== 0) return; // [修复] 兼容移动端触摸（button可能为undefined）
+            e.preventDefault(); e.stopPropagation();
+            const handle = this;
+            handle.setPointerCapture(e.pointerId);
+            $(handle).addClass('active');
+            const $panel = $('#acu-data-area');
+            const startHeight = $panel.height();
+            const startY = e.clientY;
+            const tableName = $(handle).data('table');
+            
+            handle.onpointermove = function(moveE) {
+                const dy = moveE.clientY - startY;
+                let newHeight = startHeight - dy; // 向上拖动增加高度
+                if (newHeight < MIN_PANEL_HEIGHT) newHeight = MIN_PANEL_HEIGHT;
+                if (newHeight > MAX_PANEL_HEIGHT) newHeight = MAX_PANEL_HEIGHT;
+                $panel.css('height', newHeight + 'px');
+            };
+            handle.onpointerup = function(upE) {
+                $(handle).removeClass('active');
+                handle.releasePointerCapture(upE.pointerId);
+                handle.onpointermove = null;
+                handle.onpointerup = null;
+                if (tableName) {
+                     const heights = getTableHeights();
+                     heights[tableName] = parseInt($panel.css('height'));
+                     saveTableHeights(heights);
+                     $panel.addClass('acu-manual-mode');
+                }
+            };
+        });
+        
+        // 3. 双击重置高度 - 支持整个头部区域触发
+        $('body').off('dblclick.acu_height_reset_handle').on('dblclick.acu_height_reset_handle', '.acu-height-drag-handle', function(e) {
+             e.preventDefault(); e.stopPropagation();
+             const tableName = $(this).data('table');
+             if (tableName) {
+                 const heights = getTableHeights();
+                 delete heights[tableName];
+                 saveTableHeights(heights);
+                 $('#acu-data-area').css('height', '').removeClass('acu-manual-mode');
+                 AcuToast.info('✓ 已恢复自适应高度');
+             }
+        });
+
+        // [新增] 双击头部任意位置也可重置高度
+        $('body').off('dblclick.acu_panel_header').on('dblclick.acu_panel_header', '.acu-panel-header', function(e) {
+            if ($(e.target).closest('.acu-search-input, .acu-close-btn, .acu-view-btn').length) return;
+            e.preventDefault(); e.stopPropagation();
+            const tableName = getActiveTabState();
+            if (tableName) {
+                const heights = getTableHeights();
+                delete heights[tableName];
+                saveTableHeights(heights);
+                $('#acu-data-area').css('height', '').removeClass('acu-manual-mode');
+                AcuToast.info('✓ 已恢复自适应高度');
+            }
+        });
+
+    $('body').off('click.acu_close_btn').on('click.acu_close_btn', '.acu-close-btn', function(e) { 
+        e.stopPropagation(); const $input = $('.acu-search-input');
+        if ($input.val()) { $input.val('').trigger('input').focus(); } else { closePanel(); }
+    });
+    } // end if (!_globalEventsBound)
+};
+
+    let selectedSwapSource = null;
+    const toggleOrderEditMode = () => {
+        const { $ } = getCore();
+        isEditingOrder = !isEditingOrder;
+
+        if (isEditingOrder) {
+            // 1. 触发异步重绘，把极简模式炸开
+            renderInterface();
+            
+            // 2. 核心修复：必须等待异步渲染完成后，再去获取并修改 DOM！
+            setTimeout(() => {
+                const $container = $('#acu-nav-bar');
+                const $hint = $('#acu-order-hint');
+                const $pool = $('#acu-action-pool');
+
+                selectedSwapSource = null;
+                $('.acu-swap-selected').removeClass('acu-swap-selected');
+
+                $container.addClass('editing-order');
+                $pool.addClass('visible');
+
+                $hint.html(`
+                    <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <span><i class="fa-solid fa-layer-group"></i> 界面布局编辑器</span>
+                            <span style="font-size:11px; opacity:0.9; font-weight:normal; border-left:1px solid rgba(255,255,255,0.3); padding-left:10px;">
+                                1. 拖动<b>表格标签</b>调整顺序 · 2. 将需要的<b>功能按钮</b>从上方备选池拖到底栏 (最多6个)
+                            </span>
+                        </div>
+                        <button id="acu-btn-finish-sort" style="background:rgba(255,255,255,0.2); color:#fff; border:1px solid rgba(255,255,255,0.4); padding:2px 12px; border-radius:4px; cursor:pointer; font-size:12px; transition:all 0.2s;">
+                            <i class="fa-solid fa-check"></i> 完成保存
+                        </button>
+                    </div>
+                `).addClass('visible').css('display', 'flex');
+                
+                $('#acu-btn-finish-sort').hover(
+                    function() { $(this).css({'background':'#fff', 'color':'var(--acu-accent)'}); },
+                    function() { $(this).css({'background':'rgba(255,255,255,0.2)', 'color':'#fff'}); }
+                );
+
+                $('#acu-btn-finish-sort').one('click', (e) => { e.stopPropagation(); toggleOrderEditMode(); });
+
+                $('#acu-data-area').removeClass('visible');
+                $('.acu-nav-btn, .acu-action-btn').attr('draggable', 'true');
+                
+                initSortable();
+            }, 50); // 延迟 50ms 确保 DOM 已经完全更新
+            
+        } else {
+            const $container = $('#acu-nav-bar');
+            const $hint = $('#acu-order-hint');
+            const $pool = $('#acu-action-pool');
+            
+            $container.removeClass('editing-order');
+            $hint.removeClass('visible').hide();
+            $pool.removeClass('visible');
+            
+            $('.acu-nav-btn, .acu-action-btn').attr('draggable', 'false');
+            $('.acu-nav-btn, .acu-action-btn').off('.sort');
+            
+            // 1. 保存表格标签顺序
+            const newTableOrder = [];
+            $('.acu-nav-btn').each(function() { 
+                if (this.id !== 'acu-btn-settings') {
+                    newTableOrder.push($(this).data('table')); 
+                }
+            });
+            saveTableOrder(newTableOrder);
+            
+            // 2. 保存功能按钮
+            const newActionOrder = [];
+            $('#acu-active-actions .acu-action-btn').each(function() { newActionOrder.push($(this).attr('id')); });
+            
+            if (!newActionOrder.includes('acu-btn-settings')) {
+                newActionOrder.push('acu-btn-settings');
+            }
+            
+            localStorage.setItem(STORAGE_KEY_ACTION_ORDER, JSON.stringify(newActionOrder));
+            
+            renderInterface();
+        }
+    };
+
+
+const initSortable = () => {
+    const { $ } = getCore();
+    let $dragSrcEl = null; 
+    
+    // 清理旧事件
+    $('.acu-nav-btn, .acu-action-btn, #acu-action-pool, #acu-active-actions').off('.sort');
+
+    // --- 1. 按钮本身的拖拽逻辑 (交换顺序) ---
+    const $items = $('.acu-nav-btn, .acu-action-btn');
+    
+    $items.on('dragstart.sort', function(e) {
+        $dragSrcEl = $(this); 
+        $(this).css('opacity', '0.4');
+        e.originalEvent.dataTransfer.effectAllowed = 'move';
+    });
+
+    $items.on('dragend.sort', function(e) { 
+        $(this).css('opacity', '1'); 
+        $('.acu-drag-over').removeClass('acu-drag-over'); 
+        $('.acu-actions-group, .acu-unused-pool').removeClass('dragging-over');
+    });
+
+    $items.on('dragover.sort', function(e) { e.preventDefault(); return false; });
+    $items.on('dragenter.sort', function() { if ($dragSrcEl && this !== $dragSrcEl[0]) $(this).addClass('acu-drag-over'); });
+    $items.on('dragleave.sort', function() { $(this).removeClass('acu-drag-over'); });
+    
+    $items.on('drop.sort', function(e) {
+        e.stopPropagation();
+        $(this).removeClass('acu-drag-over');
+        if (!$dragSrcEl || $dragSrcEl[0] === this) return false;
+
+        const isSrcAction = $dragSrcEl.hasClass('acu-action-btn');
+        const isTgtAction = $(this).hasClass('acu-action-btn');
+        if (isSrcAction !== isTgtAction) return false;
+
+        if (isSrcAction) {
+            const targetPoolId = $(this).parent().attr('id');
+            const srcPoolId = $dragSrcEl.parent().attr('id');
+            
+            if (srcPoolId === 'acu-action-pool' && targetPoolId === 'acu-active-actions') {
+                if ($('#acu-active-actions').children().length >= MAX_ACTION_BUTTONS) {
+                    AcuToast.warning('活动栏最多6个，请先拖走一个');
+                    return false;
+                }
+            }
+
+            if (srcPoolId !== targetPoolId) {
+                $(this).before($dragSrcEl);
+                return false;
+            }
+        }
+
+        const $temp = $('<span>').hide();
+        $dragSrcEl.before($temp);
+        $(this).before($dragSrcEl);
+        $temp.replaceWith($(this));
+        return false;
+    });
+
+    // --- 2. 容器的拖拽逻辑 (上架/下架) ---
+    const $containers = $('#acu-action-pool, #acu-active-actions');
+    
+    $containers.on('dragover.sort', function(e) { 
+        e.preventDefault(); 
+        if ($dragSrcEl && $dragSrcEl.hasClass('acu-action-btn')) {
+            $(this).addClass('dragging-over');
+        }
+    });
+
+    $containers.on('dragleave.sort', function(e) { $(this).removeClass('dragging-over'); });
+
+    $containers.on('drop.sort', function(e) {
+        e.stopPropagation();
+        $(this).removeClass('dragging-over');
+        
+        if ($dragSrcEl && $dragSrcEl.hasClass('acu-action-btn')) {
+            const currentParentId = $dragSrcEl.parent().attr('id');
+            const targetId = $(this).attr('id');
+            const btnId = $dragSrcEl.attr('id');
+
+            if (currentParentId !== targetId) {
+                if (targetId === 'acu-action-pool') {
+                    if (btnId === 'acu-btn-settings') {
+                        AcuToast.warning('设置按钮是核心组件，无法移除');
+                        return false;
+                    }
+                    $(this).append($dragSrcEl);
+                }
+                else if (targetId === 'acu-active-actions') {
+                    if ($(this).children().length >= 6) {
+                        AcuToast.warning('活动栏已满6个，无法继续添加');
+                        return false;
+                    }
+                    $(this).append($dragSrcEl);
+                }
+            }
+        }
+        return false;
+    });
+
+    // --- 【新增】3. 容器点击事件 - 支持点动移动功能按钮 ---
+    $containers.on('click.sort', function(e) {
+        e.stopPropagation();
+        
+        // 如果点击的是按钮本身，不处理
+        if ($(e.target).closest('.acu-action-btn, .acu-nav-btn').length > 0) return;
+        
+        // 如果没有选中任何按钮，不处理
+        if (!selectedSwapSource) return;
+        
+        const $src = $(selectedSwapSource);
+        
+        // 只有功能按钮才能跨池移动
+        if (!$src.hasClass('acu-action-btn')) {
+            AcuToast.warning('表格标签不能移入功能池');
+            $src.removeClass('acu-swap-selected');
+            selectedSwapSource = null;
+            return;
+        }
+        
+        const srcPoolId = $src.parent().attr('id');
+        const targetId = $(this).attr('id');
+        const btnId = $src.attr('id');
+        
+        // 同一个容器内点击，取消选中
+        if (srcPoolId === targetId) {
+            $src.removeClass('acu-swap-selected');
+            selectedSwapSource = null;
+            return;
+        }
+        
+        // 活动栏 → 备选池
+        if (targetId === 'acu-action-pool') {
+            if (btnId === 'acu-btn-settings') {
+                AcuToast.warning('设置按钮是核心组件，无法移除');
+                $src.removeClass('acu-swap-selected');
+                selectedSwapSource = null;
+                return;
+            }
+            $(this).append($src);
+            $src.removeClass('acu-swap-selected');
+            selectedSwapSource = null;
+            AcuToast.success('已移至备选池');
+        }
+        // 备选池 → 活动栏
+        else if (targetId === 'acu-active-actions') {
+            if ($('#acu-active-actions').children().length >= MAX_ACTION_BUTTONS) {
+                AcuToast.warning('活动栏已满6个，请先移走一个');
+                return;
+            }
+            $(this).append($src);
+            $src.removeClass('acu-swap-selected');
+            selectedSwapSource = null;
+            AcuToast.success('已移至活动栏');
+        }
+    });
+
+    // --- 4. 点击互换模式 (Click-to-Swap) - 按钮之间 ---
+    $items.on('click.sort', function(e) {
+        e.preventDefault(); e.stopPropagation();
+
+        if (selectedSwapSource && selectedSwapSource === this) {
+            $(this).removeClass('acu-swap-selected');
+            selectedSwapSource = null;
+            return;
+        }
+
+        if (!selectedSwapSource) {
+            selectedSwapSource = this;
+            $(this).addClass('acu-swap-selected');
+            AcuToast.info('已选中，请点击目标位置进行交换');
+            return;
+        }
+
+        const $src = $(selectedSwapSource);
+        const $tgt = $(this);
+        
+        const isSrcAction = $src.hasClass('acu-action-btn');
+        const isTgtAction = $tgt.hasClass('acu-action-btn');
+        if (isSrcAction !== isTgtAction) {
+            AcuToast.warning('无法在表格标签和功能按钮之间交换');
+            $src.removeClass('acu-swap-selected');
+            selectedSwapSource = this;
+            $(this).addClass('acu-swap-selected');
+            return;
+        }
+
+        const srcPoolId = $src.parent().attr('id');
+        const tgtPoolId = $tgt.parent().attr('id');
+
+        if (isSrcAction && srcPoolId === 'acu-action-pool' && tgtPoolId === 'acu-active-actions') {
+            if ($('#acu-active-actions').children().length >= MAX_ACTION_BUTTONS) {
+                AcuToast.warning('活动栏最多6个，请先移走一个');
+                return;
+            }
+        }
+
+        if (srcPoolId !== tgtPoolId) {
+            $tgt.before($src);
+        } else {
+            const $temp = $('<span>').hide();
+            $src.before($temp);
+            $tgt.before($src);
+            $temp.replaceWith($tgt);
+        }
+
+        $src.removeClass('acu-swap-selected');
+        selectedSwapSource = null;
+        AcuToast.success('操作已完成');
+    });
+};
+
+
+    const showCellMenu = (e, cell) => {
+        const { $ } = getCore();
+        $('.acu-cell-menu, .acu-menu-backdrop').remove();
+        const backdrop = $('<div class="acu-menu-backdrop"></div>');
+        $('body').append(backdrop);
+        
+                const rowIdx = parseInt($(cell).data('row'), 10);
+        const colIdx = parseInt($(cell).data('col'), 10);
+        if (isNaN(rowIdx) || isNaN(colIdx)) { console.warn('[ACU] 无效的行/列索引'); backdrop.remove(); return; }
+        const tableKey = $(cell).data('key');
+        // v19.x 可能没有 tname，尝试获取
+        const tableName = $(cell).data('tname') || $(cell).closest('.acu-data-card').find('.acu-editable-title').text();
+        const content = decodeURIComponent($(cell).data('val'));
+        const config = getConfig();
+        
+        // 唯一标识 ID
+        const cellId = `${tableKey}-${rowIdx}-${colIdx}`;
+        if (!window.acuModifiedSet) window.acuModifiedSet = new Set();
+        
+        // 状态检查
+        const isModified = window.acuModifiedSet.has(cellId);
+        
+        // 获取当前表格的待删除列表
+        const pendingDeletionsMap = getPendingDeletions();
+        const tableDeletions = pendingDeletionsMap[tableKey] || [];
+        const isPending = tableDeletions.includes(rowIdx);
+
+        // [新增] 检查单元格锁定状态
+        const api = getCore().getDB();
+        let isLocked = false;
+        if (api && api.getTableLockState) {
+            const lockState = api.getTableLockState(tableKey);
+            if (lockState) {
+                const r = rowIdx;
+                const c = colIdx - 1;
+                if (
+                    (lockState.cells && (lockState.cells.includes(`${r}:${c}`) || lockState.cells.some(arr => arr[0] === r && arr[1] === c))) ||
+                    (lockState.rows && lockState.rows.includes(r)) ||
+                    (lockState.cols && lockState.cols.includes(c))
+                ) {
+                    isLocked = true;
+                }
+            }
+        }
+
+        const menu = $(`
+            <div class="acu-cell-menu acu-theme-${config.theme}">
+                <div class="acu-cell-menu-item" id="act-edit"><i class="fa-solid fa-pen"></i> 编辑内容</div>
+                <div class="acu-cell-menu-item" id="act-edit-card" style="color:#9b59b6"><i class="fa-solid fa-edit"></i> 整体编辑</div>
+                <div class="acu-cell-menu-item" id="act-insert" style="color:#2980b9"><i class="fa-solid fa-plus"></i> ${config.layout === 'vertical' ? '在下方追加新行' : '在旁边追加新行'}</div>
+                <div class="acu-cell-menu-item" id="act-copy"><i class="fa-solid fa-copy"></i> 复制内容</div>
+                <div class="acu-cell-menu-item" id="act-send-to-input" style="color:#3498db"><i class="fa-solid fa-keyboard"></i> 输入至消息栏</div>
+                <div class="acu-cell-menu-item" id="act-lock" style="color:#f39c12; border-top:1px dashed var(--acu-border);"><i class="fa-solid ${isLocked ? 'fa-unlock' : 'fa-lock'}"></i> ${isLocked ? '解除锁定状态' : '锁定防篡改 (保护此格)'}</div>
+                
+                ${isModified 
+                    ? `<div class="acu-cell-menu-item" id="act-undo" style="color:#e67e22; border-top:1px solid #eee;"><i class="fa-solid fa-undo"></i> 撤销本次修改</div>` 
+                    : ''}
+
+                ${isPending 
+                    ? `<div class="acu-cell-menu-item" id="act-restore" style="color:#27ae60"><i class="fa-solid fa-undo"></i> 恢复整行</div>` 
+                    : `<div class="acu-cell-menu-item" id="act-delete" style="color:#e74c3c"><i class="fa-solid fa-trash"></i> 删除整行</div>`
+                }
+                <div class="acu-cell-menu-item" id="act-close"><i class="fa-solid fa-times"></i> 关闭菜单</div>
+            </div>
+        `);
+        $('body').append(menu);
+        
+        // 稳健的坐标计算
+        const winWidth = $(window).width(); const winHeight = $(window).height();
+        const mWidth = menu.outerWidth() || 150; const mHeight = menu.outerHeight() || 150;
+        let clientX = e.clientX; let clientY = e.clientY;
+        if (!clientX && e.originalEvent && e.originalEvent.touches && e.originalEvent.touches.length) {
+            clientX = e.originalEvent.touches[0].clientX; clientY = e.originalEvent.touches[0].clientY;
+        } else if (!clientX && e.changedTouches && e.changedTouches.length) {
+             clientX = e.changedTouches[0].clientX; clientY = e.changedTouches[0].clientY;
+        }
+        
+        // 兜底坐标
+        if (clientX === undefined) clientX = winWidth / 2;
+        if (clientY === undefined) clientY = winHeight / 2;
+
+        let left = clientX + 5; let top = clientY + 5;
+        if (left + mWidth > winWidth) left = clientX - mWidth - 5;
+        if (top + mHeight > winHeight) top = clientY - mHeight - 5;
+        
+        // 防止负坐标
+        if (left < 5) left = 5; 
+        if (top < 5) top = 5;
+
+        menu.css({ top: top + 'px', left: left + 'px' });
+
+        const closeAll = () => { menu.remove(); backdrop.remove(); };
+        backdrop.on('click', closeAll);
+        menu.find('#act-close').click(closeAll);
+        
+        // 复制功能 (v7.9 融合增强版：优先酒馆接口，兼容性最佳)
+        menu.find('#act-copy').click(async (e) => {
+            e.stopPropagation();
+
+            // 【第一优先级】尝试使用酒馆 v7.7 的原生接口 (移动端/PWA 完美兼容)
+            // 来源: slash_command.txt /clipboard-set
+            if (window.TavernHelper && window.TavernHelper.triggerSlash) {
+                try {
+                    // 转义特殊字符防止命令崩溃
+                    const safeContent = content.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n').replace(/\{/g, '\\{').replace(/\}/g, '\\}');
+                    await window.TavernHelper.triggerSlash(`/clipboard-set "${safeContent}"`);
+                    AcuToast.success('已复制');
+                    closeAll();
+                    return; // 如果成功，直接结束，不走后面的浏览器逻辑
+                } catch (err) {
+                    console.warn('酒馆接口复制失败，尝试浏览器原生方法', err);
+                }
+            }
+
+            // 【第二优先级】浏览器原生逻辑 (v7.8 的兜底方案)
+            const doCopy = (text) => {
+                // 方案A: 现代 API (仅在 HTTPS 或 localhost 下有效)
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        AcuToast.success('已复制');
+                    }).catch(() => {
+                        fallbackCopy(text);
+                    });
+                } else {
+                    // 方案B: 传统 execCommand (兼容 HTTP)
+                    fallbackCopy(text);
+                }
+            };
+
+            const fallbackCopy = (text) => {
+                try {
+                    const textArea = document.createElement("textarea");
+                    textArea.value = text;
+                    
+                    // 移动端防抖动处理
+                    textArea.style.position = "fixed";
+                    textArea.style.left = "-9999px";
+                    textArea.style.top = "0";
+                    textArea.setAttribute("readonly", "");
+                    
+                    document.body.appendChild(textArea);
+                    
+                    textArea.select();
+                    textArea.setSelectionRange(0, 99999); // 针对 iOS Safari
+                    
+                    const successful = document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    
+                    if (successful) {
+                        AcuToast.success('已复制');
+                    } else {
+                        throw new Error('execCommand failed');
+                    }
+                } catch (err) {
+                    console.error('复制失败:', err);
+                    prompt("复制失败，请长按下方文本手动复制:", text);
+                }
+            };
+
+            doCopy(content);
+            closeAll();
+        });
+
+        // 输入至消息栏功能
+        menu.find('#act-send-to-input').click(() => {
+            const ta = $('#send_textarea');
+            if (ta.length) {
+                const domEl = ta[0];
+                const startPos = domEl.selectionStart;
+                const endPos = domEl.selectionEnd;
+                const currentVal = ta.val();
+                
+                if (startPos !== undefined && endPos !== undefined) {
+                    const newVal = currentVal.substring(0, startPos) + content + currentVal.substring(endPos);
+                    ta.val(newVal);
+                    const newCursorPos = startPos + content.length;
+                    domEl.setSelectionRange(newCursorPos, newCursorPos);
+                } else {
+                    const newVal = currentVal ? currentVal + ' ' + content : content;
+                    ta.val(newVal);
+                }
+                ta.trigger('input').trigger('change').focus();
+                AcuToast.success('已追加至消息栏');
+            } else {
+                AcuToast.warning('未找到消息输入框');
+            }
+            closeAll();
+        });
+
+        // 撤销功能
+        menu.find('#act-undo').click(() => {
+            // [修改] 1. 尝试读取本回合的基准数据（这是AI刚生成的内容）
+            let restoreSource = Store.get(STORAGE_KEY_ROUND_BASELINE);
+            
+            // [修改] 2. 安全检查：如果没找到基准，或者换了聊天卡，就兜底用上一回合的快照
+            const currentCtx = getCurrentContextFingerprint();
+            if (!restoreSource || (restoreSource._contextId && restoreSource._contextId !== currentCtx)) {
+                restoreSource = loadSnapshot();
+            }
+
+            let originalValue = null;
+            // [修改] 3. 从选定的源（restoreSource）中获取原始值
+            if (restoreSource && restoreSource[tableKey]?.content[rowIdx + 1]) {
+                originalValue = restoreSource[tableKey].content[rowIdx + 1][colIdx];
+            }
+
+            if (originalValue !== null) {
+                if (!cachedRawData) cachedRawData = getTableData();
+                if (cachedRawData && cachedRawData[tableKey]?.content[rowIdx + 1]) {
+                    cachedRawData[tableKey].content[rowIdx + 1][colIdx] = originalValue;
+                }
+
+                
+                const $cell = $(cell);
+                $cell.attr('data-val', encodeURIComponent(originalValue));
+                $cell.data('val', encodeURIComponent(originalValue));
+                
+                // [核心修复1] 正确查找显示目标，防止覆盖 Label
+                let $displayTarget = $cell;
+                if ($cell.find('.acu-card-value').length > 0) {
+                    $displayTarget = $cell.find('.acu-card-value');
+                } else if ($cell.hasClass('acu-grid-item')) {
+                    $displayTarget = $cell.find('.acu-grid-value');
+                } else if ($cell.hasClass('acu-full-item')) {
+                    $displayTarget = $cell.find('.acu-full-value');
+                }
+                
+                const badgeStyle = getBadgeStyle(originalValue);
+                if (badgeStyle && !$cell.hasClass('acu-editable-title')) {
+                     $displayTarget.html(`<span class="acu-badge ${badgeStyle}">${originalValue}</span>`);
+                } else {
+                     $displayTarget.text(originalValue);
+                }
+                
+                // [修复] 修正类名，确保撤销后高亮立即消失
+                $displayTarget.removeClass('acu-highlight-manual acu-highlight-diff');
+                if ($cell.hasClass('acu-editable-title')) $cell.removeClass('acu-highlight-manual acu-highlight-diff');
+                
+                window.acuModifiedSet.delete(cellId);
+
+                // --- 【完美修复】重新生成一次最新的差异字典，彻底消除幽灵高亮 ---
+                // 因为我们在上面刚把 originalValue 塞回了 cachedRawData，
+                // 此时立刻重算一次 Diff，就能洗掉刚才由于“整体编辑”污染的假差异，拿到最准确的 AI 状态。
+                if (cachedRawData) {
+                    currentDiffMap = generateDiffMap(cachedRawData);
+                }
+                
+                const diffKey = `${tableName}-${rowIdx}-${colIdx}`;
+                const rowDiffKey = `${tableName}-row-${rowIdx}`;
+                
+                let shouldRestoreAiHighlight = false;
+                
+                if ($cell.hasClass('acu-editable-title')) {
+                    shouldRestoreAiHighlight = currentDiffMap.has(rowDiffKey) || currentDiffMap.has(diffKey);
+                } else {
+                    shouldRestoreAiHighlight = currentDiffMap.has(diffKey);
+                }
+
+                if (shouldRestoreAiHighlight && config.highlightNew) {
+                    $displayTarget.addClass('acu-highlight-diff');
+                    if ($cell.hasClass('acu-editable-title')) $cell.addClass('acu-highlight-diff');
+                }
+                // ------------------------------------------------------------------------
+                
+                if (window.acuModifiedSet.size === 0) {
+                    // [修复] 撤销编辑时，还需要检查是否还有待删除的行
+                    const newDels = getPendingDeletions();
+                    let hasAnyDels = false;
+                    for (let k in newDels) { if (newDels[k] && newDels[k].length > 0) hasAnyDels = true; }
+                    if (!hasAnyDels) {
+                        hasUnsavedChanges = false;
+                    }
+                    updateSaveButtonState();
+                    AcuToast.success('已撤销修改');
+                } else {
+                     AcuToast.info('已撤销该单元格');
+                }
+            } else {
+                AcuToast.warning('无法找到原始数据，撤销失败');
+            }
+            closeAll();
+        });
+        
+        // [优化] 删除逻辑 (修复参数错误并增强兜底)
+        menu.find('#act-delete').click(async () => {
+            closeAll();
+
+            let actOrd = Store.get(STORAGE_KEY_ACTION_ORDER);
+            if (!actOrd || !Array.isArray(actOrd)) actOrd = DEFAULT_ACTION_ORDER;
+            const isInstantMode = !actOrd.includes('acu-btn-save-global');
+
+            if (isInstantMode) {
+                // --- 视觉优化：前端直接移除 DOM ---
+                const $card = $(cell).closest('.acu-data-card');
+                $card.css('transition', 'all 0.2s ease').css('opacity', '0').css('transform', 'scale(0.9)');
+                setTimeout(() => $card.slideUp(200, () => $card.remove()), 200);
+                
+                // 🛡️ 升起渲染静音护盾，防止后端删除成功后的回音导致列表闪烁重排
+                window._acuMuteRenderUntil = Date.now() + 1500;
+
+                const api = getCore().getDB();
+                if (!cachedRawData) cachedRawData = getTableData() || loadSnapshot();
+                
+                try {
+                    let apiSuccess = false;
+                    // --- 核心修复：将 tableName 改为 tableKey ---
+                    if (api && api.deleteRow) {
+                        const _tname = (cachedRawData?.[tableKey]?.name) || tableKey;
+                        apiSuccess = await api.deleteRow(_tname, rowIdx);
+                        if (apiSuccess) {
+                            AcuToast.success('已彻底删除');
+                            // 同步本地缓存防穿帮
+                            if (cachedRawData && cachedRawData[tableKey]?.content) {
+                                cachedRawData[tableKey].content.splice(rowIdx + 1, 1);
+                                saveSnapshot(cachedRawData);
+                            }
+                        }
+                    }
+                    
+                    // 如果后端 API 失败或不存在，使用全量覆盖兜底，保证 100% 成功
+                    if (!apiSuccess) {
+                        if (cachedRawData && cachedRawData[tableKey]?.content) {
+                            cachedRawData[tableKey].content.splice(rowIdx + 1, 1);
+                            saveSnapshot(cachedRawData);
+                            await saveDataToDatabase(cachedRawData, true, true); 
+                            AcuToast.success('已彻底删除 (同步完成)');
+                        }
+                    }
+                } catch (err) {
+                    console.error('[ACU] 删除失败', err);
+                    AcuToast.error('删除同步失败，请检查网络或控制台');
+                }
+            } else {
+                // --- 默认模式 (手动保存，保持原有标记逻辑) ---
+                const dels = getPendingDeletions();
+                if (!dels[tableKey]) dels[tableKey] = [];
+                if (!dels[tableKey].includes(rowIdx)) {
+                    dels[tableKey].push(rowIdx);
+                    savePendingDeletions(dels);
+                }
+                
+                $(cell).closest('.acu-data-card').addClass('pending-deletion');
+                hasUnsavedChanges = true; // 将删除动作正式注册为未保存状态
+                updateSaveButtonState();
+                AcuToast.info('已标记删除 (请点击保存)');
+            }
+        });
+        
+        // 恢复逻辑
+        menu.find('#act-restore').click(() => {
+            const dels = getPendingDeletions();
+            if (dels[tableKey]) {
+                dels[tableKey] = dels[tableKey].filter(i => i !== rowIdx);
+                if (dels[tableKey].length === 0) delete dels[tableKey];
+                savePendingDeletions(dels);
+            }
+            
+            $(cell).closest('.acu-data-card').removeClass('pending-deletion');
+            
+            // [新增] 恢复时检查是否还有其他未保存修改，如果没有，则解除全局未保存状态
+            const newDels = getPendingDeletions();
+            let hasAnyDels = false;
+            for (let k in newDels) { if (newDels[k] && newDels[k].length > 0) hasAnyDels = true; }
+            if (!hasAnyDels && (!window.acuModifiedSet || window.acuModifiedSet.size === 0)) {
+                hasUnsavedChanges = false;
+            }
+            
+            updateSaveButtonState();
+            closeAll();
+        });
+        
+        // [新增] 锁定/解锁逻辑
+        menu.find('#act-lock').click(() => {
+            closeAll();
+            if (api && api.toggleTableCellLock) {
+                // 触发 API 锁定/解锁
+                const success = api.toggleTableCellLock(tableKey, rowIdx, colIdx - 1);
+                if (success !== false) {
+                    AcuToast.success(isLocked ? '🔓 已解除锁定，AI 现可修改此格' : '🔒 已物理锁定，彻底免疫 AI 篡改');
+                    
+                    const $targetCell = $(cell);
+                    const $displayTarget = $targetCell.hasClass('acu-editable-title') ? $targetCell : $targetCell.find('.acu-card-value');
+                    
+                    if (isLocked) {
+                        $displayTarget.find('.fa-lock').remove();
+                    } else {
+                        if ($displayTarget.find('.fa-lock').length === 0) {
+                            $displayTarget.append(' <i class="fa-solid fa-lock" style="color:#f39c12; margin-left:4px; opacity:0.9; font-size:11px;" title="该单元格已被物理锁定，免疫AI篡改"></i>');
+                        }
+                    }
+                }
+            } else {
+                AcuToast.warning('后端脚本版本过低，请升级数据库');
+            }
+        });
+
+        // [极速优化版] 插入新行功能 (修复参数错误并增强兜底)
+        menu.find('#act-insert').click(async () => {
+            closeAll();
+            
+            let actOrd = Store.get(STORAGE_KEY_ACTION_ORDER);
+            if (!actOrd || !Array.isArray(actOrd)) actOrd = DEFAULT_ACTION_ORDER;
+            const isInstantMode = !actOrd.includes('acu-btn-save-global');
+            
+            const api = getCore().getDB();
+            
+            // 无论如何，先准备好本地数据结构
+            if (!cachedRawData) cachedRawData = getTableData() || loadSnapshot();
+            if (!cachedRawData || !cachedRawData[tableKey]?.content) {
+                AcuToast.error('数据异常，无法获取表格结构');
+                return;
+            }
+
+            if (isInstantMode) {
+                AcuToast.info('正在请求插入新行...');
+                try {
+                    // --- A. 即时模式：尝试优先使用后端 API (修复：tableName 改为 tableKey) ---
+                    if (api && api.insertRow) {
+                        const _tname = (cachedRawData?.[tableKey]?.name) || tableKey;
+                        const newRowIndex = await api.insertRow(_tname, {});
+                        if (newRowIndex !== -1) {
+                            AcuToast.success('已追加新行至表尾');
+                            cachedRawData = api.exportTableAsJson(); // 强制拉取最新数据
+                            renderInterface();
+                            setTimeout(() => {
+                                const $panel = $('.acu-panel-content');
+                                if($panel.length) $panel.scrollTop($panel[0].scrollHeight);
+                            }, 150);
+                            return; // 成功则直接退出
+                        }
+                    }
+                    
+                    // --- B. 兜底模式：如果 API 失败或不存在，直接改写本地 JSON 并全量推给后端 ---
+                    const sheet = cachedRawData[tableKey];
+                    const colCount = sheet.content[0] ? sheet.content[0].length : 2;
+                    const newRow = new Array(colCount).fill('');
+                    if (colCount > 0) newRow[0] = String(sheet.content.length); 
+                    sheet.content.splice(rowIdx + 2, 0, newRow);
+                    
+                    await saveDataToDatabase(cachedRawData, false, true);
+                    AcuToast.success('已追加新行 (同步完成)');
+                    
+                    renderInterface(); 
+                    setTimeout(() => {
+                        const $panel = $('.acu-panel-content');
+                        if($panel.length && $panel[0].scrollHeight > $panel.height()) {
+                             $panel.scrollTop($panel.scrollTop() + 10); 
+                        }
+                    }, 100);
+
+                } catch (err) {
+                    console.error('[ACU] 插入失败:', err);
+                    AcuToast.error('插入失败');
+                }
+            } else {
+                // --- C. 暂存模式：维持原有的本地插行预览逻辑 ---
+                const sheet = cachedRawData[tableKey];
+                const colCount = sheet.content[0] ? sheet.content[0].length : 2;
+                const newRow = new Array(colCount).fill('');
+                if (colCount > 0) newRow[0] = String(sheet.content.length); 
+
+                // --- 🚀 新增隐式标记：将手动插入状态绑定在数组对象上 ---
+                newRow._isManualInsert = true;
+
+                sheet.content.splice(rowIdx + 2, 0, newRow);
+
+                hasUnsavedChanges = true;
+                updateSaveButtonState();
+                AcuToast.info('已暂存新行，请最后统一点击保存');
+                
+                renderInterface(); 
+                setTimeout(() => {
+                    const $panel = $('.acu-panel-content');
+                    if($panel.length && $panel[0].scrollHeight > $panel.height()) {
+                         $panel.scrollTop($panel.scrollTop() + 10); 
+                    }
+                }, 100);
+            }
+        });
+
+
+        // [极速优化版] 整体编辑 -> 内联卡片编辑 (无弹窗，原地变表单)
+        menu.find('#act-edit-card').click(() => {
+            closeAll();
+            const $card = $(cell).closest('.acu-data-card');
+            if ($card.hasClass('acu-inline-editing-row')) return;
+            
+            const rawData = cachedRawData || getTableData();
+            if (!rawData || !rawData[tableKey]) return;
+            const headers = rawData[tableKey].content[0];
+            const currentRow = rawData[tableKey].content[rowIdx + 1];
+            if (!currentRow) return;
+
+            // 视觉反馈：卡片高亮进入编辑模式
+            $card.addClass('acu-inline-editing-row');
+            $card.css({'box-shadow': '0 0 0 2px var(--acu-accent)', 'transform': 'scale(1.02)', 'z-index': '10', 'transition': 'all 0.2s ease'});
+            AcuToast.info('✏️ 已进入整行编辑，点击卡片外空白处保存');
+
+            const originalHtmlMap = new Map();
+            
+            // 辅助函数：将单元格转换为自适应高度的 textarea
+            const convertToInput = ($target, colIndex, isTitle = false) => {
+                originalHtmlMap.set($target[0], $target.html());
+                const val = currentRow[colIndex] || '';
+                const align = isTitle ? 'center' : 'left';
+                const fw = isTitle ? 'bold' : 'normal';
+                $target.html(`<textarea class="acu-inline-editor" data-col="${colIndex}" spellcheck="false" style="width:100%; min-height:${isTitle?'24px':'32px'}; background-color:var(--acu-btn-bg) !important; background-image:none !important; color:var(--acu-text-main) !important; border:1px solid var(--acu-accent); border-radius:4px; padding:4px 6px; outline:none; resize:vertical; font-size:inherit; font-family:inherit; text-align:${align}; font-weight:${fw}; box-sizing:border-box; line-height:1.4; overflow:hidden;"></textarea>`);
+                
+                const $ta = $target.find('textarea');
+                $ta.val(val); // 使用 val() 赋值防止 HTML 转义符号被破坏
+                
+                const adjustHeight = () => {
+                    if ($ta[0]._isAdjusting) return;
+                    $ta[0]._isAdjusting = true;
+                    requestAnimationFrame(() => {
+                        $ta[0].style.height = '0px';
+                        $ta[0].style.height = ($ta[0].scrollHeight + 2) + 'px';
+                        $ta[0]._isAdjusting = false;
+                    });
+                };
+                $ta.on('input', adjustHeight);
+                setTimeout(adjustHeight, 10);
+            };
+
+            // 1. 转换标题
+            const $title = $card.find('.acu-editable-title');
+            const titleCol = parseInt($title.data('col'));
+            if (!isNaN(titleCol)) convertToInput($title, titleCol, true);
+
+            // 2. 转换所有内容单元格
+            $card.find('.acu-card-row').each(function() {
+                const $valTarget = $(this).find('.acu-card-value');
+                const cIdx = parseInt($(this).data('col'));
+                if (!isNaN(cIdx)) convertToInput($valTarget, cIdx, false);
+            });
+
+            // 智能聚焦：定位到用户真正点击的那个单元格对应的输入框
+            const $targetInput = $card.find(`textarea[data-col="${colIdx}"]`);
+            if ($targetInput.length) {
+                $targetInput.focus();
+                // 顺便把光标移到文本末尾，体验更好
+                const len = $targetInput.val().length;
+                if ($targetInput[0].setSelectionRange) {
+                    $targetInput[0].setSelectionRange(len, len);
+                }
+            } else {
+                // 兜底：如果没找到，再聚焦第一个
+                $card.find('textarea').first().focus();
+            }
+
+            // 绑定光标焦点流失事件 (FocusOut)：当没有框被选中时，自动退出并保存
+            const closeRowEdit = async (e) => {
+                // e.relatedTarget 是光标即将去往的新元素。
+                // 如果光标还在这个卡片内部（比如点击了相邻的输入框），说明只是在切换格子，不退出
+                if (e && e.relatedTarget && $(e.relatedTarget).closest($card).length) {
+                    return;
+                }
+
+                // 延迟一帧，确保浏览器的 document.activeElement 已完全更新
+                setTimeout(async () => {
+                    // 兜底检查：如果当前页面有焦点，且焦点还在卡片的输入框里，依然不退出
+                    if (document.activeElement && $(document.activeElement).closest($card).length) {
+                        return;
+                    }
+
+                    // 防止重复执行
+                    if (!$card.hasClass('acu-inline-editing-row')) return;
+
+                    window._acuBlockNextClick = true; 
+                    setTimeout(() => { window._acuBlockNextClick = false; }, 500); 
+
+                    // 卸载焦点事件
+                    $card.off('focusout.acu_row_edit', closeRowEdit);
+
+                    let hasChanges = false;
+                    const updateData = {};
+                    
+                    // 1. 先光速把数据读出来，趁着 DOM 还没被重绘破坏
+                    $card.find('textarea.acu-inline-editor').each(function() {
+                        const colIdx = parseInt($(this).data('col'));
+                        const newVal = $(this).val();
+                        if (String(currentRow[colIdx]) !== String(newVal)) {
+                            hasChanges = true;
+                            currentRow[colIdx] = newVal;
+                            const colName = headers[colIdx];
+                            if (colName) updateData[colName] = newVal;
+                        }
+                    });
+
+                    if (hasChanges) {
+                        // --- 🚀 【核心魔法：乐观更新 (Optimistic UI)】---
+                        // 不等后端！直接在前端瞬间把 DOM 篡改成最新的样子
+                        $card.find('textarea.acu-inline-editor').each(function() {
+                            const colIdx = parseInt($(this).data('col'));
+                            const newVal = $(this).val();
+                            const $targetParent = $(this).parent();
+                            
+                            // 更新 HTML 节点绑定的隐式数据，防止下次编辑读取错乱
+                            let $cellDiv = $(this).closest('.acu-editable-title');
+                            if ($cellDiv.length === 0) $cellDiv = $(this).closest('.acu-card-row');
+                            $cellDiv.attr('data-val', encodeURIComponent(newVal)).data('val', encodeURIComponent(newVal));
+
+                            const isTitle = $targetParent.hasClass('acu-editable-title');
+                            const badgeStyle = getBadgeStyle(newVal);
+                            
+                            // 细节保护：如果这行被物理锁定了，原标题里会有个 🔒 小图标，我们要把它提取出来拼回去
+                            const oldHtml = originalHtmlMap.get($targetParent[0]) || '';
+                            const lockMatch = oldHtml.match(/<i[^>]+fa-lock[^>]+><\/i>/);
+                            const lockIconHtml = lockMatch ? ' ' + lockMatch[0] : '';
+                            
+                            // 瞬间渲染文字和气泡
+                            if (badgeStyle && !isTitle) {
+                                $targetParent.html(`<span class="acu-badge ${badgeStyle}">${escapeHtml(newVal)}</span>${lockIconHtml}`);
+                            } else {
+                                $targetParent.html(`${escapeHtml(newVal)}${lockIconHtml}`);
+                            }
+                            
+                            // 只有真正被修改的单元格（存在于 updateData 字典中），才套上橙色的手动修改高亮样式
+                            const colName = headers[colIdx];
+                            if (config.highlightNew && colName && updateData[colName] !== undefined) {
+                                $targetParent.removeClass('acu-highlight-diff').addClass('acu-highlight-manual');
+                            }
+                        });
+                    } else {
+                        // 无修改，还原被 textarea 吃掉的原有 HTML
+                        $card.find('.acu-editable-title').html(originalHtmlMap.get($card.find('.acu-editable-title')[0]));
+                        $card.find('.acu-card-value').each(function() {
+                            $(this).html(originalHtmlMap.get(this));
+                        });
+                    }
+
+                    // --- 触发卡片缩回动画 (不管有没有修改，立刻缩回，绝不卡顿) ---
+                    $card.removeClass('acu-inline-editing-row').css({'box-shadow': '', 'transform': '', 'z-index': ''});
+
+                    if (hasChanges) {
+                        let actOrd = Store.get(STORAGE_KEY_ACTION_ORDER);
+                        if (!actOrd || !Array.isArray(actOrd)) actOrd = DEFAULT_ACTION_ORDER;
+                        const isInstantMode = !actOrd.includes('acu-btn-save-global');
+
+                        if (isInstantMode) {
+                            // 直接提示成功，移除变暗加载动画，给予用户“瞬间完成”的极致错觉
+                            AcuToast.success('已自动保存');
+                            
+                            // 扔进宏任务队列，留出 250ms 让卡片动画从从容容地播完
+                            setTimeout(async () => {
+                                try {
+                                    // 存数据库，并且明确告诉它：不要重绘！不要重绘！
+                                    await saveDataToDatabase(cachedRawData, true, true);
+                                } catch(e) {
+                                    AcuToast.error('保存失败，请检查网络');
+                                }
+                            }, 250); 
+                        } else {
+                            if (!window.acuModifiedSet) window.acuModifiedSet = new Set();
+                            Object.keys(updateData).forEach(colName => {
+                                const cIdx = headers.indexOf(colName);
+                                window.acuModifiedSet.add(`${tableKey}-${rowIdx}-${cIdx}`);
+                            });
+                            hasUnsavedChanges = true;
+                            updateSaveButtonState();
+                            AcuToast.success('修改已暂存');
+                        }
+                        
+                        // ❌ 【绝杀】这里砍掉了之前那句 renderInterface()！
+                        // 既然前端 DOM 已经自己改好了，就彻底不需要推翻重建整个大面板了。这就是性能飞升的秘密。
+                    }
+                }, 10);
+            };
+
+            // 使用 focusout 监听光标焦点流失，完美契合“无光标即退出”的逻辑
+            $card.on('focusout.acu_row_edit', closeRowEdit);
+        });
+
+// [恢复弹窗版] 单格编辑逻辑 (适合长文本精雕细琢)
+        menu.find('#act-edit').click(() => { 
+            closeAll();
+            showEditDialog(content, async (newVal) => { 
+                if (content === newVal) return;
+                
+                const $cell = $(cell);
+                $cell.attr('data-val', encodeURIComponent(newVal)).data('val', encodeURIComponent(newVal));
+                
+                let $displayTarget = $cell;
+                if ($cell.find('.acu-card-value').length) $displayTarget = $cell.find('.acu-card-value');
+                else if ($cell.hasClass('acu-grid-item')) $displayTarget = $cell.find('.acu-grid-value');
+                else if ($cell.hasClass('acu-editable-title')) $displayTarget = $cell;
+
+                const badgeStyle = getBadgeStyle(newVal);
+                if (badgeStyle && !$cell.hasClass('acu-editable-title')) {
+                     $displayTarget.html(`<span class="acu-badge ${badgeStyle}">${escapeHtml(newVal)}</span>`);
+                } else {
+                     $displayTarget.text(newVal);
+                }
+
+                if ($cell.hasClass('acu-editable-title') && content !== newVal) {
+                    const currentCtxId = getCurrentContextFingerprint();
+                    const avatars = getCustomAvatars();
+                    if (avatars[currentCtxId] && avatars[currentCtxId][content]) {
+                        avatars[currentCtxId][newVal] = avatars[currentCtxId][content];
+                        delete avatars[currentCtxId][content];
+                        AvatarDB.saveToDB(currentCtxId, avatars[currentCtxId]); 
+                    }
+                }
+
+                if (!cachedRawData) cachedRawData = getTableData() || loadSnapshot();
+                if (cachedRawData && cachedRawData[tableKey]?.content[rowIdx + 1]) { 
+                    cachedRawData[tableKey].content[rowIdx + 1][colIdx] = newVal;
+                }
+
+                let actOrd = Store.get(STORAGE_KEY_ACTION_ORDER);
+                if (!actOrd || !Array.isArray(actOrd)) actOrd = DEFAULT_ACTION_ORDER;
+                const isInstantMode = !actOrd.includes('acu-btn-save-global');
+
+                if (isInstantMode) {
+                    $displayTarget.removeClass('acu-highlight-manual acu-highlight-diff');
+                    if ($cell.hasClass('acu-editable-title')) $cell.removeClass('acu-highlight-manual acu-highlight-diff');
+                    
+                    // 【降维打击】抛弃不稳定的小颗粒 API，强制使用和“全局保存”一模一样的全量写入接口
+                    try {
+                        await saveDataToDatabase(cachedRawData, true, true);
+                        AcuToast.success('已极速保存');
+                    } catch(e) {
+                        AcuToast.error('保存失败');
+                    }
+                } else {
+                    $displayTarget.removeClass('acu-highlight-diff').addClass('acu-highlight-manual');
+                    if ($cell.hasClass('acu-editable-title')) $cell.removeClass('acu-highlight-diff').addClass('acu-highlight-manual');
+
+                    if (!window.acuModifiedSet) window.acuModifiedSet = new Set();
+                    window.acuModifiedSet.add(cellId);
+                    hasUnsavedChanges = true;
+                    updateSaveButtonState();
+                    AcuToast.info('修改已暂存，请点击保存');
+                }
+            });
+        });
+    };
+
+    const showEditDialog = (content, onSave) => {
+        const { $ } = getCore();
+        const config = getConfig();
+        
+        const dialog = $(`
+            <div class="acu-edit-overlay">
+                <div class="acu-edit-dialog acu-theme-${config.theme}">
+                    <div class="acu-edit-title">编辑单元格内容</div>
+                    <textarea class="acu-edit-textarea" style="background-color: var(--acu-btn-bg) !important; color: var(--acu-text-main) !important; background-image: none !important;">${escapeHtml(content)}</textarea>
+                    <div class="acu-dialog-btns">
+                        <button class="acu-dialog-btn" id="dlg-cancel"><i class="fa-solid fa-times"></i> 取消</button>
+                        <button class="acu-dialog-btn acu-btn-confirm" id="dlg-save"><i class="fa-solid fa-check"></i> 保存</button>
+                    </div>
+                </div>
+            </div>
+        `);
+        $('body').append(dialog);
+        dialog.find('#dlg-cancel').click(() => dialog.remove());
+        dialog.find('#dlg-save').click(() => { onSave(dialog.find('textarea').val()); dialog.remove(); });
+    };
+
+// ============================================================
+    // [新增] 模板缝合中心 (Template Stitcher)
+    // ============================================================
+    const StitcherModule = {
+        generateUid: () => 'sheet_' + Math.random().toString(36).substr(2, 8),
+        
+        show: async function(parentDialog) {
+            const { $ } = getCore();
+            const config = getConfig();
+            
+            const dialogHtml = `
+                <div class="acu-stitcher-overlay acu-edit-overlay" style="z-index: 2147483649 !important;">
+                    <style>
+                        .acu-stitcher-layout { display: flex; gap: 15px; flex: 1; padding: 15px; overflow: hidden; }
+                        .acu-stitcher-col { flex: 1; display: flex; flex-direction: column; border-radius: 8px; overflow: hidden; }
+                        .acu-stitcher-col-merged { flex: 1.2; border: 2px dashed var(--acu-accent); background: rgba(0,0,0,0.1); }
+                        .acu-stitcher-col-source { border: 1px solid var(--acu-border); background: var(--acu-bg-panel); }
+                        @media (max-width: 768px) {
+                            /* 移动端核心修改：使用严格网格切分高度 */
+                            .acu-stitcher-layout { 
+                                display: grid !important; 
+                                grid-template-columns: 1fr 1fr; 
+                                grid-template-rows: 1fr 1.2fr;
+                                grid-template-areas: "sourceA sourceB" "merged merged";
+                                gap: 8px; 
+                                padding: 10px; 
+                                overflow: hidden !important; 
+                                min-height: 0 !important; /* 强制允许内部收缩，绝不撑爆父容器 */
+                            }
+                            .acu-stitcher-col { min-height: 0; flex: none; height: 100%; overflow: hidden; } 
+                            .acu-stitcher-col:nth-child(1) { grid-area: sourceA; } 
+                            .acu-stitcher-col:nth-child(2) { grid-area: merged; } 
+                            .acu-stitcher-col:nth-child(3) { grid-area: sourceB; }
+                            
+                            /* 核心修改：弃用坑爹的 vh，使用现代防遮挡动态视口 dvh/svh */
+                            .acu-stitcher-dialog { 
+                                height: 85vh !important; /* 老旧浏览器兜底 */
+                                height: 85dvh !important; /* 动态视口，完美跟随浏览器工具栏的伸缩 */
+                                max-height: calc(100svh - 40px) !important; /* 最小安全视口兜底，减去上下边距，死死卡在安全区内 */
+                                width: 95% !important; 
+                                border-radius: 16px !important; 
+                                margin: auto !important; 
+                                box-sizing: border-box !important;
+                            }
+                            .acu-stitcher-toolbar { flex-direction: column; align-items: stretch !important; gap: 6px !important; }
+                            
+                            /* 强迫症福音：彻底抹除下拉框的默认边距，抹平自身圆角交由父级裁剪，完美贴合顶部框线 */
+                            .acu-stitcher-col .acu-select { font-size: 11px; padding: 4px; margin: 0 !important; display: block; width: 100%; border-radius: 0 !important; border-top: none !important; box-sizing: border-box; }
+                            .acu-stitcher-col .stitch-item > div:first-child { font-size: 11px !important; }
+                            .acu-stitcher-col .stitch-item > div:last-child { font-size: 10px !important; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+                            .acu-stitcher-col .stitch-list { padding: 6px; gap: 6px; }
+                        }
+                    </style>
+                    <div class="acu-edit-dialog acu-stitcher-dialog acu-theme-${config.theme}" style="width: 95%; max-width: 1200px; height: 85vh; display: flex; flex-direction: column;">
+                        <div class="acu-edit-title" style="display:flex; justify-content:space-between; align-items:center; flex-shrink: 0;">
+                            <span><i class="fa-solid fa-puzzle-piece" style="color:var(--acu-accent);"></i> 模板缝合中心</span>
+                            <button class="acu-close-profile-btn" id="btn-close-stitcher" style="background:none; border:none; color:var(--acu-text-sub); cursor:pointer; font-size:16px;"><i class="fa-solid fa-times"></i></button>
+                        </div>
+                        
+                        <div class="acu-stitcher-toolbar" style="padding: 10px; border-bottom: 1px dashed var(--acu-border); display: flex; gap: 10px; align-items:center; flex-shrink: 0;">
+                            <span style="font-size:12px; color:var(--acu-text-sub); flex:1;">👉 点击库中的表格，将其加入缝合区。</span>
+                            <button class="acu-btn-block" id="acu-btn-save-merged" style="width:auto; margin:0; padding:6px 15px; background: var(--acu-accent); color:#fff; border-color:var(--acu-accent);"><i class="fa-solid fa-save"></i> 保存到系统库</button>
+                        </div>
+
+                        <div class="acu-stitcher-layout">
+                            <div class="acu-stitcher-col acu-stitcher-col-source">
+                                <select class="acu-select" id="stitch-select-a" style="border-radius: 8px 8px 0 0; border:none; border-bottom: 1px solid var(--acu-border); flex-shrink: 0;">
+                                    <option value="">-- 选择模板 A --</option>
+                                </select>
+                                <div class="stitch-list" id="stitch-list-a" style="flex:1; overflow-y:auto; padding: 10px; display: flex; flex-direction: column; gap: 8px;"></div>
+                            </div>
+
+                            <div class="acu-stitcher-col acu-stitcher-col-merged">
+                                <div style="text-align: center; padding: 10px; font-weight: bold; color: var(--acu-accent); border-bottom: 1px dashed var(--acu-border); background: var(--acu-table-head); flex-shrink: 0;">✨ 最终合并目标 (点击移除)</div>
+                                <div class="stitch-list" id="stitch-list-merged" style="flex:1; overflow-y:auto; padding: 10px; display: flex; flex-direction: column; gap: 8px;"></div>
+                            </div>
+
+                            <div class="acu-stitcher-col acu-stitcher-col-source">
+                                <select class="acu-select" id="stitch-select-b" style="border-radius: 8px 8px 0 0; border:none; border-bottom: 1px solid var(--acu-border); flex-shrink: 0;">
+                                    <option value="">-- 选择模板 B --</option>
+                                </select>
+                                <div class="stitch-list" id="stitch-list-b" style="flex:1; overflow-y:auto; padding: 10px; display: flex; flex-direction: column; gap: 8px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            $('body').append(dialogHtml);
+            const $dialog = $('.acu-stitcher-overlay');
+            
+            // 加载下拉列表
+            const templates = await TemplateDB.getAllTemplates();
+            const refreshSelects = () => {
+                const options = '<option value="">-- 请选择模板 --</option>' + Object.keys(templates).map(k => {
+                    const tName = templates[k].mate?.templateName || k;
+                    return `<option value="${k}">${escapeHtml(tName)}</option>`;
+                }).join('');
+                $('#stitch-select-a, #stitch-select-b').html(options);
+            };
+            refreshSelects();
+
+            // 渲染列表卡片函数
+            const renderList = (selectId, listId) => {
+                const key = $(`#${selectId}`).val();
+                const $list = $(`#${listId}`);
+                $list.empty();
+                if (!key || !templates[key]) return;
+                
+                const data = templates[key];
+                Object.keys(data).forEach(sheetId => {
+                    if (!sheetId.startsWith('sheet_')) return;
+                    const sheet = data[sheetId];
+                    const safeRaw = encodeURIComponent(JSON.stringify(sheet));
+                    const html = `
+                        <div class="acu-rpg-item-card stitch-item source-item" data-raw="${safeRaw}" style="cursor:pointer; border-left:3px solid var(--acu-accent);">
+                            <div style="font-weight:bold; color:var(--acu-text-main); font-size:13px;">${escapeHtml(sheet.name || '未命名')}</div>
+                            <div style="font-size:11px; color:var(--acu-text-sub); margin-top:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                                ${escapeHtml(sheet.sourceData?.note || '无说明')}
+                            </div>
+                        </div>
+                    `;
+                    $list.append(html);
+                });
+            };
+
+            $('#stitch-select-a').change(() => renderList('stitch-select-a', 'stitch-list-a'));
+            $('#stitch-select-b').change(() => renderList('stitch-select-b', 'stitch-list-b'));
+
+            // 点击加入中间
+            $dialog.on('click', '.source-item', function() {
+                const rawData = decodeURIComponent($(this).attr('data-raw'));
+                const sheet = JSON.parse(rawData);
+                
+                // 查重保护
+                let isDuplicate = false;
+                $('#stitch-list-merged .merged-item').each(function() {
+                    const mergedSheet = JSON.parse(decodeURIComponent($(this).attr('data-raw')));
+                    if (mergedSheet.name === sheet.name) isDuplicate = true;
+                });
+                
+                if (isDuplicate) {
+                    AcuToast.warning(`已存在同名表 [${sheet.name}]，为防止冲突，不可重复添加`);
+                    return;
+                }
+                
+                const safeRaw = encodeURIComponent(JSON.stringify(sheet));
+                const html = `
+                    <div class="acu-rpg-item-card stitch-item merged-item" data-raw="${safeRaw}" style="cursor:pointer; border-left:3px solid #2ecc71;">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <div style="font-weight:bold; color:var(--acu-text-main); font-size:13px;">${escapeHtml(sheet.name || '未命名')}</div>
+                            <i class="fa-solid fa-minus-circle" style="color:#e74c3c;"></i>
+                        </div>
+                    </div>
+                `;
+                $('#stitch-list-merged').append(html);
+                
+                // [优化] 取消全局弹窗，改为源卡片自身的“按压”物理反馈
+                const $clickedCard = $(this);
+                $clickedCard.css('transition', 'transform 0.1s, background 0.1s');
+                $clickedCard.css({'background': 'rgba(46,204,113,0.15)', 'transform': 'scale(0.96)'});
+                
+                // 150毫秒后恢复原状，形成清脆的点击手感
+                setTimeout(() => {
+                    $clickedCard.css({'background': '', 'transform': ''});
+                }, 150);
+            });
+
+            // 点击移除
+            $dialog.on('click', '.merged-item', function() {
+                $(this).remove();
+            });
+
+            const getMergedJson = () => {
+                const finalJson = {
+                    mate: {
+                        type: "chatSheets",
+                        version: 2,
+                        updateConfigUiSentinel: -1,
+                        globalInjectionConfig: {
+                            readableEntryPlacement: { position: "before_character_definition", depth: 2, order: 99981 },
+                            wrapperPlacement: { position: "before_character_definition", depth: 2, order: 99980 }
+                        }
+                    }
+                };
+
+                let orderCounter = 0;
+                const $mergedItems = $('#stitch-list-merged .merged-item');
+                
+                if ($mergedItems.length === 0) {
+                    AcuToast.warning('中间目标区域为空，无法合并！');
+                    return null;
+                }
+
+                $mergedItems.each(function() {
+                    const rawTableData = JSON.parse(decodeURIComponent($(this).attr('data-raw')));
+                    const newUid = StitcherModule.generateUid(); // 重新分配 UID
+                    rawTableData.uid = newUid;
+                    rawTableData.orderNo = orderCounter++;
+                    finalJson[newUid] = rawTableData;
+                });
+                return finalJson;
+            };
+
+            // 存为本地模板 (系统库)
+            $('#acu-btn-save-merged').click(async () => {
+                const finalJson = getMergedJson();
+                if (!finalJson) return;
+                
+                // [优化] 智能计算默认模板名称，自动添加数字后缀避免同名混淆
+                let baseName = "新缝合模板";
+                let maxSuffix = 0;
+                let hasBase = false;
+                
+                Object.values(templates).forEach(tpl => {
+                    const name = tpl.mate?.templateName;
+                    if (name === baseName) {
+                        hasBase = true;
+                    } else if (name && name.startsWith(baseName)) {
+                        const suffix = name.substring(baseName.length);
+                        // 如果后缀是纯数字，记录下最大的那个数字
+                        if (/^\d+$/.test(suffix)) {
+                            maxSuffix = Math.max(maxSuffix, parseInt(suffix, 10));
+                        }
+                    }
+                });
+                
+                let defaultName = baseName;
+                if (maxSuffix > 0) {
+                    defaultName = baseName + (maxSuffix + 1); // 比如有3，就叫4
+                } else if (hasBase) {
+                    defaultName = baseName + "2"; // 只有原名，就叫2
+                }
+
+                let templateName = prompt("请为新缝合的模板命名 (例如: 究极缝合包):", defaultName);
+                if (!templateName) return;
+                
+                finalJson.mate.templateName = templateName;
+                const tplId = 'tpl_' + Date.now();
+                await TemplateDB.saveTemplate(tplId, finalJson);
+                
+                templates[tplId] = finalJson;
+                refreshSelects();
+                AcuToast.success('✅ 已保存到系统库！(请退出缝合中心进行外部管理)');
+            });
+
+            // [修复] 提取一个通用的关闭并刷新外层列表的函数
+            const closeStitcherAndRefresh = async () => {
+                $dialog.remove(); // 销毁缝合中心
+                if (parentDialog) {
+                    parentDialog.show(); // 恢复显示全能设置面板
+                    // 重新读取底层数据库，强制刷新外层的下拉列表
+                    const tmps = await TemplateDB.getAllTemplates();
+                    const options = '<option value="">-- 当前系统库 --</option>' + Object.keys(tmps).map(k => {
+                        const tName = tmps[k].mate?.templateName || k;
+                        return `<option value="${k}">${escapeHtml(tName)}</option>`;
+                    }).join('');
+                    parentDialog.find('#cfg-template-select').html(options);
+                }
+            };
+
+            // 关闭 (返回上一级)
+            $('#btn-close-stitcher').click(closeStitcherAndRefresh);
+
+            // 点击空白区域 (遮罩层) 返回上一级
+            $dialog.on('click', function(e) {
+                if ($(e.target).hasClass('acu-stitcher-overlay')) {
+                    closeStitcherAndRefresh();
+                }
+            });
+        }
+    };
+
+    // ==========================================
+    // [优化后] 新的初始化入口 (Observer 只创建一次)
+    // ==========================================
+    const init = async () => {
+    if (isInitialized) return;
+    
+    // 等待 IndexedDB 异步提取全部头像数据进入内存
+    await AvatarDB.init(); 
+    await TemplateDB.init(); // 初始化模板数据库 
+    
+    addStyles();
+    // [核心修复] 初始化时必须主动应用一次配置，否则每次刷新网页字体和布局都会丢失
+    applyConfigStyles(getConfig());
+
+
+        // 2. 保留原有的 SillyTavern 事件监听（使用具名函数防止重复注册）
+        if (window.SillyTavern && window.SillyTavern.eventSource) {
+            const events = window.SillyTavern.eventTypes;
+            const source = window.SillyTavern.eventSource;
+            // [精准触发] 仅保留基础事件 + 删除楼层 + 强制打断生成
+            const triggers = [
+                events.CHAT_CHANGED, 
+                events.MESSAGE_SWIPED, 
+                events.MESSAGE_RECEIVED, 
+                events.STREAM_MESSAGE_END,
+                events.MESSAGE_DELETED,         // 监听：删除楼层
+                events.GENERATION_STOPPED       // 监听：强制打断生成
+            ];
+            
+            // 确保只创建一次处理函数
+            if (!_boundRenderHandler) {
+                _boundRenderHandler = () => { 
+                    if (!isEditingOrder) {
+                        // [核心修复2] 监听到任何反悔操作时，强制重置所有状态并唤醒选项
+                        optionPanelVisible = true;
+                        lastOptionHash = null;
+                        window._lastEmbeddedHash = null;
+                        setTimeout(renderInterface, 500); 
+                    }
+                };
+            }
+
+            // ---------- [新增] 专门监听生成事件，用于完美挂载状态栏 ----------
+            if (!window._acuBoundGenHandlers) {
+                window._acuBoundGenHandlers = {
+                    start: () => { 
+                        window._acuIsGenerating = true; 
+                        // AI 开始思考/打字时：原位锁死 RPG 状态栏
+                        // 【原生解法】主面板不重绘，直接利用原生 DOM API 物理移动到 #chat 最底部
+                        const chatEl = document.getElementById('chat');
+                        const wrapperEl = document.querySelector('.acu-wrapper');
+                        if (chatEl && wrapperEl) {
+                            chatEl.appendChild(wrapperEl);
+                        }
+                    },
+                    end: () => { 
+                        window._acuIsGenerating = false; 
+                        // AI 输出完毕后，利用 requestAnimationFrame 确保酒馆的原生 DOM 已更新
+                        requestAnimationFrame(() => setTimeout(renderInterface, 100)); 
+                    }
+                };
+            }
+            
+            // 防止重复注册，先解绑
+            source.removeListener(events.GENERATION_STARTED, window._acuBoundGenHandlers.start);
+            source.removeListener(events.GENERATION_ENDED, window._acuBoundGenHandlers.end);
+            source.removeListener(events.GENERATION_STOPPED, window._acuBoundGenHandlers.end);
+            if (window._acuBoundMessageReceivedHandler) {
+                source.removeListener(events.MESSAGE_RECEIVED, window._acuBoundMessageReceivedHandler);
+            }
+            
+            // 【原生解法】增加对接收/发送消息的监听，确保非生成状态下的气泡也能把面板挤下去
+            window._acuBoundMessageReceivedHandler = () => {
+                const chatEl = document.getElementById('chat');
+                const wrapperEl = document.querySelector('.acu-wrapper');
+                if (chatEl && wrapperEl) {
+                    chatEl.appendChild(wrapperEl);
+                }
+            };
+
+            // 绑定开始与结束事件
+            source.on(events.GENERATION_STARTED, window._acuBoundGenHandlers.start);
+            source.on(events.GENERATION_ENDED, window._acuBoundGenHandlers.end);
+            source.on(events.GENERATION_STOPPED, window._acuBoundGenHandlers.end);
+            source.on(events.MESSAGE_RECEIVED, window._acuBoundMessageReceivedHandler);
+            // ----------------------------------------------------------------------
+            
+            // 确保只创建一次聊天切换处理函数（移到模块级防止重复注册）
+            if (!window._acuBoundChatChangeHandler) {
+                window._acuBoundChatChangeHandler = () => {
+                    cachedRawData = null;
+                    tablePageStates = {};
+                    tableSearchStates = {};
+                    tableScrollStates = {};
+                    hasUnsavedChanges = false;
+                    currentDiffMap.clear();
+                    if (window.acuModifiedSet) window.acuModifiedSet.clear();
+                    if (window._acuSchemaCache) window._acuSchemaCache.clear(); // [优化] 切换聊天时清空表头智能缓存
+                    
+                    // [T0 优化] 切换聊天时彻底清空图片缓存，斩断引用，释放浏览器解码内存，防止 OOM 崩溃
+                    if (window._acuImageCache) {
+                        for (let key in window._acuImageCache) {
+                            window._acuImageCache[key].src = ''; 
+                        }
+                        window._acuImageCache = {};
+                    }
+
+                    // [新增] 切换聊天时清理日历旧缓存，防止跨角色数据残留
+                    try { localStorage.removeItem('acu_calendar_archive_v1'); } catch(e) {}
+                    setTimeout(renderInterface, 500);
+                };
+            }
+            const _boundChatChangeHandler = window._acuBoundChatChangeHandler;
+            
+            triggers.forEach(evt => {
+                if (evt) {
+                    source.removeListener(evt, _boundRenderHandler);
+                    source.removeListener(evt, _boundChatChangeHandler); // 防止重复注册
+                    if (evt === events.CHAT_CHANGED) {
+                        source.on(evt, _boundChatChangeHandler);
+                    } else {
+                        source.on(evt, _boundRenderHandler);
+                    }
+                }
+            });
+        }
+
+
+        // 3. 轮询等待数据库 API 就绪
+        const loop = () => {
+             const api = getCore().getDB();
+             if (api?.exportTableAsJson) {
+                 isInitialized = true;
+
+                // (DOM Observer 已安全移除，由原生事件接管驱动)
+
+                 renderInterface(); // 首次渲染
+                 
+                 // 注册回调
+                 if (api.registerTableUpdateCallback) {
+                    api.registerTableUpdateCallback(UpdateController.handleUpdate);
+                    
+                    // 恢复快照功能 & 挂载选项转圈锁
+                    if (api.registerTableFillStartCallback) {
+                         api.registerTableFillStartCallback(() => {
+                             const current = api.exportTableAsJson();
+                             if (current) saveSnapshot(current);
+                             console.log('[ACU] 检测到数据库开始填表更新...');
+                             
+                             isWaitingForDbUpdate = true; // [新增] 立刻上锁
+                             renderInterface();           // [新增] 重绘UI显示转圈
+                             
+                             // [T0 优化] 底部防卡死机制：20秒后自动静默解锁，不打扰用户
+                             if (dbUpdateTimeout) clearTimeout(dbUpdateTimeout);
+                             dbUpdateTimeout = setTimeout(() => {
+                                 if (isWaitingForDbUpdate) {
+                                     isWaitingForDbUpdate = false;
+                                     renderInterface();
+                                 }
+                             }, 20000);
+                         });
+                    }
+                 }
+             } else {
+                 // 持续静默轮询，等待后端 API 就绪，不设超时限制
+                 if (!isInitialized) {
+                     setTimeout(loop, 1000);
+                 }
+             }
+        };
+        loop();
+        
+        // [补回] 监听用户发送消息 - 自动隐藏选项面板
+        const setupOptionHideListener = () => {
+            const hideOptionPanel = () => {
+                optionPanelVisible = false;
+                $('.acu-option-panel').fadeOut(200, function() { 
+                    $(this).remove(); 
+                    // [核心修复1] 物理删除 DOM 的同时，必须清空渲染缓存！
+                    window._lastEmbeddedHash = null; 
+                });
+            };
+            
+            // 【核心修复】清除指纹缓存并强制恢复显示选项面板
+            const restoreOptionPanel = () => {
+                isWaitingForDbUpdate = false; // [新增兜底] 强行砸锁，防止死循环转圈
+                lastOptionHash = null;
+                optionPanelVisible = true;
+                setTimeout(renderInterface, 100);
+            };
+
+            const ST = window.SillyTavern || window.parent?.SillyTavern;
+            const evtName = ST?.eventTypes?.MESSAGE_SENT || (window.tavern_events ? window.tavern_events.MESSAGE_SENT : 'message_sent');
+            const evtDeleted = ST?.eventTypes?.MESSAGE_DELETED || (window.tavern_events ? window.tavern_events.MESSAGE_DELETED : 'message_deleted');
+            const evtStopped = ST?.eventTypes?.GENERATION_STOPPED || (window.tavern_events ? window.tavern_events.GENERATION_STOPPED : 'generation_stopped');
+            const evtSwiped = ST?.eventTypes?.MESSAGE_SWIPED || (window.tavern_events ? window.tavern_events.MESSAGE_SWIPED : 'message_swiped');
+            
+            if (ST?.eventSource) { 
+                ST.eventSource.on(evtName, hideOptionPanel); 
+                ST.eventSource.on(evtDeleted, restoreOptionPanel);
+                ST.eventSource.on(evtStopped, restoreOptionPanel);
+                if (evtSwiped) ST.eventSource.on(evtSwiped, restoreOptionPanel);
+                return; 
+            }
+            if (typeof window.eventOn === 'function') { 
+                window.eventOn(evtName, hideOptionPanel); 
+                window.eventOn(evtDeleted, restoreOptionPanel);
+                window.eventOn(evtStopped, restoreOptionPanel);
+                if (evtSwiped) window.eventOn(evtSwiped, restoreOptionPanel);
+            }
+        };
+        setTimeout(setupOptionHideListener, 2000);
+        
+        // [新增] 页面卸载时清理资源
+        $(window).off('beforeunload.acu pagehide.acu').on('beforeunload.acu pagehide.acu', () => {
+            try {
+                localStorage.setItem(STORAGE_KEY_SCROLL, JSON.stringify(tableScrollStates));
+            } catch(e) {}
+        });
+
+        // ==========================================
+        // [终极修复] 绑定 RPG 交互状态栏事件 (全局委托)
+        // ==========================================
+        // 1. 展开/收起面板事件 (强制覆盖绑定，无视缓存)
+        $('body').off('click.acu_rpg_toggle').on('click.acu_rpg_toggle', '.acu-rpg-summary-toggle, #acu-rpg-summary-toggle', function(e) {
+            e.stopPropagation();
+            const $panel = $(this).siblings('.acu-rpg-details-panel, #acu-rpg-details-panel');
+            const $chevron = $(this).find('.acu-rpg-chevron, #acu-rpg-chevron');
+            if ($panel.is(':visible')) {
+                $panel.slideUp(250);
+                $chevron.css('transform', 'rotate(0deg)');
+                localStorage.setItem('acu_rpg_expanded', 'false'); // 保存收起状态
+            } else {
+                $panel.slideDown(250);
+                $chevron.css('transform', 'rotate(180deg)');
+                localStorage.setItem('acu_rpg_expanded', 'true'); // 保存展开状态
+            }
+        });
+
+        // 2. Tab 标签页切换事件
+        $('body').off('click.acu_rpg_tab').on('click.acu_rpg_tab', '.acu-rpg-tab-btn', function(e) {
+            e.stopPropagation();
+            const $this = $(this);
+            const $widget = $this.closest('.acu-rpg-widget');
+            const targetAttr = $this.data('target');
+
+            // 记录当前激活的标签页
+            localStorage.setItem('acu_rpg_active_tab', targetAttr);
+
+            $widget.find('.acu-rpg-tab-btn').removeClass('active');
+            $this.addClass('active');
+
+            $widget.find('.acu-rpg-tab-content').removeClass('active').hide();
+            // 兼容查找 class 或 id
+            $widget.find(`.${targetAttr}, #${targetAttr}`).show().addClass('active');
+
+            // [修复] 如果切入的是“关系”标签，延迟 50ms (等待 fadeIn 让容器获得真实尺寸) 后自动触发重置
+            if (targetAttr === 'rpg-tab-relations') {
+                setTimeout(() => {
+                    $widget.find('#acu-rel-reset-embedded').click();
+                }, 50);
+            }
+        });
+        
+        // 3. 防止点击面板内部时关闭全局UI
+        $('body').off('click.acu_rpg_widget').on('click.acu_rpg_widget', '.acu-rpg-widget', function(e) {
+            e.stopPropagation();
+        });
+
+        // 4. 资产分页按钮翻页事件
+        $('body').off('click.acu_rpg_page').on('click.acu_rpg_page', '.acu-rpg-page-btn', function(e) {
+            e.stopPropagation();
+            if ($(this).hasClass('disabled')) return;
+            window._acuRpgBagPage = parseInt($(this).data('page'), 10);
+            renderInterface(); // 翻页后直接刷新界面
+        });
+
+        // 5. RPG专属设置(分页数量)更改事件
+        $('body').off('change.acu_rpg_cfg').on('change.acu_rpg_cfg', '#acu-rpg-cfg-bag-page', function(e) {
+            e.stopPropagation();
+            let val = parseInt($(this).val(), 10);
+            if (isNaN(val) || val < 0) { val = 0; $(this).val(0); }
+            if (typeof saveConfig === 'function') {
+                saveConfig({ rpgBagPerPage: val });
+                window._acuRpgBagPage = 1; // 修改数量后重置回第一页
+                renderInterface();
+            }
+        });
+
+        // 6. [新增] 资产面板：使用物品按钮
+        $('body').off('click.acu_bag_use').on('click.acu_bag_use', '.acu-bag-use-btn', function(e) {
+            e.stopPropagation();
+            const itemName = $(this).data('name');
+            const insertText = '使用 ' + itemName;
+            const ta = $('#send_textarea');
+            if (ta.length) {
+                const domEl = ta[0];
+                const startPos = domEl.selectionStart;
+                const endPos = domEl.selectionEnd;
+                const currentVal = ta.val();
+                
+                if (startPos !== undefined && endPos !== undefined) {
+                    const newVal = currentVal.substring(0, startPos) + insertText + currentVal.substring(endPos);
+                    ta.val(newVal);
+                    const newCursorPos = startPos + insertText.length;
+                    domEl.setSelectionRange(newCursorPos, newCursorPos);
+                } else {
+                    const newVal = currentVal ? currentVal + ' ' + insertText : insertText;
+                    ta.val(newVal);
+                }
+                ta.trigger('input').trigger('change').focus();
+                AcuToast.success('已追加至输入栏：' + insertText);
+            }
+        });
+
+        // 7. [新增] 资产面板：删除物品按钮
+        $('body').off('click.acu_bag_del').on('click.acu_bag_del', '.acu-bag-del-btn', async function(e) {
+            e.stopPropagation();
+            const $btn = $(this);
+            const itemName = $btn.data('name');
+            
+            // 1. 点击后，垃圾桶瞬间变红示警
+            $btn.css('color', '#e74c3c');
+            
+            // 2. 核心魔法：等待一帧让浏览器把红色画出来，再弹阻塞式的确认框，否则红色会被弹窗憋在肚子里
+            await new Promise(resolve => requestAnimationFrame(() => setTimeout(resolve, 10)));
+
+            if (!confirm('【高危操作】\n确定要彻底丢弃/删除资产 [' + itemName + '] 吗？\n此操作将直接修改数据库并保存！')) {
+                // 3. 用户点击了取消，垃圾桶乖乖退回原本的低调灰
+                $btn.css('color', 'var(--acu-text-sub)');
+                return;
+            }
+
+            const tableKey = $btn.data('key');
+            const rowIdx = parseInt($btn.data('row'), 10);
+            const api = getCore().getDB();
+            
+            // 视觉反馈：UI 层面让卡片瞬间滑出消失，无需等待后端，手感极佳
+            const $card = $(this).closest('.acu-rpg-item-card');
+            $card.css('transition', 'all 0.2s ease').css('opacity', '0').css('transform', 'scale(0.9)');
+            setTimeout(() => $card.slideUp(200, () => $card.remove()), 200);
+
+            try {
+                let apiSuccess = false;
+                // 优先尝试使用细粒度的行删除 API
+                if (api && api.deleteRow) {
+                        const _tname = (cachedRawData && cachedRawData[tableKey]?.name) || tableKey;
+                        apiSuccess = await api.deleteRow(_tname, rowIdx); // 0-based 数据行索引
+                    if (apiSuccess) {
+                        AcuToast.success('已彻底删除：' + itemName);
+                        // 同步本地数据快照防穿帮
+                        if (cachedRawData && cachedRawData[tableKey]?.content) {
+                            cachedRawData[tableKey].content.splice(rowIdx + 1, 1);
+                            saveSnapshot(cachedRawData);
+                        }
+                    }
+                }
+                
+                // 兜底方案：如果后端 API 不存在或失效，直接修改本地 JSON 并全局覆盖保存
+                if (!apiSuccess) {
+                    if (!cachedRawData) cachedRawData = getTableData() || loadSnapshot();
+                    if (cachedRawData && cachedRawData[tableKey]?.content) {
+                        cachedRawData[tableKey].content.splice(rowIdx + 1, 1);
+                        saveSnapshot(cachedRawData);
+                        await saveDataToDatabase(cachedRawData, true, true);
+                        AcuToast.success('已删除物品 (全量同步完成)');
+                    }
+                }
+            } catch (err) {
+                console.error('[ACU] 删除物品失败', err);
+                AcuToast.error('删除同步失败，请检查网络或控制台');
+            }
+        });
+    };
+
+    const { $ } = getCore();
+    if ($) $(document).ready(init); else window.addEventListener('load', init);
+})();
