@@ -2220,505 +2220,467 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
         return tables;
     };
 
-    const showSettingsModal = () => {
-    const { $ } = getCore();
-    $('.acu-edit-overlay').remove();
-    const config = getConfig();
-    const currentThemeClass = `acu-theme-${config.theme}`;
-    const reversedTables = Store.get('acu_reverse_tables', []);
-    const hiddenTables = getHiddenTables();
-    const allTables = cachedRawData ? processJsonData(cachedRawData) : (getTableData() ? processJsonData(getTableData()) : {});
-    // [修改] 允许在设置里管理人物关系网的显示状态
-    let tableNames = Object.keys(allTables);
-    // 如果列表中没有虚拟标签，手动追加进去，这样用户就能对其进行隐藏或排序操作了
-    if (!tableNames.includes(VIRTUAL_RELATIONSHIP_TAB)) {
-        tableNames.unshift(VIRTUAL_RELATIONSHIP_TAB);
-    }
+const showSettingsModal = () => {
+        const { $ } = getCore();
+        $('.acu-edit-overlay').remove();
+        const config = getConfig();
+        const currentThemeClass = `acu-theme-${config.theme}`;
+        const reversedTables = Store.get('acu_reverse_tables', []);
+        const hiddenTables = getHiddenTables();
+        const allTables = cachedRawData ? processJsonData(cachedRawData) : (getTableData() ? processJsonData(getTableData()) : {});
+        let tableNames = Object.keys(allTables);
+        if (!tableNames.includes(VIRTUAL_RELATIONSHIP_TAB)) {
+            tableNames.unshift(VIRTUAL_RELATIONSHIP_TAB);
+        }
 
-    const modalStyles = `
-        <style>
-            .acu-edit-dialog { transition: background 0.3s ease, color 0.3s ease, opacity 0.15s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
-            #acu-ghost-preview { position: fixed; opacity: 0; pointer-events: none; z-index: 2147483647; box-shadow: 0 10px 40px rgba(0,0,0,0.6) !important; border: 2px solid var(--acu-accent); background: var(--acu-card-bg); display: flex; flex-direction: column; transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
-            #acu-ghost-preview.visible { opacity: 1 !important; }
-            @media (min-width: 769px) {
-                .acu-edit-overlay { background: rgba(0, 0, 0, 0.4) !important; backdrop-filter: blur(2px); }
-                .acu-edit-dialog { width: 400px !important; max-width: 90% !important; max-height: 85vh !important; box-shadow: 0 10px 40px rgba(0,0,0,0.4) !important; margin: auto !important; }
-                #acu-ghost-preview { top: 50%; left: calc(50% + 220px); right: auto; transform: translateY(-50%) scale(0.95); width: var(--acu-card-width); font-size: var(--acu-font-size); z-index: 2147483648; }
-                #acu-ghost-preview.visible { transform: translateY(-50%) scale(1); }
-            }
-            @media (min-width: 769px) and (max-width: 1100px) { #acu-ghost-preview { left: auto !important; right: calc(50% + 220px) !important; } }
-            @media (min-width: 769px) and (max-width: 850px) { #acu-ghost-preview { left: 50% !important; right: auto !important; top: 10% !important; transform: translateX(-50%) !important; } #acu-ghost-preview.visible { transform: translateX(-50%) scale(1) !important; } }
-            @media (max-width: 768px) {
-                /* [优化] 遮罩层改为底部对齐，为上方的智能幻影留出展示空间 */
-                .acu-edit-overlay { align-items: flex-end !important; justify-content: center !important; background: rgba(0, 0, 0, 0.6) !important; backdrop-filter: blur(4px); padding: 0 !important; }
-                /* [瘦身] 弹窗整体拉高，最大高度从75vh提升到85vh，圆角收敛 */
-                .acu-edit-dialog { width: 100% !important; max-width: 100% !important; border-radius: 20px 20px 0 0 !important; height: auto !important; max-height: 85vh !important; max-height: 85dvh !important; margin: 0 !important; bottom: 0 !important; animation: acuSlideUp 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; box-shadow: 0 -10px 40px rgba(0,0,0,0.6) !important; border-bottom: none !important; }
-                /* [瘦身] 极限压缩顶部小把手的上下间距和粗细 */
-                .acu-edit-dialog::before { content: ''; display: block; width: 36px; height: 4px; background: rgba(128, 128, 128, 0.4); border-radius: 2px; margin: 8px auto -6px auto; flex-shrink: 0; position: relative; z-index: 1; }
-                /* [瘦身] 强制削减标题栏的 padding 和字号 */
-                .acu-edit-dialog .acu-edit-title { padding: 10px 15px 6px 15px !important; }
-                .acu-edit-dialog .acu-edit-title > div:first-child { font-size: 15px !important; }
-                /* [瘦身] 压缩底部固定按钮栏的空间占用 */
-                .acu-settings-footer { padding: 8px 16px !important; padding-bottom: max(8px, env(safe-area-inset-bottom, 8px)) !important; }
-                .acu-settings-footer #dlg-close { height: 38px !important; font-size: 14px !important; }
-                /* 调整幽灵卡片(滑块预览)位置，放置于抽屉上方 */
-                #acu-ghost-preview { top: 6% !important; bottom: auto !important; left: 50% !important; transform: translateX(-50%) !important; width: min(var(--acu-card-width), calc(100vw - 32px)) !important; max-height: 25vh !important; overflow-y: auto !important; overflow-x: hidden !important; margin: 0 !important; box-shadow: 0 10px 50px rgba(0,0,0,0.5) !important; border: 2px solid var(--acu-accent) !important; } 
-            }
-            @keyframes acuSlideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-            .acu-edit-dialog { background-color: var(--acu-bg-panel) !important; color: var(--acu-text-main) !important; border: 1px solid var(--acu-border) !important; display: flex; flex-direction: column; }
-            .acu-edit-title { flex: 0 0 auto; color: var(--acu-text-main) !important; border-bottom: 1px solid var(--acu-border) !important; }
-            .acu-settings-group-box { background: var(--acu-table-head) !important; border: 1px dashed var(--acu-border) !important; padding: 12px; border-radius: 8px; margin-bottom: 15px; }
-            .acu-settings-label { color: var(--acu-text-sub) !important; }
-            .acu-settings-val { color: var(--acu-accent) !important; }
-            .acu-select, .acu-slider { background: var(--acu-btn-bg) !important; border: 1px solid var(--acu-border) !important; color: var(--acu-text-main) !important; }
-            .acu-btn-block { background: var(--acu-btn-bg) !important; color: var(--acu-text-main) !important; border: 1px solid var(--acu-border) !important; }
-            .acu-btn-block:hover { background: var(--acu-btn-hover) !important; }
-            .acu-reverse-item { display:flex; justify-content:space-between; align-items:center; padding:8px; border-bottom:1px dashed var(--acu-border); }
-            .acu-reverse-item:last-child { border-bottom:none; }
-            .acu-switch { position: relative; display: inline-block; width: 36px; height: 20px; margin-right: 10px; flex-shrink: 0; vertical-align: middle; }
-            .acu-switch input { opacity: 0; width: 0; height: 0; }
-            .acu-slider-toggle { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(128,128,128,0.3); transition: .3s; border-radius: 20px; }
-            .acu-slider-toggle:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: var(--acu-text-sub); transition: .3s cubic-bezier(0.4, 0.0, 0.2, 1); border-radius: 50%; }
-            .acu-switch input:checked + .acu-slider-toggle { background-color: var(--acu-accent); }
-            .acu-switch input:checked + .acu-slider-toggle:before { transform: translateX(16px); background-color: #fff; }
-            .acu-settings-label.has-switch { display: flex; align-items: center; cursor: pointer; }
-            
-            
-        </style>
-    `;
+        // [优化] 清除移动端点击聚焦外框与长按选择，杜绝闪烁
+        const modalStyles = `
+            <style>
+                .acu-edit-dialog { transition: background 0.3s ease, color 0.3s ease, opacity 0.15s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+                #acu-ghost-preview { position: fixed; opacity: 0; pointer-events: none; z-index: 2147483647; box-shadow: 0 10px 40px rgba(0,0,0,0.6) !important; border: 2px solid var(--acu-accent); background: var(--acu-card-bg); display: flex; flex-direction: column; transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+                #acu-ghost-preview.visible { opacity: 1 !important; }
+                
+                /* 左右滑动分区样式 */
+                .acu-settings-tabs { display: flex; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--acu-border); flex-shrink: 0; background: var(--acu-table-head); }
+                .acu-settings-tabs::-webkit-scrollbar { display: none; }
+                
+                /* 彻底抹除点击高亮与焦点闪烁 */
+                .acu-settings-tab-btn { 
+                    flex: 1; 
+                    min-width: 80px; 
+                    white-space: nowrap; 
+                    padding: 12px 10px; 
+                    background: transparent; 
+                    border: none; 
+                    color: var(--acu-text-sub); 
+                    font-size: 13px; 
+                    font-weight: bold; 
+                    cursor: pointer; 
+                    border-bottom: 3px solid transparent; 
+                    transition: all 0.2s; 
+                    outline: none !important;
+                    -webkit-tap-highlight-color: transparent !important; 
+                    -webkit-user-select: none !important;
+                    user-select: none !important;
+                }
+                .acu-settings-tab-btn.active { color: var(--acu-accent); border-bottom-color: var(--acu-accent); }
+                
+                .acu-settings-swipe-wrapper { flex: 1; display: flex; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scroll-behavior: auto; scrollbar-width: none; }
+                .acu-settings-swipe-wrapper::-webkit-scrollbar { display: none; }
+                .acu-settings-pane { flex: 0 0 100%; width: 100%; scroll-snap-align: start; overflow-y: auto; padding: 15px; box-sizing: border-box; overscroll-behavior-y: contain; }
 
-    const dialog = $(`
-        <div class="acu-edit-overlay">
-            ${modalStyles}
-            <div class="acu-edit-dialog ${currentThemeClass}">
-                <div class="acu-edit-title" style="text-align:center; padding: 12px 15px;">
-    <div style="font-weight:bold; font-size:16px;">设置选项</div>
-    <div style="font-size:11px; opacity:0.6; font-weight:normal; margin-top:4px;">💡 按住滑块可实时预览效果 (点击空白处可退出)</div>
-</div>
+                @media (min-width: 769px) {
+                    .acu-edit-overlay { background: rgba(0, 0, 0, 0.4) !important; backdrop-filter: blur(2px); }
+                    .acu-edit-dialog { width: 450px !important; max-width: 90% !important; max-height: 85vh !important; box-shadow: 0 10px 40px rgba(0,0,0,0.4) !important; margin: auto !important; }
+                    #acu-ghost-preview { top: 50%; left: calc(50% + 245px); right: auto; transform: translateY(-50%) scale(0.95); width: var(--acu-card-width); font-size: var(--acu-font-size); z-index: 2147483648; }
+                    #acu-ghost-preview.visible { transform: translateY(-50%) scale(1); }
+                    .acu-settings-tab-btn { font-size: 14px; }
+                }
+                @media (min-width: 769px) and (max-width: 1100px) { #acu-ghost-preview { left: auto !important; right: calc(50% + 245px) !important; } }
+                @media (min-width: 769px) and (max-width: 850px) { #acu-ghost-preview { left: 50% !important; right: auto !important; top: 10% !important; transform: translateX(-50%) !important; } #acu-ghost-preview.visible { transform: translateX(-50%) scale(1) !important; } }
+                @media (max-width: 768px) {
+                    .acu-edit-overlay { align-items: flex-end !important; justify-content: center !important; background: rgba(0, 0, 0, 0.6) !important; backdrop-filter: blur(4px); padding: 0 !important; }
+                    .acu-edit-dialog { width: 100% !important; max-width: 100% !important; border-radius: 20px 20px 0 0 !important; height: auto !important; max-height: 85dvh !important; margin: 0 !important; bottom: 0 !important; animation: acuSlideUp 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; box-shadow: 0 -10px 40px rgba(0,0,0,0.6) !important; border-bottom: none !important; }
+                    .acu-edit-dialog::before { content: ''; display: block; width: 36px; height: 4px; background: rgba(128, 128, 128, 0.4); border-radius: 2px; margin: 8px auto -6px auto; flex-shrink: 0; position: relative; z-index: 1; }
+                    .acu-edit-dialog .acu-edit-title { padding: 10px 15px 6px 15px !important; border-bottom: none !important; }
+                    .acu-settings-footer { padding: 8px 16px !important; padding-bottom: max(8px, env(safe-area-inset-bottom, 8px)) !important; }
+                    #acu-ghost-preview { top: 6% !important; bottom: auto !important; left: 50% !important; transform: translateX(-50%) !important; width: min(var(--acu-card-width), calc(100vw - 32px)) !important; max-height: 25vh !important; overflow-y: auto !important; overflow-x: hidden !important; margin: 0 !important; box-shadow: 0 10px 50px rgba(0,0,0,0.5) !important; border: 2px solid var(--acu-accent) !important; } 
+                }
+                @keyframes acuSlideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+                .acu-edit-dialog { background-color: var(--acu-bg-panel) !important; color: var(--acu-text-main) !important; border: 1px solid var(--acu-border) !important; display: flex; flex-direction: column; overflow: hidden; }
+                .acu-edit-title { flex: 0 0 auto; color: var(--acu-text-main) !important; }
+                .acu-settings-group-box { background: var(--acu-table-head) !important; border: 1px dashed var(--acu-border) !important; padding: 12px; border-radius: 8px; margin-bottom: 15px; }
+                .acu-settings-label { color: var(--acu-text-sub) !important; }
+                .acu-settings-val { color: var(--acu-accent) !important; }
+                .acu-select, .acu-slider { background: var(--acu-btn-bg) !important; border: 1px solid var(--acu-border) !important; color: var(--acu-text-main) !important; }
+                .acu-btn-block { background: var(--acu-btn-bg) !important; color: var(--acu-text-main) !important; border: 1px solid var(--acu-border) !important; }
+                .acu-btn-block:hover { background: var(--acu-btn-hover) !important; }
+                .acu-reverse-item { display:flex; justify-content:space-between; align-items:center; padding:8px; border-bottom:1px dashed var(--acu-border); }
+                .acu-reverse-item:last-child { border-bottom:none; }
+                .acu-switch { position: relative; display: inline-block; width: 36px; height: 20px; margin-right: 10px; flex-shrink: 0; vertical-align: middle; }
+                .acu-switch input { opacity: 0; width: 0; height: 0; }
+                .acu-slider-toggle { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(128,128,128,0.3); transition: .3s; border-radius: 20px; }
+                .acu-slider-toggle:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: var(--acu-text-sub); transition: .3s cubic-bezier(0.4, 0.0, 0.2, 1); border-radius: 50%; }
+                .acu-switch input:checked + .acu-slider-toggle { background-color: var(--acu-accent); }
+                .acu-switch input:checked + .acu-slider-toggle:before { transform: translateX(16px); background-color: #fff; }
+                .acu-settings-label.has-switch { display: flex; align-items: center; cursor: pointer; }
+            </style>
+        `;
 
-                <div class="acu-settings-content" style="flex: 1; overflow-y: auto; padding: 15px;">
-                    <div class="acu-settings-group-box">
-                        <div class="acu-settings-item"><label class="acu-settings-label">卡片宽度 <span class="acu-settings-val" id="val-width">${config.cardWidth}px</span></label><input type="range" id="cfg-width" class="acu-slider" min="200" max="500" step="10" value="${config.cardWidth}"></div>
-                        <div class="acu-settings-item"><label class="acu-settings-label">字体大小 (界面) <span class="acu-settings-val" id="val-font">${config.fontSize}px</span></label><input type="range" id="cfg-font" class="acu-slider" min="10" max="24" step="1" value="${config.fontSize}"></div>
-                        <div class="acu-settings-item"><label class="acu-settings-label">选项字体大小 <span class="acu-settings-val" id="val-opt-font">${config.optionFontSize || 12}px</span></label><input type="range" id="cfg-opt-font" class="acu-slider" min="10" max="24" step="1" value="${config.optionFontSize || 12}"></div>
+        const dialog = $(`
+            <div class="acu-edit-overlay">
+                ${modalStyles}
+                <div class="acu-edit-dialog ${currentThemeClass}">
+                    <div class="acu-edit-title" style="text-align:center; padding: 12px 15px;">
+                        <div style="font-weight:bold; font-size:16px;">设置选项</div>
+                        <div style="font-size:11px; opacity:0.6; font-weight:normal; margin-top:4px;">💡 按住滑块可实时预览 (左右滑动切换分区)</div>
                     </div>
-                    <div class="acu-settings-item"><label class="acu-settings-label">背景主题 (Theme)</label><select id="cfg-theme" class="acu-select">${THEMES.map(t => `<option value="${t.id}" ${t.id === config.theme ? 'selected' : ''}>${t.name}</option>`).join('')}</select></div>
-                    <div class="acu-settings-item"><label class="acu-settings-label">字体风格 (Font)</label><select id="cfg-font-family" class="acu-select">${FONTS.map(f => `<option value="${f.id}" ${f.id === config.fontFamily ? 'selected' : ''}>${f.name}</option>`).join('')}</select></div>
-                    <div class="acu-settings-item"><label class="acu-settings-label has-switch"><div class="acu-switch"><input type="checkbox" id="cfg-show-status" class="acu-checkbox" ${config.showStatusBar !== false ? 'checked' : ''}><span class="acu-slider-toggle"></span></div> 显示 RPG 状态栏 (跟随气泡底部)</label></div>
-                    <div class="acu-settings-item"><label class="acu-settings-label">布局模式 (Layout)</label><select id="cfg-layout" class="acu-select"><option value="horizontal" ${config.layout !== 'vertical' ? 'selected' : ''}>↔️ 横向滚动 (默认)</option><option value="vertical" ${config.layout === 'vertical' ? 'selected' : ''}>↕️ 竖向网格 (PC推荐)</option></select></div>
-                    <div class="acu-settings-item" style="display:${$(window).width() > 768 ? 'none' : 'block'};"><label class="acu-settings-label">底部按钮列数 (Grid Columns)</label><select id="cfg-grid-cols" class="acu-select"><option value="2" ${config.gridColumns == 2 ? 'selected' : ''}>2 列 (宽大)</option><option value="3" ${config.gridColumns == 3 ? 'selected' : ''}>3 列 (标准)</option><option value="4" ${config.gridColumns == 4 ? 'selected' : ''}>4 列 (紧凑)</option><option value="auto" ${config.gridColumns === 'auto' ? 'selected' : ''}>🤖 自动 (智能填满)</option></select></div>
-                    <div class="acu-settings-item"><label class="acu-settings-label">收起后的样式 (Collapsed Style)</label><select id="cfg-col-style" class="acu-select"><option value="bar" ${config.collapseStyle === 'bar' ? 'selected' : ''}>🟦 全宽长条</option><option value="pill" ${config.collapseStyle === 'pill' ? 'selected' : ''}>💊 胶囊按钮</option><option value="mini" ${config.collapseStyle === 'mini' ? 'selected' : ''}>🔘 迷你圆钮</option></select></div>
-                    <div class="acu-settings-item" id="row-col-align" style="display:${config.collapseStyle === 'bar' ? 'none' : 'block'};"><label class="acu-settings-label">收起后的位置 (Position)</label><select id="cfg-col-align" class="acu-select"><option value="right" ${config.collapseAlign !== 'left' ? 'selected' : ''}>➡️ 靠右 (默认)</option><option value="left" ${config.collapseAlign === 'left' ? 'selected' : ''}>⬅️ 靠左</option></select></div>
-                    <div class="acu-settings-item"><label class="acu-settings-label" style="display:flex; justify-content:space-between; align-items:center;"><span>每页显示条数</span><input type="number" id="cfg-per-page" value="${config.itemsPerPage}" min="1" max="9999" style="width: 80px; background-color: var(--acu-btn-bg) !important; border: 1px solid var(--acu-border) !important; color: var(--acu-text-main) !important; font-weight: bold; border-radius: 4px; padding: 4px 8px; text-align: center; outline: none;"></label></div>
-                    <div class="acu-settings-item"><label class="acu-settings-label">功能按钮位置 (Action Bar)</label><select id="cfg-action-pos" class="acu-select"><option value="bottom" ${config.actionsPosition !== 'top' ? 'selected' : ''}>⬇️ 底部 (默认)</option><option value="top" ${config.actionsPosition === 'top' ? 'selected' : ''}>⬆️ 顶部</option></select></div>
-                    <div class="acu-settings-item"><label class="acu-settings-label has-switch"><div class="acu-switch"><input type="checkbox" id="cfg-new" class="acu-checkbox" ${config.highlightNew ? 'checked' : ''}><span class="acu-slider-toggle"></span></div> 高亮变化/新增的内容 (Diff)</label></div>
-                    <div class="acu-settings-item"><label class="acu-settings-label has-switch"><div class="acu-switch"><input type="checkbox" id="cfg-beautify-toastr" class="acu-checkbox" ${config.beautifyToastr === true ? 'checked' : ''}><span class="acu-slider-toggle"></span></div> 优化酒馆系统提示消息</label></div>
-                    <div class="acu-settings-item"><label class="acu-settings-label has-switch"><div class="acu-switch"><input type="checkbox" id="cfg-show-opt" class="acu-checkbox" ${config.showOptionPanel !== false ? 'checked' : ''}><span class="acu-slider-toggle"></span></div> 显示行动选项 (识别"选项"表)</label></div>
-                    <div class="acu-settings-item" id="row-auto-send" style="display:${config.showOptionPanel !== false ? 'block' : 'none'}"><label class="acu-settings-label has-switch"><div class="acu-switch"><input type="checkbox" id="cfg-auto-send" class="acu-checkbox" ${config.clickOptionToAutoSend !== false ? 'checked' : ''}><span class="acu-slider-toggle"></span></div> 点击选项直接发送</label></div>
 
-                    <div class="acu-settings-group-box" style="margin-top:20px;">
-                        <label class="acu-settings-label" style="margin-bottom:6px; display:block;"><i class="fa-solid fa-sort-amount-up"></i> 表格显示顺序偏好</label>
-                        <div style="font-size:10px; color:var(--acu-text-sub); margin-bottom:8px; line-height:1.4;">
-                            <i class="fa-solid fa-eye" style="margin-right:3px;"></i>点击眼睛图标可隐藏/显示该标签页
-                        </div>
-                        <div style="max-height:220px; overflow-y:auto; border:1px solid var(--acu-border); border-radius:4px; padding:5px; background:rgba(0,0,0,0.05);">
-                            ${tableNames.length > 0 ? tableNames.map(name => {
-    const safeName = escapeHtml(name); // 转义处理
-    const isHidden = hiddenTables.includes(name);
-    const isVirtual = name === VIRTUAL_RELATIONSHIP_TAB;
-    const disabledHighlightTables = Store.get(STORAGE_KEY_DISABLE_HIGHLIGHT_TOP, []);
-    const isHighlightTop = !disabledHighlightTables.includes(name); // [修改] 不在黑名单里即为开启高亮置顶
-    return `<div class="acu-reverse-item" style="flex-wrap:wrap;">
-        <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:120px;">
-            <button class="acu-visibility-toggle" data-table="${safeName}" style="background:none;border:none;cursor:pointer;padding:4px;color:${isHidden ? '#666' : 'var(--acu-accent)'}" title="${isHidden ? '不在导航栏显示' : '在导航栏显示'}"><i class="fa-solid ${isHidden ? 'fa-eye-slash' : 'fa-eye'}"></i></button>
-            <span style="font-size:13px;color:${isHidden ? 'var(--acu-text-sub)' : 'var(--acu-text-main)'};text-decoration:${isHidden ? 'line-through' : 'none'}">${safeName}</span>
-        </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;${isVirtual ? 'display:none;' : ''}">
-            <label style="display:flex;align-items:center;cursor:pointer;"><input type="checkbox" class="acu-highlight-top-check" value="${safeName}" ${isHighlightTop ? 'checked' : ''} style="margin-right:4px;"><span style="font-size:11px;color:var(--acu-hl-diff);">高亮置顶</span></label>
-            <label style="display:flex;align-items:center;cursor:pointer;"><input type="checkbox" class="acu-reverse-check" value="${safeName}" ${!reversedTables.includes(name) ? 'checked' : ''} style="margin-right:4px;"><span style="font-size:11px;">倒序</span></label>
-        </div>
-    </div>`;
-}).join('') : '<div style="font-size:12px;text-align:center;padding:10px;color:var(--acu-text-sub);">暂无表格数据</div>'}
-                        </div>
-                        <div style="font-size:10px; color:var(--acu-text-sub); margin-top:8px; line-height:1.5; padding:6px; background:rgba(0,0,0,0.03); border-radius:4px;">
-                            <div><b>说明：</b></div>
-                            <div>• <b>高亮置顶</b>：AI修改的行会优先显示在最前面</div>
-                            <div>• <b>倒序</b>：最新添加的行显示在前（不勾选则最早的在前）</div>
-                            <div>• 两个都勾选 = 高亮行置顶 + 其余倒序</div>
-                        </div>
+                    <div class="acu-settings-tabs">
+                        <button class="acu-settings-tab-btn active" data-idx="0">视觉布局</button>
+                        <button class="acu-settings-tab-btn" data-idx="1">功能交互</button>
+                        <button class="acu-settings-tab-btn" data-idx="2">标签排序</button>
+                        <button class="acu-settings-tab-btn" data-idx="3">模板数据</button>
                     </div>
-                    <div class="acu-divider" style="width:100%; height:1px; margin:15px 0; background:var(--acu-border);"></div>
-                    <div style="display: flex; gap: 8px;">
-                        <button class="acu-btn-block" id="btn-enter-sort" style="width: 100%; margin-top: 0;"><i class="fa-solid fa-arrows-alt"></i> 进入表格排序模式</button>
-                    </div>
-                    
-                    <div class="acu-settings-group-box" style="margin-top:20px; border-color:var(--acu-accent);">
-                        <label class="acu-settings-label" style="margin-bottom:10px; display:block; color:var(--acu-accent) !important;"><i class="fa-solid fa-database"></i> 模板与数据管理</label>
+
+                    <div class="acu-settings-swipe-wrapper" id="acu-settings-swipe">
                         
-                        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:10px;">
-                            <select class="acu-select" id="cfg-template-select" style="width:100%;">
-                                <option value="">-- 当前使用的默认库 --</option>
-                            </select>
-                            <div style="display:flex; gap:8px; align-items:center; justify-content:space-between;">
-                                <button class="acu-btn-block" id="btn-import-tpl-outside" style="flex:1; margin:0; padding:8px 0;" title="导入新模板"><i class="fa-solid fa-file-import"></i> 导入</button>
-                                <button class="acu-btn-block" id="btn-export-tpl-outside" style="flex:1; margin:0; padding:8px 0; background:var(--acu-accent); border-color:var(--acu-accent); color:#fff;" title="导出选中模板"><i class="fa-solid fa-download"></i> 导出</button>
-                                <button class="acu-btn-block" id="btn-delete-tpl-outside" style="flex:1; margin:0; padding:8px 0; background:#e74c3c; border-color:#e74c3c; color:#fff;" title="删除选中模板"><i class="fa-solid fa-trash-can"></i> 删除</button>
-                                <button class="acu-btn-block" id="btn-inject-tpl-db" style="flex:1; margin:0; padding:8px 0; background:#f39c12; border-color:#f39c12; color:#fff;" title="⚡ 将选中模板一键注入当前世界数据库"><i class="fa-solid fa-bolt"></i> 注入</button>
-                                <input type="file" id="input-import-tpl-outside" accept=".json" style="display:none;">
+                        <div class="acu-settings-pane" data-idx="0">
+                            <div class="acu-settings-group-box" style="margin-top:0;">
+                                <div class="acu-settings-item"><label class="acu-settings-label">卡片宽度 <span class="acu-settings-val" id="val-width">${config.cardWidth}px</span></label><input type="range" id="cfg-width" class="acu-slider" min="200" max="500" step="10" value="${config.cardWidth}"></div>
+                                <div class="acu-settings-item"><label class="acu-settings-label">字体大小 (界面) <span class="acu-settings-val" id="val-font">${config.fontSize}px</span></label><input type="range" id="cfg-font" class="acu-slider" min="10" max="24" step="1" value="${config.fontSize}"></div>
+                                <div class="acu-settings-item"><label class="acu-settings-label">选项字体大小 <span class="acu-settings-val" id="val-opt-font">${config.optionFontSize || 12}px</span></label><input type="range" id="cfg-opt-font" class="acu-slider" min="10" max="24" step="1" value="${config.optionFontSize || 12}"></div>
                             </div>
+                            <div class="acu-settings-item"><label class="acu-settings-label">背景主题 (Theme)</label><select id="cfg-theme" class="acu-select">${THEMES.map(t => `<option value="${t.id}" ${t.id === config.theme ? 'selected' : ''}>${t.name}</option>`).join('')}</select></div>
+                            <div class="acu-settings-item"><label class="acu-settings-label">字体风格 (Font)</label><select id="cfg-font-family" class="acu-select">${FONTS.map(f => `<option value="${f.id}" ${f.id === config.fontFamily ? 'selected' : ''}>${f.name}</option>`).join('')}</select></div>
+                            <div class="acu-settings-item"><label class="acu-settings-label">布局模式 (Layout)</label><select id="cfg-layout" class="acu-select"><option value="horizontal" ${config.layout !== 'vertical' ? 'selected' : ''}>↔️ 横向滚动 (默认)</option><option value="vertical" ${config.layout === 'vertical' ? 'selected' : ''}>↕️ 竖向网格 (PC推荐)</option></select></div>
+                            <div class="acu-settings-item" style="display:${$(window).width() > 768 ? 'none' : 'block'};"><label class="acu-settings-label">底部按钮列数 (Grid Columns)</label><select id="cfg-grid-cols" class="acu-select"><option value="2" ${config.gridColumns == 2 ? 'selected' : ''}>2 列 (宽大)</option><option value="3" ${config.gridColumns == 3 ? 'selected' : ''}>3 列 (标准)</option><option value="4" ${config.gridColumns == 4 ? 'selected' : ''}>4 列 (紧凑)</option><option value="auto" ${config.gridColumns === 'auto' ? 'selected' : ''}>🤖 自动 (智能填满)</option></select></div>
                         </div>
 
-                        <div style="display: flex; gap: 8px;">
-                            <button class="acu-btn-block" id="btn-open-stitcher" style="width: 100%; margin-top: 0; background: rgba(155, 89, 182, 0.2); color: #9b59b6; border-color: #9b59b6;"><i class="fa-solid fa-puzzle-piece"></i> 打开模板缝合中心</button>
+                        <div class="acu-settings-pane" data-idx="1">
+                            <div class="acu-settings-item"><label class="acu-settings-label has-switch"><div class="acu-switch"><input type="checkbox" id="cfg-show-status" class="acu-checkbox" ${config.showStatusBar !== false ? 'checked' : ''}><span class="acu-slider-toggle"></span></div> 显示 RPG 状态栏 (跟随气泡底部)</label></div>
+                            <div class="acu-settings-item"><label class="acu-settings-label">收起后的样式 (Collapsed Style)</label><select id="cfg-col-style" class="acu-select"><option value="bar" ${config.collapseStyle === 'bar' ? 'selected' : ''}>🟦 全宽长条</option><option value="pill" ${config.collapseStyle === 'pill' ? 'selected' : ''}>💊 胶囊按钮</option><option value="mini" ${config.collapseStyle === 'mini' ? 'selected' : ''}>🔘 迷你圆钮</option></select></div>
+                            <div class="acu-settings-item" id="row-col-align" style="display:${config.collapseStyle === 'bar' ? 'none' : 'block'};"><label class="acu-settings-label">收起后的位置 (Position)</label><select id="cfg-col-align" class="acu-select"><option value="right" ${config.collapseAlign !== 'left' ? 'selected' : ''}>➡️ 靠右 (默认)</option><option value="left" ${config.collapseAlign === 'left' ? 'selected' : ''}>⬅️ 靠左</option></select></div>
+                            <div class="acu-settings-item"><label class="acu-settings-label" style="display:flex; justify-content:space-between; align-items:center;"><span>每页显示条数</span><input type="number" id="cfg-per-page" value="${config.itemsPerPage}" min="1" max="9999" style="width: 80px; background-color: var(--acu-btn-bg) !important; border: 1px solid var(--acu-border) !important; color: var(--acu-text-main) !important; font-weight: bold; border-radius: 4px; padding: 4px 8px; text-align: center; outline: none;"></label></div>
+                            <div class="acu-settings-item"><label class="acu-settings-label">功能按钮位置 (Action Bar)</label><select id="cfg-action-pos" class="acu-select"><option value="bottom" ${config.actionsPosition !== 'top' ? 'selected' : ''}>⬇️ 底部 (默认)</option><option value="top" ${config.actionsPosition === 'top' ? 'selected' : ''}>⬆️ 顶部</option></select></div>
+                            <div class="acu-settings-item"><label class="acu-settings-label has-switch"><div class="acu-switch"><input type="checkbox" id="cfg-new" class="acu-checkbox" ${config.highlightNew ? 'checked' : ''}><span class="acu-slider-toggle"></span></div> 高亮变化/新增的内容 (Diff)</label></div>
+                            <div class="acu-settings-item"><label class="acu-settings-label has-switch"><div class="acu-switch"><input type="checkbox" id="cfg-beautify-toastr" class="acu-checkbox" ${config.beautifyToastr === true ? 'checked' : ''}><span class="acu-slider-toggle"></span></div> 优化酒馆右上角系统提示</label></div>
+                            <div class="acu-settings-item"><label class="acu-settings-label has-switch"><div class="acu-switch"><input type="checkbox" id="cfg-show-opt" class="acu-checkbox" ${config.showOptionPanel !== false ? 'checked' : ''}><span class="acu-slider-toggle"></span></div> 显示行动选项 (识别"选项"表)</label></div>
+                            <div class="acu-settings-item" id="row-auto-send" style="display:${config.showOptionPanel !== false ? 'block' : 'none'}"><label class="acu-settings-label has-switch"><div class="acu-switch"><input type="checkbox" id="cfg-auto-send" class="acu-checkbox" ${config.clickOptionToAutoSend !== false ? 'checked' : ''}><span class="acu-slider-toggle"></span></div> 点击选项直接发送</label></div>
+                        </div>
+
+                        <div class="acu-settings-pane" data-idx="2">
+                            <div class="acu-settings-group-box" style="margin-top:0;">
+                                <label class="acu-settings-label" style="margin-bottom:6px; display:block;"><i class="fa-solid fa-sort-amount-up"></i> 表格显示顺序偏好</label>
+                                <div style="font-size:10px; color:var(--acu-text-sub); margin-bottom:8px; line-height:1.4;">
+                                    <i class="fa-solid fa-eye" style="margin-right:3px;"></i>点击眼睛图标可隐藏该标签页
+                                </div>
+                                <div style="max-height:260px; overflow-y:auto; border:1px solid var(--acu-border); border-radius:4px; padding:5px; background:rgba(0,0,0,0.05); overscroll-behavior-y: contain;">
+                                    ${tableNames.length > 0 ? tableNames.map(name => {
+                                        const safeName = escapeHtml(name);
+                                        const isHidden = hiddenTables.includes(name);
+                                        const isVirtual = name === VIRTUAL_RELATIONSHIP_TAB;
+                                        const disabledHighlightTables = Store.get(STORAGE_KEY_DISABLE_HIGHLIGHT_TOP, []);
+                                        const isHighlightTop = !disabledHighlightTables.includes(name);
+                                        return `<div class="acu-reverse-item" style="flex-wrap:wrap;">
+                                            <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:120px;">
+                                                <button class="acu-visibility-toggle" data-table="${safeName}" style="background:none;border:none;cursor:pointer;padding:4px;color:${isHidden ? '#666' : 'var(--acu-accent)'}"><i class="fa-solid ${isHidden ? 'fa-eye-slash' : 'fa-eye'}"></i></button>
+                                                <span style="font-size:13px;color:${isHidden ? 'var(--acu-text-sub)' : 'var(--acu-text-main)'};text-decoration:${isHidden ? 'line-through' : 'none'}">${safeName}</span>
+                                            </div>
+                                            <div style="display:flex;gap:10px;flex-wrap:wrap;${isVirtual ? 'display:none;' : ''}">
+                                                <label style="display:flex;align-items:center;cursor:pointer;"><input type="checkbox" class="acu-highlight-top-check" value="${safeName}" ${isHighlightTop ? 'checked' : ''} style="margin-right:4px;"><span style="font-size:11px;color:var(--acu-hl-diff);">高亮置顶</span></label>
+                                                <label style="display:flex;align-items:center;cursor:pointer;"><input type="checkbox" class="acu-reverse-check" value="${safeName}" ${!reversedTables.includes(name) ? 'checked' : ''} style="margin-right:4px;"><span style="font-size:11px;">倒序</span></label>
+                                            </div>
+                                        </div>`;
+                                    }).join('') : '<div style="font-size:12px;text-align:center;padding:10px;color:var(--acu-text-sub);">暂无表格数据</div>'}
+                                </div>
+                            </div>
+                            <button class="acu-btn-block" id="btn-enter-sort" style="width: 100%;"><i class="fa-solid fa-arrows-alt"></i> 进入主面板布局编辑器</button>
+                        </div>
+
+                        <div class="acu-settings-pane" data-idx="3">
+                            <div class="acu-settings-group-box" style="margin-top:0; border-color:var(--acu-accent);">
+                                <label class="acu-settings-label" style="margin-bottom:10px; display:block; color:var(--acu-accent) !important;"><i class="fa-solid fa-database"></i> 模板与数据管理</label>
+                                
+                                <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:10px;">
+                                    <select class="acu-select" id="cfg-template-select" style="width:100%;">
+                                        <option value="">-- 当前使用的默认库 --</option>
+                                    </select>
+                                    <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:space-between;">
+                                        <button class="acu-btn-block" id="btn-import-tpl-outside" style="flex:1; min-width:80px; margin:0; padding:8px 0;" title="导入新模板"><i class="fa-solid fa-file-import"></i> 导入</button>
+                                        <button class="acu-btn-block" id="btn-export-tpl-outside" style="flex:1; min-width:80px; margin:0; padding:8px 0; background:var(--acu-accent); border-color:var(--acu-accent); color:#fff;" title="导出选中模板"><i class="fa-solid fa-download"></i> 导出</button>
+                                        <button class="acu-btn-block" id="btn-delete-tpl-outside" style="flex:1; min-width:80px; margin:0; padding:8px 0; background:#e74c3c; border-color:#e74c3c; color:#fff;" title="删除选中模板"><i class="fa-solid fa-trash-can"></i> 删除</button>
+                                        <button class="acu-btn-block" id="btn-inject-tpl-db" style="flex:1; min-width:80px; margin:0; padding:8px 0; background:#f39c12; border-color:#f39c12; color:#fff;" title="⚡ 注入当前数据库"><i class="fa-solid fa-bolt"></i> 注入</button>
+                                        <input type="file" id="input-import-tpl-outside" accept=".json" style="display:none;">
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="acu-btn-block" id="btn-open-stitcher" style="width: 100%; background: rgba(155, 89, 182, 0.2); color: #9b59b6; border-color: #9b59b6;"><i class="fa-solid fa-puzzle-piece"></i> 打开模板缝合中心</button>
                         </div>
                     </div>
-                <div style="height: 10px;"></div>
-            </div>
 
-            <div class="acu-settings-footer" style="flex: 0 0 auto; padding: 10px 16px; padding-bottom: max(10px, env(safe-area-inset-bottom, 10px)); border-top: 1px solid var(--acu-border); background: var(--acu-bg-panel); z-index: 10;">
-                <button id="dlg-close" class="acu-btn-block" style="margin:0; background:var(--acu-accent) !important; color:#fff !important; border:none; justify-content:center; font-weight:bold; font-size:14px; height:40px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
-                    <i class="fa-solid fa-check"></i> 完成并保存
-                </button>
-            </div>
-        </div>
-            <style> /* [优化] 居中模式下不需要底部巨型留白，留一点余量即可 */
-@media (max-width: 768px) { .acu-mobile-spacer { height: 20px !important; } } </style>
-        </div>
-    `);
-    dialog.css('opacity', '0');
-    $('body').append(dialog);
-    dialog[0].offsetHeight;
-    requestAnimationFrame(() => {
-        dialog.css({ 'opacity': '1', 'transition': 'opacity 0.15s ease-out' });
-    });
-
-    dialog.find('.acu-visibility-toggle').click(function(e) {
-        e.stopPropagation(); const tName = $(this).data('table'); let hList = getHiddenTables();
-        const isHidden = hList.includes(tName);
-        if (isHidden) { hList = hList.filter(n => n !== tName); $(this).find('i').attr('class', 'fa-solid fa-eye'); $(this).css('color', 'var(--acu-accent)'); $(this).siblings('span').css({'color':'var(--acu-text-main)','text-decoration':'none'}); } 
-        else { hList.push(tName); $(this).find('i').attr('class', 'fa-solid fa-eye-slash'); $(this).css('color', '#666'); $(this).siblings('span').css({'color':'var(--acu-text-sub)','text-decoration':'line-through'}); }
-        saveHiddenTables(hList); renderInterface();
-    });
-
-    
-    dialog.find('.acu-highlight-top-check').on('change', function() {
-        const tName = $(this).val(); const checked = $(this).is(':checked'); let currentList = Store.get(STORAGE_KEY_DISABLE_HIGHLIGHT_TOP, []);
-        // [修改] 黑名单逻辑：取消勾选(checked为false)时加入黑名单，勾选(checked为true)时移出黑名单
-        if (!checked) { if (!currentList.includes(tName)) currentList.push(tName); } else { currentList = currentList.filter(n => n !== tName); }
-        Store.set(STORAGE_KEY_DISABLE_HIGHLIGHT_TOP, currentList);
-        const activeTab = getActiveTabState(); if (activeTab === tName) { renderInterface(); }
-    });
-    dialog.find('.acu-reverse-check').on('change', function() {
-        const tName = $(this).val(); const checked = $(this).is(':checked'); let currentList = Store.get('acu_reverse_tables', []);
-        if (checked) { if (!currentList.includes(tName)) currentList.push(tName); } else { currentList = currentList.filter(n => n !== tName); }
-        Store.set('acu_reverse_tables', currentList);
-        const activeTab = getActiveTabState(); if (activeTab === tName) { renderInterface(); }
-    });
-    dialog.find('#cfg-font-family').on('change', function() { saveConfig({ fontFamily: $(this).val() }); });
-    dialog.find('#cfg-show-status').on('change', function() { saveConfig({ showStatusBar: $(this).is(':checked') }); renderInterface(); });
-    dialog.find('#cfg-layout').on('change', function() { saveConfig({ layout: $(this).val() }); renderInterface(); });
-    dialog.find('#cfg-grid-cols').on('change', function() { saveConfig({ gridColumns: $(this).val() }); renderInterface(); });
-    dialog.find('#cfg-col-style').on('change', function() {
-        const val = $(this).val();
-        saveConfig({ collapseStyle: val });
-        if (val === 'bar') dialog.find('#row-col-align').slideUp(200); else dialog.find('#row-col-align').slideDown(200);
-        renderInterface();
-    });
-    dialog.find('#cfg-col-align').on('change', function() { saveConfig({ collapseAlign: $(this).val() }); renderInterface(); });
-    dialog.find('#cfg-action-pos').on('change', function() { saveConfig({ actionsPosition: $(this).val() }); renderInterface(); });
-    dialog.find('#cfg-new').on('change', function() { saveConfig({ highlightNew: $(this).is(':checked') }); renderInterface(); });
-    dialog.find('#cfg-beautify-toastr').on('change', function() { saveConfig({ beautifyToastr: $(this).is(':checked') }); });
-    dialog.find('#cfg-show-opt').on('change', function() {
-        const checked = $(this).is(':checked');
-        saveConfig({ showOptionPanel: checked }); 
-        if(checked) dialog.find('#row-auto-send').slideDown(200); else dialog.find('#row-auto-send').slideUp(200);
-        renderInterface(); 
-    });
-    dialog.find('#cfg-auto-send').on('change', function() { saveConfig({ clickOptionToAutoSend: $(this).is(':checked') }); });
-    dialog.find('#cfg-theme').on('change', function() { 
-        const newTheme = $(this).val(); saveConfig({ theme: newTheme }); 
-        
-        // [性能优化] 先穿新衣服，再脱旧衣服，防止 CSS 变量出现真空期导致“黑闪”
-        const $editDialog = dialog.find('.acu-edit-dialog');
-        $editDialog.addClass(`acu-theme-${newTheme}`);
-        THEMES.forEach(t => { if (t.id !== newTheme) $editDialog.removeClass(`acu-theme-${t.id}`); });
-
-        // [新增] 给点延迟让浏览器算完 CSS 变量，然后广播主题更新事件
-        setTimeout(() => $(window).trigger('acu_theme_updated'), 50);
-    });
-
-    const showGhostCard = (forceRebuild = false) => {
-        const isOptionMode = window._acuPreviewType === 'option';
-        const targetType = isOptionMode ? 'option' : 'main';
-        const curCfg = getConfig();
-        const currentThemeClass = `acu-theme-${curCfg.theme}`;
-        
-        let $ghost = $('#acu-ghost-preview');
-
-        // [性能核心] 如果已经存在且类型匹配且没强制重构，就直接复用，拒绝重建！
-        if (!forceRebuild && $ghost.length > 0 && $ghost.data('type') === targetType) {
-            $ghost.addClass('visible');
-            // 确保主题类名也是新的
-            if (!$ghost.hasClass(currentThemeClass)) {
-                $ghost.removeClass(THEMES.map(t => `acu-theme-${t.id}`).join(' ')).addClass(currentThemeClass);
-            }
-            return; // 直接结束，极速响应
-        }
-
-        // 只有不存在或类型不匹配时，才重建 DOM
-        $ghost.remove();
-
-        let ghostHtml = '';
-        if (isOptionMode) {
-            // 模式A: 选项样式 (修复：完全还原底层真实界面的袖珍紧凑面板)
-            ghostHtml = `
-                <div id="acu-ghost-preview" class="acu-option-panel ${currentThemeClass}" data-type="option" style="width: 240px; pointer-events: none; background: var(--acu-bg-nav) !important; border: 1px solid var(--acu-border) !important; border-radius: 6px !important; padding: 4px !important; gap: 2px !important; box-shadow: 0 15px 50px rgba(0,0,0,0.8) !important;">
-                    <div class="acu-opt-header">行动选项 (预览)</div>
-                    <button class="acu-opt-btn">💬 询问关于那个传闻</button>
-                    <button class="acu-opt-btn">⚔️ 发起攻击 (检定)</button>
-                    <button class="acu-opt-btn">👋 暂时离开</button>
-                </div>`;
-        } else {
-            // 模式B: 表格样式
-            ghostHtml = `
-                <div id="acu-ghost-preview" class="acu-data-card ${currentThemeClass}" data-type="main">
-                    <div class="acu-card-header"><span class="acu-card-index">#示例</span><span class="acu-cell acu-editable-title">预览卡片效果</span></div>
-                    <div class="acu-card-body">
-                        <div class="acu-card-row acu-cell"><div class="acu-card-label">姓名</div><div class="acu-card-value">陈默</div></div>
-                        <div class="acu-card-row acu-cell"><div class="acu-card-label">状态</div><div class="acu-card-value"><span class="acu-badge acu-badge-green">正常</span></div></div>
+                    <div class="acu-settings-footer" style="flex: 0 0 auto; padding: 10px 16px; padding-bottom: max(10px, env(safe-area-inset-bottom, 10px)); border-top: 1px solid var(--acu-border); background: var(--acu-bg-panel); z-index: 10;">
+                        <button id="dlg-close" class="acu-btn-block" style="margin:0; background:var(--acu-accent) !important; color:#fff !important; border:none; justify-content:center; font-weight:bold; font-size:14px; height:40px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+                            <i class="fa-solid fa-check"></i> 完成并保存
+                        </button>
                     </div>
-                </div>`;
-        }
-
-        $('body').append(ghostHtml);
-        $ghost = $('#acu-ghost-preview');
+                </div>
+            </div>
+        `);
         
-        // 初始化变量
-        const $wrapper = $('.acu-wrapper').length ? $('.acu-wrapper') : $('body');
-        $ghost.css({
-            '--acu-card-width': $wrapper.css('--acu-card-width') || curCfg.cardWidth + 'px',
-            '--acu-font-size': $wrapper.css('--acu-font-size') || curCfg.fontSize + 'px',
-            '--acu-opt-font-size': $wrapper.css('--acu-opt-font-size') || (curCfg.optionFontSize || 12) + 'px'
+        dialog.css('opacity', '0');
+        $('body').append(dialog);
+        dialog[0].offsetHeight; // 强制重绘
+        requestAnimationFrame(() => {
+            dialog.css({ 'opacity': '1', 'transition': 'opacity 0.15s ease-out' });
         });
 
-        requestAnimationFrame(() => $ghost.addClass('visible'));
-    };
+        // --- [核心升级] 增加滚动互斥锁，消灭点击 Tab 时的光标闪烁与冲突 ---
+        const $swipeContainer = dialog.find('#acu-settings-swipe');
+        const $tabs = dialog.find('.acu-settings-tab-btn');
+        const $tabContainer = dialog.find('.acu-settings-tabs');
+        let isClickScrolling = false; // 互斥锁
 
-    let hideTimer = null;
-    const hideGhostCard = () => { if (hideTimer) clearTimeout(hideTimer); hideTimer = setTimeout(() => { $('#acu-ghost-preview').removeClass('visible'); setTimeout(() => { if(!$('#acu-ghost-preview').hasClass('visible')) $('#acu-ghost-preview').remove(); }, 300); }, 1000); };
-    const cancelHide = () => { if (hideTimer) clearTimeout(hideTimer); };
-    
-    const bindLivePreview = ($el, callback) => {
-        $el.on('input', function() { const val = $(this).val(); callback(val); cancelHide(); showGhostCard(); $('#acu-ghost-preview').css({ '--acu-card-width': $('.acu-wrapper').css('--acu-card-width'), '--acu-font-size': $('.acu-wrapper').css('--acu-font-size') }); });
-        $el.on('change', function() { dialog.find('.acu-edit-dialog').css('opacity', '1'); dialog.find('.acu-edit-overlay').css('background', ''); hideGhostCard(); });
-        $el.on('touchstart mousedown', function() { cancelHide(); showGhostCard(); });
-        $(document).on('touchend.temp_vis mouseup.temp_vis', function() { dialog.find('.acu-edit-dialog').css('opacity', '1'); dialog.find('.acu-edit-overlay').css('background', ''); hideGhostCard(); });
-    };
-    bindLivePreview(dialog.find('#cfg-width'), (val) => { dialog.find('#val-width').text(val + 'px'); $('.acu-wrapper').css('--acu-card-width', val + 'px'); });
-    dialog.find('#cfg-width').on('change', function() { saveConfig({ cardWidth: $(this).val() }); });
-    const $sliderFont = dialog.find('#cfg-font');
-    const $valFont = dialog.find('#val-font');
+        // 点击 Tab 直接平滑过渡
+        $tabs.click(function(e) {
+            e.preventDefault();
+            if (isClickScrolling) return;
 
-    $sliderFont.on('touchstart mousedown', () => { window._acuPreviewType = 'main'; });
-    bindLivePreview($sliderFont, (val) => {
-        $valFont.text(val + 'px');
-        $('.acu-wrapper, .acu-status-bar-container').css('--acu-font-size', val + 'px');
-        $('#acu-ghost-preview').css('--acu-font-size', val + 'px'); 
-    });
+            const idx = $(this).data('idx');
+            const targetScroll = $swipeContainer.width() * idx;
+            
+            isClickScrolling = true; // 上锁，暂时屏蔽全局 scroll 监听
+            $tabs.removeClass('active');
+            $(this).addClass('active');
+            
+            $swipeContainer[0].scrollTo({ left: targetScroll, behavior: 'auto' });
+            
+            // 瞬间跳转，极速解锁
+            setTimeout(() => {
+                isClickScrolling = false;
+            }, 10); 
+        });
 
-    $sliderFont.on('change', function() {
-        saveConfig({ fontSize: $(this).val() });
-    });
-
-    const $sliderOptFont = dialog.find('#cfg-opt-font');
-    const $valOptFont = dialog.find('#val-opt-font');
-
-    $sliderOptFont.on('touchstart mousedown', () => { window._acuPreviewType = 'option'; });
-    bindLivePreview($sliderOptFont, (val) => {
-        $valOptFont.text(val + 'px');
-        $('.acu-wrapper, .acu-status-bar-container').css('--acu-opt-font-size', val + 'px');
-        $('#acu-ghost-preview').css('--acu-opt-font-size', val + 'px');
-    });
-
-    $sliderOptFont.on('change', function() {
-        saveConfig({ optionFontSize: parseInt($(this).val()) });
-    });
-    dialog.find('#cfg-per-page').on('change', function() { let val = parseInt($(this).val(), 10); if (isNaN(val) || val < 1) { val = 50; $(this).val(val); } saveConfig({ itemsPerPage: val }); renderInterface(); });
-    
-    const closeAndCleanup = () => { $(document).off('.temp_vis'); cancelHide(); $('#acu-ghost-preview').remove(); dialog.remove(); };
-
-    dialog.find('#btn-enter-sort').click(() => { $(document).off('.temp_vis'); dialog.remove(); toggleOrderEditMode(); });
-    dialog.find('#btn-open-stitcher').click(() => { $(document).off('.temp_vis'); dialog.hide(); StitcherModule.show(dialog); });
-
-    // [新增] 外部模板管理逻辑
-    const refreshTemplateSelect = async () => {
-        const templates = await TemplateDB.getAllTemplates();
-        const options = '<option value="">-- 当前系统库 --</option>' + Object.keys(templates).map(k => {
-            const tName = templates[k].mate?.templateName || k;
-            return `<option value="${k}">${escapeHtml(tName)}</option>`;
-        }).join('');
-        dialog.find('#cfg-template-select').html(options);
-    };
-    refreshTemplateSelect(); // 初始化加载
-
-    dialog.find('#btn-import-tpl-outside').click(() => dialog.find('#input-import-tpl-outside').click());
-    dialog.find('#input-import-tpl-outside').change(function(e) {
-        const file = e.target.files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = async (event) => {
-            try {
-                const json = JSON.parse(event.target.result);
-                if (!json.mate || json.mate.type !== "chatSheets") throw new Error("无效的数据库模板格式");
+        // 左右手势滑动时，反向同步 Tab 状态
+        let scrollTimeout;
+        $swipeContainer.on('scroll', function() {
+            if (isClickScrolling) return; // 如果是点击触发的滚动，直接拦截
+            
+            if (scrollTimeout) cancelAnimationFrame(scrollTimeout);
+            scrollTimeout = requestAnimationFrame(() => {
+                const scrollLeft = $(this).scrollLeft();
+                const containerWidth = $(this).width();
+                if (containerWidth === 0) return;
                 
-                let templateName = prompt("请为该模板命名 (例如: 修仙模组A):", file.name.replace('.json', ''));
+                const idx = Math.round(scrollLeft / containerWidth);
+                if (!$tabs.filter(`[data-idx="${idx}"]`).hasClass('active')) {
+                    $tabs.removeClass('active');
+                    const $activeTab = $tabs.filter(`[data-idx="${idx}"]`);
+                    $activeTab.addClass('active');
+
+                    // 同步顶部 Tab 栏本身的位置
+                    const tabLeft = $activeTab.position().left;
+                    const tabCenter = tabLeft + $activeTab.width() / 2;
+                    const containerCenter = $tabContainer.width() / 2;
+                    $tabContainer[0].scrollTo({ left: $tabContainer.scrollLeft() + tabCenter - containerCenter, behavior: 'smooth' });
+                }
+            });
+        });
+        // -------------------------------------------------------------
+
+        // 剩余的逻辑代码完全不变
+        dialog.find('.acu-visibility-toggle').click(function(e) {
+            e.stopPropagation(); const tName = $(this).data('table'); let hList = getHiddenTables();
+            const isHidden = hList.includes(tName);
+            if (isHidden) { hList = hList.filter(n => n !== tName); $(this).find('i').attr('class', 'fa-solid fa-eye'); $(this).css('color', 'var(--acu-accent)'); $(this).siblings('span').css({'color':'var(--acu-text-main)','text-decoration':'none'}); } 
+            else { hList.push(tName); $(this).find('i').attr('class', 'fa-solid fa-eye-slash'); $(this).css('color', '#666'); $(this).siblings('span').css({'color':'var(--acu-text-sub)','text-decoration':'line-through'}); }
+            saveHiddenTables(hList); renderInterface();
+        });
+
+        dialog.find('.acu-highlight-top-check').on('change', function() {
+            const tName = $(this).val(); const checked = $(this).is(':checked'); let currentList = Store.get(STORAGE_KEY_DISABLE_HIGHLIGHT_TOP, []);
+            if (!checked) { if (!currentList.includes(tName)) currentList.push(tName); } else { currentList = currentList.filter(n => n !== tName); }
+            Store.set(STORAGE_KEY_DISABLE_HIGHLIGHT_TOP, currentList);
+            const activeTab = getActiveTabState(); if (activeTab === tName) { renderInterface(); }
+        });
+        
+        dialog.find('.acu-reverse-check').on('change', function() {
+            const tName = $(this).val(); const checked = $(this).is(':checked'); let currentList = Store.get('acu_reverse_tables', []);
+            if (checked) { if (!currentList.includes(tName)) currentList.push(tName); } else { currentList = currentList.filter(n => n !== tName); }
+            Store.set('acu_reverse_tables', currentList);
+            const activeTab = getActiveTabState(); if (activeTab === tName) { renderInterface(); }
+        });
+
+        dialog.find('#cfg-font-family').on('change', function() { saveConfig({ fontFamily: $(this).val() }); });
+        dialog.find('#cfg-show-status').on('change', function() { saveConfig({ showStatusBar: $(this).is(':checked') }); renderInterface(); });
+        dialog.find('#cfg-layout').on('change', function() { saveConfig({ layout: $(this).val() }); renderInterface(); });
+        dialog.find('#cfg-grid-cols').on('change', function() { saveConfig({ gridColumns: $(this).val() }); renderInterface(); });
+        dialog.find('#cfg-col-style').on('change', function() {
+            const val = $(this).val();
+            saveConfig({ collapseStyle: val });
+            if (val === 'bar') dialog.find('#row-col-align').slideUp(200); else dialog.find('#row-col-align').slideDown(200);
+            renderInterface();
+        });
+        dialog.find('#cfg-col-align').on('change', function() { saveConfig({ collapseAlign: $(this).val() }); });
+        dialog.find('#cfg-action-pos').on('change', function() { saveConfig({ actionsPosition: $(this).val() }); renderInterface(); });
+        dialog.find('#cfg-new').on('change', function() { saveConfig({ highlightNew: $(this).is(':checked') }); renderInterface(); });
+        dialog.find('#cfg-beautify-toastr').on('change', function() { saveConfig({ beautifyToastr: $(this).is(':checked') }); });
+        dialog.find('#cfg-show-opt').on('change', function() {
+            const checked = $(this).is(':checked');
+            saveConfig({ showOptionPanel: checked }); 
+            if(checked) dialog.find('#row-auto-send').slideDown(200); else dialog.find('#row-auto-send').slideUp(200);
+            renderInterface(); 
+        });
+        dialog.find('#cfg-auto-send').on('change', function() { saveConfig({ clickOptionToAutoSend: $(this).is(':checked') }); });
+        dialog.find('#cfg-theme').on('change', function() { 
+            const newTheme = $(this).val(); saveConfig({ theme: newTheme }); 
+            const $editDialog = dialog.find('.acu-edit-dialog');
+            $editDialog.addClass(`acu-theme-${newTheme}`);
+            THEMES.forEach(t => { if (t.id !== newTheme) $editDialog.removeClass(`acu-theme-${t.id}`); });
+            setTimeout(() => $(window).trigger('acu_theme_updated'), 50);
+        });
+
+        const showGhostCard = (forceRebuild = false) => {
+            const isOptionMode = window._acuPreviewType === 'option';
+            const targetType = isOptionMode ? 'option' : 'main';
+            const curCfg = getConfig();
+            const currentThemeClass = `acu-theme-${curCfg.theme}`;
+            
+            let $ghost = $('#acu-ghost-preview');
+            if (!forceRebuild && $ghost.length > 0 && $ghost.data('type') === targetType) {
+                $ghost.addClass('visible');
+                if (!$ghost.hasClass(currentThemeClass)) {
+                    $ghost.removeClass(THEMES.map(t => `acu-theme-${t.id}`).join(' ')).addClass(currentThemeClass);
+                }
+                return; 
+            }
+
+            $ghost.remove();
+            let ghostHtml = '';
+            if (isOptionMode) {
+                ghostHtml = `<div id="acu-ghost-preview" class="acu-option-panel ${currentThemeClass}" data-type="option" style="width: 240px; pointer-events: none; background: var(--acu-bg-nav) !important; border: 1px solid var(--acu-border) !important; border-radius: 6px !important; padding: 4px !important; gap: 2px !important; box-shadow: 0 15px 50px rgba(0,0,0,0.8) !important;">
+                    <div class="acu-opt-header">行动选项 (预览)</div><button class="acu-opt-btn">💬 询问关于那个传闻</button><button class="acu-opt-btn">⚔️ 发起攻击 (检定)</button><button class="acu-opt-btn">👋 暂时离开</button></div>`;
+            } else {
+                ghostHtml = `<div id="acu-ghost-preview" class="acu-data-card ${currentThemeClass}" data-type="main">
+                    <div class="acu-card-header"><span class="acu-card-index">#示例</span><span class="acu-cell acu-editable-title">预览卡片效果</span></div>
+                    <div class="acu-card-body"><div class="acu-card-row acu-cell"><div class="acu-card-label">姓名</div><div class="acu-card-value">陈默</div></div><div class="acu-card-row acu-cell"><div class="acu-card-label">状态</div><div class="acu-card-value"><span class="acu-badge acu-badge-green">正常</span></div></div></div></div>`;
+            }
+
+            $('body').append(ghostHtml);
+            $ghost = $('#acu-ghost-preview');
+            const $wrapper = $('.acu-wrapper').length ? $('.acu-wrapper') : $('body');
+            $ghost.css({ '--acu-card-width': $wrapper.css('--acu-card-width') || curCfg.cardWidth + 'px', '--acu-font-size': $wrapper.css('--acu-font-size') || curCfg.fontSize + 'px', '--acu-opt-font-size': $wrapper.css('--acu-opt-font-size') || (curCfg.optionFontSize || 12) + 'px' });
+            requestAnimationFrame(() => $ghost.addClass('visible'));
+        };
+
+        let hideTimer = null;
+        const hideGhostCard = () => { if (hideTimer) clearTimeout(hideTimer); hideTimer = setTimeout(() => { $('#acu-ghost-preview').removeClass('visible'); setTimeout(() => { if(!$('#acu-ghost-preview').hasClass('visible')) $('#acu-ghost-preview').remove(); }, 300); }, 1000); };
+        const cancelHide = () => { if (hideTimer) clearTimeout(hideTimer); };
+        
+        const bindLivePreview = ($el, callback) => {
+            $el.on('input', function() { const val = $(this).val(); callback(val); cancelHide(); showGhostCard(); $('#acu-ghost-preview').css({ '--acu-card-width': $('.acu-wrapper').css('--acu-card-width'), '--acu-font-size': $('.acu-wrapper').css('--acu-font-size') }); });
+            $el.on('change', function() { dialog.find('.acu-edit-dialog').css('opacity', '1'); dialog.find('.acu-edit-overlay').css('background', ''); hideGhostCard(); });
+            $el.on('touchstart mousedown', function() { cancelHide(); showGhostCard(); });
+            $(document).on('touchend.temp_vis mouseup.temp_vis', function() { dialog.find('.acu-edit-dialog').css('opacity', '1'); dialog.find('.acu-edit-overlay').css('background', ''); hideGhostCard(); });
+        };
+
+        bindLivePreview(dialog.find('#cfg-width'), (val) => { dialog.find('#val-width').text(val + 'px'); $('.acu-wrapper').css('--acu-card-width', val + 'px'); });
+        dialog.find('#cfg-width').on('change', function() { saveConfig({ cardWidth: $(this).val() }); });
+        
+        const $sliderFont = dialog.find('#cfg-font');
+        $sliderFont.on('touchstart mousedown', () => { window._acuPreviewType = 'main'; });
+        bindLivePreview($sliderFont, (val) => { dialog.find('#val-font').text(val + 'px'); $('.acu-wrapper, .acu-status-bar-container').css('--acu-font-size', val + 'px'); $('#acu-ghost-preview').css('--acu-font-size', val + 'px'); });
+        $sliderFont.on('change', function() { saveConfig({ fontSize: $(this).val() }); });
+
+        const $sliderOptFont = dialog.find('#cfg-opt-font');
+        $sliderOptFont.on('touchstart mousedown', () => { window._acuPreviewType = 'option'; });
+        bindLivePreview($sliderOptFont, (val) => { dialog.find('#val-opt-font').text(val + 'px'); $('.acu-wrapper, .acu-status-bar-container').css('--acu-opt-font-size', val + 'px'); $('#acu-ghost-preview').css('--acu-opt-font-size', val + 'px'); });
+        $sliderOptFont.on('change', function() { saveConfig({ optionFontSize: parseInt($(this).val()) }); });
+
+        dialog.find('#cfg-per-page').on('change', function() { let val = parseInt($(this).val(), 10); if (isNaN(val) || val < 1) { val = 50; $(this).val(val); } saveConfig({ itemsPerPage: val }); renderInterface(); });
+        
+        const closeAndCleanup = () => { $(document).off('.temp_vis'); cancelHide(); $('#acu-ghost-preview').remove(); dialog.remove(); };
+
+        dialog.find('#btn-enter-sort').click(() => { $(document).off('.temp_vis'); dialog.remove(); toggleOrderEditMode(); });
+        dialog.find('#btn-open-stitcher').click(() => { $(document).off('.temp_vis'); dialog.hide(); StitcherModule.show(dialog); });
+
+        const refreshTemplateSelect = async () => {
+            const templates = await TemplateDB.getAllTemplates();
+            const options = '<option value="">-- 当前系统库 --</option>' + Object.keys(templates).map(k => {
+                const tName = templates[k].mate?.templateName || k;
+                return `<option value="${k}">${escapeHtml(tName)}</option>`;
+            }).join('');
+            dialog.find('#cfg-template-select').html(options);
+        };
+        refreshTemplateSelect();
+
+        dialog.find('#btn-import-tpl-outside').click(() => dialog.find('#input-import-tpl-outside').click());
+        dialog.find('#input-import-tpl-outside').change(function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = async (event) => {
+                try {
+                    const json = JSON.parse(event.target.result);
+                    if (!json.mate || json.mate.type !== "chatSheets") throw new Error("无效的数据库模板格式");
+                    let templateName = prompt("请为该模板命名 (例如: 修仙模组A):", file.name.replace('.json', ''));
                     if (!templateName) return;
-                    
                     json.mate.templateName = templateName;
-                    
-                    // [修复] 检查是否存在同名模板，如果存在则覆盖原有 ID
                     const templates = await TemplateDB.getAllTemplates();
-                    let tplId = 'tpl_' + Date.now(); // 默认生成新ID
-                    for (const key in templates) {
-                        if (templates[key].mate && templates[key].mate.templateName === templateName) {
-                            tplId = key; // 找到同名，沿用旧ID进行静默覆盖
-                            break;
-                        }
-                    }
-                    
+                    let tplId = 'tpl_' + Date.now();
+                    for (const key in templates) { if (templates[key].mate && templates[key].mate.templateName === templateName) { tplId = key; break; } }
                     await TemplateDB.saveTemplate(tplId, json);
                     await refreshTemplateSelect();
-                dialog.find('#cfg-template-select').val(tplId);
-                AcuToast.success('模板导入成功！');
-            } catch(err) {
-                AcuToast.error('导入失败: ' + err.message);
-            }
-        };
-        reader.readAsText(file);
-        $(this).val('');
-    });
+                    dialog.find('#cfg-template-select').val(tplId);
+                    AcuToast.success('模板导入成功！');
+                } catch(err) { AcuToast.error('导入失败: ' + err.message); }
+            };
+            reader.readAsText(file);
+            $(this).val('');
+        });
 
-    dialog.find('#btn-export-tpl-outside').click(async () => {
-        const selectedId = dialog.find('#cfg-template-select').val();
-        if (!selectedId) {
-            AcuToast.info('请先选择一个要导出的模板');
-            return;
-        }
-        const templates = await TemplateDB.getAllTemplates();
-        const targetTpl = templates[selectedId];
-        if (!targetTpl) return;
+        dialog.find('#btn-export-tpl-outside').click(async () => {
+            const selectedId = dialog.find('#cfg-template-select').val();
+            if (!selectedId) { AcuToast.info('请先选择一个要导出的模板'); return; }
+            const templates = await TemplateDB.getAllTemplates();
+            const targetTpl = templates[selectedId];
+            if (!targetTpl) return;
+            const jsonString = JSON.stringify(targetTpl, null, 2);
+            const fileName = `TavernDB_Template_${targetTpl.mate?.templateName || 'Export'}.json`;
+            acuDownloadFile(fileName, jsonString);
+            AcuToast.success('已发起导出请求');
+        });
 
-        const jsonString = JSON.stringify(targetTpl, null, 2);
-        const fileName = `TavernDB_Template_${targetTpl.mate?.templateName || 'Export'}.json`;
-        
-        // 使用新的兼容性助手
-        acuDownloadFile(fileName, jsonString);
-        AcuToast.success('已发起导出请求');
-    });
-
-    // [新增] 删除模板逻辑 (带智能连删轮换)
-    dialog.find('#btn-delete-tpl-outside').click(async () => {
-        const $select = dialog.find('#cfg-template-select');
-        const selectedId = $select.val();
-        
-        if (!selectedId) {
-            AcuToast.info('请先选择一个要删除的模板');
-            return;
-        }
-        if (selectedId === 'tpl_builtin_sql_hongqu') {
-            AcuToast.warning('🛡️ 此为系统内置核心模板，禁止删除！');
-            return;
-        }
-        
-        const templates = await TemplateDB.getAllTemplates();
-        const targetTpl = templates[selectedId];
-        if (!targetTpl) return;
-
-        const tplName = targetTpl.mate?.templateName || '未命名模板';
-        if (confirm(`【警告】\n确定要永久删除模板【${tplName}】吗？\n此操作不可逆！`)) {
-            try {
-                // 1. 在删除前，先计算"下一个"该选中谁
-                const $options = $select.find('option[value!=""]'); // 获取所有真实模板选项
-                const currentIndex = $options.index($options.filter(`[value="${selectedId}"]`));
-                let nextIdToSelect = "";
-                
-                if ($options.length > 1) {
-                    // 如果不是最后一项，就顺延到下一项；如果是最后一项，就退回上一项
-                    if (currentIndex < $options.length - 1) {
-                        nextIdToSelect = $options.eq(currentIndex + 1).val();
-                    } else {
-                        nextIdToSelect = $options.eq(currentIndex - 1).val();
+        dialog.find('#btn-delete-tpl-outside').click(async () => {
+            const $select = dialog.find('#cfg-template-select');
+            const selectedId = $select.val();
+            if (!selectedId) { AcuToast.info('请先选择一个要删除的模板'); return; }
+            if (selectedId === 'tpl_builtin_sql_hongqu') { AcuToast.warning('🛡️ 此为系统内置核心模板，禁止删除！'); return; }
+            const templates = await TemplateDB.getAllTemplates();
+            const targetTpl = templates[selectedId];
+            if (!targetTpl) return;
+            const tplName = targetTpl.mate?.templateName || '未命名模板';
+            if (confirm(`【警告】\n确定要永久删除模板【${tplName}】吗？\n此操作不可逆！`)) {
+                try {
+                    const $options = $select.find('option[value!=""]');
+                    const currentIndex = $options.index($options.filter(`[value="${selectedId}"]`));
+                    let nextIdToSelect = "";
+                    if ($options.length > 0) {
+                        if (currentIndex < $options.length - 1) nextIdToSelect = $options.eq(currentIndex + 1).val();
+                        else nextIdToSelect = $options.eq(currentIndex - 1).val();
                     }
-                }
-
-                // 2. 执行删除
-                const store = TemplateDB.db.transaction([TemplateDB.storeName], 'readwrite').objectStore(TemplateDB.storeName);
-                store.delete(selectedId).onsuccess = async () => {
-                    AcuToast.success(`模板【${tplName}】已删除`);
-                    await refreshTemplateSelect(); // 刷新下拉列表
-                    
-                    // 3. 删除完毕后，瞬间将下拉框恢复到相邻的模板上
-                    if (nextIdToSelect) {
-                        dialog.find('#cfg-template-select').val(nextIdToSelect);
-                    }
-                };
-            } catch (err) {
-                console.error('[ACU] 删除模板失败:', err);
-                AcuToast.error('删除失败，请查看控制台');
+                    const store = TemplateDB.db.transaction([TemplateDB.storeName], 'readwrite').objectStore(TemplateDB.storeName);
+                    store.delete(selectedId).onsuccess = async () => {
+                        AcuToast.success(`模板【${tplName}】已删除`);
+                        await refreshTemplateSelect();
+                        if (nextIdToSelect) dialog.find('#cfg-template-select').val(nextIdToSelect);
+                    };
+                } catch (err) { console.error('[ACU]', err); AcuToast.error('删除失败'); }
             }
-        }
-    });
+        });
 
-    // [终极优化] 一键注入模板逻辑 (根据 @types 规范，严格以模板原名作为独立ID注入)
-    dialog.find('#btn-inject-tpl-db').click(async () => {
-        const selectedId = dialog.find('#cfg-template-select').val();
-        if (!selectedId) {
-            AcuToast.warning('请先在上方选择一个要注入的模板');
-            return;
-        }
+        dialog.find('#btn-inject-tpl-db').click(async () => {
+            const selectedId = dialog.find('#cfg-template-select').val();
+            if (!selectedId) { AcuToast.warning('请先在上方选择一个要注入的模板'); return; }
+            const templates = await TemplateDB.getAllTemplates();
+            const targetTpl = templates[selectedId];
+            if (!targetTpl) return;
+            const tplName = targetTpl.mate?.templateName || '未命名模板';
+            if (!confirm(`确定要将模板【${tplName}】注入到数据库中吗？\n\n⚠️ 确定后将覆盖当前聊天正在使用的模板！`)) return;
+            const api = getCore().getDB();
+            if (api && typeof api.initGameSession === 'function') {
+                AcuToast.info(`⚡ 正在注入...`);
+                try {
+                    const result = await api.initGameSession({ name: tplName, chat: tplName, name2: tplName }, { injectTemplate: true, loadPreset: false, templateData: targetTpl });
+                    if (result && result.success) { AcuToast.success(`✅ 注入成功！`); cachedRawData = null; renderInterface(); } 
+                    else AcuToast.error('❌ 注入失败，请检查控制台');
+                } catch (err) { AcuToast.error('❌ 注入异常'); }
+            } else AcuToast.warning('⚠️ 找不到后端注入接口');
+        });
 
-        const templates = await TemplateDB.getAllTemplates();
-        const targetTpl = templates[selectedId];
-        if (!targetTpl) return;
-        const tplName = targetTpl.mate?.templateName || '未命名模板';
-
-        if (!confirm(`确定要将模板【${tplName}】注入到数据库中吗？\n\n⚠️ 注意：确定后，将注入数据库模板预设，并且会覆盖当前聊天正在使用的模板！`)) {
-            return;
-        }
-
-        const api = getCore().getDB();
-        if (api && typeof api.initGameSession === 'function') {
-            AcuToast.info(`⚡ 正在以名称【${tplName}】注入模板...`);
-            try {
-                // [核心修复] 严格遵照 @types.txt 中的 v1CharData/v2CharData 定义
-                // 传入 name, chat, name2 等官方识别键，全面覆盖底层的回退机制
-                const result = await api.initGameSession(
-                    { name: tplName, chat: tplName, name2: tplName }, 
-                    {
-                        injectTemplate: true,
-                        loadPreset: false,
-                        templateData: targetTpl
-                    }
-                );
-
-                if (result && result.success) {
-                    AcuToast.success(`✅ 模板【${tplName}】独立注入成功！`);
-                    cachedRawData = null; 
-                    renderInterface(); 
-                } else {
-                    AcuToast.error('❌ 注入失败，请检查控制台');
-                }
-            } catch (err) {
-                AcuToast.error('❌ 注入异常');
-            }
-        } else {
-            AcuToast.warning('⚠️ 找不到后端注入接口');
-        }
-    });
-
-    dialog.find('#dlg-close').click(closeAndCleanup);
-    dialog.on('click', function(e) { if ($(e.target).hasClass('acu-edit-overlay')) closeAndCleanup(); });
-};
+        dialog.find('#dlg-close').click(closeAndCleanup);
+        dialog.on('click', function(e) { if ($(e.target).hasClass('acu-edit-overlay')) closeAndCleanup(); });
+    };
 
     
 
