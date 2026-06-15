@@ -2285,9 +2285,9 @@ const showSettingsModal = () => {
                     .acu-edit-dialog { width: 100% !important; max-width: 100% !important; border-radius: 20px 20px 0 0 !important; height: auto !important; max-height: 85dvh !important; margin: 0 !important; bottom: 0 !important; animation: acuSlideUp 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; box-shadow: 0 -10px 40px rgba(0,0,0,0.6) !important; border-bottom: none !important; }
                     /* [改造] 抽屉顶部真实可拖动导航条 (替代原静态::before) */
                     .acu-drag-handle-bar { display: flex; align-items: center; justify-content: center; padding: 8px 0 2px 0; flex-shrink: 0; cursor: grab; touch-action: none; -webkit-user-select: none; user-select: none; position: relative; z-index: 5; }
-                    .acu-drag-handle-bar:active { cursor: grabbing; }
+                    #acu-drawer-drag-zone:active { cursor: grabbing; }
                     .acu-drag-handle-bar > span { display: block; width: 40px; height: 5px; background: rgba(128, 128, 128, 0.5); border-radius: 3px; transition: background 0.2s, width 0.2s; }
-                    .acu-drag-handle-bar:active > span { background: var(--acu-accent); width: 56px; }
+                    #acu-drawer-drag-zone:active .acu-drag-handle-bar > span { background: var(--acu-accent); width: 56px; }
                     .acu-edit-dialog .acu-edit-title { padding: 0 15px 4px 15px !important; border-bottom: none !important; touch-action: none; }
                     #acu-ghost-preview { top: 6% !important; bottom: auto !important; left: 50% !important; transform: translateX(-50%) !important; width: min(var(--acu-card-width), calc(100vw - 32px)) !important; max-height: 25vh !important; max-height: 25dvh !important; overflow-y: auto !important; overflow-x: hidden !important; overscroll-behavior: contain !important; margin: 0 !important; box-shadow: 0 10px 50px rgba(0,0,0,0.5) !important; border: 2px solid var(--acu-accent) !important; } 
                 }
@@ -2317,10 +2317,12 @@ const showSettingsModal = () => {
             <div class="acu-edit-overlay">
                 ${modalStyles}
                 <div class="acu-edit-dialog ${currentThemeClass}">
-                    <div class="acu-drag-handle-bar" id="acu-drawer-handle"><span></span></div>
-                    <div class="acu-edit-title" style="text-align:center; padding: 6px 15px 4px 15px;">
-                        <div style="font-weight:bold; font-size:15px;">设置选项</div>
-                        <div style="font-size:10px; opacity:0.55; font-weight:normal; margin-top:2px;">👇 向下滑动收起设置 · 左右滑动切换分区</div>
+                    <div id="acu-drawer-drag-zone" style="touch-action: none; -webkit-user-select: none; user-select: none; cursor: grab;">
+                        <div class="acu-drag-handle-bar" id="acu-drawer-handle"><span></span></div>
+                        <div class="acu-edit-title" style="text-align:center; padding: 6px 15px 4px 15px; border-bottom: none; pointer-events: none;">
+                            <div style="font-weight:bold; font-size:15px;">设置选项</div>
+                            <div style="font-size:10px; opacity:0.55; font-weight:normal; margin-top:2px;">👇 向下滑动收起设置 · 左右滑动切换分区</div>
+                        </div>
                     </div>
 
                     <div class="acu-settings-tabs">
@@ -2470,9 +2472,9 @@ const showSettingsModal = () => {
         });
         // -------------------------------------------------------------
 
-        // [新增] 抽屉顶部导航条：向下拖动收起面板
+        // [修改] 抽屉顶部：向下拖动收起面板 (扩大了拖拽区域)
         (function setupDrawerDrag() {
-            const handleEl = dialog.find('#acu-drawer-handle')[0];
+            const handleEl = dialog.find('#acu-drawer-drag-zone')[0] || dialog.find('#acu-drawer-handle')[0];
             const $panel = dialog.find('.acu-edit-dialog');
             if (!handleEl || !$panel.length) return;
             const panelEl = $panel[0];
