@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    console.log('🚀 [ACU 云端核心] 已成功加载，当前版本: v20.3');
+    console.log('🚀 [ACU 云端核心] 已成功加载，当前版本: v20.4');
     
     const SCRIPT_ID = 'acu_visualizer_ui_v20_0_ai_overlay';
     
@@ -1730,6 +1730,7 @@ if (currentFontId !== config.fontFamily) {
 .acu-cell-menu-item#act-close { border-top: 1px dashed var(--acu-border); color: var(--acu-text-sub); }
             .acu-edit-overlay { position: fixed !important; top: 0; left: 0; right: 0; bottom: 0; width: 100vw; height: 100%; height: 100dvh; background: rgba(0,0,0,0.75) !important; z-index: 2147483646 !important; display: flex !important; justify-content: center !important; align-items: center !important; backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); transform: translateZ(0); backface-visibility: hidden; will-change: opacity, backdrop-filter; }
             .acu-edit-dialog { background-color: var(--acu-bg-panel, #333) !important; width: 95%; max-width: 500px; max-height: 95vh; padding: 16px; border-radius: 12px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 15px 50px rgba(0,0,0,0.6); color: var(--acu-text-main, #fff) !important; border: 1px solid var(--acu-border, #555); margin: auto !important; overflow: hidden; transform: translate3d(0, 0, 0); will-change: transform, opacity; } 
+            /* [收起动画改由 JS inline transform + reflow 实现，见 setupDrawerDrag] */
             @media (min-width: 768px) { .acu-edit-dialog { max-width: 900px !important; width: 90% !important; } }
             .acu-edit-title { margin: 0; font-size: 16px; font-weight: bold; color: var(--acu-text-main, #fff); padding-bottom: 8px; border-bottom: 1px solid var(--acu-border, #555); }
             .acu-edit-textarea { width: 100%; height: 200px; padding: 12px; border: 1px solid var(--acu-border) !important; background-color: var(--acu-btn-bg, rgba(0,0,0,0.3)) !important; color: var(--acu-text-main, #fff) !important; border-radius: 6px; resize: vertical; box-sizing: border-box; font-size: 14px; line-height: 1.6; overflow-y: auto !important; } 
@@ -1884,31 +1885,32 @@ if (currentFontId !== config.fontFamily) {
                 .acu-wrapper *, .acu-edit-overlay *, .acu-status-bar-container * { -webkit-tap-highlight-color: transparent; }
             }
 
-            /* === RPG 交互式状态栏核心样式 (极致美化版) === */
-            .acu-rpg-widget { margin-top: 8px; background: var(--acu-bg-panel); border: 1px solid var(--acu-border); border-radius: 12px; box-shadow: none; overflow: hidden; font-size: var(--acu-font-size, 13px); color: var(--acu-text-main); transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); pointer-events: auto; position: relative; }
-            /* 移除了顶部的渐变反光线，减少塑料感 */
-            .acu-rpg-summary { display: flex; flex-wrap: wrap; gap: 12px; padding: 12px 16px; align-items: center; cursor: pointer; background: var(--acu-table-head); transition: background 0.2s; }
-            .acu-rpg-summary:hover { background: var(--acu-table-hover); }
+            /* === RPG 交互式状态栏核心样式 (v21 现代重构版) === */
+            .acu-rpg-widget { margin-top: 10px; background: var(--acu-bg-panel); border: 1px solid var(--acu-border); border-radius: 16px; box-shadow: 0 4px 18px rgba(0,0,0,0.12); overflow: hidden; font-size: var(--acu-font-size, 13px); color: var(--acu-text-main); transition: box-shadow 0.3s ease; pointer-events: auto; position: relative; }
+            .acu-rpg-widget:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.18); }
+            /* 顶栏：头像名 + 信息 + 操作 三段式 */
+            .acu-rpg-summary { display: flex; flex-wrap: wrap; gap: 10px 14px; padding: 14px 18px; align-items: center; cursor: pointer; background: linear-gradient(135deg, var(--acu-table-head), var(--acu-bg-panel)); transition: background 0.25s; }
+            .acu-rpg-summary:hover { filter: brightness(1.04); }
             .acu-rpg-details { display: none; background: var(--acu-bg-panel); border-top: 1px solid var(--acu-border); }
             
-            /* 游戏化 Tab 切换栏 */
-            .acu-rpg-tabs { display: flex; overflow-x: auto; background: var(--acu-bg-nav); padding: 6px 10px 0 10px; gap: 4px; scrollbar-width: none; border-bottom: 1px solid var(--acu-border); }
+            /* 胶囊式 (pill) Tab 切换栏 */
+            .acu-rpg-tabs { display: flex; overflow-x: auto; background: var(--acu-bg-nav); padding: 8px 10px; gap: 6px; scrollbar-width: none; border-bottom: 1px solid var(--acu-border); }
             .acu-rpg-tabs::-webkit-scrollbar { display: none; }
-            .acu-rpg-tab-btn { flex: 1; min-width: 70px; padding: 10px 0; text-align: center; background: transparent; border: 1px solid transparent; border-bottom: none; border-radius: 8px 8px 0 0; color: var(--acu-text-sub); font-weight: bold; cursor: pointer; transition: all 0.2s; white-space: nowrap; position: relative; overflow: hidden; }
+            .acu-rpg-tab-btn { flex: 1; min-width: 64px; padding: 8px 4px; text-align: center; background: transparent; border: none; border-radius: 10px; color: var(--acu-text-sub); font-weight: 600; cursor: pointer; transition: color 0.2s, background 0.2s; white-space: nowrap; position: relative; }
             .acu-rpg-tab-btn:hover { color: var(--acu-text-main); background: var(--acu-btn-hover); }
-            .acu-rpg-tab-btn.active { color: var(--acu-accent); background: var(--acu-bg-panel); border-color: var(--acu-border); box-shadow: none; }
-            .acu-rpg-tab-btn.active::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 40%; height: 3px; background: var(--acu-accent); border-radius: 3px 3px 0 0; }
+            .acu-rpg-tab-btn.active { color: #fff; background: var(--acu-accent); box-shadow: 0 3px 10px rgba(0,0,0,0.18); }
             
             .acu-rpg-tab-content { display: none; padding: 16px; max-height: 450px; overflow-y: auto; overscroll-behavior: auto; }
-            .acu-rpg-tab-content.active { display: block; animation: none; }
+            .acu-rpg-tab-content.active { display: block; animation: acuRpgFade 0.25s ease; }
+            @keyframes acuRpgFade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
             .acu-rpg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
             
-            /* 游戏化物品/状态卡片 */
-            .acu-rpg-item-card { background: var(--acu-card-bg); border: 1px solid var(--acu-border); border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; box-shadow: 0 2px 4px var(--acu-shadow); transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
-            /* 已干掉资产条目的点击/悬停发光反馈 */
-            .acu-rpg-item-title { font-weight: bold; color: var(--acu-accent); font-size: 1.05em; display: flex; align-items: center; gap: 4px; }
+            /* 现代扁平卡片 */
+            .acu-rpg-item-card { background: var(--acu-card-bg); border: 1px solid var(--acu-border); border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
+            .acu-rpg-item-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.12); border-color: var(--acu-accent); }
+            .acu-rpg-item-title { font-weight: 700; color: var(--acu-accent); font-size: 1.05em; display: flex; align-items: center; gap: 5px; }
             .acu-rpg-item-desc { font-size: 0.9em; color: var(--acu-text-sub); line-height: 1.5; }
-            .acu-rpg-badge { display: inline-flex; align-items: center; padding: 3px 10px; font-size: 11px; border-radius: 20px; background: var(--acu-badge-bg); border: 1px solid var(--acu-border); color: var(--acu-text-main); max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+            .acu-rpg-badge { display: inline-flex; align-items: center; padding: 3px 11px; font-size: 11px; border-radius: 20px; background: var(--acu-badge-bg); border: 1px solid var(--acu-border); color: var(--acu-text-main); max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
             .acu-rpg-item-card span, .acu-rpg-item-card div { word-break: break-word; white-space: pre-wrap; }
             
             /* 进度条美化 (扁平化) */
@@ -2249,7 +2251,7 @@ const showSettingsModal = () => {
                     flex: 1; 
                     min-width: 80px; 
                     white-space: nowrap; 
-                    padding: 12px 10px; 
+                    padding: 8px 10px; 
                     background: transparent; 
                     border: none; 
                     color: var(--acu-text-sub); 
@@ -2267,7 +2269,7 @@ const showSettingsModal = () => {
                 
                 .acu-settings-swipe-wrapper { flex: 1; display: flex; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scroll-behavior: auto; scrollbar-width: none; }
                 .acu-settings-swipe-wrapper::-webkit-scrollbar { display: none; }
-                .acu-settings-pane { flex: 0 0 100%; width: 100%; scroll-snap-align: start; overflow-y: auto; padding: 15px; box-sizing: border-box; overscroll-behavior-y: contain; }
+                .acu-settings-pane { flex: 0 0 100%; width: 100%; scroll-snap-align: start; overflow-y: auto; padding: 10px 15px 15px 15px; box-sizing: border-box; overscroll-behavior-y: contain; }
 
                 @media (min-width: 769px) {
                     .acu-edit-overlay { background: rgba(0, 0, 0, 0.4) !important; backdrop-filter: blur(2px); }
@@ -2281,11 +2283,15 @@ const showSettingsModal = () => {
                 @media (max-width: 768px) {
                     .acu-edit-overlay { align-items: flex-end !important; justify-content: center !important; background: rgba(0, 0, 0, 0.6) !important; backdrop-filter: blur(4px); padding: 0 !important; }
                     .acu-edit-dialog { width: 100% !important; max-width: 100% !important; border-radius: 20px 20px 0 0 !important; height: auto !important; max-height: 85dvh !important; margin: 0 !important; bottom: 0 !important; animation: acuSlideUp 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; box-shadow: 0 -10px 40px rgba(0,0,0,0.6) !important; border-bottom: none !important; }
-                    .acu-edit-dialog::before { content: ''; display: block; width: 36px; height: 4px; background: rgba(128, 128, 128, 0.4); border-radius: 2px; margin: 8px auto -6px auto; flex-shrink: 0; position: relative; z-index: 1; }
-                    .acu-edit-dialog .acu-edit-title { padding: 10px 15px 6px 15px !important; border-bottom: none !important; }
-                    .acu-settings-footer { padding: 8px 16px !important; padding-bottom: max(8px, env(safe-area-inset-bottom, 8px)) !important; }
-                    #acu-ghost-preview { top: 6% !important; bottom: auto !important; left: 50% !important; transform: translateX(-50%) !important; width: min(var(--acu-card-width), calc(100vw - 32px)) !important; max-height: 25vh !important; overflow-y: auto !important; overflow-x: hidden !important; margin: 0 !important; box-shadow: 0 10px 50px rgba(0,0,0,0.5) !important; border: 2px solid var(--acu-accent) !important; } 
+                    /* [改造] 抽屉顶部真实可拖动导航条 (替代原静态::before) */
+                    .acu-drag-handle-bar { display: flex; align-items: center; justify-content: center; padding: 8px 0 2px 0; flex-shrink: 0; cursor: grab; touch-action: none; -webkit-user-select: none; user-select: none; position: relative; z-index: 5; }
+                    .acu-drag-handle-bar:active { cursor: grabbing; }
+                    .acu-drag-handle-bar > span { display: block; width: 40px; height: 5px; background: rgba(128, 128, 128, 0.5); border-radius: 3px; transition: background 0.2s, width 0.2s; }
+                    .acu-drag-handle-bar:active > span { background: var(--acu-accent); width: 56px; }
+                    .acu-edit-dialog .acu-edit-title { padding: 0 15px 4px 15px !important; border-bottom: none !important; touch-action: none; }
+                    #acu-ghost-preview { top: 6% !important; bottom: auto !important; left: 50% !important; transform: translateX(-50%) !important; width: min(var(--acu-card-width), calc(100vw - 32px)) !important; max-height: 25vh !important; max-height: 25dvh !important; overflow-y: auto !important; overflow-x: hidden !important; overscroll-behavior: contain !important; margin: 0 !important; box-shadow: 0 10px 50px rgba(0,0,0,0.5) !important; border: 2px solid var(--acu-accent) !important; } 
                 }
+                @media (min-width: 769px) { .acu-drag-handle-bar { display: none !important; } }
                 @keyframes acuSlideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
                 .acu-edit-dialog { background-color: var(--acu-bg-panel) !important; color: var(--acu-text-main) !important; border: 1px solid var(--acu-border) !important; display: flex; flex-direction: column; overflow: hidden; }
                 .acu-edit-title { flex: 0 0 auto; color: var(--acu-text-main) !important; }
@@ -2311,9 +2317,10 @@ const showSettingsModal = () => {
             <div class="acu-edit-overlay">
                 ${modalStyles}
                 <div class="acu-edit-dialog ${currentThemeClass}">
-                    <div class="acu-edit-title" style="text-align:center; padding: 12px 15px;">
-                        <div style="font-weight:bold; font-size:16px;">设置选项</div>
-                        <div style="font-size:11px; opacity:0.6; font-weight:normal; margin-top:4px;">💡 按住滑块可实时预览 (左右滑动切换分区)</div>
+                    <div class="acu-drag-handle-bar" id="acu-drawer-handle"><span></span></div>
+                    <div class="acu-edit-title" style="text-align:center; padding: 6px 15px 4px 15px;">
+                        <div style="font-weight:bold; font-size:15px;">设置选项</div>
+                        <div style="font-size:10px; opacity:0.55; font-weight:normal; margin-top:2px;">👇 向下滑动收起设置 · 左右滑动切换分区</div>
                     </div>
 
                     <div class="acu-settings-tabs">
@@ -2399,11 +2406,6 @@ const showSettingsModal = () => {
                         </div>
                     </div>
 
-                    <div class="acu-settings-footer" style="flex: 0 0 auto; padding: 10px 16px; padding-bottom: max(10px, env(safe-area-inset-bottom, 10px)); border-top: 1px solid var(--acu-border); background: var(--acu-bg-panel); z-index: 10;">
-                        <button id="dlg-close" class="acu-btn-block" style="margin:0; background:var(--acu-accent) !important; color:#fff !important; border:none; justify-content:center; font-weight:bold; font-size:14px; height:40px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
-                            <i class="fa-solid fa-check"></i> 完成并保存
-                        </button>
-                    </div>
                 </div>
             </div>
         `);
@@ -2467,6 +2469,82 @@ const showSettingsModal = () => {
             });
         });
         // -------------------------------------------------------------
+
+        // [新增] 抽屉顶部导航条：向下拖动收起面板
+        (function setupDrawerDrag() {
+            const handleEl = dialog.find('#acu-drawer-handle')[0];
+            const $panel = dialog.find('.acu-edit-dialog');
+            if (!handleEl || !$panel.length) return;
+            const panelEl = $panel[0];
+
+            let startY = 0, currentY = 0, dragging = false, panelH = 0;
+
+            const onMove = (e) => {
+                if (!dragging) return;
+                currentY = e.clientY;
+                let delta = currentY - startY;
+                if (delta < 0) delta = delta * 0.2; // 上拉加阻尼
+                panelEl.style.transform = `translateY(${delta}px)`;
+                e.preventDefault();
+            };
+            const onEnd = () => {
+                if (!dragging) return;
+                dragging = false;
+                // 解绑（绑在 handleEl 上，与 setPointerCapture 配套）
+                handleEl.removeEventListener('pointermove', onMove);
+                handleEl.removeEventListener('pointerup', onEnd);
+                handleEl.removeEventListener('pointercancel', onEnd);
+                const delta = currentY - startY;
+                // 关键：移动端面板挂着 animation:acuSlideUp forwards，会覆盖 inline transform，
+                // 必须先彻底清除 animation，inline transform 才能生效。
+                panelEl.style.animation = 'none';
+                if (delta > Math.min(panelH * 0.25, 120)) {
+                    // ① 钉住当前拖动位移为起点（无过渡）
+                    const startOffset = delta > 0 ? delta : 0;
+                    panelEl.style.transition = 'none';
+                    panelEl.style.transform = `translateY(${startOffset}px)`;
+                    // ② 强制 reflow 确立起点
+                    void panelEl.offsetHeight;
+                    // ③ 下一帧开启过渡，滑出屏幕 + 遮罩淡出
+                    panelEl.style.transition = 'transform 0.34s cubic-bezier(0.32,0.72,0,1)';
+                    dialog.css('transition', 'opacity 0.34s ease');
+                    requestAnimationFrame(() => {
+                        panelEl.style.transform = `translateY(${panelH}px)`;
+                        dialog.css('opacity', '0');
+                    });
+                    setTimeout(() => { closeAndCleanup(); }, 360);
+                } else {
+                    // 回弹归位
+                    panelEl.style.transition = 'none';
+                    panelEl.style.transform = `translateY(${delta > 0 ? delta : 0}px)`;
+                    void panelEl.offsetHeight;
+                    panelEl.style.transition = 'transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)';
+                    requestAnimationFrame(() => {
+                        panelEl.style.transform = 'translateY(0)';
+                    });
+                }
+            };
+            const onStart = (e) => {
+                // 仅移动端抽屉模式生效
+                if (window.innerWidth > 768) return;
+                if (e.button != null && e.button !== 0) return; // 仅主键/触摸生效
+                dragging = true;
+                startY = e.clientY;
+                currentY = startY;
+                panelH = panelEl.offsetHeight;
+                panelEl.style.animation = 'none'; // 清除入场 animation，避免覆盖拖动 transform
+                panelEl.style.transition = 'none';
+                // 关键：捕获指针后，pointermove/up 只派发到 handleEl，故监听器必须绑在 handleEl 上
+                try { handleEl.setPointerCapture(e.pointerId); } catch (err) {}
+                handleEl.addEventListener('pointermove', onMove, { passive: false });
+                handleEl.addEventListener('pointerup', onEnd);
+                handleEl.addEventListener('pointercancel', onEnd);
+                e.preventDefault();
+            };
+
+            // 用原生 Pointer Events 替代 jQuery touch 事件，规避 passive 监听导致 preventDefault 失效
+            handleEl.addEventListener('pointerdown', onStart, { passive: false });
+        })();
 
         // 剩余的逻辑代码完全不变
         dialog.find('.acu-visibility-toggle').click(function(e) {
@@ -2678,7 +2756,6 @@ const showSettingsModal = () => {
             } else AcuToast.warning('⚠️ 找不到后端注入接口');
         });
 
-        dialog.find('#dlg-close').click(closeAndCleanup);
         dialog.on('click', function(e) { if ($(e.target).hasClass('acu-edit-overlay')) closeAndCleanup(); });
     };
 
@@ -5552,8 +5629,9 @@ questCount++; // [修复] 补充统计待办的数量
         <div class="acu-rpg-widget">
             ${embeddedOptionsHtml}
             <div class="acu-rpg-summary acu-rpg-summary-toggle" title="点击展开/收起详细面板" style="${embeddedOptionsHtml ? 'border-radius: 0;' : ''}">
-                <div style="font-weight: 900; font-size: 1.15em; color: var(--acu-accent);">
-                    <i class="fa-solid fa-user-astronaut"></i> ${name}
+                <div style="font-weight: 800; font-size: 1.12em; color: var(--acu-text-main); display:flex; align-items:center; gap:8px;">
+                    <span style="width:30px; height:30px; flex-shrink:0; border-radius:50%; background:var(--acu-accent); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; box-shadow:0 2px 6px rgba(0,0,0,0.25);"><i class="fa-solid fa-user-astronaut"></i></span>
+                    <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${name}</span>
                 </div>
                 <style>
                     /* 外层容器：控制溢出隐藏和渐变遮罩 */
@@ -5613,17 +5691,17 @@ questCount++; // [修复] 补充统计待办的数量
                     return html;
                 })()}
                 
-                <div style="margin-left: auto; display:flex; gap:8px; align-items:center;">
-                    <span style="color:#f1c40f; font-weight:bold; font-family:monospace; font-size:13px; background:var(--acu-badge-bg); border:1px solid var(--acu-border); padding:3px 8px; border-radius:15px;" title="持有资产">
+                <div style="margin-left: auto; display:flex; gap:7px; align-items:center;">
+                    <span style="color:#f1c40f; font-weight:700; font-family:monospace; font-size:12.5px; background:rgba(241,196,15,0.12); border:1px solid rgba(241,196,15,0.25); padding:4px 10px; border-radius:20px; display:inline-flex; align-items:center; gap:4px;" title="持有资产">
                         <i class="fa-solid fa-coins"></i> ${money}
                     </span>
-                    <span style="color:${questCount > 0 ? '#2ecc71' : 'var(--acu-text-sub)'}; font-weight:bold; font-size:13px; background:var(--acu-badge-bg); border:1px solid var(--acu-border); padding:3px 8px; border-radius:15px;" title="记录事件数">
+                    <span style="color:${questCount > 0 ? '#2ecc71' : 'var(--acu-text-sub)'}; font-weight:700; font-size:12.5px; background:${questCount > 0 ? 'rgba(46,204,113,0.12)' : 'var(--acu-badge-bg)'}; border:1px solid ${questCount > 0 ? 'rgba(46,204,113,0.25)' : 'var(--acu-border)'}; padding:4px 10px; border-radius:20px; display:inline-flex; align-items:center; gap:4px;" title="记录事件数">
                         <i class="fa-solid fa-calendar-check"></i> ${questCount}
                     </span>
                     
-                    <i class="fa-solid ${eyeIcon} acu-nav-toggle-btn" style="cursor:pointer; opacity:0.6; font-size:14px; margin-left:4px; transition:all 0.2s;" title="${eyeTitle}"></i>
+                    <i class="fa-solid ${eyeIcon} acu-nav-toggle-btn" style="cursor:pointer; opacity:0.55; font-size:14px; margin-left:2px; width:26px; height:26px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; transition:all 0.2s;" title="${eyeTitle}" onmouseover="this.style.opacity=1;this.style.background='var(--acu-btn-hover)'" onmouseout="this.style.opacity=0.55;this.style.background='transparent'"></i>
                     
-                    <i class="fa-solid fa-chevron-down acu-rpg-chevron" style="transition: transform 0.3s; color:var(--acu-text-sub); ${isRpgExpanded ? 'transform: rotate(180deg);' : ''}"></i>
+                    <i class="fa-solid fa-chevron-down acu-rpg-chevron" style="transition: transform 0.3s; color:var(--acu-text-sub); width:26px; height:26px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; ${isRpgExpanded ? 'transform: rotate(180deg);' : ''}"></i>
                 </div>
             </div>
 
