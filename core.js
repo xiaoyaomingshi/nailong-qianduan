@@ -1935,29 +1935,40 @@ if (currentFontId !== config.fontFamily) {
 
             /* === 移动端 RPG 状态栏专属适配 (安卓/iOS) === */
             @media (max-width: 768px) {
-                /* 1. 增加上下网格间距，适应双行结构 */
-                .acu-rpg-summary { padding: 8px 10px; gap: 8px 6px; }
+                /* 外框：手机上圆角略收，投影减弱，避免显得笨重 */
+                .acu-rpg-widget { margin-top: 8px; border-radius: 14px; box-shadow: 0 3px 12px rgba(0,0,0,0.14); }
+                /* 1. 顶栏双行结构，间距适配触摸 */
+                .acu-rpg-summary { padding: 10px 12px; gap: 8px 8px; }
                 /* 2. 徽章开启 flex 收缩属性，保护容器不被撑爆 */
-                .acu-rpg-badge { max-width: none !important; padding: 2px 6px; font-size: 11px; display: inline-flex; align-items: center; flex-shrink: 1; min-width: 0; }
+                .acu-rpg-badge { max-width: none !important; padding: 3px 9px; font-size: 11px; display: inline-flex; align-items: center; flex-shrink: 1; min-width: 0; }
                 
-                /* 3. 名字区块 (左上角)：利用 order=1 锁定在第一行，并放开最大宽度给它更大空间 */
-                .acu-rpg-summary > div:first-child { order: 1; font-size: 1.05em !important; max-width: calc(100% - 150px) !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+                /* 3. 名字区块 (左上角)：order=1 锁第一行，头像章自适应缩小 */
+                .acu-rpg-summary > div:first-child { order: 1; font-size: 1.02em !important; max-width: calc(100% - 150px) !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+                .acu-rpg-summary > div:first-child > span:first-child { width: 26px !important; height: 26px !important; font-size: 12px !important; }
                 
-                /* 4. 操作区块 (右上角)：利用 order=2 锁定在第一行右侧 */
+                /* 4. 操作区块 (右上角)：order=2 锁第一行右侧 */
                 .acu-rpg-summary > div:last-child { 
                     order: 2; width: auto; margin-left: auto !important; justify-content: flex-end; 
                     border-top: none; padding-top: 0; margin-top: 0; gap: 6px;
                 }
                 
-                /* 5. 地点与时间区块 (第二行)：强制不换行 (nowrap) 杜绝第三行，超长时触发内部收缩或滚动 */
-                .acu-rpg-loc-time { order: 3; width: 100%; display: flex; flex-wrap: nowrap; overflow: hidden; gap: 6px; margin-top: 2px; flex: none; margin: 0; align-items: stretch; }
-                /* 5. 金币和任务的字号恢复正常比例 */
-                .acu-rpg-summary > div:last-child > span { padding: 2px 6px !important; font-size: 12px !important; }
-                .acu-rpg-tab-btn { min-width: 55px; padding: 8px 0; font-size: 12px; }
-                .acu-rpg-tab-content { padding: 10px; max-height: 50vh; }
+                /* 5. 地点与时间区块 (第二行)：强制不换行，杜绝第三行 */
+                .acu-rpg-loc-time { order: 3; width: 100%; display: flex; flex-wrap: nowrap; overflow: hidden; gap: 8px; flex: none; margin: 0; align-items: stretch; }
+                /* 6. 右侧金币/事件药丸保持紧凑可读 */
+                .acu-rpg-summary > div:last-child > span { padding: 3px 9px !important; font-size: 11.5px !important; }
+                /* 7. 触摸热区：眼睛/箭头略缩 */
+                .acu-rpg-summary > div:last-child > i { width: 24px !important; height: 24px !important; font-size: 13px !important; }
+                
+                /* 8. pill Tab 手机适配：保持胶囊不变形 */
+                .acu-rpg-tabs { padding: 7px 8px; gap: 5px; }
+                .acu-rpg-tab-btn { min-width: 52px; padding: 7px 2px; font-size: 12px; border-radius: 9px; }
+                
+                .acu-rpg-tab-content { padding: 12px; max-height: 50vh; max-height: 50dvh; }
                 .acu-rpg-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)) !important; gap: 8px; }
                 .acu-rpg-grid.acu-grid-responsive { grid-template-columns: 1fr !important; }
-                .acu-rpg-item-card { padding: 8px; gap: 4px; }
+                .acu-rpg-item-card { padding: 10px 11px; gap: 4px; border-radius: 10px; }
+                /* 手机上取消 hover 抬升，避免触摸残留态 */
+                .acu-rpg-item-card:hover { transform: none; box-shadow: 0 1px 3px rgba(0,0,0,0.06); border-color: var(--acu-border); }
                 .acu-rpg-item-title { font-size: 12px; }
                 .acu-rpg-item-desc { font-size: 11px; line-height: 1.4; }
             }
@@ -2284,7 +2295,7 @@ const showSettingsModal = () => {
                     .acu-edit-overlay { align-items: flex-end !important; justify-content: center !important; background: rgba(0, 0, 0, 0.6) !important; backdrop-filter: blur(4px); padding: 0 !important; }
                     .acu-edit-dialog { width: 100% !important; max-width: 100% !important; border-radius: 20px 20px 0 0 !important; height: auto !important; max-height: 85dvh !important; margin: 0 !important; bottom: 0 !important; animation: acuSlideUp 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; box-shadow: 0 -10px 40px rgba(0,0,0,0.6) !important; border-bottom: none !important; }
                     /* [改造] 抽屉顶部真实可拖动导航条 (替代原静态::before) */
-                    .acu-drag-handle-bar { display: flex; align-items: center; justify-content: center; padding: 8px 0 2px 0; flex-shrink: 0; cursor: grab; touch-action: none; -webkit-user-select: none; user-select: none; position: relative; z-index: 5; }
+                    .acu-drag-handle-bar { display: flex; align-items: center; justify-content: center; padding: 2px 0 2px 0; flex-shrink: 0; cursor: grab; touch-action: none; -webkit-user-select: none; user-select: none; position: relative; z-index: 5; }
                     #acu-drawer-drag-zone:active { cursor: grabbing; }
                     .acu-drag-handle-bar > span { display: block; width: 40px; height: 5px; background: rgba(128, 128, 128, 0.5); border-radius: 3px; transition: background 0.2s, width 0.2s; }
                     #acu-drawer-drag-zone:active .acu-drag-handle-bar > span { background: var(--acu-accent); width: 56px; }
