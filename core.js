@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    console.log('🚀 [ACU 云端核心] 已成功加载，当前版本: v20.4');
+    console.log('🚀 [ACU 云端核心] 已成功加载，当前版本: v20.5');
     
     const SCRIPT_ID = 'acu_visualizer_ui_v20_0_ai_overlay';
     
@@ -690,13 +690,38 @@ const EXCLUDED_NAMES = ['无', '无关系', '暂无', '未知', '空', 'N/A', 'N
         if (saved) tableScrollStates = JSON.parse(saved);
     } catch(e) { console.warn('[ACU] Error:', e); } 
 
-// [修改] 智能更新控制器 (含自动头像迁移 & 自动清理失效缓存)
-    const UpdateController = { 
-        handleUpdate: () => {
+// [修改] 智能更新控制器 (含 runSilently 防闪烁 + 回调参数直传 + 自动头像迁移 & 自动清理失效缓存)
+    const UpdateController = {
+        _suppressNext: false,
+        _resetTimer: null,
+        // 保存时压制回调重绘，防止"保存→回调触发→二次渲染"的全局闪烁
+        runSilently: async (action) => {
+            UpdateController._suppressNext = true;
+            let result = false;
+            try { result = await action(); }
+            catch (e) { UpdateController._suppressNext = false; console.error(e); result = false; }
+            setTimeout(() => { UpdateController._suppressNext = false; }, 2000);
+            return result;
+        },
+        handleUpdate: (incomingData) => {
+            // [新增] runSilently 防闪烁：保存后 2 秒内收到的回调静默拦截
+            if (UpdateController._suppressNext) {
+                clearTimeout(UpdateController._resetTimer);
+                UpdateController._resetTimer = setTimeout(() => { UpdateController._suppressNext = false; }, 500);
+                return;
+            }
             isWaitingForDbUpdate = false; // [新增] 数据库更新完毕，立刻解锁
             if (dbUpdateTimeout) clearTimeout(dbUpdateTimeout); // [新增] 成功获取数据，销毁看门狗
-            const api = window.AutoCardUpdaterAPI || window.parent.AutoCardUpdaterAPI;
-            const newData = api && api.exportTableAsJson ? api.exportTableAsJson() : null;
+
+            // [新增] C2 兼容：新版 DB 会把最新数据作为参数传给回调
+            // 复用深拷贝作为缓存，省去 renderInterface 内部的 exportTableAsJson 重复拉取
+            let newData;
+            if (incomingData && typeof incomingData === 'object') {
+                newData = cloneTableData(incomingData);
+            } else {
+                const api = window.AutoCardUpdaterAPI || window.parent.AutoCardUpdaterAPI;
+                newData = api && api.exportTableAsJson ? api.exportTableAsJson() : null;
+            }
             
             if (newData) {
                 // --- [核心升级] 智能侦测改名迁移 & 孤儿头像普查清理 ---
@@ -858,6 +883,8 @@ const EXCLUDED_NAMES = ['无', '无关系', '暂无', '未知', '空', 'N/A', 'N
         const core = {
             $: $,
             getDB: () => w.AutoCardUpdaterAPI || window.AutoCardUpdaterAPI,
+            // [新增] V2 新 UI 管道：含 open（新工作台）、openVisualizer（表格编辑器）
+            getDBV2: () => w.AutoCardUpdaterV2API || window.AutoCardUpdaterV2API,
             // 增强查找：依次尝试 当前窗口 -> 父窗口 -> 顶层窗口 (带跨域保护)
             ST: window.SillyTavern || w.SillyTavern || (() => {
                 try { return window.top ? window.top.SillyTavern : null; } catch(e) { return null; }
@@ -1241,9 +1268,15 @@ const EXCLUDED_NAMES = ['无', '无关系', '暂无', '未知', '空', 'N/A', 'N
                     const isInstantMode = !actOrd.includes('acu-btn-save-global');
                     
                     if (isInstantMode) {
-                        // --- A. 即时模式：统一使用全局覆盖接口，保证绝对成功 ---
+                        // --- A. 即时模式：优先走细粒度 API，失败回退全量覆盖 ---
                         dialog.find('#dlg-card-save').html('<i class="fa-solid fa-check"></i> 已保存');
-                        await saveDataToDatabase(rawData, false, true);
+                        const _ctx = (Object.keys(updateData).length > 0) ? {
+                            type: 'row_edit',
+                            tableName: (rawData[tableKey]?.name) || tableKey,
+                            rowIndex: rowIndex,
+                            updateObj: updateData
+                        } : null;
+                        await saveDataToDatabase(rawData, false, true, _ctx);
                         AcuToast.success('修改已保存');
                     } else {
                         // --- B. 暂存模式 ---
@@ -2074,9 +2107,25 @@ if (currentFontId !== config.fontFamily) {
     $('head').append(styles);
 };
 
-    const getTableData = () => { const api = getCore().getDB(); return api && api.exportTableAsJson ? api.exportTableAsJson() : null; };
+    // [新增] 深拷贝工具：避免对外暴露数据库内部对象的引用，防止前端就地修改污染 DB 运行时状态
+    const cloneTableData = (data) => {
+        if (!data || typeof data !== 'object') return data;
+        try { return structuredClone(data); }
+        catch (e) { return JSON.parse(JSON.stringify(data)); } // 兜底：极旧环境
+    };
 
-const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes = false) => {
+    const getTableData = (forceRefresh = false) => {
+        if (!forceRefresh && cachedRawData) return cachedRawData;
+        const api = getCore().getDB();
+        const raw = api && api.exportTableAsJson ? api.exportTableAsJson() : null;
+        // 关键：exportTableAsJson 返回的是 DB 内部对象的直接引用，
+        // 必须深拷贝后再对外返回，否则前端的就地修改会绕过 DB 的事务/校验逻辑。
+        const data = cloneTableData(raw);
+        if (data) cachedRawData = data;
+        return data;
+    };
+
+const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes = false, updateContext = null) => {
     if (isSaving) return;
     isSaving = true;
     
@@ -2174,13 +2223,37 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
         // [优化] 让出主线程
         await yieldToMain();
 
-        // 4. 同步到后端 API (序列化也是阻塞的，但 API 本身是异步的)
-        // [恢复] 坚决抛弃前端的 delete+insert 模拟，交由后端高速引擎处理全量覆盖
+        // 4. 同步到后端 API
         const api = getCore().getDB();
-        if (api && api.importTableAsJson) {
+        let saveSuccessful = false;
+
+        // [新增] 细粒度 API 优先：先尝试 updateCell/updateRow/deleteRow，减少全量覆盖的开销
+        try {
+            if (api && updateContext) {
+                let apiResult;
+                if (updateContext.type === 'cell_edit' && api.updateCell) {
+                    apiResult = await api.updateCell(updateContext.tableName, updateContext.rowIndex + 1, updateContext.colIndex, updateContext.newValue);
+                } else if (updateContext.type === 'row_edit' && api.updateRow) {
+                    apiResult = await api.updateRow(updateContext.tableName, updateContext.rowIndex + 1, updateContext.updateObj);
+                } else if (updateContext.type === 'row_delete' && api.deleteRow) {
+                    apiResult = await api.deleteRow(updateContext.tableName, updateContext.rowIndex + 1);
+                }
+                if (apiResult !== false) saveSuccessful = true;
+            }
+        } catch (apiErr) {
+            console.warn('[ACU-API] 细粒度 API 调用失败，回退全量覆盖:', apiErr);
+        }
+
+        // 细粒度失败时回退全量覆盖
+        if (!saveSuccessful && api && api.importTableAsJson) {
             const jsonStr = JSON.stringify(dataToSave);
             await yieldToMain(); // 序列化后让出主线程
-            await api.importTableAsJson(jsonStr);
+            try {
+                await api.importTableAsJson(jsonStr);
+                saveSuccessful = true;
+            } catch (bulkErr) {
+                console.warn('[ACU-API] 全量保存异常:', bulkErr);
+            }
         }
 
         // [优化] 让出主线程
@@ -2206,9 +2279,11 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
             renderInterface();
             AcuToast.success('✅ 保存成功');
         }
+        return true;
     } catch (e) {
         console.error('Save error:', e);
         AcuToast.error('保存出错');
+        return false;
     } finally {
         isSaving = false;
     }
@@ -4837,23 +4912,40 @@ let finalGridCols = config.gridColumns;
         // 1. 生成选项栏 (Option Panel)
         let optionHtml = '';
         if (config.showOptionPanel !== false) {
-            const optionTables = Object.values(tables).filter(t => t.name.includes('选项'));
+            // [修复] 三路径选项表识别：表名含'选项' / uid为sheet_OptionsNew / 列名形态
+            const optionTables = [];
+            Object.values(tables).forEach(sheet => {
+                const headersNoId = Array.isArray(sheet?.headers)
+                    ? sheet.headers.filter(h => h && String(h).toLowerCase() !== 'row_id')
+                    : [];
+                const looksLikeOptionsByShape = headersNoId.length > 0
+                    && headersNoId.every(h => String(h).startsWith('选项'));
+                const isOptionSheet = sheet.name.includes('选项')
+                    || sheet?.key === 'sheet_OptionsNew'
+                    || looksLikeOptionsByShape;
+                if (isOptionSheet) optionTables.push(sheet);
+            });
+
             if (optionTables.length > 0) {
                 {
                     let buttonsHtml = `<div class="acu-opt-header" style="position:relative;">行动选项</div>`;
                     let hasBtns = false;
                     let optionValues = [];
                     optionTables.forEach(table => {
-                        if (table.rows) {
+                        // [修复] 按 headers 列数遍历，而非 row.forEach
+                        // 扩列后 row 数组不会自动补齐，旧遍历永远看不到新增列
+                        if (table.rows && Array.isArray(table.headers)) {
+                            const colCount = table.headers.length;
                             table.rows.forEach(row => {
-                                row.forEach((cell, idx) => {
-                                    if (idx > 0 && cell && String(cell).trim()) {
-                                        const cellStr = String(cell).trim();
+                                for (let idx = 1; idx < colCount; idx++) {
+                                    const cell = (row && row[idx] != null) ? String(row[idx]) : '';
+                                    if (cell.trim()) {
+                                        const cellStr = cell.trim();
                                         buttonsHtml += `<button class="acu-opt-btn" data-val="${encodeURIComponent(cellStr)}">${escapeHtml(cellStr)}</button>`;
                                         optionValues.push(cellStr);
                                         hasBtns = true;
                                     }
-                                });
+                                }
                             });
                         }
                     });
@@ -6466,59 +6558,112 @@ const cardBody = row.map((cell, cIdx) => {
         AcuToast.success('已重置：未保存的修改已清除');
     });
 
-    // [修复] 补回手动更新按钮的事件绑定头
+    // [修复] 手动更新按钮 — 死锁复活 + 弹窗预热
     $('body').off('click.acu_btn_force_update').on('click.acu_btn_force_update', '#acu-btn-force-update', async (e) => {
         e.stopPropagation(); 
         if (isEditingOrder) return;
-        const api = getCore().getDB();
-        if (api && typeof api.manualUpdate === 'function') {
-            // --- [新增] 动态提示：判断是全量还是部分更新 ---
-            if (api.getManualSelectedTables) {
-                const selInfo = api.getManualSelectedTables();
-                const totalTableCount = $('.acu-nav-btn[data-key!=""]').length || 999;
-                
-                // 加一道防线：不仅要有选中的表，而且不能是全选，才播报“定向更新”
-                if (selInfo && selInfo.hasManualSelection && selInfo.selectedTables.length > 0 && selInfo.selectedTables.length < totalTableCount) {
-                    AcuToast.info(`⚡ 已请求定向更新选中的 ${selInfo.selectedTables.length} 个表格...`);
-                } else {
-                    AcuToast.info('已请求全量更新，请等待后台生成...');
+        const core = getCore();
+        const api = core.getDB();
+        if (!api || typeof api.manualUpdate !== 'function') {
+            AcuToast.warning('⚠️ 后端脚本未提供 manualUpdate 接口，请确保同时也更新了最新的后端脚本');
+            return;
+        }
+
+        // [死锁修复步骤1] 前置探测：复位失效的表格选择
+        // 新 UI 模式下旧 jQuery 容器不渲染 → 收集到空数组；
+        // 若用户曾在旧 UI 里勾选过表且这些表已被模板换掉，
+        // saved ∩ available = 空 且 hasManualSelection=true，
+        // 内部会走"未选择表格"warning 后直接 return → 外观上"点击没反应"。
+        try {
+            const rawData = cachedRawData || getTableData() || {};
+            const available = Object.keys(rawData).filter(k => k.startsWith('sheet_'));
+            if (typeof api.getManualSelectedTables === 'function') {
+                const sel = api.getManualSelectedTables() || {};
+                const saved = Array.isArray(sel.selectedTables) ? sel.selectedTables : [];
+                const intersect = saved.filter(k => available.includes(k));
+                if (available.length > 0 && intersect.length === 0 && sel.hasManualSelection === true) {
+                    if (typeof api.clearManualSelectedTables === 'function') {
+                        await api.clearManualSelectedTables();
+                        AcuToast.info('已恢复为全表更新（之前的表选择已失效）');
+                    }
                 }
-            } else {
-                AcuToast.info('已请求更新，请等待后台生成...');
             }
-            // ---------------------------------------------
-            try {
-                await api.manualUpdate();
-            } catch(err) {
-                console.error('[ACU] 手动更新失败:', err);
-                AcuToast.error('手动更新触发失败');
+        } catch (probeErr) {
+            console.warn('[ACU] 手动更新前置探测失败，继续按原流程执行:', probeErr);
+        }
+
+        // [死锁修复步骤2] 先 openSettings() 把旧弹窗弹出来
+        // handleManualUpdate_ACU 收集勾选表用的 $manualTableSelector_ACU 容器，
+        // 只有在旧弹窗渲染时才会被 manualSelector.mount($container) 挂载；
+        // 弹窗没打开时容器为 null，getSelectionFromUI 返回空数组，
+        // 在 hasManualSelection=true 等边界条件下会在"未选择表格"warning 直接 return。
+        try {
+            if (typeof api.openSettings === 'function') {
+                await api.openSettings();
+                // 给旧弹窗 DOM/选择器 mount 留一点时间
+                await new Promise(r => setTimeout(r, 120));
+            }
+        } catch (openErr) {
+            console.warn('[ACU] openSettings 预热失败，继续尝试 manualUpdate:', openErr);
+        }
+
+        // --- 动态提示：判断是全量还是部分更新 ---
+        if (api.getManualSelectedTables) {
+            const selInfo = api.getManualSelectedTables();
+            const totalTableCount = $('.acu-nav-btn[data-key!=""]').length || 999;
+            if (selInfo && selInfo.hasManualSelection && selInfo.selectedTables.length > 0 && selInfo.selectedTables.length < totalTableCount) {
+                AcuToast.info(`⚡ 已请求定向更新选中的 ${selInfo.selectedTables.length} 个表格...`);
+            } else {
+                AcuToast.info('已请求全量更新，请等待后台生成...');
             }
         } else {
-            AcuToast.warning('⚠️ 后端脚本未提供 manualUpdate 接口，请确保同时也更新了最新的后端脚本');
+            AcuToast.info('已请求更新，请等待后台生成...');
+        }
+        // ---------------------------------------------
+        try {
+            await api.manualUpdate();
+        } catch(err) {
+            console.error('[ACU] 手动更新失败:', err);
+            AcuToast.error('手动更新触发失败');
         }
     });
+
     $('body').off('click.acu_btn_settings').on('click.acu_btn_settings', '#acu-btn-settings', (e) => { e.stopPropagation(); if (isEditingOrder) return; showSettingsModal(); });
     
 
-    $('body').off('click.acu_btn_open_editor').on('click.acu_btn_open_editor', '#acu-btn-open-editor', (e) => {
+    $('body').off('click.acu_btn_open_editor').on('click.acu_btn_open_editor', '#acu-btn-open-editor', async (e) => {
         e.stopPropagation();
         if (isEditingOrder) return;
-        const api = getCore().getDB();
+        const core = getCore();
+        // 优先走 V2 新 UI 的表格编辑器，旧版数据库无 V2 API 时回退
+        const apiV2 = core.getDBV2();
+        if (apiV2 && typeof apiV2.openVisualizer === 'function') {
+            try { await apiV2.openVisualizer(); return; }
+            catch (err) { console.warn('[ACU] V2 openVisualizer 失败，回退旧入口:', err); }
+        }
+        const api = core.getDB();
         if (api && typeof api.openVisualizer === 'function') {
             api.openVisualizer();
-        } else if (window.toastr) {
+        } else {
             AcuToast.warning('后端脚本(数据库)未就绪或版本过低');
         }
     });
 
-    // [新增] 绑定打开数据库原生设置面板的事件
+    // [新增] 绑定打开数据库原生设置面板的事件（V2 优先回退）
     $('body').off('click.acu_btn_open_db_settings').on('click.acu_btn_open_db_settings', '#acu-btn-open-db-settings', async (e) => {
         e.stopPropagation();
         if (isEditingOrder) return;
-        const api = getCore().getDB();
+        const core = getCore();
+        // 优先走 V2 新 UI（带"基础模式/高手模式"切换的工作台），旧版数据库无 V2 API 时回退到原 openSettings
+        const apiV2 = core.getDBV2();
+        if (apiV2 && typeof apiV2.open === 'function') {
+            try { await apiV2.open(); return; }
+            catch (err) { console.warn('[ACU] V2 open 失败，回退旧入口:', err); }
+        }
+        const api = core.getDB();
         if (api && typeof api.openSettings === 'function') {
-            await api.openSettings(); // 调用文档中提供的 API
-        } else if (window.toastr) {
+            await api.openSettings();
+        } else {
             AcuToast.warning('后端脚本(数据库)未就绪或版本过低');
         }
     });
@@ -6562,9 +6707,9 @@ const cardBody = row.map((cell, cIdx) => {
         AcuToast.success('💾 已保存');
         
         // ============================================================
-        // [优化] 第二步：后台异步保存（不阻塞 UI）
+        // [优化] 第二步：后台异步保存（不阻塞 UI，runSilently 抑制回调闪烁）
         // ============================================================
-        (async () => {
+        UpdateController.runSilently(async () => {
             try {
                 // 执行保存
                 await saveDataToDatabase(dataToSave, true, true);
@@ -6581,7 +6726,8 @@ const cardBody = row.map((cell, cIdx) => {
                 $btn.prop('disabled', false);
                 AcuToast.error('保存失败，请重试');
             }
-        })();
+            return true;
+        });
     });
 
 
@@ -7428,7 +7574,12 @@ const initSortable = () => {
                         if (cachedRawData && cachedRawData[tableKey]?.content) {
                             cachedRawData[tableKey].content.splice(rowIdx + 1, 1);
                             saveSnapshot(cachedRawData);
-                            await saveDataToDatabase(cachedRawData, true, true); 
+                            const _delCtx = {
+                                type: 'row_delete',
+                                tableName: (cachedRawData[tableKey]?.name) || tableKey,
+                                rowIndex: rowIdx
+                            };
+                            await saveDataToDatabase(cachedRawData, true, true, _delCtx); 
                             AcuToast.success('已彻底删除 (同步完成)');
                         }
                     }
@@ -7743,15 +7894,21 @@ const initSortable = () => {
                         if (!actOrd || !Array.isArray(actOrd)) actOrd = DEFAULT_ACTION_ORDER;
                         const isInstantMode = !actOrd.includes('acu-btn-save-global');
 
-                        if (isInstantMode) {
-                            // 直接提示成功，移除变暗加载动画，给予用户“瞬间完成”的极致错觉
+                                                if (isInstantMode) {
+                            // 直接提示成功，移除变暗加载动画，给予用户"瞬间完成"的极致错觉
                             AcuToast.success('已自动保存');
                             
                             // 扔进宏任务队列，留出 250ms 让卡片动画从从容容地播完
+                            const _rowEditCtx = (Object.keys(updateData).length > 0) ? {
+                                type: 'row_edit',
+                                tableName: (cachedRawData[tableKey]?.name) || tableKey,
+                                rowIndex: rowIdx,
+                                updateObj: updateData
+                            } : null;
                             setTimeout(async () => {
                                 try {
                                     // 存数据库，并且明确告诉它：不要重绘！不要重绘！
-                                    await saveDataToDatabase(cachedRawData, true, true);
+                                    await saveDataToDatabase(cachedRawData, true, true, _rowEditCtx);
                                 } catch(e) {
                                     AcuToast.error('保存失败，请检查网络');
                                 }
@@ -7821,9 +7978,16 @@ const initSortable = () => {
                     $displayTarget.removeClass('acu-highlight-manual acu-highlight-diff');
                     if ($cell.hasClass('acu-editable-title')) $cell.removeClass('acu-highlight-manual acu-highlight-diff');
                     
-                    // 【降维打击】抛弃不稳定的小颗粒 API，强制使用和“全局保存”一模一样的全量写入接口
+                    // 优先走细粒度 updateCell API，失败回退全量覆盖
+                    const _cellEditCtx = {
+                        type: 'cell_edit',
+                        tableName: (cachedRawData[tableKey]?.name) || tableKey,
+                        rowIndex: rowIdx,
+                        colIndex: colIdx,
+                        newValue: newVal
+                    };
                     try {
-                        await saveDataToDatabase(cachedRawData, true, true);
+                        await saveDataToDatabase(cachedRawData, true, true, _cellEditCtx);
                         AcuToast.success('已极速保存');
                     } catch(e) {
                         AcuToast.error('保存失败');
@@ -8500,7 +8664,12 @@ const initSortable = () => {
                     if (cachedRawData && cachedRawData[tableKey]?.content) {
                         cachedRawData[tableKey].content.splice(rowIdx + 1, 1);
                         saveSnapshot(cachedRawData);
-                        await saveDataToDatabase(cachedRawData, true, true);
+                        const _bagDelCtx = {
+                            type: 'row_delete',
+                            tableName: (cachedRawData[tableKey]?.name) || tableKey,
+                            rowIndex: rowIdx
+                        };
+                        await saveDataToDatabase(cachedRawData, true, true, _bagDelCtx);
                         AcuToast.success('已删除物品 (全量同步完成)');
                     }
                 }
