@@ -713,15 +713,9 @@ const EXCLUDED_NAMES = ['无', '无关系', '暂无', '未知', '空', 'N/A', 'N
             isWaitingForDbUpdate = false; // [新增] 数据库更新完毕，立刻解锁
             if (dbUpdateTimeout) clearTimeout(dbUpdateTimeout); // [新增] 成功获取数据，销毁看门狗
 
-            // [新增] C2 兼容：新版 DB 会把最新数据作为参数传给回调
-            // 复用深拷贝作为缓存，省去 renderInterface 内部的 exportTableAsJson 重复拉取
-            let newData;
-            if (incomingData && typeof incomingData === 'object') {
-                newData = cloneTableData(incomingData);
-            } else {
-                const api = window.AutoCardUpdaterAPI || window.parent.AutoCardUpdaterAPI;
-                newData = api && api.exportTableAsJson ? api.exportTableAsJson() : null;
-            }
+            // 后端回调保证携带最新数据（永不为 null），深拷贝隔离后复用为缓存，
+            // 省去 renderInterface 内部的 exportTableAsJson 重复拉取
+            const newData = (incomingData && typeof incomingData === 'object') ? cloneTableData(incomingData) : null;
             
             if (newData) {
                 // --- [核心升级] 智能侦测改名迁移 & 孤儿头像普查清理 ---
@@ -1315,6 +1309,10 @@ const EXCLUDED_NAMES = ['无', '无关系', '暂无', '未知', '空', 'N/A', 'N
         const diffSet = new Set();
         if (!lastData) return diffSet;
 
+        // [高楼层保护] 单表超过阈值时跳过逐格比对，只按长度差标记尾部新增行，
+        // 避免纪要表堆到高楼层后主线程被 diff 卡死 (借鉴 V15.8)
+        const HEAVY_ROW_THRESHOLD = 400;
+
         for (const sheetId in currentData) {
             const newSheet = currentData[sheetId];
             const oldSheet = lastData[sheetId];
@@ -1330,6 +1328,17 @@ const EXCLUDED_NAMES = ['无', '无关系', '暂无', '未知', '空', 'N/A', 'N
             
             const newRows = newSheet.content || [];
             const oldRows = oldSheet.content || [];
+            
+            // [高楼层保护] 超过阈值的表不做字典构建和逐格比对
+            const dataRowCount = Math.max(0, newRows.length - 1);
+            if (dataRowCount > HEAVY_ROW_THRESHOLD) {
+                if (newRows.length > oldRows.length) {
+                    for (let rIdx = oldRows.length; rIdx < newRows.length; rIdx++) {
+                        if (rIdx > 0) diffSet.add(`${tableName}-row-${rIdx - 1}`);
+                    }
+                }
+                continue;
+            }
             
             // --- 🚀 魔法：为旧数据建立基于 row_id (第一列) 的字典，告别死板的索引比对 ---
             const oldRowMap = new Map();
@@ -2132,8 +2141,6 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
     // 🛡️ 升起“渲染静音护盾”：在接下来的 1500ms 内，无视后台回音重绘请求，消灭全局闪烁
     window._acuMuteRenderUntil = Date.now() + 1500;
     
-    const { $, ST } = getCore();
-
     // [优化] 辅助函数：让出主线程，允许 UI 响应
     const yieldToMain = () => new Promise(resolve => setTimeout(resolve, 0));
 
@@ -2165,78 +2172,41 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
         // [优化] 让出主线程
         await yieldToMain();
 
-        // 3. 同步聊天记录楼层数据
-        try {
-            let rawIsolationCode = '';
-            // [v2兼容] 新版将隔离标识写入聊天消息，不再存localStorage
-            if (ST && ST.chat && ST.chat.length > 0) {
-                for (let i = ST.chat.length - 1; i >= 0; i--) {
-                    const msg = ST.chat[i];
-                    if (!msg.is_user && msg.TavernDB_ACU_Identity) {
-                        rawIsolationCode = msg.TavernDB_ACU_Identity;
-                        break;
-                    }
-                }
-            }
-
-            if (ST && ST.chat && ST.chat.length > 0) {
-                let targetMsg = null;
-                for (let i = ST.chat.length - 1; i >= 0; i--) {
-                    if (!ST.chat[i].is_user) {
-                        targetMsg = ST.chat[i];
-                        break;
-                    }
-                }
-
-                if (targetMsg) {
-                    if (!targetMsg.TavernDB_ACU_IsolatedData) targetMsg.TavernDB_ACU_IsolatedData = {};
-                    if (!targetMsg.TavernDB_ACU_IsolatedData[rawIsolationCode]) {
-                        targetMsg.TavernDB_ACU_IsolatedData[rawIsolationCode] = { independentData: {}, modifiedKeys: [] };
-                    }
-
-                    const tagData = targetMsg.TavernDB_ACU_IsolatedData[rawIsolationCode];
-                    if (!tagData.independentData) tagData.independentData = {};
-
-                    // [T0 优化] 分片深拷贝：使用现代浏览器原生的 structuredClone 替代 JSON 解析，消除主线程阻塞峰值
-                    const sheetsToSave = Object.keys(dataToSave).filter(k => k.startsWith('sheet_'));
-                    for (const k of sheetsToSave) {
-                        tagData.independentData[k] = typeof structuredClone === 'function' 
-                            ? structuredClone(dataToSave[k]) 
-                            : JSON.parse(JSON.stringify(dataToSave[k]));
-                        await yieldToMain(); // 每个 sheet 后让出
-                    }
-
-                    const existingKeys = tagData.modifiedKeys || [];
-                    tagData.modifiedKeys = [...new Set([...existingKeys, ...sheetsToSave])];
-
-                    // [优化] saveChat 前让出，确保 UI 流畅
-                    await yieldToMain();
-                    if (ST.saveChat) {
-                        await ST.saveChat();
-                    }
-                }
-            }
-        } catch (syncErr) {
-            console.warn('[ACU] 聊天记录同步失败 (不影响主功能):', syncErr);
-        }
+        // [已移除] 楼层隔离数据同步：后端 commit 事务（CRUD/import）会自行持久化
+        // TavernDB_ACU_IsolatedData（V2 storageFrame 格式），前端手写 V1 格式会造成并行写入冲突
 
         // [优化] 让出主线程
         await yieldToMain();
 
-        // 4. 同步到后端 API
+        // 3. 同步到后端 API
         const api = getCore().getDB();
         let saveSuccessful = false;
 
-        // [新增] 细粒度 API 优先：先尝试 updateCell/updateRow/deleteRow，减少全量覆盖的开销
+        // 细粒度 API 优先：options 对象形式 + skipNotify，从源头抑制回调回音重绘
         try {
             if (api && updateContext) {
                 let apiResult;
                 if (updateContext.type === 'cell_edit' && api.updateCell) {
-                    apiResult = await api.updateCell(updateContext.tableName, updateContext.rowIndex + 1, updateContext.colIndex, updateContext.newValue);
+                    apiResult = await api.updateCell({
+                        tableName: updateContext.tableName,
+                        rowIndex: updateContext.rowIndex + 1, // 后端 content 索引：1=首行数据
+                        colIdentifier: updateContext.colIndex, // 后端三兼容：数字索引/中文列名/英文列名
+                        value: updateContext.newValue,
+                        skipNotify: true
+                    });
                 } else if (updateContext.type === 'row_edit' && api.updateRow) {
-                    apiResult = await api.updateRow(updateContext.tableName, updateContext.rowIndex + 1, updateContext.updateObj);
+                    apiResult = await api.updateRow({
+                        tableName: updateContext.tableName,
+                        rowIndex: updateContext.rowIndex + 1,
+                        data: updateContext.updateObj,
+                        skipNotify: true
+                    });
                 } else if (updateContext.type === 'row_delete' && api.deleteRow) {
-                    apiResult = await api.deleteRow(updateContext.tableName, updateContext.rowIndex + 1);
+                    apiResult = await api.deleteRow({
+                        tableName: updateContext.tableName,
+                        rowIndex: updateContext.rowIndex + 1,
+                        skipNotify: true
+                    });
                 }
                 if (apiResult !== false) saveSuccessful = true;
             }
@@ -2249,8 +2219,9 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
             const jsonStr = JSON.stringify(dataToSave);
             await yieldToMain(); // 序列化后让出主线程
             try {
-                await api.importTableAsJson(jsonStr);
-                saveSuccessful = true;
+                // [适配] 新版后端 importTableAsJson 失败时返回 false（自身已弹 toastr），不能无条件标记成功
+                const importResult = await api.importTableAsJson(jsonStr);
+                saveSuccessful = (importResult !== false);
             } catch (bulkErr) {
                 console.warn('[ACU-API] 全量保存异常:', bulkErr);
             }
@@ -2259,15 +2230,7 @@ const saveDataToDatabase = async (tableData, skipRender = false, commitDeletes =
         // [优化] 让出主线程
         await yieldToMain();
 
-        // [v2兼容] 通知后端刷新，确保 SQLite 模式下手动修改落盘
-        try {
-            const _dbApi = getCore().getDB();
-            if (_dbApi && typeof _dbApi.refreshDataAndWorldbook === 'function') {
-                await _dbApi.refreshDataAndWorldbook();
-            }
-        } catch (_ignored) {}
-
-        // 5. 更新本地状态
+        // 4. 更新本地状态（世界书刷新已由后端在 CRUD/import 成功路径内部完成，无需重复调用）
         cachedRawData = dataToSave;
         saveSnapshot(dataToSave);
         hasUnsavedChanges = false;
@@ -5891,7 +5854,6 @@ const renderTableContent = (tableData, tableName) => {
             tableLockState = api.getTableLockState(tableData.key);
         }
 
-        let processedRows = tableData.rows.map((row, index) => ({ data: row, originalIndex: index }));
         const searchTerm = (tableSearchStates[tableName] || '').toLowerCase().trim();
 
         // [新增] 搜索关键词高亮辅助函数 (完美兼容HTML转义防注入)
@@ -5919,20 +5881,17 @@ const isRowHighPriority = (idx) => {
         return true; // 纯 AI 新增，置顶
     }
     
-    // 2. 检查该行是否有任何单元格被修改
-    for (const key of currentDiffMap) {
-        if (key.startsWith(`${tableName}-${idx}-`)) {
-            // 提取列索引
-            const parts = key.split('-');
-            const colIdx = parts[parts.length - 1];
-            
-            // 组装手动修改记录的专属 key (格式: tableKey-行索引-列索引，例如: sheet_1-0-1)
-            const manualKey = `${tableData.key}-${idx}-${colIdx}`;
-            
-            // 如果这个差异没有记录在手动修改的集合里，说明是纯 AI 修改的，执行置顶！
-            if (!window.acuModifiedSet || !window.acuModifiedSet.has(manualKey)) {
-                return true;
-            }
+    // 2. 检查该行是否有任何单元格被修改 (只探测前64列，与 map 阶段缓存保持同口径)
+    const colLimit = 64;
+    for (let c = 1; c <= colLimit; c++) {
+        if (!currentDiffMap.has(`${tableName}-${idx}-${c}`)) continue;
+        
+        // 组装手动修改记录的专属 key (格式: tableKey-行索引-列索引，例如: sheet_1-0-1)
+        const manualKey = `${tableData.key}-${idx}-${c}`;
+        
+        // 如果这个差异没有记录在手动修改的集合里，说明是纯 AI 修改的，执行置顶！
+        if (!window.acuModifiedSet || !window.acuModifiedSet.has(manualKey)) {
+            return true;
         }
     }
     
@@ -5940,45 +5899,88 @@ const isRowHighPriority = (idx) => {
 };
 
 
-        if (searchTerm) {
-            processedRows = processedRows.filter(item => item.data.some(cell => String(cell).toLowerCase().includes(searchTerm)));
-            processedRows.sort((a, b) => {
-                const titleA = String(a.data[titleColIndex] || '').toLowerCase(); const titleB = String(b.data[titleColIndex] || '').toLowerCase();
-                const aHitTitle = titleA.includes(searchTerm); const bHitTitle = titleB.includes(searchTerm);
-                if (titleA === searchTerm && titleB !== searchTerm) return -1;
-                if (titleA !== searchTerm && titleB === searchTerm) return 1;
-                if (aHitTitle && !bHitTitle) return -1; if (!aHitTitle && bHitTitle) return 1;
-                return a.originalIndex - b.originalIndex;
-            });
+        // ============================================================
+        // [高楼层保护] 重型表快速通道 (借鉴 V15.8)
+        // 无搜索且行数超阈值时：跳过全量 map+sort，按索引窗口直接切页，
+        // 只给可见页包元数据。代价：该表放弃高亮置顶排序 (高亮样式本身保留)。
+        // 同时顺带修复 sort 比较器内 O(diffSet) 扫描导致的 O(n log n × m) 风暴。
+        // ============================================================
+        const HEAVY_RENDER_THRESHOLD = 300;
+        const totalRawCount = tableData.rows.length;
+        const useHeavyFastPath = totalRawCount > HEAVY_RENDER_THRESHOLD && !searchTerm;
+        const itemsPerPage = config.itemsPerPage || 50;
+        let totalItems, rowsToRender;
+
+        if (useHeavyFastPath) {
+            totalItems = totalRawCount;
+            const totalPagesFast = Math.ceil(totalItems / itemsPerPage) || 1;
+            let currentPage = tablePageStates[tableName] || 1;
+            if (currentPage > totalPagesFast) currentPage = 1;
+            if (currentPage < 1) currentPage = 1;
+            tablePageStates[tableName] = currentPage;
+
+            const startIdx = (currentPage - 1) * itemsPerPage;
+            const endIdx = Math.min(startIdx + itemsPerPage, totalRawCount);
+            rowsToRender = [];
+            if (isReversed) {
+                const revStart = totalRawCount - endIdx;
+                const revEnd = totalRawCount - startIdx;
+                for (let i = revEnd - 1; i >= revStart; i--) {
+                    rowsToRender.push({ data: tableData.rows[i], originalIndex: i });
+                }
+            } else {
+                for (let i = startIdx; i < endIdx; i++) {
+                    rowsToRender.push({ data: tableData.rows[i], originalIndex: i });
+                }
+            }
         } else {
-                        processedRows.sort((a, b) => {
-                // 1. 如果勾选了"高亮置顶"，则优先显示 AI 变化行
-                if (isHighlightTop) {
-                    const aHigh = isRowHighPriority(a.originalIndex);
-                    const bHigh = isRowHighPriority(b.originalIndex);
+            // [性能修复] map 阶段预缓存优先级布尔值，排序比较器只读缓存，
+            // 杜绝比较器内反复调用 isRowHighPriority 造成的性能风暴
+            let processedRows = tableData.rows.map((row, index) => ({
+                data: row,
+                originalIndex: index,
+                isHighPriority: (isHighlightTop && !searchTerm) ? isRowHighPriority(index) : false
+            }));
+
+            if (searchTerm) {
+                processedRows = processedRows.filter(item => item.data.some(cell => String(cell).toLowerCase().includes(searchTerm)));
+                processedRows.sort((a, b) => {
+                    const titleA = String(a.data[titleColIndex] || '').toLowerCase(); const titleB = String(b.data[titleColIndex] || '').toLowerCase();
+                    const aHitTitle = titleA.includes(searchTerm); const bHitTitle = titleB.includes(searchTerm);
+                    if (titleA === searchTerm && titleB !== searchTerm) return -1;
+                    if (titleA !== searchTerm && titleB === searchTerm) return 1;
+                    if (aHitTitle && !bHitTitle) return -1; if (!aHitTitle && bHitTitle) return 1;
+                    return a.originalIndex - b.originalIndex;
+                });
+            } else {
+                processedRows.sort((a, b) => {
+                    // 1. 高亮置顶：直接读预缓存的布尔值，O(1)
+                    if (isHighlightTop) {
+                        if (a.isHighPriority && !b.isHighPriority) return -1;
+                        if (!a.isHighPriority && b.isHighPriority) return 1;
+                    }
                     
-                    if (aHigh && !bHigh) return -1; // A是高亮，排前面
-                    if (!aHigh && bHigh) return 1;  // B是高亮，排前面
-                }
-                
-                // 2. 根据"倒序"设置决定基础排序
-                if (isReversed) {
-                    return b.originalIndex - a.originalIndex; // 倒序：索引大的(新的)在前
-                } else {
-                    return a.originalIndex - b.originalIndex; // 正序：索引小的(旧的)在前
-                }
-            });
+                    // 2. 根据"倒序"设置决定基础排序
+                    if (isReversed) {
+                        return b.originalIndex - a.originalIndex; // 倒序：索引大的(新的)在前
+                    } else {
+                        return a.originalIndex - b.originalIndex; // 正序：索引小的(旧的)在前
+                    }
+                });
+            }
+
+            totalItems = processedRows.length;
+            const totalPagesNormal = Math.ceil(totalItems / itemsPerPage) || 1;
+            let currentPage = tablePageStates[tableName] || 1;
+            if (currentPage > totalPagesNormal) currentPage = totalPagesNormal;
+            if (currentPage < 1) currentPage = 1;
+            tablePageStates[tableName] = currentPage;
+            rowsToRender = processedRows.slice((currentPage - 1) * itemsPerPage, (currentPage - 1) * itemsPerPage + itemsPerPage);
         }
 
-        const itemsPerPage = config.itemsPerPage || 50;
-        const totalItems = processedRows.length;
+        const currentPage = tablePageStates[tableName];
         const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
-        let currentPage = tablePageStates[tableName] || 1;
-        if (currentPage > totalPages) currentPage = totalPages; if (currentPage < 1) currentPage = 1;
-        tablePageStates[tableName] = currentPage;
-
         const startIdx = (currentPage - 1) * itemsPerPage; const endIdx = startIdx + itemsPerPage;
-        const rowsToRender = processedRows.slice(startIdx, endIdx);
         // [修改] 无论正逆序都显示图标，且添加 .acu-sort-toggle-btn 类名供点击事件绑定
         const sortIcon = `<i class="fa-solid ${isReversed ? 'fa-sort-amount-up' : 'fa-sort-amount-down'} acu-sort-toggle-btn" data-table="${escapeHtml(tableName)}" title="点击切换排序 (当前: ${isReversed ? '倒序-最新在前' : '正序-最早在前'})" style="color:var(--acu-accent); margin-left:8px; font-size:14px; cursor:pointer; transition: transform 0.2s;"></i>`;
 
@@ -6045,7 +6047,7 @@ const cardBody = row.map((cell, cIdx) => {
                     const r = realRowIdx;
                     const c = cIdx - 1;
                     if (
-                        (tableLockState.cells && (tableLockState.cells.includes(`${r}:${c}`) || tableLockState.cells.some(arr => arr[0] === r && arr[1] === c))) ||
+                        (tableLockState.cells && tableLockState.cells.includes(`${r}:${c}`)) ||
                         (tableLockState.rows && tableLockState.rows.includes(r)) ||
                         (tableLockState.cols && tableLockState.cols.includes(c))
                     ) {
@@ -6105,9 +6107,8 @@ const cardBody = row.map((cell, cIdx) => {
             let isTitleLocked = false;
             if (tableLockState) {
                 const r = realRowIdx;
-            const c = titleColIndex - 1;
-            if ((tableLockState.cells && (tableLockState.cells.includes(`${r}:${c}`)
- || tableLockState.cells.some(arr => arr[0] === r && arr[1] === c))) || (tableLockState.cols && tableLockState.cols.includes(c))) {
+                const c = titleColIndex - 1;
+                if ((tableLockState.cells && tableLockState.cells.includes(`${r}:${c}`)) || (tableLockState.cols && tableLockState.cols.includes(c))) {
                     isTitleLocked = true;
                 }
             }
@@ -6592,13 +6593,13 @@ const cardBody = row.map((cell, cIdx) => {
             console.warn('[ACU] 手动更新前置探测失败，继续按原流程执行:', probeErr);
         }
 
-        // [死锁修复步骤2] 先 openSettings() 把旧弹窗弹出来
-        // handleManualUpdate_ACU 收集勾选表用的 $manualTableSelector_ACU 容器，
-        // 只有在旧弹窗渲染时才会被 manualSelector.mount($container) 挂载；
-        // 弹窗没打开时容器为 null，getSelectionFromUI 返回空数组，
-        // 在 hasManualSelection=true 等边界条件下会在"未选择表格"warning 直接 return。
+        // [死锁修复步骤2] 定向更新（hasManualSelection=true）时，必须先 openSettings() 把旧弹窗弹出来。
+        // ⚠️ 这是承重逻辑，不能删：handleManualUpdate_ACU 内部调用 getManualSelectionFromUI_ACU()，
+        // 当 hasManualSelection=true 且弹窗选择器未挂载时，会用空数组覆盖清空用户的定向选择并直接中止。
+        // 全量更新（hasManualSelection=false）走不到该分支，无需预热弹窗。
         try {
-            if (typeof api.openSettings === 'function') {
+            const selInfo = (typeof api.getManualSelectedTables === 'function') ? api.getManualSelectedTables() : null;
+            if (selInfo && selInfo.hasManualSelection === true && typeof api.openSettings === 'function') {
                 await api.openSettings();
                 // 给旧弹窗 DOM/选择器 mount 留一点时间
                 await new Promise(r => setTimeout(r, 120));
@@ -6638,7 +6639,12 @@ const cardBody = row.map((cell, cIdx) => {
         // 优先走 V2 新 UI 的表格编辑器，旧版数据库无 V2 API 时回退
         const apiV2 = core.getDBV2();
         if (apiV2 && typeof apiV2.openVisualizer === 'function') {
-            try { await apiV2.openVisualizer(); return; }
+            try {
+                // [适配] V2 openVisualizerSurface 失败时返回 false 而非抛异常，需检查返回值决定是否回退
+                const v2Result = await apiV2.openVisualizer();
+                if (v2Result !== false) return;
+                console.warn('[ACU] V2 openVisualizer 返回失败，回退旧入口');
+            }
             catch (err) { console.warn('[ACU] V2 openVisualizer 失败，回退旧入口:', err); }
         }
         const api = core.getDB();
@@ -6657,7 +6663,12 @@ const cardBody = row.map((cell, cIdx) => {
         // 优先走 V2 新 UI（带"基础模式/高手模式"切换的工作台），旧版数据库无 V2 API 时回退到原 openSettings
         const apiV2 = core.getDBV2();
         if (apiV2 && typeof apiV2.open === 'function') {
-            try { await apiV2.open(); return; }
+            try {
+                // [适配] V2 openAcuV2Shell 失败时返回 false 而非抛异常，需检查返回值决定是否回退
+                const v2Result = await apiV2.open();
+                if (v2Result !== false) return;
+                console.warn('[ACU] V2 open 返回失败，回退旧入口');
+            }
             catch (err) { console.warn('[ACU] V2 open 失败，回退旧入口:', err); }
         }
         const api = core.getDB();
@@ -6820,16 +6831,6 @@ const cardBody = row.map((cell, cIdx) => {
                         $card.find('.acu-card-value .fa-lock').remove();
                         
                         AcuToast.success('🔓 已解除整行锁定');
-                    }
-                }
-            } else if (api && api.toggleTableCellLock) {
-                // 降级处理：如果后端没提供整行锁 API，则退而求其次锁定该行标题格
-                const success = api.toggleTableCellLock(tableKey, rowIdx, 0); 
-                if (success !== false) {
-                    AcuToast.success('🔒 已锁定标题格 (提示: 后端版本较低，未提供整行锁API)');
-                    const $title = $(this).siblings('.acu-editable-title');
-                    if ($title.find('.fa-lock').length === 0) {
-                        $title.append(' <i class="fa-solid fa-lock" style="color:#f39c12; margin-left:4px; opacity:0.9; font-size:11px;" title="该标题格已被物理锁定"></i>');
                     }
                 }
             } else {
@@ -7286,7 +7287,7 @@ const initSortable = () => {
                 const r = rowIdx;
                 const c = colIdx - 1;
                 if (
-                    (lockState.cells && (lockState.cells.includes(`${r}:${c}`) || lockState.cells.some(arr => arr[0] === r && arr[1] === c))) ||
+                    (lockState.cells && lockState.cells.includes(`${r}:${c}`)) ||
                     (lockState.rows && lockState.rows.includes(r)) ||
                     (lockState.cols && lockState.cols.includes(c))
                 ) {
@@ -7547,18 +7548,15 @@ const initSortable = () => {
                 $card.css('transition', 'all 0.2s ease').css('opacity', '0').css('transform', 'scale(0.9)');
                 setTimeout(() => $card.slideUp(200, () => $card.remove()), 200);
                 
-                // 🛡️ 升起渲染静音护盾，防止后端删除成功后的回音导致列表闪烁重排
-                window._acuMuteRenderUntil = Date.now() + 1500;
-
                 const api = getCore().getDB();
                 if (!cachedRawData) cachedRawData = getTableData() || loadSnapshot();
                 
                 try {
                     let apiSuccess = false;
-                    // --- 核心修复：将 tableName 改为 tableKey ---
                     if (api && api.deleteRow) {
                         const _tname = (cachedRawData?.[tableKey]?.name) || tableKey;
-                        apiSuccess = await api.deleteRow(_tname, rowIdx);
+                        // content 索引需 +1；skipNotify 抑制回调回音（前端已做乐观 DOM 移除，失败回退路径自带有护盾）
+                        apiSuccess = await api.deleteRow({ tableName: _tname, rowIndex: rowIdx + 1, skipNotify: true });
                         if (apiSuccess) {
                             AcuToast.success('已彻底删除');
                             // 同步本地缓存防穿帮
@@ -7674,10 +7672,12 @@ const initSortable = () => {
                     // --- A. 即时模式：尝试优先使用后端 API (修复：tableName 改为 tableKey) ---
                     if (api && api.insertRow) {
                         const _tname = (cachedRawData?.[tableKey]?.name) || tableKey;
-                        const newRowIndex = await api.insertRow(_tname, {});
+                        // skipNotify：成功后由下方 exportTableAsJson 手动拉取最新数据，抑制回调回音
+                        const newRowIndex = await api.insertRow({ tableName: _tname, data: {}, skipNotify: true });
                         if (newRowIndex !== -1) {
                             AcuToast.success('已追加新行至表尾');
-                            cachedRawData = api.exportTableAsJson(); // 强制拉取最新数据
+                            // [适配] 新版后端 exportTableAsJson 返回内部活引用，必须深拷贝隔离
+                            cachedRawData = cloneTableData(api.exportTableAsJson()); // 强制拉取最新数据
                             renderInterface();
                             setTimeout(() => {
                                 const $panel = $('.acu-panel-content');
@@ -8644,10 +8644,10 @@ const initSortable = () => {
 
             try {
                 let apiSuccess = false;
-                // 优先尝试使用细粒度的行删除 API
+                // 优先尝试使用细粒度的行删除 API（content 索引 +1；skipNotify 抑制回调回音）
                 if (api && api.deleteRow) {
                         const _tname = (cachedRawData && cachedRawData[tableKey]?.name) || tableKey;
-                        apiSuccess = await api.deleteRow(_tname, rowIdx); // 0-based 数据行索引
+                        apiSuccess = await api.deleteRow({ tableName: _tname, rowIndex: rowIdx + 1, skipNotify: true });
                     if (apiSuccess) {
                         AcuToast.success('已彻底删除：' + itemName);
                         // 同步本地数据快照防穿帮
