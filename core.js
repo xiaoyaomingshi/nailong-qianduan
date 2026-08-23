@@ -914,6 +914,31 @@ const EXCLUDED_NAMES = ['无', '无关系', '暂无', '未知', '空', 'N/A', 'N
         }
     };
 
+    // ==== [新增] FontAwesome 丢失兼容引擎：探测失败自动降级为 Emoji ====
+    let _faAvailable = null;
+    const isFaAvailable = () => {
+        if (_faAvailable) return true; // 一旦可用就永久锁定
+        let ok = false;
+        try {
+            if (document.fonts && document.fonts.check) {
+                ok = document.fonts.check('12px "Font Awesome 6 Free"') || document.fonts.check('12px "Font Awesome 5 Free"');
+            }
+        } catch (e) {}
+        if (ok) _faAvailable = true;
+        return ok;
+    };
+    const FA_TO_EMOJI = {
+        'fa-project-diagram': '🕸️', 'fa-user-circle': '👤', 'fa-globe-asia': '🌍',
+        'fa-briefcase': '🎒', 'fa-dragon': '🐉', 'fa-user-friends': '👥',
+        'fa-scroll': '📜', 'fa-book-reader': '📖', 'fa-table': '📋',
+        'fa-cog': '⚙️', 'fa-save': '💾', 'fa-sync-alt': '🔄', 'fa-chevron-down': '🔽',
+        'fa-bolt': '⚡', 'fa-table-columns': '🗂️', 'fa-database': '🗄️', 'fa-arrows-alt': '↕️'
+    };
+    const renderIcon = (faClass) => {
+        if (isFaAvailable()) return `<i class="fa-solid ${faClass}"></i>`;
+        return `<span class="acu-emoji-icon">${FA_TO_EMOJI[faClass] || '📋'}</span>`;
+    };
+
     const getIconForTableName = (name) => {
         if (!name) return 'fa-table';
         // [修复] 给关系网标签分配专用图标
@@ -1507,10 +1532,11 @@ if (currentFontId !== config.fontFamily) {
             .acu-nav-container { display: grid; grid-template-columns: repeat(var(--acu-grid-cols, 3), 1fr); gap: 4px; padding: 6px; background: var(--acu-bg-nav); border: 1px solid var(--acu-border); border-radius: 10px; align-items: center; box-shadow: 0 2px 6px var(--acu-shadow); position: relative; z-index: 2147483641 !important; }
             .acu-nav-btn { touch-action: manipulation; -webkit-tap-highlight-color: transparent; width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 3px; padding: 4px 2px; border: 1px solid transparent; border-radius: 6px; background: var(--acu-btn-bg); color: var(--acu-text-main); font-weight: 600; font-size: 11px; cursor: pointer; transition: all 0.2s ease; user-select: none; overflow: hidden; height: 28px; }
             .acu-nav-btn span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; margin-top: 1px; }
+            .acu-emoji-icon { font-style: normal; font-size: 1.15em; line-height: 1; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; }
             .acu-nav-btn:hover { background: var(--acu-btn-hover); transform: translateY(-2px); }
             /* --- [新增] 手动更新选中状态的样式 --- */
             .acu-nav-btn.acu-update-selected { border: 1px dashed var(--acu-accent) !important; box-shadow: inset 0 0 8px rgba(0,0,0,0.1) !important; position: relative; overflow: visible !important; }
-            .acu-nav-btn.acu-update-selected::after { content: "\\f0e7"; font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", fas; font-weight: 900; position: absolute; top: -6px; right: -6px; font-size: 10px; background: var(--acu-accent); color: #fff; border-radius: 50%; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; z-index: 10; box-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+            .acu-nav-btn.acu-update-selected::after { content: "⚡"; position: absolute; top: -6px; right: -6px; font-size: 10px; background: var(--acu-accent); color: #fff; border-radius: 50%; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; z-index: 10; box-shadow: 0 2px 4px rgba(0,0,0,0.3); }
             /* [新增] 移植功能样式 */
             /* 添加了 touch-action: none */
 /* --- 1. 外层容器：防止误触边缘 --- */
@@ -4707,7 +4733,7 @@ let finalGridCols = config.gridColumns;
             const alignClass = `acu-align-${config.collapseAlign || 'right'}`;
             html += `
                 <div class="acu-expand-trigger ${colStyleClass} ${alignClass}" id="acu-btn-expand" style="${collapseStyle}">
-                    <i class="fa-solid fa-table"></i> <span>数据库助手 (${Object.keys(tables).length})</span>
+                    ${renderIcon('fa-table')} <span>数据库助手 (${Object.keys(tables).length})</span>
                 </div>
             `;
         } else {
@@ -4734,7 +4760,7 @@ let finalGridCols = config.gridColumns;
 
             html += `
                 <div class="acu-nav-container ${config.actionsPosition === 'top' ? 'acu-pos-top' : ''}" id="acu-nav-bar" style="${hideStyle} ${gridFixStyle}">
-                    <div class="acu-order-controls" id="acu-order-hint"><i class="fa-solid fa-arrows-alt"></i> 拖动调整顺序，完成后点击保存退出</div>
+                    <div class="acu-order-controls" id="acu-order-hint">${renderIcon('fa-arrows-alt')} 拖动调整顺序，完成后点击保存退出</div>
             `;
 
             // [新增] 在渲染标签前，获取当前后端记录的“已选中表”
@@ -4759,7 +4785,7 @@ let finalGridCols = config.gridColumns;
                 const isActive = currentTabName === name ? 'active' : '';
                 const tableKey = tables[name] ? tables[name].key : ''; 
                 const isUpdateSelected = tableKey && selectedUpdateKeys.includes(tableKey) ? 'acu-update-selected' : '';
-                html += `<button class="acu-nav-btn ${isActive} ${isUpdateSelected}" data-table="${escapeHtml(name)}" data-key="${tableKey}"><i class="fa-solid ${iconClass}"></i><span>${escapeHtml(name)}</span></button>`;
+                html += `<button class="acu-nav-btn ${isActive} ${isUpdateSelected}" data-table="${escapeHtml(name)}" data-key="${tableKey}">${renderIcon(iconClass)}<span>${escapeHtml(name)}</span></button>`;
             });
 
             let actionOrder = Store.get(STORAGE_KEY_ACTION_ORDER);
@@ -4775,7 +4801,7 @@ let finalGridCols = config.gridColumns;
             const shouldMergeSettings = isOnlySettings && !isEditingOrder;
 
             if (shouldMergeSettings) {
-    html += `<button class="acu-nav-btn acu-merged-settings" id="acu-btn-settings" style="color:var(--acu-text-sub); border:1px dashed var(--acu-border);"><i class="fa-solid fa-cog"></i><span>全能设置</span></button>`;
+    html += `<button class="acu-nav-btn acu-merged-settings" id="acu-btn-settings" style="color:var(--acu-text-sub); border:1px dashed var(--acu-border);">${renderIcon('fa-cog')}<span>全能设置</span></button>`;
 }
 
             
@@ -4786,7 +4812,7 @@ let finalGridCols = config.gridColumns;
                 if (btn.id === 'acu-btn-settings') return; 
 
                 if (!actionOrder.includes(btn.id)) {
-                    html += `<button class="acu-action-btn" id="${btn.id}" title="${btn.title}" draggable="false"><i class="fa-solid ${btn.icon}"></i></button>`;
+                    html += `<button class="acu-action-btn" id="${btn.id}" title="${btn.title}" draggable="false">${renderIcon(btn.icon)}</button>`;
                 }
             });
             html += `</div>`;
@@ -4798,7 +4824,7 @@ let finalGridCols = config.gridColumns;
                 actionOrder.forEach(btnId => {
                     const btnData = ALL_ACTION_BUTTONS.find(a => a.id === btnId);
                     if (btnData) {
-                        html += `<button class="acu-action-btn" id="${btnData.id}" title="${btnData.title}"><i class="fa-solid ${btnData.icon}"></i></button>`;
+                        html += `<button class="acu-action-btn" id="${btnData.id}" title="${btnData.title}">${renderIcon(btnData.icon)}</button>`;
                     }
                 });
                 html += `</div>`;
